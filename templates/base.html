@@ -124,7 +124,10 @@
         var top = 0;
         if (isEnabled) {
           headings.forEach(function (el) {
-            if (el.classList.contains('sticky-active')) top += el.offsetHeight;
+            if (el.classList.contains('sticky-active')) {
+              var b = el.getBoundingClientRect().bottom;
+              if (b > top) top = b;
+            }
           });
         }
         document.documentElement.style.setProperty('--table-sticky-top', top + 'px');
