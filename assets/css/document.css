@@ -214,7 +214,7 @@ body {
 .document h4,
 .document h5,
 .document h6 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: serif, Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--doc-ink);
