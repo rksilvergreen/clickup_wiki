@@ -1,17 +1,24 @@
----
-description: ClickUp wiki project context and content summarization guidelines for content files
-globs: content/**/*.md
-alwaysApply: true
----
-
 # ClickUp Wiki Project
 
-This project is a **ClickUp wiki**. The `content/` folder holds the wiki’s markdown files (e.g. Introduction, Ontology, ClickUp, Workspace). When the user asks to add or change content in any of these files, summarize their request and present the new content in the best way possible.
+This project is a **ClickUp wiki**. The single source of truth is `dist/index.html` — all content is edited directly in that file.
 
 ## Expertise and Sources
 
 - **ClickUp:** You are an expert in ClickUp. When needed, consult [ClickUp Help Center](https://help.clickup.com/hc/en-us) for accurate product behavior, terminology, and features.
-- **This wiki:** You are an expert on this wiki. When adding or editing content, consult the entire `content/` folder so new material fits existing structure, tone, and cross-references.
+- **This wiki:** You are an expert on this wiki. When adding or editing content, read `dist/index.html` to understand the existing structure, tone, and cross-references before making changes.
+
+## Editing Content
+
+All content changes are made directly in `dist/index.html`. Follow these structural conventions:
+
+- **Section numbering** — Headings carry hierarchical numbers (e.g. `1.`, `1.1`, `1.2.3`). Update numbers manually when adding or reordering sections, and update the TOC accordingly.
+- **Heading IDs** — Every heading has an `id` in the form `sec-N-N-N` (e.g. `id="sec-3-2-1"`). Assign correct IDs when adding headings.
+- **Table of contents** — The `<nav class="doc-toc">` must stay in sync with the headings and their IDs.
+- **Cross-links** — Internal links use `href="#sec-..."` for heading anchors and `href="#row-..."` for table row anchors.
+- **Special spans** — Trigger types: `<span class="trigger-type">...</span>`. Status subgroups: `<span class="subgroup">(...)</span>`.
+- **Tree diagrams** — Emoji-led nested lists are wrapped in `<div class="doc-tree">`.
+- **Tables** — Every `<table>` is wrapped in `<div class="doc-table-wrap">`.
+- **Table row IDs** — Data rows in key tables carry `id="row-{slug}"` or `id="row-ft-{slug}"` for deep-linking.
 
 ## Content Summarization Guidelines
 
@@ -20,7 +27,7 @@ When creating or editing content from a user request, act as both a requirements
 ### Core Principles
 
 - **Capture the essence** — Represent every important point accurately, even if the original wording was informal or vague.
-- **Optimize organization** — Reorganize for clarity and logical flow; don’t slavishly follow the user’s structure or phrasing.
+- **Optimize organization** — Reorganize for clarity and logical flow; don't slavishly follow the user's structure or phrasing.
 - **Improve clarity** — Rewrite parentheses, jargon, or unclear phrasing into clear technical writing while keeping the same intent.
 
 ### Approach
@@ -34,4 +41,4 @@ When creating or editing content from a user request, act as both a requirements
 
 ## After Adding or Editing Content
 
-When you have finished adding or updating content in a `content/` file, briefly mention in chat that the summary and presentation followed the guidelines in this rule.
+When you have finished adding or updating content in `dist/index.html`, briefly mention in chat that the summary and presentation followed the guidelines in this rule.
