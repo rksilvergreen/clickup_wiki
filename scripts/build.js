@@ -196,7 +196,7 @@ function wrapTreeDiagrams(html) {
   };
   $('#__doc > ul').each(function () {
     const $ul = $(this);
-    if ($ul.find('li > ul').length === 0) return;
+    const hasNestedUl = $ul.find('li > ul').length > 0;
     const $firstLi = $ul.children('li').first();
     if ($firstLi.find('pre, code').length > 0) return;
     const firstLevelStartsWithEmoji = $ul
@@ -204,7 +204,13 @@ function wrapTreeDiagrams(html) {
       .toArray()
       .some((el) => startsWithEmoji($(el).text()));
     if (!firstLevelStartsWithEmoji) return;
-    $ul.wrap('<div class="doc-tree"></div>');
+    const allFirstLevelStartWithEmoji = $ul
+      .children('li')
+      .toArray()
+      .every((el) => startsWithEmoji($(el).text()));
+    if (hasNestedUl || allFirstLevelStartWithEmoji) {
+      $ul.wrap('<div class="doc-tree"></div>');
+    }
   });
   return $('#__doc').html();
 }

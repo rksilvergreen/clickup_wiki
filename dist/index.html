@@ -102,13 +102,9 @@ An entry’s <strong>effective definition</strong> is derived from the combinati
 <p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the entry to additional scopes.
 Examples (in abstract terms):</p>
 <ul>
-<li><pre><code>  *   A “location” selector whose value points to a container/context, thereby exposing the entry to that context scope (and possibly its parent scopes).
-</code></pre>
-<ul>
+<li>A “location” selector whose value points to a container/context, thereby exposing the entry to that context scope (and possibly its parent scopes).</li>
 <li>A “type” selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and its ancestors).
 So some fields are not merely data holders; they are <em>context-binding mechanisms</em> that determine which schemas/settings/rules apply.</li>
-</ul>
-</li>
 </ul>
 <h3 id="sec-2-6-3">2.6.3 Scope hierarchies and inheritance</h3>
 <p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
@@ -202,14 +198,10 @@ Inheritance means that exposure to a child implies exposure to its ancestors.</p
 <p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters. Scopes can provide those parameters at different levels.
 For example:</p>
 <ul>
-<li><pre><code>  *   a “status” field is one field kind, but the allowed state set or workflow graph can be configured per scope level
-</code></pre>
-<ul>
+<li>a “status” field is one field kind, but the allowed state set or workflow graph can be configured per scope level</li>
 <li>a “choice” field can have different option sets in different contexts</li>
 <li>a templated or AI-driven field can have different prompts/specs per scope
 This allows consistent field kinds while enabling contextual variation.</li>
-</ul>
-</li>
 </ul>
 <h3 id="sec-2-6-5">2.6.5 Scoped scope-hierarchies</h3>
 <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a particular scope so that only entries already exposed to that scope can access that selector, and only then can they branch into a further scope hierarchy.
@@ -877,26 +869,42 @@ Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, P
 <p>These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part of?”, and one that answers “what kind of entry is this meant to represent?”.</p>
 <h3 id="sec-3-3-1">3.3.1 Location Scope Hierarchy</h3>
 <p>This is the <strong>project hierarchy</strong>: the chain of project containers an entry sits inside. A space usually represents a broad domain (like a product area or department), folders group related sub-projects inside that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an entry belongs to a specific list, it’s automatically part of the larger project contexts above it too—so the entry is simultaneously in the “sub-project” scope (the list) and in the broader “project” scopes (its folder and space). That’s why location scopes behave like inheritance: lower-level project contexts don’t replace higher-level ones; they narrow them.</p>
-<p>🟦General (space)
-|____📁 Some Project (folder)
-|____📋Project Tasks (list)
-|____📁 Household Chores (folder)
-|____📋Household Tasks (list)
-|____📋Family Meetings (list)
-|____📋Events (list)
-|____📋Milestones (list)
-🟩Personal (space)
-|____📁 My Projects (folder)
-|____📁Birthday Planning (folder)
-|____📋Locations (list)
-|____📋Presents (list)</p>
+<div class="doc-tree"><ul>
+<li>🟦 General (space)<ul>
+<li>📁 Some Project (folder)<ul>
+<li>📋 Project Tasks (list)</li>
+</ul>
+</li>
+<li>📁 Household Chores (folder)<ul>
+<li>📋 Household Tasks (list)</li>
+<li>📋 Family Meetings (list)</li>
+</ul>
+</li>
+<li>📋 Events (list)</li>
+<li>📋 Milestones (list)</li>
+</ul>
+</li>
+<li>🟩 Personal (space)<ul>
+<li>📁 My Projects (folder)<ul>
+<li>📁 Birthday Planning (folder)<ul>
+<li>📋 Locations (list)</li>
+<li>📋 Presents (list)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
 <h3 id="sec-3-3-2">3.3.2 Task Type Scope Hierarchy</h3>
 <p>This is the <strong>purpose hierarchy</strong> (even though ClickUp implements it as flat). A task type scope doesn’t say <em>where</em> the entry lives; it says <em>what it is</em>. It’s the semantic category of the entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live in the same project scope, but have different purposes (a bug vs. a feature request vs. a meeting note), and that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope with no inheritance: it doesn’t automatically imply a more general “parent type” scope. It’s a single-purpose label that lets you treat entries differently based on meaning, not location.</p>
-<p>✅Task
-📆Event
-🗨️Request
-🫱🏼‍🫲🏼Meeting
-🏆Goal</p>
+<div class="doc-tree"><ul>
+<li>✅ Task</li>
+<li>📆 Event</li>
+<li>🗨️ Request</li>
+<li>🫱🏼‍🫲🏼 Meeting</li>
+<li>🏆 Goal</li>
+</ul></div>
 
 <h1 id="sec-4">4. Workspace</h1>
 <p>This section describes the workspace configuration and conventions.</p>

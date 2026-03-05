@@ -113,25 +113,25 @@ These are the two scope hierarchies used in ClickUp—one that answers “which 
 ### 3.3.1 Location Scope Hierarchy
 This is the **project hierarchy**: the chain of project containers an entry sits inside. A space usually represents a broad domain (like a product area or department), folders group related sub-projects inside that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an entry belongs to a specific list, it’s automatically part of the larger project contexts above it too—so the entry is simultaneously in the “sub-project” scope (the list) and in the broader “project” scopes (its folder and space). That’s why location scopes behave like inheritance: lower-level project contexts don’t replace higher-level ones; they narrow them.
 
-🟦General (space)
-|\_\_\_\_📁 Some Project (folder)
-|\_\_\_\_📋Project Tasks (list)
-|\_\_\_\_📁 Household Chores (folder)
-|\_\_\_\_📋Household Tasks (list)
-|\_\_\_\_📋Family Meetings (list)
-|\_\_\_\_📋Events (list)
-|\_\_\_\_📋Milestones (list)
-🟩Personal (space)
-|\_\_\_\_📁 My Projects (folder)
-|\_\_\_\_📁Birthday Planning (folder)
-|\_\_\_\_📋Locations (list)
-|\_\_\_\_📋Presents (list)
+- 🟦 General (space)
+  - 📁 Some Project (folder)
+    - 📋 Project Tasks (list)
+  - 📁 Household Chores (folder)
+    - 📋 Household Tasks (list)
+    - 📋 Family Meetings (list)
+  - 📋 Events (list)
+  - 📋 Milestones (list)
+- 🟩 Personal (space)
+  - 📁 My Projects (folder)
+    - 📁 Birthday Planning (folder)
+      - 📋 Locations (list)
+      - 📋 Presents (list)
 
 ### 3.3.2 Task Type Scope Hierarchy
 This is the **purpose hierarchy** (even though ClickUp implements it as flat). A task type scope doesn’t say _where_ the entry lives; it says _what it is_. It’s the semantic category of the entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live in the same project scope, but have different purposes (a bug vs. a feature request vs. a meeting note), and that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope with no inheritance: it doesn’t automatically imply a more general “parent type” scope. It’s a single-purpose label that lets you treat entries differently based on meaning, not location.
 
-✅Task
-📆Event
-🗨️Request
-🫱🏼‍🫲🏼Meeting
-🏆Goal
+- ✅ Task
+- 📆 Event
+- 🗨️ Request
+- 🫱🏼‍🫲🏼 Meeting
+- 🏆 Goal

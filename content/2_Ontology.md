@@ -62,8 +62,8 @@ In many no-code database platforms, the workspace often _looks_ like it contains
 ### 2.6.2 Scope exposure and scope selector fields
 Entries become exposed to scopes through **scope selector fields**: fields whose values attach the entry to additional scopes.
 Examples (in abstract terms):
-*       *   A “location” selector whose value points to a container/context, thereby exposing the entry to that context scope (and possibly its parent scopes).
-    *   A “type” selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and its ancestors).
+*   A “location” selector whose value points to a container/context, thereby exposing the entry to that context scope (and possibly its parent scopes).
+*   A “type” selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and its ancestors).
 So some fields are not merely data holders; they are _context-binding mechanisms_ that determine which schemas/settings/rules apply.
 ### 2.6.3 Scope hierarchies and inheritance
 Scopes can form **hierarchies** where child scopes inherit from parents.
@@ -123,9 +123,9 @@ Groups entries by who is accountable for interacting with them and carrying them
 ### 2.6.4 Per-scope parameterization
 Some field types are **parameterized**: their full meaning requires configuration parameters. Scopes can provide those parameters at different levels.
 For example:
-*       *   a “status” field is one field kind, but the allowed state set or workflow graph can be configured per scope level
-    *   a “choice” field can have different option sets in different contexts
-    *   a templated or AI-driven field can have different prompts/specs per scope
+*   a “status” field is one field kind, but the allowed state set or workflow graph can be configured per scope level
+*   a “choice” field can have different option sets in different contexts
+*   a templated or AI-driven field can have different prompts/specs per scope
 This allows consistent field kinds while enabling contextual variation.
 
 ### 2.6.5 Scoped scope-hierarchies
