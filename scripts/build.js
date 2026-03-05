@@ -224,6 +224,38 @@ function wrapTables(html) {
   return $('#__doc').html();
 }
 
+/** Add row IDs to the Base Scope Table so links can target specific rows */
+function addBaseScopeTableRowIds(html) {
+  const $ = cheerio.load('<div id="__root">' + html + '</div>', { decodeEntities: false });
+  const $heading = $('#sec-3-1-1-1');
+  if (!$heading.length) return html;
+  const $wrapper = $heading.next();
+  const $table = $wrapper.length ? $wrapper.find('table').first() : $();
+  if (!$table.length) return html;
+
+  function slugForName(name) {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[/\s]+/g, '-')
+      .replace(/[^a-z0-9-]/g, '')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '') || 'row';
+  }
+
+  $table.find('tr').each(function () {
+    const $row = $(this);
+    if ($row.find('th').length) return;
+    const $first = $row.find('td').first();
+    if (!$first.length) return;
+    const name = $first.text().trim();
+    const slug = slugForName(name);
+    if (slug) $row.attr('id', 'row-' + slug);
+  });
+
+  return $('#__root').html();
+}
+
 function buildOne() {
   ensureDir(CONTENT_DIR);
   ensureDir(DIST_DIR);
@@ -260,6 +292,7 @@ function buildOne() {
   merged = replaceTriggerTypes(merged);
   merged = wrapTreeDiagrams(merged);
   merged = wrapTables(merged);
+  merged = addBaseScopeTableRowIds(merged);
 
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   const full = template

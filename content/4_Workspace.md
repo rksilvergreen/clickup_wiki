@@ -24,13 +24,13 @@ A Task represents a unit of work that has an owner (or owners), a lifecycle stat
 
 Core task-defining fields, which define why Tasks feel native in ClickUp:
 
-*   **Status** — Workflow state; configured per location.
-*   **Priority** — Single-choice urgency/importance.
-*   **Assignees** — People selector; ownership.
-*   **Start date** — Date/time.
-*   **Due date** — Date/time.
-*   **Time estimate** — Planned effort.
-*   **Time tracked** — Recorded effort.
+*   [**Status**](#row-status)
+*   [**Priority**](#row-priority)
+*   [**Assignees**](#row-assignees)
+*   [**Start date**](#row-start-date)
+*   [**Due date**](#row-due-date)
+*   [**Time estimate**](#row-time-estimate)
+*   [**Time tracked**](#row-time-tracked)
 
 #### Event
 

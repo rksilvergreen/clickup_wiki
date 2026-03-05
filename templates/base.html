@@ -158,6 +158,134 @@
       updateStickyActive();
     })();
   </script>
+  <script>
+    (function () {
+      function getScrollOffset(table) {
+        var stickyTop = parseFloat(
+          getComputedStyle(document.documentElement).getPropertyValue('--table-sticky-top')
+        ) || 0;
+        var thead = table ? table.querySelector('thead') : null;
+        var theadH = thead ? thead.offsetHeight : 0;
+        return stickyTop + theadH + 8;
+      }
+
+      function scrollToRow(el) {
+        var table = el.closest('table');
+        var offset = getScrollOffset(table);
+        var top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+      }
+
+      function highlightRow(el) {
+        el.classList.remove('row-highlight');
+        void el.offsetHeight;
+        el.classList.add('row-highlight');
+        if (window._rowHighlightTimeout) clearTimeout(window._rowHighlightTimeout);
+        window._rowHighlightTimeout = setTimeout(function () {
+          el.classList.remove('row-highlight');
+        }, 2100);
+      }
+
+      function handleHash(hash) {
+        if (!hash || hash.indexOf('row-') !== 0) return;
+        var el = document.getElementById(hash);
+        if (!el || el.tagName !== 'TR') return;
+        scrollToRow(el);
+        highlightRow(el);
+      }
+
+      window.addEventListener('load', function () {
+        handleHash(window.location.hash.slice(1));
+      });
+
+      window.addEventListener('hashchange', function () {
+        handleHash(window.location.hash.slice(1));
+      });
+
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#row-"]');
+        if (!a) return;
+        var href = a.getAttribute('href');
+        var hash = href.slice(1);
+        var el = document.getElementById(hash);
+        if (!el || el.tagName !== 'TR') return;
+        e.preventDefault();
+        history.pushState(null, '', href);
+        scrollToRow(el);
+        highlightRow(el);
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var tooltip = document.createElement('div');
+      tooltip.className = 'row-preview-tooltip';
+      document.body.appendChild(tooltip);
+
+      function buildTooltip(row) {
+        var table = row.closest('table');
+        if (!table) return false;
+        var headerCells = table.querySelectorAll('thead th');
+        var dataCells = row.querySelectorAll('td');
+        if (!headerCells.length || !dataCells.length) return false;
+
+        var headHtml = '<tr>';
+        headerCells.forEach(function (th) { headHtml += '<th>' + th.innerHTML + '</th>'; });
+        headHtml += '</tr>';
+
+        var rowHtml = '<tr>';
+        dataCells.forEach(function (td) { rowHtml += '<td>' + td.innerHTML + '</td>'; });
+        rowHtml += '</tr>';
+
+        tooltip.innerHTML = '<table><thead>' + headHtml + '</thead><tbody>' + rowHtml + '</tbody></table>';
+        return true;
+      }
+
+      function positionTooltip(link) {
+        var rect = link.getBoundingClientRect();
+        var margin = 10;
+        var tw = tooltip.offsetWidth;
+        var th = tooltip.offsetHeight;
+
+        var top = rect.bottom + margin;
+        if (top + th > window.innerHeight - margin) {
+          top = rect.top - th - margin;
+        }
+
+        var left = rect.left;
+        if (left + tw > window.innerWidth - margin) {
+          left = window.innerWidth - tw - margin;
+        }
+        if (left < margin) left = margin;
+
+        tooltip.style.top = top + 'px';
+        tooltip.style.left = left + 'px';
+      }
+
+      function showTooltip(link) {
+        var hash = link.getAttribute('href').slice(1);
+        var row = document.getElementById(hash);
+        if (!row || row.tagName !== 'TR') return;
+        if (!buildTooltip(row)) return;
+        tooltip.classList.add('is-visible');
+        positionTooltip(link);
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove('is-visible');
+      }
+
+      document.addEventListener('mouseover', function (e) {
+        var a = e.target.closest('a[href^="#row-"]');
+        if (a) showTooltip(a);
+      });
+
+      document.addEventListener('mouseout', function (e) {
+        var a = e.target.closest('a[href^="#row-"]');
+        if (a && !a.contains(e.relatedTarget)) hideTooltip();
+      });
+    })();
+  </script>
 </body>
 
 </html>

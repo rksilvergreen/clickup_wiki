@@ -472,6 +472,92 @@ body {
   color: var(--doc-ink);
 }
 
+/* Row highlight when linked from schema field: fades to normal over 2s.
+   Applied to td (not tr) so it wins over the nth-child(even) tr background. */
+@keyframes row-highlight-fade {
+  from {
+    background-color: rgba(232, 180, 168, 0.6);
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+.document table tbody tr.row-highlight td {
+  animation: row-highlight-fade 2s ease-out forwards;
+}
+
+/* Row preview tooltip on hover over schema field links */
+.row-preview-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: #fff;
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.13);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.85rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s, visibility 0.12s;
+  max-width: min(580px, calc(100vw - 32px));
+  overflow: hidden;
+}
+
+.row-preview-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.row-preview-tooltip table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.row-preview-tooltip thead {
+  background: var(--doc-highlight);
+  color: #fff;
+}
+
+.row-preview-tooltip thead th {
+  padding: 0.45rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+.row-preview-tooltip thead th+th {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.row-preview-tooltip thead th:first-child {
+  border-top-left-radius: 5px;
+}
+
+.row-preview-tooltip thead th:last-child {
+  border-top-right-radius: 5px;
+}
+
+.row-preview-tooltip tbody td {
+  padding: 0.45rem 0.75rem;
+  color: var(--doc-ink-light);
+  vertical-align: top;
+}
+
+.row-preview-tooltip tbody td+td {
+  border-left: 1px solid var(--doc-border);
+}
+
+.row-preview-tooltip tbody td:first-child {
+  font-weight: 500;
+  color: var(--doc-ink);
+  white-space: nowrap;
+}
+
 .document strong {
   color: var(--doc-ink);
   font-weight: 600;
