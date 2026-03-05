@@ -356,6 +356,42 @@ body {
   height: 4px;
 }
 
+/* Tree diagrams: no bullets, distinct block (scope/type/status hierarchies, etc.) */
+.document .doc-tree {
+  background: #fff;
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.document .doc-tree ul {
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.document .doc-tree ul:first-child {
+  margin-top: 0;
+}
+
+.document .doc-tree li {
+  padding-left: 0;
+}
+
+.document .doc-tree li::before {
+  display: none;
+}
+
+.document .doc-tree ul ul {
+  margin-left: 1rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--doc-border);
+}
+
+.document .doc-tree ul ul li::before {
+  display: none;
+}
+
 .document strong {
   color: var(--doc-ink);
   font-weight: 600;

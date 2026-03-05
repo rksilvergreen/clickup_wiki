@@ -187,6 +187,28 @@ function replaceSubgroups(html) {
   return $('#__doc').html();
 }
 
+/** Wrap only emoji tree diagrams (scope/type/status hierarchies) in .doc-tree; leave other nested lists as normal bullets */
+function wrapTreeDiagrams(html) {
+  const $ = cheerio.load('<div id="__doc">' + html + '</div>', { decodeEntities: false });
+  const startsWithEmoji = (text) => {
+    const t = (text || '').trim();
+    return t.length > 0 && /^\p{Emoji}/u.test(t);
+  };
+  $('#__doc > ul').each(function () {
+    const $ul = $(this);
+    if ($ul.find('li > ul').length === 0) return;
+    const $firstLi = $ul.children('li').first();
+    if ($firstLi.find('pre, code').length > 0) return;
+    const firstLevelStartsWithEmoji = $ul
+      .children('li')
+      .toArray()
+      .some((el) => startsWithEmoji($(el).text()));
+    if (!firstLevelStartsWithEmoji) return;
+    $ul.wrap('<div class="doc-tree"></div>');
+  });
+  return $('#__doc').html();
+}
+
 function buildOne() {
   ensureDir(CONTENT_DIR);
   ensureDir(DIST_DIR);
@@ -221,6 +243,7 @@ function buildOne() {
   merged = addIntroClass(merged);
   merged = replaceSubgroups(merged);
   merged = replaceTriggerTypes(merged);
+  merged = wrapTreeDiagrams(merged);
 
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   const full = template
