@@ -55,3 +55,17 @@ Connected to the task type **Event**, this status group represents the lifecycle
 *   **Occurring → Occurred: Chronological** — Triggered when the current datetime reaches or passes the event's end datetime (i.e., the due/end time).
 *   **(Upcoming, Occurring) → Not Scheduled: Internal Conditional** — Triggered when Start date and Due date are reset to null.
 *   **Occurring → Upcoming: Internal Conditional** — Triggered when the event's start datetime is moved forward to a datetime that has not yet happened.
+
+#### 4.1.1.4 Shopping
+
+Connected to the list **Shopping** in the space **Shopping**, this status group models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.
+*   **Idea (Not started)** — On the wishlist; we may buy it eventually but are not actively planning to.
+*   **To Buy (Not started)** — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.
+*   **In Cart (Active)** — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.
+*   **Ordered (Active)** — An order has been placed; we are waiting for delivery.
+*   **Cancelled (Done)** — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.
+*   **Received (Closed)** — The item has been purchased and received.
+
+##### 4.1.1.4.1 Transitions
+
+Every transition is **manual**. The usual path is **Idea → To Buy → In Cart → Ordered → Received**, but an item may move from any status to any other (e.g. **Ordered** back to **To Buy** after an order is cancelled, or **Idea** to **Cancelled**).
