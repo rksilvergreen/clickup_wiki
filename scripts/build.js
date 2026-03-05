@@ -215,6 +215,15 @@ function wrapTreeDiagrams(html) {
   return $('#__doc').html();
 }
 
+/** Wrap every <table> in a .doc-table-wrap div for visual styling (border/radius/shadow) without overflow:hidden */
+function wrapTables(html) {
+  const $ = cheerio.load('<div id="__doc">' + html + '</div>', { decodeEntities: false });
+  $('#__doc table').each(function () {
+    $(this).wrap('<div class="doc-table-wrap"></div>');
+  });
+  return $('#__doc').html();
+}
+
 function buildOne() {
   ensureDir(CONTENT_DIR);
   ensureDir(DIST_DIR);
@@ -250,6 +259,7 @@ function buildOne() {
   merged = replaceSubgroups(merged);
   merged = replaceTriggerTypes(merged);
   merged = wrapTreeDiagrams(merged);
+  merged = wrapTables(merged);
 
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   const full = template

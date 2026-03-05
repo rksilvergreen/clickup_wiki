@@ -86,6 +86,7 @@
         var btn = document.querySelector('.doc-sticky-toggle');
         if (btn && btn.getAttribute('aria-pressed') !== 'true') {
           headings.forEach(function (el) { el.classList.remove('sticky-active'); });
+          updateTableStickyTop();
           return;
         }
 
@@ -113,6 +114,20 @@
         headings.forEach(function (el) {
           el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
         });
+
+        updateTableStickyTop();
+      }
+
+      function updateTableStickyTop() {
+        var btn = document.querySelector('.doc-sticky-toggle');
+        var isEnabled = btn && btn.getAttribute('aria-pressed') === 'true';
+        var top = 0;
+        if (isEnabled) {
+          headings.forEach(function (el) {
+            if (el.classList.contains('sticky-active')) top += el.offsetHeight;
+          });
+        }
+        document.documentElement.style.setProperty('--table-sticky-top', top + 'px');
       }
 
       function setStickyEnabled(on) {
