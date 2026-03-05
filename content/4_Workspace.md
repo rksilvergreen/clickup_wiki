@@ -31,7 +31,7 @@ Connected to the task type **Task**, this status group is exclusive to that task
 *   **Canceled (Done)** — The task will not be completed. This can happen either before work started or mid-execution; the point is that it's intentionally stopped.
 *   **Complete (Closed)** — The task is finished and successfully completed.
 
-##### 4.1.1.2.1 Transitions
+##### 4.1.1.2.1 Task Transitions
 
 *   **Backlog → To Do:** **Internal Conditional** — Triggered when _at least one_ of **Start date** or **Due date** is set.
 *   **To Do → In Progress:** **Manual** — The user declares that work has begun.
@@ -48,7 +48,7 @@ Connected to the task type **Event**, this status group represents the lifecycle
 *   **Occurring (Active)** — The current date-time is **on/after the event's start time** (i.e., the event is happening now or has started and hasn't ended yet).
 *   **Occurred (Closed)** — The current date-time is **after the event's end time** (operationally: after the **Due date/time**, which we treat as the event's end).
 
-##### 4.1.1.3.1 Transitions
+##### 4.1.1.3.1 Event Transitions
 
 *   **Not Scheduled → Upcoming: Internal Conditional** — Triggered when at least one of Start date or Due date is set.
 *   **Upcoming → Occurring: Chronological** — Triggered when the current datetime reaches or passes the event's start datetime.
@@ -66,6 +66,14 @@ Connected to the list **Shopping** in the space **Shopping**, this status group 
 *   **Cancelled (Done)** — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.
 *   **Received (Closed)** — The item has been purchased and received.
 
-##### 4.1.1.4.1 Transitions
+##### 4.1.1.4.1 Shopping Transitions
 
 Every transition is **manual**. The usual path is **Idea → To Buy → In Cart → Ordered → Received**, but an item may move from any status to any other (e.g. **Ordered** back to **To Buy** after an order is cancelled, or **Idea** to **Cancelled**).
+
+#### 4.1.1.5 Statusless
+
+Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we define this minimal, degenerate group with two placeholder statuses:
+*   **-- (Not started)** — Represents the absence of a status; entries that "have no status" live here.
+*   **--- (Closed)** — Required by ClickUp as the closed status for the group; unused in practice.
+
+All entries on a Statusless list remain in **--** at all times. There are no transitions; no status changes are ever made.
