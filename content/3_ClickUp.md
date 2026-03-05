@@ -1,9 +1,9 @@
-# ClickUp
+# 3 ClickUp
 
-# 1\. Fields
-## 1.1 Base scope fields
+## 3.1 Fields
+### 3.1.1 Base scope fields
 These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if you don’t show them as columns in a view.
-### 1.1.1 Base Scope Table
+#### 3.1.1.1 Base Scope Table
 
 | Name | Description | Field Type | Computational |
 | ---| ---| ---| --- |
@@ -40,26 +40,26 @@ These are fields that are part of ClickUp’s core task model. They exist across
 | Pull Requests | Linked PRs via integration. | Relationship | Yes |
 | Sprints | Sprint association (if enabled). | Relationship | No |
 
-### 1.1.2 ClickUp's inadequacy
+#### 3.1.1.2 ClickUp's inadequacy
 ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit the same base schema— fields like assignee, due date, priority, and workflow status.
 That’s fine when the entry _is_ a work item, but it becomes a mismatch when the entry represents something else entirely, like a record or event. Those fields are either meaningless or create the wrong mental model, and while you can hide some columns in specific views, you can’t truly remove the task-shaped defaults across ClickUp.
-## 1.2 Custom Fields
+### 3.1.2 Custom Fields
 These are fields you create and attach to **scopes**. In practice, scopes include location scopes (Spaces/Folders/Lists) and also non-location scopes such as Task Types. A Custom Field becomes available wherever its scope applies.
-# 2\. Field Types
-## 2.1 Field-type families
-### 2.1.1 System-only field types
+## 3.2 Field Types
+### 3.2.1 Field-type families
+#### 3.2.1.1 System-only field types
 Some field types exist only as part of ClickUp’s built-in system and aren’t available as Custom Field types you can create. Examples include Lists, Status, Task Type, Tags, Priority, Dependencies, and Time Estimate.
-### 2.1.2 Parameterized field types
+#### 3.2.1.2 Parameterized field types
 Some field types aren’t “complete” until you define parameters such as an option set, a scale, a range, or a referenced target.
 Common parameter patterns include option sets (Dropdown, Labels), scales (Rating), ranges (Progress Manual), and relationship/selection configuration (Rollup).
-### 2.1.3 Computational field types
+#### 3.2.1.3 Computational field types
 Some fields represent derived values rather than directly-entered values. Examples include Formula and Progress (Auto).
-### 2.1.4 AI field types
+#### 3.2.1.4 AI field types
 AI fields are computational fields whose values are generated or inferred using AI, typically based on task content plus configuration.
 Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, Progress Updates, Translation, T-Shirt Size, and Action Items.
-### 2.1.5 Scope-selecting field types
+#### 3.2.1.5 Scope-selecting field types
 Some fields determine which scopes apply to a task (and therefore influence what else becomes relevant or available). There are two of these: Lists and Task Type.
-## 2.2 Field Types Table
+### 3.2.2 Field Types Table
 
 | Field type | Description | System-only field type | Parameters | Computational | AI | Scope Selecting |
 | ---| ---| ---| ---| ---| ---| --- |
@@ -108,9 +108,9 @@ Some fields determine which scopes apply to a task (and therefore influence what
 | Voting | Vote-count field used for prioritization/sentiment-style scoring. | No | Emoji | No | No | No |
 | Website | URL field. | No | No | No | No | No |
 
-# 3\. Scope
+## 3.3 Scope
 These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part of?”, and one that answers “what kind of entry is this meant to represent?”.
-## 3.1 Location Scope Hierarchy
+### 3.3.1 Location Scope Hierarchy
 This is the **project hierarchy**: the chain of project containers an entry sits inside. A space usually represents a broad domain (like a product area or department), folders group related sub-projects inside that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an entry belongs to a specific list, it’s automatically part of the larger project contexts above it too—so the entry is simultaneously in the “sub-project” scope (the list) and in the broader “project” scopes (its folder and space). That’s why location scopes behave like inheritance: lower-level project contexts don’t replace higher-level ones; they narrow them.
 
 🟦General (space)
@@ -127,7 +127,7 @@ This is the **project hierarchy**: the chain of project containers an entry sits
 |\_\_\_\_📋Locations (list)
 |\_\_\_\_📋Presents (list)
 
-## 3.2 Task Type Scope Hierarchy
+### 3.3.2 Task Type Scope Hierarchy
 This is the **purpose hierarchy** (even though ClickUp implements it as flat). A task type scope doesn’t say _where_ the entry lives; it says _what it is_. It’s the semantic category of the entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live in the same project scope, but have different purposes (a bug vs. a feature request vs. a meeting note), and that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope with no inheritance: it doesn’t automatically imply a more general “parent type” scope. It’s a single-purpose label that lets you treat entries differently based on meaning, not location.
 
 ✅Task
