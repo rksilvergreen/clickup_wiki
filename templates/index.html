@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClickUp Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600&family=DM+Sans:wght@0,400;0,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{basePath}}assets/css/document.css">
+  <style>
+    .index-page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+    }
+
+    .index-page h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .index-page ul {
+      list-style: none;
+    }
+
+    .index-page li {
+      margin-bottom: 0.75rem;
+    }
+
+    .index-page a {
+      color: var(--doc-highlight);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .index-page a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="doc-header-strip"></div>
+  <div class="index-page">
+    <h1>ClickUp Wiki</h1>
+    <p>Documentation and reference.</p>
+    <ul>
+      {{links}}
+    </ul>
+  </div>
+  <footer class="doc-footer">ClickUp Wiki</footer>
+</body>
+
+</html>

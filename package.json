@@ -1,0 +1,15 @@
+{
+  "name": "clickup-wiki",
+  "version": "1.0.0",
+  "description": "Documentation site: edit .md in content/, get styled HTML in dist/",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "chokidar": "^3.6.0",
+    "marked": "^15.0.0"
+  }
+}

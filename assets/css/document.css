@@ -1,0 +1,424 @@
+/**
+ * Base document styles for ClickUp Wiki.
+ * Applied to all generated document pages. Add new content in .md;
+ * headings, lists, and paragraphs pick up these styles automatically.
+ */
+
+:root {
+  --doc-ink: #1c1c1c;
+  --doc-ink-light: #4a4a4a;
+  --doc-cream: #faf8f5;
+  --doc-accent: #c45c3e;
+  --doc-accent-muted: #e8b4a8;
+  --doc-border: #e2ddd6;
+  --doc-highlight: #2d5a4a;
+  /* Sticky header stack: cumulative top offset for each level (approx. height of previous levels) */
+  --sticky-h1: 0.5rem;
+  --sticky-h2: 5rem;
+  --sticky-h3: 8.25rem;
+  --sticky-h4: 11.5rem;
+  --sticky-h5: 14.75rem;
+  --sticky-h6: 18rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .doc-sticky-toggle {
+    display: none;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  .doc-toc {
+    display: none;
+  }
+
+  .doc-content {
+    margin-left: 0;
+  }
+
+  .document h1,
+  .document h2,
+  .document h3,
+  .document h4,
+  .document h5,
+  .document h6 {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 11pt;
+  line-height: 1.65;
+  color: var(--doc-ink);
+  background: var(--doc-cream);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Sticky toggle: top-right, fixed */
+.doc-sticky-toggle {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 20;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--doc-border);
+  border-radius: 4px;
+  background: var(--doc-cream);
+  color: var(--doc-highlight);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.doc-sticky-toggle:hover {
+  background: #fff;
+  border-color: var(--doc-highlight);
+}
+
+.doc-sticky-toggle[aria-pressed="false"] {
+  color: var(--doc-ink-light);
+  background: #fff;
+}
+
+.doc-sticky-toggle[aria-pressed="false"]:hover {
+  color: var(--doc-highlight);
+}
+
+/* Layout: sidebar TOC + main content */
+.doc-layout {
+  display: flex;
+  min-height: calc(100vh - 4px);
+}
+
+/* Left sidebar: scrollable table of contents (OpenAPI-spec style) */
+.doc-toc {
+  position: fixed;
+  left: 0;
+  top: 4px;
+  bottom: 0;
+  width: 280px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 1px solid var(--doc-border);
+  background: #fff;
+  z-index: 10;
+}
+
+.doc-toc-inner {
+  padding: 1.25rem 0 2rem 1.25rem;
+}
+
+.doc-toc-list,
+.doc-toc .doc-toc-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.doc-toc-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.doc-toc-list>li>a {
+  display: block;
+  padding: 0.35rem 1rem 0.35rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--doc-ink);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.doc-toc-list ul li a {
+  display: block;
+  padding: 0.25rem 1rem 0.25rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--doc-ink-light);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.doc-toc-list ul ul li a {
+  padding-left: 1.75rem;
+  font-size: 0.8rem;
+}
+
+.doc-toc-list ul ul ul li a {
+  padding-left: 2.25rem;
+}
+
+.doc-toc a:hover {
+  color: var(--doc-highlight);
+  background: rgba(45, 90, 74, 0.04);
+}
+
+.doc-toc a:focus {
+  outline: 2px solid var(--doc-highlight);
+  outline-offset: 2px;
+}
+
+.doc-toc a.is-active {
+  color: var(--doc-highlight);
+  border-left-color: var(--doc-highlight);
+  background: rgba(45, 90, 74, 0.06);
+}
+
+/* Main content area: offset by sidebar width */
+.doc-content {
+  margin-left: 280px;
+  flex: 1;
+  max-width: 720px;
+  padding: 3rem 2.5rem;
+  min-width: 0;
+}
+
+/* Decorative header strip */
+.doc-header-strip {
+  height: 4px;
+  background: linear-gradient(90deg, var(--doc-accent) 0%, var(--doc-highlight) 100%);
+  margin: 0;
+  border-radius: 0 0 2px 2px;
+}
+
+/* Document body wrapper (optional; used when content is injected) */
+.document {
+  /* Wrapper for consistent scoping */
+}
+
+/* All headings: same style, font-size only varies. Sticky only when in active section chain (see script). */
+.document h1,
+.document h2,
+.document h3,
+.document h4,
+.document h5,
+.document h6 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--doc-ink);
+  text-transform: none;
+  position: static;
+  background: var(--doc-cream);
+  box-shadow: 0 1px 0 var(--doc-border);
+}
+
+.document h1.sticky-active,
+.document h2.sticky-active,
+.document h3.sticky-active,
+.document h4.sticky-active,
+.document h5.sticky-active,
+.document h6.sticky-active {
+  position: sticky;
+}
+
+.document h1.sticky-active {
+  top: var(--sticky-h1);
+  z-index: 6;
+}
+
+.document h2.sticky-active {
+  top: var(--sticky-h2);
+  z-index: 5;
+}
+
+.document h3.sticky-active {
+  top: var(--sticky-h3);
+  z-index: 4;
+}
+
+.document h4.sticky-active {
+  top: var(--sticky-h4);
+  z-index: 3;
+}
+
+.document h5.sticky-active {
+  top: var(--sticky-h5);
+  z-index: 2;
+}
+
+.document h6.sticky-active {
+  top: var(--sticky-h6);
+  z-index: 1;
+}
+
+.document h1:not(:first-child) {
+  margin-top: 2.25rem;
+}
+
+.document h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--doc-border);
+  margin-top: 0;
+}
+
+.document h2 {
+  font-size: 1.6rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 0;
+}
+
+.document h3 {
+  font-size: 1.2rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 0;
+}
+
+.document h4,
+.document h5,
+.document h6 {
+  font-size: 1.2rem;
+}
+
+.document h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.55rem 0;
+}
+
+.document h5 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  padding: 0.55rem 0;
+}
+
+.document h6 {
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  padding: 0.55rem 0;
+}
+
+.document p {
+  margin-bottom: 1rem;
+  color: var(--doc-ink-light);
+}
+
+.document ul {
+  list-style: none;
+  margin: 0.75rem 0 1.25rem 0;
+}
+
+.document ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--doc-ink-light);
+}
+
+.document ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--doc-accent);
+  border-radius: 50%;
+}
+
+/* Nested lists: tree-style indentation and branch line */
+.document ul ul {
+  margin-left: 1.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--doc-border);
+}
+
+.document ul ul li::before {
+  background: var(--doc-border);
+  width: 4px;
+  height: 4px;
+}
+
+.document strong {
+  color: var(--doc-ink);
+  font-weight: 600;
+}
+
+.document em {
+  font-style: italic;
+  color: var(--doc-ink);
+}
+
+/* First paragraph after main title (lead/intro) */
+.document .doc-intro {
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: var(--doc-ink);
+}
+
+/* Status-group cards: each major section (e.g. Task, Event) gets this wrapper */
+.document .status-group {
+  background: white;
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.document .status-group h1 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.document .status-group h2 {
+  margin-top: 1.5rem;
+}
+
+/* Trigger type pills (Manual, Internal Conditional, etc.) */
+.document .trigger-type {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--doc-highlight);
+  background: rgba(45, 90, 74, 0.08);
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  margin-right: 0.25em;
+}
+
+/* Subgroup labels (Not started, Active, Done, Closed) */
+.document .subgroup {
+  font-size: 0.9em;
+  color: var(--doc-accent);
+  font-weight: 500;
+}
+
+.document footer,
+.doc-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--doc-border);
+  font-size: 0.85rem;
+  color: #888;
+  text-align: center;
+}

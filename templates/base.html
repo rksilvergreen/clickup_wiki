@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} — ClickUp Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{basePath}}assets/css/document.css">
+</head>
+
+<body>
+  <div class="doc-header-strip"></div>
+  <button type="button" class="doc-sticky-toggle" aria-pressed="true" title="Toggle sticky headers"
+    aria-label="Toggle sticky headers on or off">Sticky headers</button>
+  <div class="doc-layout">
+    <nav class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        {{toc}}
+      </div>
+    </nav>
+    <main class="document doc-content">
+      {{content}}
+    </main>
+  </div>
+  <footer class="doc-footer">{{footer}}</footer>
+  <script>
+    (function () {
+      var toc = document.querySelector('.doc-toc');
+      var content = document.querySelector('.doc-content');
+      if (!toc || !content) return;
+      var links = toc.querySelectorAll('a[href^="#"]');
+      var headings = [];
+      links.forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) headings.push({ id: id, el: el, a: a });
+      });
+      function updateActive() {
+        var top = window.scrollY || document.documentElement.scrollTop;
+        var active = null;
+        for (var i = headings.length - 1; i >= 0; i--) {
+          if (headings[i].el.getBoundingClientRect().top <= 100) {
+            active = headings[i];
+            break;
+          }
+        }
+        if (!active && headings.length) active = headings[0];
+        links.forEach(function (a) { a.classList.remove('is-active'); });
+        if (active) active.a.classList.add('is-active');
+      }
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+  </script>
+  <script>
+    (function () {
+      var content = document.querySelector('.doc-content');
+      if (!content) return;
+      var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+      var docTops = [];
+      var STORAGE_KEY = 'clickup-wiki-sticky-headers';
+
+      function level(el) {
+        return parseInt(el.tagName.charAt(1), 10);
+      }
+
+      // Use offsetTop traversal — unaffected by position:sticky, unlike getBoundingClientRect
+      function docOffsetTop(el) {
+        var top = 0;
+        var node = el;
+        while (node) { top += node.offsetTop; node = node.offsetParent; }
+        return top;
+      }
+
+      function cachePositions() {
+        docTops = headings.map(docOffsetTop);
+      }
+
+      function updateStickyActive() {
+        var btn = document.querySelector('.doc-sticky-toggle');
+        if (btn && btn.getAttribute('aria-pressed') !== 'true') {
+          headings.forEach(function (el) { el.classList.remove('sticky-active'); });
+          return;
+        }
+
+        // Measure the height of the currently-stuck headers (from previous frame)
+        // so that a new heading becomes "current" the moment it slides behind them.
+        var stickyHeight = 0;
+        headings.forEach(function (el) {
+          if (el.classList.contains('sticky-active')) stickyHeight += el.offsetHeight;
+        });
+
+        var scrollTop = window.scrollY + stickyHeight;
+        var currentIdx = 0;
+        for (var i = headings.length - 1; i >= 0; i--) {
+          if (docTops[i] <= scrollTop) { currentIdx = i; break; }
+        }
+
+        var currentLevel = level(headings[currentIdx]);
+        var chain = [];
+        for (var lvl = 1; lvl <= currentLevel; lvl++) {
+          for (var j = currentIdx; j >= 0; j--) {
+            if (level(headings[j]) === lvl) { chain.push(headings[j]); break; }
+          }
+        }
+
+        headings.forEach(function (el) {
+          el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
+        });
+      }
+
+      function setStickyEnabled(on) {
+        var btn = document.querySelector('.doc-sticky-toggle');
+        if (!btn) return;
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        try { localStorage.setItem(STORAGE_KEY, on ? 'on' : 'off'); } catch (e) { }
+        updateStickyActive();
+      }
+
+      cachePositions();
+      window.addEventListener('scroll', updateStickyActive, { passive: true });
+      window.addEventListener('resize', function () { cachePositions(); updateStickyActive(); });
+
+      var btn = document.querySelector('.doc-sticky-toggle');
+      if (btn) {
+        try {
+          var saved = localStorage.getItem(STORAGE_KEY);
+          if (saved === 'off') setStickyEnabled(false);
+        } catch (e) { }
+        btn.addEventListener('click', function () {
+          setStickyEnabled(btn.getAttribute('aria-pressed') !== 'true');
+        });
+      }
+      updateStickyActive();
+    })();
+  </script>
+</body>
+
+</html>
