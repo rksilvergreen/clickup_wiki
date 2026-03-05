@@ -392,6 +392,61 @@ body {
   display: none;
 }
 
+/* Document tables: bordered, padded, header and row styling */
+.document table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem 0;
+  font-size: 0.9rem;
+  background: #fff;
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.document table thead {
+  background: var(--doc-highlight);
+  color: #fff;
+}
+
+.document table thead th {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-family: inherit;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.document table tbody tr {
+  border-bottom: 1px solid var(--doc-border);
+}
+
+.document table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.document table tbody tr:nth-child(even) {
+  background: rgba(45, 90, 74, 0.03);
+}
+
+.document table tbody tr:hover {
+  background: rgba(45, 90, 74, 0.06);
+}
+
+.document table td {
+  padding: 0.6rem 1rem;
+  color: var(--doc-ink-light);
+  vertical-align: top;
+  border-left: 1px solid var(--doc-border);
+}
+
+.document table td:first-child {
+  border-left: none;
+  font-weight: 500;
+  color: var(--doc-ink);
+}
+
 .document strong {
   color: var(--doc-ink);
   font-weight: 600;
