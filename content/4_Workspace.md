@@ -32,6 +32,78 @@ Core task-defining fields, which define why Tasks feel native in ClickUp:
 *   **Time estimate** — Planned effort.
 *   **Time tracked** — Recorded effort.
 
+#### Event
+
+An Event is an entry that represents something that happens at a defined period in time—it has a start and an end. It is about when it occurs and when the user should be made aware of it in advance.
+
+**Purpose**
+
+Events let you record and track occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or display. The workspace derives precise start and end times from the dates you set, drives _Status_ from those times, and computes a **Relevance date** so the event can be shown or notified ahead of time.
+
+**Schema**
+
+*   **Start date** — The date/time when the event starts (user-facing; may be date-only).
+*   **Due date** — The date/time when the event ends (user-facing; may be date-only).
+*   **Start time** — A custom field: the precise datetime when the event starts. Used internally; see below.
+*   **End time** — A custom field: the precise datetime when the event ends. Used internally; see below.
+*   **Relevance #** — A number: how many units of time in advance the event should start being shown or notified.
+*   **Relevance Unit** — Single choice: the unit for that advance period (e.g. days, weeks, months).
+*   **Relevance Date** — A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: **Start time** minus the relevance period (**Relevance #** + **Relevance Unit**).
+
+**Why Start time and End time**
+
+ClickUp’s **Start date** and **Due date** default to 4:00 AM on the given day when the user does not specify a time. That default is unsuitable for events. **Start time** and **End time** are auxiliary computational fields: the system populates them from **Start date** and **Due date** using consistent rules (see below). The user works only with **Start date** and **Due date**; **Start time** and **End time** are not meant to be edited directly.
+
+**“Has a time” vs date-only**
+
+The system treats 4:00 AM Jerusalem time as “no time set” (ClickUp’s default for date-only). Any other time is treated as a real time and used as-is for **Start time** or **End time**.
+
+**When an event is created**
+
+The system reads **Start date**, **Due date**, **Relevance #**, and **Relevance Unit**, and sets:
+
+*   **Start time**
+*   **End time** 
+*   **Status**
+*   **Relevance date** (if **Relevance #** and **Relevance Unit** are set)
+
+*Start date → Start time*
+
+*   If **Start date** has a real time, that time becomes **Start time**.
+*   If **Start date** is date-only, **Start time** is set to midnight of that day.
+*   If there is no **Start date** but **Due date** exists with no time, **Start time** is set to midnight of the due date.
+*   Otherwise **Start time** is left empty.
+
+*Due date → End time*
+
+*   If **Due date** has a real time, that time becomes **End time**.
+*   If **Due date** is date-only, **End time** is set to midnight of the *next* day (so the event covers the whole day).
+*   If there is no **Due date**, **End time** is left empty.
+
+**When the start date is changed**
+
+The system recalculates **Start time** (same rules as above), **End time** (still from **Due date**), **Status**, and **Relevance date**, then updates on the entry: **Start time**, **Status**, **Relevance date**. **End time** is not changed, because it is derived only from **Due date**.
+
+**When the due date is changed**
+
+The system recalculates **Start time**, **End time**, **Status**, and **Relevance date**, then updates: **End time** (always), **Status**, **Relevance date**. **Start time** is updated only if the entry has no **Start date** (i.e. **Start time** was originally derived from **Due date**). If the entry already has a **Start date**, **Start time** is left as-is.
+
+**When Relevance # and/or Relevance Unit is changed**
+
+The system recalculates **Relevance date** (using **Start time** and the relevance period from **Relevance #** and **Relevance Unit**), then updates **Relevance date** on the entry. If **Relevance #** or **Relevance Unit** is cleared, **Relevance date** is cleared or left unset.
+
+#### Record
+
+A Record is an entry that represents something that is documented—a note, observation, or fact captured for reference.
+
+**Purpose**
+
+Records let you document items with a **Timestamp** so you know when they were recorded (or when the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the content and the datetime.
+
+**Schema**
+
+*   **Timestamp** — The datetime when the record was made (or, if backdated, when the documented thing occurred). When a Record is created, this field should be updated to the current time. The user can change the value afterward—for example, when recording something that happened at an earlier datetime.
+
 ### 4.1.2 Status groups
 
 Status Groups are a parameter of ClickUp's base-schema field _Status_ that is set at the Location level (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is strongly coupled with a task type, so the status group chosen at the location level typically functions as the workflow track for that type.
