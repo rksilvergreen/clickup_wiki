@@ -224,24 +224,25 @@ function wrapTables(html) {
   return $('#__doc').html();
 }
 
-/** Add row IDs to the Base Scope Table so links can target specific rows */
-function addBaseScopeTableRowIds(html) {
+function slugForRowName(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[/\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '') || 'row';
+}
+
+/** Add row IDs to the table that immediately follows the heading with the given ID.
+ *  prefix: the ID prefix to use (default 'row'; use e.g. 'row-ft' to avoid collisions). */
+function addTableRowIds(html, headingId, prefix = 'row') {
   const $ = cheerio.load('<div id="__root">' + html + '</div>', { decodeEntities: false });
-  const $heading = $('#sec-3-1-1-1');
+  const $heading = $('#' + headingId);
   if (!$heading.length) return html;
   const $wrapper = $heading.next();
   const $table = $wrapper.length ? $wrapper.find('table').first() : $();
   if (!$table.length) return html;
-
-  function slugForName(name) {
-    return name
-      .toLowerCase()
-      .trim()
-      .replace(/[/\s]+/g, '-')
-      .replace(/[^a-z0-9-]/g, '')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '') || 'row';
-  }
 
   $table.find('tr').each(function () {
     const $row = $(this);
@@ -249,8 +250,54 @@ function addBaseScopeTableRowIds(html) {
     const $first = $row.find('td').first();
     if (!$first.length) return;
     const name = $first.text().trim();
-    const slug = slugForName(name);
-    if (slug) $row.attr('id', 'row-' + slug);
+    const slug = slugForRowName(name);
+    if (slug) $row.attr('id', prefix + '-' + slug);
+  });
+
+  return $('#__root').html();
+}
+
+/** Link each Field Type cell in the Base Scope Table to its row in the Field Types Table */
+function linkFieldTypeColumn(html) {
+  const $ = cheerio.load('<div id="__root">' + html + '</div>', { decodeEntities: false });
+
+  // Build map: normalized name → row ID from Field Types Table
+  const $ftHeading = $('#sec-3-2-2');
+  if (!$ftHeading.length) return html;
+  const $ftTable = $ftHeading.next().find('table').first();
+  if (!$ftTable.length) return html;
+
+  const ftRowMap = {};
+  $ftTable.find('tr').each(function () {
+    const $row = $(this);
+    if ($row.find('th').length) return;
+    const id = $row.attr('id');
+    if (!id) return;
+    const norm = $row.find('td').first().text().trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    ftRowMap[norm] = id;
+  });
+
+  // Aliases for Base Scope Table names that don't exactly match Field Types Table names
+  if (ftRowMap['relationships']) ftRowMap['relationship'] = ftRowMap['relationships'];
+  if (ftRowMap['textarealongtext']) ftRowMap['textarea'] = ftRowMap['textarealongtext'];
+
+  // Find the Field Type column index in the Base Scope Table
+  const $bsTable = $('#sec-3-1-1-1').next().find('table').first();
+  if (!$bsTable.length) return html;
+
+  let colIdx = -1;
+  $bsTable.find('thead th').each(function (i) {
+    if ($(this).text().trim().toLowerCase() === 'field type') colIdx = i;
+  });
+  if (colIdx === -1) return html;
+
+  // Wrap each matching cell value in a link
+  $bsTable.find('tbody tr').each(function () {
+    const $cell = $(this).find('td').eq(colIdx);
+    if (!$cell.length) return;
+    const norm = $cell.text().trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    const rowId = ftRowMap[norm];
+    if (rowId) $cell.html('<a href="#' + rowId + '">' + $cell.text().trim() + '</a>');
   });
 
   return $('#__root').html();
@@ -292,7 +339,9 @@ function buildOne() {
   merged = replaceTriggerTypes(merged);
   merged = wrapTreeDiagrams(merged);
   merged = wrapTables(merged);
-  merged = addBaseScopeTableRowIds(merged);
+  merged = addTableRowIds(merged, 'sec-3-1-1-1');        // Base Scope Table: row-{slug}
+  merged = addTableRowIds(merged, 'sec-3-2-2', 'row-ft'); // Field Types Table: row-ft-{slug}
+  merged = linkFieldTypeColumn(merged);
 
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   const full = template

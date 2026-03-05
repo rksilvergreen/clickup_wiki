@@ -502,8 +502,8 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.12s, visibility 0.12s;
-  max-width: min(580px, calc(100vw - 32px));
-  overflow: hidden;
+  max-width: min(860px, calc(100vw - 32px));
+  overflow-x: auto;
 }
 
 .row-preview-tooltip.is-visible {
