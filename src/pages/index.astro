@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import WikiLayout from '../theme/layouts/WikiLayout.astro';
+import { toc } from '../content/toc';
+import config from '../../wiki.config';
+
+const sections = await getCollection('sections');
+sections.sort((a, b) => a.data.order - b.data.order);
+
+const renderedSections = await Promise.all(
+  sections.map(async (section) => {
+    const { Content } = await section.render();
+    return { id: section.id, Content };
+  })
+);
+---
+<WikiLayout title={config.title} tocEntries={toc}>
+  {renderedSections.map(({ Content }) => (
+    <Content />
+  ))}
+</WikiLayout>

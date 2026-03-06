@@ -1,53 +1,62 @@
-# ClickUp Wiki — Document project
+# ClickUp Wiki
 
-Edit **Markdown** in `content/`; the build merges all content into **one** HTML document in `dist/index.html` with hierarchical numbering (1., 1.1, 2.3.1, etc.).
+An Astro-based single-page documentation wiki. Content is authored in Markdown/HTML files; the **theme layer** (`src/theme/`) provides layout, TOC, tooltips, sticky headers, and navigation — and is designed to eventually be extracted into a reusable npm package.
 
 ## Quick start
 
 ```bash
 npm install
-npm run build
+npm run dev
 ```
 
-Open `dist/index.html` in a browser. The entire document is a single page.
+Open `http://localhost:4321` in a browser. Changes to content, styles, or components are reflected instantly via HMR.
 
-## Workflow
+## Commands
 
-1. **Edit the document** — Change any `.md` file in `content/` (see order below).
-2. **Rebuild** — Run `npm run build` to regenerate `dist/index.html`.
-3. **Watch (optional)** — Run `npm run watch` so the HTML updates whenever you save a file in `content/`.
-
-## Document order and structure
-
-The build uses a **fixed order** of files and produces one webpage:
-
-| Order | File | Becomes |
-|-------|------|--------|
-| 1 | `Introduction.md` | 1. Introduction |
-| 2 | `Ontology.md` | 2. Ontology (2.1, 2.2, …) |
-| 3 | `ClickUp.md` | 3. ClickUp (3.1, 3.2, …) |
-| 4 | `Workspace.md` | 4. Workspace (4.1 System fields parameters, 4.1.1 Status groups, …) |
-
-To add or reorder sections, edit `CONTENT_ORDER` in `scripts/build.js`.
+| Command           | Description                          |
+|-------------------|--------------------------------------|
+| `npm run dev`     | Start dev server with HMR            |
+| `npm run build`   | Build static site to `dist/`         |
+| `npm run preview` | Serve the built output locally       |
 
 ## Project layout
 
 | Path | Purpose |
-|------|--------|
-| `content/` | Source `.md` files (single source of truth) |
-| `templates/` | `base.html` (document layout) |
-| `assets/css/document.css` | Base styles for the document |
-| `scripts/build.js` | Merges ordered `.md` → one HTML, adds numbering |
-| `dist/index.html` | Generated single-page document |
+|------|---------|
+| `wiki.config.ts` | Document title, feature flags |
+| `src/content/sections/` | Content files (`.md` or `.mdx`) — one per top-level section |
+| `src/content/toc.ts` | Table of contents data structure |
+| `src/content/config.ts` | Astro content collection schema |
+| `src/pages/index.astro` | Page that assembles all sections |
+| `src/theme/layouts/` | Page layout (WikiLayout) |
+| `src/theme/components/` | TOC, NavControls, StickyToggle |
+| `src/theme/scripts/` | Interactive features (tooltips, sticky headers, navigation) |
+| `src/theme/styles/` | CSS styles |
 
-## Conventions (automatic styling)
+## Content format
 
-- **First paragraph** after 1. Introduction gets the lead/intro style.
-- **Numbering** — All headings get hierarchical numbers (1., 1.1, 2.6.3.1, etc.) from the build.
-- **Trigger types** — `**Manual**`, `**Internal Conditional**`, etc. in list items are rendered as pills.
-- **Subgroups** — `(Not started)`, `(Active)`, `(Done)`, `(Closed)` in list items are styled as subgroup labels.
+Content files live in `src/content/sections/` and use frontmatter:
 
-## Scripts
+```md
+---
+title: "Section Title"
+order: 1
+---
 
-- `npm run build` — Merge `content/*.md` (in order) → `dist/index.html`.
-- `npm run watch` — Build once, then rebuild when any file in `content/` changes.
+<h1 id="sec-1">1. Section Title</h1>
+<p>Content here...</p>
+```
+
+- Use `.md` for sections with HTML content (current approach).
+- Use `.mdx` for sections that need to import Astro/React/Svelte components.
+- Headings use explicit `id` attributes (e.g. `id="sec-2-1"`).
+- Tables are wrapped in `<div class="doc-table-wrap">`.
+- Tree diagrams are wrapped in `<div class="doc-tree">`.
+- When adding or reordering sections, update `src/content/toc.ts` accordingly.
+
+## Architecture
+
+The project has two layers:
+
+- **Theme layer** (`src/theme/`): Layout, components, scripts, and styles. Knows nothing about specific content. Future npm package.
+- **Content layer** (`src/content/`, `src/pages/`, `wiki.config.ts`): Content files, TOC data, page assembly, and configuration. Specific to this wiki.

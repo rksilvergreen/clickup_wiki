@@ -1,392 +1,246 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClickUp Wiki — ClickUp Wiki</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/document.css">
-</head>
-
-<body>
-  <div class="doc-header-strip"></div>
-  <button type="button" class="doc-sticky-toggle" aria-pressed="true" title="Toggle sticky headers"
-    aria-label="Toggle sticky headers on or off">Sticky headers</button>
-  <div class="doc-layout">
-    <nav class="doc-toc" aria-label="Table of contents">
-      <div class="doc-nav-controls">
-        <button type="button" class="doc-nav-btn" id="doc-nav-back" title="Navigate back" aria-label="Navigate back"
-          disabled>&#8592;</button>
-        <button type="button" class="doc-nav-btn" id="doc-nav-fwd" title="Navigate forward"
-          aria-label="Navigate forward" disabled>&#8594;</button>
-      </div>
-      <div class="doc-toc-inner">
-        <ul class="doc-toc-list">
-          <li><a href="#sec-1">1. Introduction</a></li>
-          <li><a href="#sec-2">2. Ontology</a>
-            <ul>
-              <li><a href="#sec-2-1">2.1 Field</a></li>
-              <li><a href="#sec-2-2">2.2 Field type</a></li>
-              <li><a href="#sec-2-3">2.3 Schema</a></li>
-              <li><a href="#sec-2-4">2.4 Entry</a></li>
-              <li><a href="#sec-2-5">2.5 Database</a></li>
-              <li><a href="#sec-2-6">2.6 Scope</a>
-                <ul>
-                  <li><a href="#sec-2-6-1">2.6.1 Single database with scopes</a></li>
-                  <li><a href="#sec-2-6-2">2.6.2 Scope exposure and scope selector fields</a></li>
-                  <li><a href="#sec-2-6-3">2.6.3 Scope hierarchies and inheritance</a>
-                    <ul>
-                      <li><a href="#sec-2-6-3-1">2.6.3.1 Examples of possible scope hierarchies:</a>
-                        <ul>
-                          <li><a href="#sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</a></li>
-                          <li><a href="#sec-2-6-3-1-2">2.6.3.1.2 Type Scope Hierarchy</a></li>
-                          <li><a href="#sec-2-6-3-1-3">2.6.3.1.3 Responsibility Scope Hierarchy</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a href="#sec-2-6-4">2.6.4 Per-scope parameterization</a></li>
-                  <li><a href="#sec-2-6-5">2.6.5 Scoped scope-hierarchies</a>
-                    <ul>
-                      <li><a href="#sec-2-6-5-1">2.6.5.1 Examples of possible scoped scope hierarchies:</a>
-                        <ul>
-                          <li><a href="#sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a href="#sec-2-6-6">2.6.6 Entry-local scope</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#sec-3">3. ClickUp</a>
-            <ul>
-              <li><a href="#sec-3-1">3.1 Fields</a>
-                <ul>
-                  <li><a href="#sec-3-1-1">3.1.1 Base scope fields</a>
-                    <ul>
-                      <li><a href="#sec-3-1-1-1">3.1.1.1 Base Scope Table</a></li>
-                      <li><a href="#sec-3-1-1-2">3.1.1.2 ClickUp's inadequacy</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#sec-3-1-2">3.1.2 Custom Fields</a></li>
-                </ul>
-              </li>
-              <li><a href="#sec-3-2">3.2 Field Types</a>
-                <ul>
-                  <li><a href="#sec-3-2-1">3.2.1 Field-type families</a>
-                    <ul>
-                      <li><a href="#sec-3-2-1-1">3.2.1.1 System-only field types</a></li>
-                      <li><a href="#sec-3-2-1-2">3.2.1.2 Parameterized field types</a></li>
-                      <li><a href="#sec-3-2-1-3">3.2.1.3 Computational field types</a></li>
-                      <li><a href="#sec-3-2-1-4">3.2.1.4 AI field types</a></li>
-                      <li><a href="#sec-3-2-1-5">3.2.1.5 Scope-selecting field types</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#sec-3-2-2">3.2.2 Field Types Table</a></li>
-                </ul>
-              </li>
-              <li><a href="#sec-3-3">3.3 Scope</a>
-                <ul>
-                  <li><a href="#sec-3-3-1">3.3.1 Location Scope Hierarchy</a></li>
-                  <li><a href="#sec-3-3-2">3.3.2 Task Type Scope Hierarchy</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#sec-4">4. Workspace</a>
-            <ul>
-              <li><a href="#sec-4-1">4.1 System fields parameters</a>
-                <ul>
-                  <li><a href="#sec-4-1-1">4.1.1 Task Types</a>
-                    <ul>
-                      <li><a href="#sec-4-1-1-1">4.1.1.1 Task</a></li>
-                      <li><a href="#sec-4-1-1-2">4.1.1.2 Event</a></li>
-                      <li><a href="#sec-4-1-1-3">4.1.1.3 Record</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#sec-4-1-2">4.1.2 Status groups</a>
-                    <ul>
-                      <li><a href="#sec-4-1-2-1">4.1.2.1 Status transitions and triggers</a></li>
-                      <li><a href="#sec-4-1-2-2">4.1.2.2 Task</a>
-                        <ul>
-                          <li><a href="#sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#sec-4-1-2-3">4.1.2.3 Event</a>
-                        <ul>
-                          <li><a href="#sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#sec-4-1-2-4">4.1.2.4 Shopping</a>
-                        <ul>
-                          <li><a href="#sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#sec-4-1-2-5">4.1.2.5 Statusless</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ClickUp Wiki</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.sz0MNlGp.css"></head> <body> <div class="doc-header-strip"></div> <button type="button" class="doc-sticky-toggle" aria-pressed="true" title="Toggle sticky headers" aria-label="Toggle sticky headers on or off">Sticky headers</button> <div class="doc-layout"> <nav class="doc-toc" aria-label="Table of contents"> <div class="doc-nav-controls"> <button type="button" class="doc-nav-btn" id="doc-nav-back" title="Navigate back" aria-label="Navigate back" disabled>&larr;</button> <button type="button" class="doc-nav-btn" id="doc-nav-fwd" title="Navigate forward" aria-label="Navigate forward" disabled>&rarr;</button> </div> <div class="doc-toc-inner"> <ul class="doc-toc-list"> <li> <a href="#sec-1">1. Introduction</a>  </li><li> <a href="#sec-2">2. Ontology</a> <ul> <li> <a href="#sec-2-1">2.1 Field</a>  </li><li> <a href="#sec-2-2">2.2 Field type</a>  </li><li> <a href="#sec-2-3">2.3 Schema</a>  </li><li> <a href="#sec-2-4">2.4 Entry</a>  </li><li> <a href="#sec-2-5">2.5 Database</a>  </li><li> <a href="#sec-2-6">2.6 Scope</a> <ul> <li> <a href="#sec-2-6-1">2.6.1 Single database with scopes</a>  </li><li> <a href="#sec-2-6-2">2.6.2 Scope exposure and scope selector fields</a>  </li><li> <a href="#sec-2-6-3">2.6.3 Scope hierarchies and inheritance</a> <ul> <li> <a href="#sec-2-6-3-1">2.6.3.1 Examples of possible scope hierarchies:</a> <ul> <li> <a href="#sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</a> </li><li> <a href="#sec-2-6-3-1-2">2.6.3.1.2 Type Scope Hierarchy</a> </li><li> <a href="#sec-2-6-3-1-3">2.6.3.1.3 Responsibility Scope Hierarchy</a> </li> </ul> </li> </ul> </li><li> <a href="#sec-2-6-4">2.6.4 Per-scope parameterization</a>  </li><li> <a href="#sec-2-6-5">2.6.5 Scoped scope-hierarchies</a> <ul> <li> <a href="#sec-2-6-5-1">2.6.5.1 Examples of possible scoped scope hierarchies:</a> <ul> <li> <a href="#sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</a> </li> </ul> </li> </ul> </li><li> <a href="#sec-2-6-6">2.6.6 Entry-local scope</a>  </li> </ul> </li> </ul> </li><li> <a href="#sec-3">3. ClickUp</a> <ul> <li> <a href="#sec-3-1">3.1 Fields</a> <ul> <li> <a href="#sec-3-1-1">3.1.1 Base scope fields</a> <ul> <li> <a href="#sec-3-1-1-1">3.1.1.1 Base Scope Table</a>  </li><li> <a href="#sec-3-1-1-2">3.1.1.2 ClickUp&#39;s inadequacy</a>  </li> </ul> </li><li> <a href="#sec-3-1-2">3.1.2 Custom Fields</a>  </li> </ul> </li><li> <a href="#sec-3-2">3.2 Field Types</a> <ul> <li> <a href="#sec-3-2-1">3.2.1 Field-type families</a> <ul> <li> <a href="#sec-3-2-1-1">3.2.1.1 System-only field types</a>  </li><li> <a href="#sec-3-2-1-2">3.2.1.2 Parameterized field types</a>  </li><li> <a href="#sec-3-2-1-3">3.2.1.3 Computational field types</a>  </li><li> <a href="#sec-3-2-1-4">3.2.1.4 AI field types</a>  </li><li> <a href="#sec-3-2-1-5">3.2.1.5 Scope-selecting field types</a>  </li> </ul> </li><li> <a href="#sec-3-2-2">3.2.2 Field Types Table</a>  </li> </ul> </li><li> <a href="#sec-3-3">3.3 Scope</a> <ul> <li> <a href="#sec-3-3-1">3.3.1 Location Scope Hierarchy</a>  </li><li> <a href="#sec-3-3-2">3.3.2 Task Type Scope Hierarchy</a>  </li> </ul> </li> </ul> </li><li> <a href="#sec-4">4. Workspace</a> <ul> <li> <a href="#sec-4-1">4.1 System fields parameters</a> <ul> <li> <a href="#sec-4-1-1">4.1.1 Task Types</a> <ul> <li> <a href="#sec-4-1-1-1">4.1.1.1 Task</a>  </li><li> <a href="#sec-4-1-1-2">4.1.1.2 Event</a>  </li><li> <a href="#sec-4-1-1-3">4.1.1.3 Record</a>  </li> </ul> </li><li> <a href="#sec-4-1-2">4.1.2 Status groups</a> <ul> <li> <a href="#sec-4-1-2-1">4.1.2.1 Status transitions and triggers</a>  </li><li> <a href="#sec-4-1-2-2">4.1.2.2 Task</a> <ul> <li> <a href="#sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</a> </li> </ul> </li><li> <a href="#sec-4-1-2-3">4.1.2.3 Event</a> <ul> <li> <a href="#sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</a> </li> </ul> </li><li> <a href="#sec-4-1-2-4">4.1.2.4 Shopping</a> <ul> <li> <a href="#sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</a> </li> </ul> </li><li> <a href="#sec-4-1-2-5">4.1.2.5 Statusless</a>  </li> </ul> </li> </ul> </li> </ul> </li> </ul> </div> </nav> <main class="document doc-content"> <h1 id="sec-1">1. Introduction</h1>
+<p class="doc-intro">This document will introduce the ClickUp Wiki and its structure.</p>
+<p>(To be filled in later.)</p><h1 id="sec-2">2. Ontology</h1>
+<p>This section defines a precise vocabulary for reasoning about databases and no-code database platforms. It
+  formalizes core concepts, and provides a conceptual foundation for analyzing how these platforms represent data,
+  enforce structure, and apply behavior.</p>
+<h2 id="sec-2-1">2.1 Field</h2>
+<p>A <strong>field</strong> is a reusable property descriptor: it defines a named "slot" that can hold a value.
+  A field definition typically includes:</p>
+<ul>
+  <li><strong>Identity</strong>: stable field identifier</li>
+  <li><strong>Name</strong>: human-readable presentation</li>
+  <li><strong>Field type</strong>: what kind of data/interaction this field represents</li>
+  <li><strong>Nullability:</strong> whether a value must be set</li>
+  <li><strong>Default value</strong>: what value is assumed when none is provided</li>
+  <li><strong>Scope</strong>: under what contexts it appears</li>
+  <li><strong>Permissions</strong>: who can view/edit</li>
+</ul>
+<hr>
+<h2 id="sec-2-2">2.2 Field type</h2>
+<p>A <strong>field type</strong> is the classification that determines the field's fundamental data shape and
+  interaction model: what values look like, how they are edited, how they are validated, and what operations make
+  sense.
+  Field types often come in several broad categories:</p>
+<ul>
+  <li><strong>Primitive-like types</strong>: number, text, date/time, boolean</li>
+  <li><strong>Reference/relational types</strong>: links to other entries, collections of references</li>
+  <li><strong>Parameterized types</strong>: the field kind is fixed, but it requires configuration parameters to
+    become fully defined<ul>
+      <li>e.g., a "choice" field whose allowed options are a parameter</li>
+      <li>or a "state/status" field whose allowed states are a parameter</li>
+    </ul>
+  </li>
+  <li><strong>Computed types</strong>: values are not directly stored but derived from other stored data,
+    relationships, or system state (often displayed like a normal field but ontologically distinct)</li>
+</ul>
+<hr>
+<h2 id="sec-2-3">2.3 Schema</h2>
+<p>A <strong>schema</strong> is a specification that defines a valid <strong>entry</strong>. It consists of:</p>
+<ul>
+  <li><strong>Fields</strong>: the set of fields that apply.</li>
+  <li><strong>Constraints</strong>: rules that determine validity.<ul>
+      <li><strong>Unary constraint</strong>: a restriction involving a single field (e.g., "required").</li>
+      <li><strong>Relational constraint</strong>: a restriction involving two or more fields (e.g., start_date ≤
+        due_date).</li>
+    </ul>
+  </li>
+  <li><strong>Operational rules</strong>: rules that define how field values change over time in response to
+    defined triggers. Each operational rule includes:<ul>
+      <li>a <strong>trigger condition</strong>: one of<ul>
+          <li>creation of a new entry under the schema</li>
+          <li>a field value change</li>
+          <li>passage of time</li>
         </ul>
-      </div>
-    </nav>
-    <main class="document doc-content">
-      <h1 id="sec-1">1. Introduction</h1>
-      <p class="doc-intro">This document will introduce the ClickUp Wiki and its structure.</p>
-      <p>(To be filled in later.)</p>
-
-      <h1 id="sec-2">2. Ontology</h1>
-      <p>This section defines a precise vocabulary for reasoning about databases and no-code database platforms. It
-        formalizes core concepts, and provides a conceptual foundation for analyzing how these platforms represent data,
-        enforce structure, and apply behavior.</p>
-      <h2 id="sec-2-1">2.1 Field</h2>
-      <p>A <strong>field</strong> is a reusable property descriptor: it defines a named “slot” that can hold a value.
-        A field definition typically includes:</p>
-      <ul>
-        <li><strong>Identity</strong>: stable field identifier</li>
-        <li><strong>Name</strong>: human-readable presentation</li>
-        <li><strong>Field type</strong>: what kind of data/interaction this field represents</li>
-        <li><strong>Nullability:</strong> whether a value must be set</li>
-        <li><strong>Default value</strong>: what value is assumed when none is provided</li>
-        <li><strong>Scope</strong>: under what contexts it appears</li>
-        <li><strong>Permissions</strong>: who can view/edit</li>
-      </ul>
-      <hr>
-      <h2 id="sec-2-2">2.2 Field type</h2>
-      <p>A <strong>field type</strong> is the classification that determines the field’s fundamental data shape and
-        interaction model: what values look like, how they are edited, how they are validated, and what operations make
-        sense.
-        Field types often come in several broad categories:</p>
-      <ul>
-        <li><strong>Primitive-like types</strong>: number, text, date/time, boolean</li>
-        <li><strong>Reference/relational types</strong>: links to other entries, collections of references</li>
-        <li><strong>Parameterized types</strong>: the field kind is fixed, but it requires configuration parameters to
-          become fully defined<ul>
-            <li>e.g., a “choice” field whose allowed options are a parameter</li>
-            <li>or a “state/status” field whose allowed states are a parameter</li>
+      </li>
+      <li>a <strong>state update</strong>: one or more field values are changed.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2 id="sec-2-4">2.4 Entry</h2>
+<p>An <strong>entry</strong> is a concrete instance governed by a schema. It consists of a set of values, one per
+  field included in the schema.
+  The set of an entry's field values at a given moment is its <strong>state</strong>.
+  An entry is <strong>valid</strong> under its schema if each value belongs to its field's allowed domain and all
+  schema constraints are satisfied.</p>
+<hr>
+<h2 id="sec-2-5">2.5 Database</h2>
+<p>A <strong>database</strong> is a system that stores and operates over a collection of entries. It is organized
+  around one or more schemas that define how entries are structured and validated.
+  Beyond storage, a database commonly includes behavior such as validation, transformations, computed/projection
+  values, automation triggers, permissions, and other operational rules.</p>
+<hr>
+<h2 id="sec-2-6">2.6 Scope</h2>
+<p>A <strong>scope</strong> is a reusable context layer that contributes a bundle of applicability for entries
+  exposed to it. A scope can contribute:</p>
+<ul>
+  <li><strong>Schemas</strong> that apply in that context</li>
+  <li><strong>Settings/policies</strong> (permissions, presentation rules, workflow behaviors)</li>
+  <li><strong>Per-scope parameterization</strong> of fields (where the same field kind has different parameters in
+    different contexts)</li>
+  <li><strong>Automations</strong> that are triggered by conditions inside the scope.
+    An entry's <strong>effective definition</strong> is derived from the combination of all scopes it is exposed
+    to.</li>
+</ul>
+<h3 id="sec-2-6-1">2.6.1 Single database with scopes</h3>
+<p>In many no-code database platforms, the workspace often <em>looks</em> like it contains many separate databases
+  scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as
+  <strong>one big</strong> <strong>database</strong> of entries with a shared universe of fields—where differences
+  in what you see and what applies are explained by scopes.
+</p>
+<h3 id="sec-2-6-2">2.6.2 Scope exposure and scope selector fields</h3>
+<p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the
+  entry to additional scopes.
+  Examples (in abstract terms):</p>
+<ul>
+  <li>A "location" selector whose value points to a container/context, thereby exposing the entry to that context
+    scope (and possibly its parent scopes).</li>
+  <li>A "type" selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and
+    its ancestors).
+    So some fields are not merely data holders; they are <em>context-binding mechanisms</em> that determine which
+    schemas/settings/rules apply.</li>
+</ul>
+<h3 id="sec-2-6-3">2.6.3 Scope hierarchies and inheritance</h3>
+<p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
+  Inheritance means that exposure to a child implies exposure to its ancestors.</p>
+<h4 id="sec-2-6-3-1">2.6.3.1 Examples of possible scope hierarchies:</h4>
+<h5 id="sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</h5>
+<p>How entries are grouped by the projects they support and the goals they aim to achieve.</p>
+<div class="doc-tree">
+  <ul>
+    <li>🟦 General (space)<ul>
+        <li>📁 Some Project (folder)<ul>
+            <li>📋 Project Tasks (list)</li>
           </ul>
         </li>
-        <li><strong>Computed types</strong>: values are not directly stored but derived from other stored data,
-          relationships, or system state (often displayed like a normal field but ontologically distinct)</li>
-      </ul>
-      <hr>
-      <h2 id="sec-2-3">2.3 Schema</h2>
-      <p>A <strong>schema</strong> is a specification that defines a valid <strong>entry</strong>. It consists of:</p>
-      <ul>
-        <li><strong>Fields</strong>: the set of fields that apply.</li>
-        <li><strong>Constraints</strong>: rules that determine validity.<ul>
-            <li><strong>Unary constraint</strong>: a restriction involving a single field (e.g., “required”).</li>
-            <li><strong>Relational constraint</strong>: a restriction involving two or more fields (e.g., start_date ≤
-              due_date).</li>
+        <li>📁 Household Chores (folder)<ul>
+            <li>📋 Household Tasks (list)</li>
+            <li>📋 Family Meetings (list)</li>
           </ul>
         </li>
-        <li><strong>Operational rules</strong>: rules that define how field values change over time in response to
-          defined triggers. Each operational rule includes:<ul>
-            <li>a <strong>trigger condition</strong>: one of<ul>
-                <li>creation of a new entry under the schema</li>
-                <li>a field value change</li>
-                <li>passage of time</li>
+        <li>📋 Events (list)</li>
+        <li>📋 Milestones (list)</li>
+      </ul>
+    </li>
+    <li>🟩 Personal (space)<ul>
+        <li>📁 My Projects (folder)<ul>
+            <li>📁 Birthday Planning (folder)<ul>
+                <li>📋 Locations (list)</li>
+                <li>📋 Presents (list)</li>
               </ul>
             </li>
-            <li>a <strong>state update</strong>: one or more field values are changed.</li>
           </ul>
         </li>
       </ul>
-      <hr>
-      <h2 id="sec-2-4">2.4 Entry</h2>
-      <p>An <strong>entry</strong> is a concrete instance governed by a schema. It consists of a set of values, one per
-        field included in the schema.
-        The set of an entry’s field values at a given moment is its <strong>state</strong>.
-        An entry is <strong>valid</strong> under its schema if each value belongs to its field’s allowed domain and all
-        schema constraints are satisfied.</p>
-      <hr>
-      <h2 id="sec-2-5">2.5 Database</h2>
-      <p>A <strong>database</strong> is a system that stores and operates over a collection of entries. It is organized
-        around one or more schemas that define how entries are structured and validated.
-        Beyond storage, a database commonly includes behavior such as validation, transformations, computed/projection
-        values, automation triggers, permissions, and other operational rules.</p>
-      <hr>
-      <h2 id="sec-2-6">2.6 Scope</h2>
-      <p>A <strong>scope</strong> is a reusable context layer that contributes a bundle of applicability for entries
-        exposed to it. A scope can contribute:</p>
-      <ul>
-        <li><strong>Schemas</strong> that apply in that context</li>
-        <li><strong>Settings/policies</strong> (permissions, presentation rules, workflow behaviors)</li>
-        <li><strong>Per-scope parameterization</strong> of fields (where the same field kind has different parameters in
-          different contexts)</li>
-        <li><strong>Automations</strong> that are triggered by conditions inside the scope.
-          An entry’s <strong>effective definition</strong> is derived from the combination of all scopes it is exposed
-          to.</li>
+    </li>
+  </ul>
+</div>
+<h5 id="sec-2-6-3-1-2">2.6.3.1.2 Type Scope Hierarchy</h5>
+<p>Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
+  one kind of entry from another across the workspace.</p>
+<div class="doc-tree">
+  <ul>
+    <li>✅ Task</li>
+    <li>📆 Event<ul>
+        <li>👨‍👩‍👧‍👦 Family Event<ul>
+            <li>🎁 Birthday</li>
+          </ul>
+        </li>
+        <li>💻 Work Event<ul>
+            <li>🧮 End Of Quarter</li>
+            <li>🌞 Field Day</li>
+          </ul>
+        </li>
+        <li>🎊 Holiday</li>
       </ul>
-      <h3 id="sec-2-6-1">2.6.1 Single database with scopes</h3>
-      <p>In many no-code database platforms, the workspace often <em>looks</em> like it contains many separate databases
-        scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as
-        <strong>one big</strong> <strong>database</strong> of entries with a shared universe of fields—where differences
-        in what you see and what applies are explained by scopes.
-      </p>
-      <h3 id="sec-2-6-2">2.6.2 Scope exposure and scope selector fields</h3>
-      <p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the
-        entry to additional scopes.
-        Examples (in abstract terms):</p>
-      <ul>
-        <li>A “location” selector whose value points to a container/context, thereby exposing the entry to that context
-          scope (and possibly its parent scopes).</li>
-        <li>A “type” selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and
-          its ancestors).
-          So some fields are not merely data holders; they are <em>context-binding mechanisms</em> that determine which
-          schemas/settings/rules apply.</li>
+    </li>
+    <li>🧠 Thought</li>
+    <li>🫱🏼‍🫲🏼 Meeting<ul>
+        <li>🗒️ Work Meeting</li>
+        <li>🧑‍🤝‍🧑 Team Meeting</li>
       </ul>
-      <h3 id="sec-2-6-3">2.6.3 Scope hierarchies and inheritance</h3>
-      <p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
-        Inheritance means that exposure to a child implies exposure to its ancestors.</p>
-      <h4 id="sec-2-6-3-1">2.6.3.1 Examples of possible scope hierarchies:</h4>
-      <h5 id="sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</h5>
-      <p>How entries are grouped by the projects they support and the goals they aim to achieve.</p>
-      <div class="doc-tree">
-        <ul>
-          <li>🟦 General (space)<ul>
-              <li>📁 Some Project (folder)<ul>
-                  <li>📋 Project Tasks (list)</li>
-                </ul>
-              </li>
-              <li>📁 Household Chores (folder)<ul>
-                  <li>📋 Household Tasks (list)</li>
-                  <li>📋 Family Meetings (list)</li>
-                </ul>
-              </li>
-              <li>📋 Events (list)</li>
-              <li>📋 Milestones (list)</li>
-            </ul>
-          </li>
-          <li>🟩 Personal (space)<ul>
-              <li>📁 My Projects (folder)<ul>
-                  <li>📁 Birthday Planning (folder)<ul>
-                      <li>📋 Locations (list)</li>
-                      <li>📋 Presents (list)</li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <h5 id="sec-2-6-3-1-2">2.6.3.1.2 Type Scope Hierarchy</h5>
-      <p>Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
-        one kind of entry from another across the workspace.</p>
-      <div class="doc-tree">
-        <ul>
-          <li>✅ Task</li>
-          <li>📆 Event<ul>
-              <li>👨‍👩‍👧‍👦 Family Event<ul>
-                  <li>🎁 Birthday</li>
-                </ul>
-              </li>
-              <li>💻 Work Event<ul>
-                  <li>🧮 End Of Quarter</li>
-                  <li>🌞 Field Day</li>
-                </ul>
-              </li>
-              <li>🎊 Holiday</li>
-            </ul>
-          </li>
-          <li>🧠 Thought</li>
-          <li>🫱🏼‍🫲🏼 Meeting<ul>
-              <li>🗒️ Work Meeting</li>
-              <li>🧑‍🤝‍🧑 Team Meeting</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <h5 id="sec-2-6-3-1-3">2.6.3.1.3 Responsibility Scope Hierarchy</h5>
-      <p>Groups entries by who is accountable for interacting with them and carrying them forward.</p>
-      <div class="doc-tree">
-        <ul>
-          <li>🧪 Research<ul>
-              <li>👩‍🦰 Alison</li>
-              <li>🧔‍♂️ Dan</li>
-            </ul>
-          </li>
-          <li>📱 Marketing<ul>
-              <li>👨‍👩‍👧‍👦 John's Team<ul>
-                  <li>🧔‍♂️ John</li>
-                  <li>👩‍🦰 Erica</li>
-                  <li>👩‍🦰 Sarah</li>
-                </ul>
-              </li>
-              <li>👨‍👩‍👧‍👦 Rachael's Team<ul>
-                  <li>👩‍🦰 Rachael</li>
-                  <li>🧔‍♂️ Tim</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>📈 Accounting<ul>
-              <li>…</li>
-            </ul>
-          </li>
-          <li>💻 Development<ul>
-              <li>…</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <h3 id="sec-2-6-4">2.6.4 Per-scope parameterization</h3>
-      <p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters.
-        Scopes can provide those parameters at different levels.
-        For example:</p>
-      <ul>
-        <li>a “status” field is one field kind, but the allowed state set or workflow graph can be configured per scope
-          level</li>
-        <li>a “choice” field can have different option sets in different contexts</li>
-        <li>a templated or AI-driven field can have different prompts/specs per scope
-          This allows consistent field kinds while enabling contextual variation.</li>
+    </li>
+  </ul>
+</div>
+<h5 id="sec-2-6-3-1-3">2.6.3.1.3 Responsibility Scope Hierarchy</h5>
+<p>Groups entries by who is accountable for interacting with them and carrying them forward.</p>
+<div class="doc-tree">
+  <ul>
+    <li>🧪 Research<ul>
+        <li>👩‍🦰 Alison</li>
+        <li>🧔‍♂️ Dan</li>
       </ul>
-      <h3 id="sec-2-6-5">2.6.5 Scoped scope-hierarchies</h3>
-      <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
-        particular scope so that only entries already exposed to that scope can access that selector, and only then can
-        they branch into a further scope hierarchy.
-        This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.
-      </p>
-      <h4 id="sec-2-6-5-1">2.6.5.1 Examples of possible scoped scope hierarchies:</h4>
-      <h5 id="sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</h5>
-      <p>The <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
-          Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
-        into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models
-        their progression state.</p>
-      <div class="doc-tree">
-        <ul>
-          <li>⬜ Not Started<ul>
-              <li>🟫 Backlog</li>
-              <li>🟨 Todo</li>
-            </ul>
-          </li>
-          <li>⬜ Active<ul>
-              <li>🟪 In Progress</li>
-              <li>🟧 Blocked</li>
-            </ul>
-          </li>
-          <li>⬜ Done<ul>
-              <li>🟥 Canceled</li>
-              <li>🟩 Completed</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <h3 id="sec-2-6-6">2.6.6 Entry-local scope</h3>
-      <p>In addition to shared scopes, an entry may have an <strong>entry-local scope</strong> that applies only to
-        itself—allowing truly per-entry schema/settings/rules extensions.</p>
-
-      <h1 id="sec-3">3. ClickUp</h1>
+    </li>
+    <li>📱 Marketing<ul>
+        <li>👨‍👩‍👧‍👦 John's Team<ul>
+            <li>🧔‍♂️ John</li>
+            <li>👩‍🦰 Erica</li>
+            <li>👩‍🦰 Sarah</li>
+          </ul>
+        </li>
+        <li>👨‍👩‍👧‍👦 Rachael's Team<ul>
+            <li>👩‍🦰 Rachael</li>
+            <li>🧔‍♂️ Tim</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>📈 Accounting<ul>
+        <li>…</li>
+      </ul>
+    </li>
+    <li>💻 Development<ul>
+        <li>…</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<h3 id="sec-2-6-4">2.6.4 Per-scope parameterization</h3>
+<p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters.
+  Scopes can provide those parameters at different levels.
+  For example:</p>
+<ul>
+  <li>a "status" field is one field kind, but the allowed state set or workflow graph can be configured per scope
+    level</li>
+  <li>a "choice" field can have different option sets in different contexts</li>
+  <li>a templated or AI-driven field can have different prompts/specs per scope
+    This allows consistent field kinds while enabling contextual variation.</li>
+</ul>
+<h3 id="sec-2-6-5">2.6.5 Scoped scope-hierarchies</h3>
+<p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
+  particular scope so that only entries already exposed to that scope can access that selector, and only then can
+  they branch into a further scope hierarchy.
+  This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.
+</p>
+<h4 id="sec-2-6-5-1">2.6.5.1 Examples of possible scoped scope hierarchies:</h4>
+<h5 id="sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</h5>
+<p>The <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
+    Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
+  into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models
+  their progression state.</p>
+<div class="doc-tree">
+  <ul>
+    <li>⬜ Not Started<ul>
+        <li>🟫 Backlog</li>
+        <li>🟨 Todo</li>
+      </ul>
+    </li>
+    <li>⬜ Active<ul>
+        <li>🟪 In Progress</li>
+        <li>🟧 Blocked</li>
+      </ul>
+    </li>
+    <li>⬜ Done<ul>
+        <li>🟥 Canceled</li>
+        <li>🟩 Completed</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<h3 id="sec-2-6-6">2.6.6 Entry-local scope</h3>
+<p>In addition to shared scopes, an entry may have an <strong>entry-local scope</strong> that applies only to
+  itself—allowing truly per-entry schema/settings/rules extensions.</p><h1 id="sec-3">3. ClickUp</h1>
       <h2 id="sec-3-1">3.1 Fields</h2>
       <h3 id="sec-3-1-1">3.1.1 Base scope fields</h3>
       <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
@@ -1107,719 +961,255 @@
           <li>🫱🏼‍🫲🏼 Meeting</li>
           <li>🏆 Goal</li>
         </ul>
-      </div>
-
-      <h1 id="sec-4">4. Workspace</h1>
-      <p>This section describes the workspace configuration and conventions.</p>
-      <p>(To be filled in later.)</p>
-      <h2 id="sec-4-1">4.1 System fields parameters</h2>
-      <p>Parameters and configuration for system-level fields.</p>
-      <h3 id="sec-4-1-1">4.1.1 Task Types</h3>
-      <p>This section explains all task types used in this workspace.</p>
-      <h4 id="sec-4-1-1-1">4.1.1.1 Task</h4>
-      <p>The default actionable work-item entry type: something you intend to do, track to completion, and manage
-        through a workflow (states, ownership, timing, and urgency). Task is the most operational type—meant for
-        execution rather than just capture—so it relies on ClickUp’s built-in workflow machinery such as
-        <em>Status</em>, <em>Assignment</em> and <em>Priority</em>.
-      </p>
-      <p><strong>Purpose</strong></p>
-      <p>A Task represents a unit of work that has an owner (or owners), a lifecycle state, and often a due horizon. You
-        can plan, prioritize, and advance it while keeping context in description, comments, attachments, and
-        relationships.</p>
-      <p><strong>Schema</strong></p>
-      <p>Core task-defining fields, which define why Tasks feel native in ClickUp:</p>
-      <ul>
-        <li><a href="#row-status"><strong>Status</strong></a> — The lifecycle state of the task; statuses are according
-          to the relevant <a href="#sec-4-1-2-2">status group</a>.</li>
-        <li><a href="#row-priority"><strong>Priority</strong></a> — Urgency or importance level of the task.</li>
-        <li><a href="#row-assignees"><strong>Assignees</strong></a> — The person(s) responsible for doing the task.</li>
-        <li><a href="#row-start-date"><strong>Start date</strong></a> — The date from which work can start being done on
-          the task (for whatever constraints apply).</li>
-        <li><a href="#row-due-date"><strong>Due date</strong></a> — The date by which the task must be completed.</li>
-        <li><a href="#row-time-estimate"><strong>Time estimate</strong></a> — Estimated effort or duration for the task.
-        </li>
-        <li><a href="#row-time-tracked"><strong>Time tracked</strong></a> — Actual time logged on the task.</li>
-      </ul>
-      <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
-      <p>An Event is an entry that represents something that happens at a defined period in time—it has a start and an
-        end. It is about when it occurs and when the user should be made aware of it in advance.</p>
-      <p><strong>Purpose</strong></p>
-      <p>Events let you record and track occurrences (meetings, deadlines, trips, etc.) and control how far in advance
-        they surface for notification or display. The workspace derives precise start and end times from the dates you
-        set, drives <em>Status</em> from those times, and computes a <strong>Relevance date</strong> so the event can be
-        shown or notified ahead of time.</p>
-      <p><strong>Schema</strong></p>
-      <ul>
-        <li><strong>Start date</strong> — The date/time when the event starts (user-facing; may be date-only).</li>
-        <li><strong>Due date</strong> — The date/time when the event ends (user-facing; may be date-only).</li>
-        <li><strong>Start time</strong> — A custom field: the precise datetime when the event starts. Used internally;
-          see below.</li>
-        <li><strong>End time</strong> — A custom field: the precise datetime when the event ends. Used internally; see
-          below.</li>
-        <li><strong>Relevance #</strong> — A number: how many units of time in advance the event should start being
-          shown or notified.</li>
-        <li><strong>Relevance Unit</strong> — Single choice: the unit for that advance period (e.g. days, weeks,
-          months).</li>
-        <li><strong>Relevance Date</strong> — A computed datetime: the date on which this event should start being
-          shown/notified to the user. Calculated as: <strong>Start time</strong> minus the relevance period
-          (<strong>Relevance #</strong> + <strong>Relevance Unit</strong>).</li>
-      </ul>
-      <p><strong>Why Start time and End time</strong></p>
-      <p>ClickUp’s <strong>Start date</strong> and <strong>Due date</strong> default to 4:00 AM on the given day when
-        the user does not specify a time. That default is unsuitable for events. <strong>Start time</strong> and
-        <strong>End time</strong> are auxiliary computational fields: the system populates them from <strong>Start
-          date</strong> and <strong>Due date</strong> using consistent rules (see below). The user works only with
-        <strong>Start date</strong> and <strong>Due date</strong>; <strong>Start time</strong> and <strong>End
-          time</strong> are not meant to be edited directly.
-      </p>
-      <p><strong>“Has a time” vs date-only</strong></p>
-      <p>The system treats 4:00 AM Jerusalem time as “no time set” (ClickUp’s default for date-only). Any other time is
-        treated as a real time and used as-is for <strong>Start time</strong> or <strong>End time</strong>.</p>
-      <p><strong>When an event is created</strong></p>
-      <p>The system reads <strong>Start date</strong>, <strong>Due date</strong>, <strong>Relevance #</strong>, and
-        <strong>Relevance Unit</strong>, and sets:
-      </p>
-      <ul>
-        <li><strong>Start time</strong></li>
-        <li><strong>End time</strong> </li>
-        <li><strong>Status</strong></li>
-        <li><strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are
-          set)</li>
-      </ul>
-      <p><em>Start date → Start time</em></p>
-      <ul>
-        <li>If <strong>Start date</strong> has a real time, that time becomes <strong>Start time</strong>.</li>
-        <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that day.
-        </li>
-        <li>If there is no <strong>Start date</strong> but <strong>Due date</strong> exists with no time, <strong>Start
-            time</strong> is set to midnight of the due date.</li>
-        <li>Otherwise <strong>Start time</strong> is left empty.</li>
-      </ul>
-      <p><em>Due date → End time</em></p>
-      <ul>
-        <li>If <strong>Due date</strong> has a real time, that time becomes <strong>End time</strong>.</li>
-        <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the <em>next</em>
-          day (so the event covers the whole day).</li>
-        <li>If there is no <strong>Due date</strong>, <strong>End time</strong> is left empty.</li>
-      </ul>
-      <p><strong>When the start date is changed</strong></p>
-      <p>The system recalculates <strong>Start time</strong> (same rules as above), <strong>End time</strong> (still
-        from <strong>Due date</strong>), <strong>Status</strong>, and <strong>Relevance date</strong>, then updates on
-        the entry: <strong>Start time</strong>, <strong>Status</strong>, <strong>Relevance date</strong>. <strong>End
-          time</strong> is not changed, because it is derived only from <strong>Due date</strong>.</p>
-      <p><strong>When the due date is changed</strong></p>
-      <p>The system recalculates <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and
-        <strong>Relevance date</strong>, then updates: <strong>End time</strong> (always), <strong>Status</strong>,
-        <strong>Relevance date</strong>. <strong>Start time</strong> is updated only if the entry has no <strong>Start
-          date</strong> (i.e. <strong>Start time</strong> was originally derived from <strong>Due date</strong>). If the
-        entry already has a <strong>Start date</strong>, <strong>Start time</strong> is left as-is.
-      </p>
-      <p><strong>When Relevance # and/or Relevance Unit is changed</strong></p>
-      <p>The system recalculates <strong>Relevance date</strong> (using <strong>Start time</strong> and the relevance
-        period from <strong>Relevance #</strong> and <strong>Relevance Unit</strong>), then updates <strong>Relevance
-          date</strong> on the entry. If <strong>Relevance #</strong> or <strong>Relevance Unit</strong> is cleared,
-        <strong>Relevance date</strong> is cleared or left unset.
-      </p>
-      <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
-      <p>A Record is an entry that represents something that is documented—a note, observation, or fact captured for
-        reference.</p>
-      <p><strong>Purpose</strong></p>
-      <p>Records let you document items with a <strong>Timestamp</strong> so you know when they were recorded (or when
-        the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the
-        content and the datetime.</p>
-      <p><strong>Schema</strong></p>
-      <ul>
-        <li><strong>Timestamp</strong> — The datetime when the record was made (or, if backdated, when the documented
-          thing occurred). When a Record is created, this field should be updated to the current time. The user can
-          change the value afterward—for example, when recording something that happened at an earlier datetime.</li>
-      </ul>
-      <h3 id="sec-4-1-2">4.1.2 Status groups</h3>
-      <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
-        (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
-        group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
-        practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is
-        strongly coupled with a task type, so the status group chosen at the location level typically functions as the
-        workflow track for that type.</p>
-      <p>ClickUp forces every status to live inside one of its built-in subgroups—Not started, Active, Done, Closed—even
-        when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
-        and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
-        Whenever we mention a status, we annotate it with its subgroup in parentheses.</p>
-      <h4 id="sec-4-1-2-1">4.1.2.1 Status transitions and triggers</h4>
-      <p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
-        workspace, transitions can be driven by four kinds of triggers:</p>
-      <ul>
-        <li><span class="trigger-type">Manual</span> — The user explicitly changes the status based on judgment calls
-          and intangible factors that the workspace can't reliably capture or analyze.</li>
-        <li><span class="trigger-type">Internal Conditional</span> — Some change <strong>in the entry</strong> or
-          <strong>elsewhere in the workspace</strong> triggers the transition.
-        </li>
-        <li><span class="trigger-type">External Conditional</span> — A real-world event outside the workspace happens,
-          but it's still something that can be pinpointed and articulated specifically.</li>
-        <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular
-          date-time boundary is reached.</li>
-      </ul>
-      <h4 id="sec-4-1-2-2">4.1.2.2 Task</h4>
-      <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
-        represents the lifecycle of an actionable work item.</p>
-      <ul>
-        <li><strong>Backlog <span class="subgroup">(Not started)</span></strong> — The task exists, but there is no
-          intent to work on it yet. it may transition to <strong>To Do</strong> <em>if and only if</em> at least one of
-          <strong>Start date</strong> or <strong>Due date</strong> is set, which acts as the signal that the task is now
-          being planned.
-        </li>
-        <li><strong>To Do <span class="subgroup">(Not started)</span></strong> — The task has a <strong>Start date
-            and/or Due date</strong> set, so it is now an actual candidate for execution.</li>
-        <li><strong>In Progress <span class="subgroup">(Active)</span></strong> — Work has begun. The move from
-          <strong>To Do</strong> to <strong>In Progress</strong> is <strong>manual</strong>, representing the user
-          explicitly declaring that execution started.
-        </li>
-        <li><strong>Canceled <span class="subgroup">(Done)</span></strong> — The task will not be completed. This can
-          happen either before work started or mid-execution; the point is that it's intentionally stopped.</li>
-        <li><strong>Complete <span class="subgroup">(Closed)</span></strong> — The task is finished and successfully
-          completed.</li>
-      </ul>
-      <h5 id="sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</h5>
-      <ul>
-        <li><strong>Backlog → To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
-          <em>at least one</em> of <strong>Start date</strong> or <strong>Due date</strong> is set.
-        </li>
-        <li><strong>To Do → In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work
-          has begun.</li>
-        <li><strong>(Backlog, To Do, In Progress) → Canceled:</strong> <span class="trigger-type">Manual</span> — The
-          user decides the task will not be completed.</li>
-        <li><strong>(Backlog, To Do, In Progress) → Complete:</strong> <span class="trigger-type">Manual</span> — The
-          user declares the task has been completed.</li>
-        <li><strong>In Progress → To Do:</strong> <span class="trigger-type">Manual</span> — Work is paused, typically
-          because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
-        <li><strong>(To Do, In Progress) → Backlog:</strong> <span class="trigger-type">Internal Conditional</span> —
-          Triggered when <strong>Start date</strong> <em>and</em> <strong>Due date</strong> are reset to
-          <strong>null</strong>.
-        </li>
-      </ul>
-      <h4 id="sec-4-1-2-3">4.1.2.3 Event</h4>
-      <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
-      <ul>
-        <li><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
-          <strong>no Start date and no Due date</strong> are set.
-        </li>
-        <li><strong>Upcoming <span class="subgroup">(Not started)</span></strong> — <strong>Start date and/or Due
-            date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>start time has not
-            arrived yet</strong>.</li>
-        <li><strong>Occurring <span class="subgroup">(Active)</span></strong> — The current date-time is
-          <strong>on/after the event's start time</strong> (i.e., the event is happening now or has started and hasn't
-          ended yet).
-        </li>
-        <li><strong>Occurred <span class="subgroup">(Closed)</span></strong> — The current date-time is <strong>after
-            the event's end time</strong> (operationally: after the <strong>Due date/time</strong>, which we treat as
-          the event's end).</li>
-      </ul>
-      <h5 id="sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</h5>
-      <ul>
-        <li><strong>Not Scheduled → Upcoming: Internal Conditional</strong> — Triggered when at least one of Start date
-          or Due date is set.</li>
-        <li><strong>Upcoming → Occurring: Chronological</strong> — Triggered when the current datetime reaches or passes
-          the event's start datetime.</li>
-        <li><strong>Occurring → Occurred: Chronological</strong> — Triggered when the current datetime reaches or passes
-          the event's end datetime (i.e., the due/end time).</li>
-        <li><strong>(Upcoming, Occurring) → Not Scheduled: Internal Conditional</strong> — Triggered when Start date and
-          Due date are reset to null.</li>
-        <li><strong>Occurring → Upcoming: Internal Conditional</strong> — Triggered when the event's start datetime is
-          moved forward to a datetime that has not yet happened.</li>
-      </ul>
-      <h4 id="sec-4-1-2-4">4.1.2.4 Shopping</h4>
-      <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
-        models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
-      <ul>
-        <li><strong>Idea <span class="subgroup">(Not started)</span></strong> — On the wishlist; we may buy it
-          eventually but are not actively planning to.</li>
-        <li><strong>To Buy <span class="subgroup">(Not started)</span></strong> — We intend to buy it soon. When making
-          an online order or going to the store, this item belongs on the shopping list.</li>
-        <li><strong>In Cart <span class="subgroup">(Active)</span></strong> — For online shopping: the product is
-          selected and sitting in a site's cart, awaiting checkout.</li>
-        <li><strong>Ordered <span class="subgroup">(Active)</span></strong> — An order has been placed; we are waiting
-          for delivery.</li>
-        <li><strong>Cancelled <span class="subgroup">(Done)</span></strong> — The item was in the pipeline at some point
-          but will not be purchased; we have no plans to pursue it further.</li>
-        <li><strong>Received <span class="subgroup">(Closed)</span></strong> — The item has been purchased and received.
-        </li>
-      </ul>
-      <h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
-      <p>Every transition is <strong>manual</strong>. The usual path is <strong>Idea → To Buy → In Cart → Ordered →
-          Received</strong>, but an item may move from any status to any other (e.g. <strong>Ordered</strong> back to
-        <strong>To Buy</strong> after an order is cancelled, or <strong>Idea</strong> to <strong>Cancelled</strong>).
-      </p>
-      <h4 id="sec-4-1-2-5">4.1.2.5 Statusless</h4>
-      <p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
-        entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
-        group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
-        define this minimal, degenerate group with two placeholder statuses:</p>
-      <ul>
-        <li><strong>-- <span class="subgroup">(Not started)</span></strong> — Represents the absence of a status;
-          entries that "have no status" live here.</li>
-        <li><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
-          the group; unused in practice.</li>
-      </ul>
-      <p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
-        status changes are ever made.</p>
-
-    </main>
-  </div>
-  <footer class="doc-footer">ClickUp Wiki</footer>
-  <script>
-    (function () {
-      var toc = document.querySelector('.doc-toc');
-      var content = document.querySelector('.doc-content');
-      if (!toc || !content) return;
-      var links = toc.querySelectorAll('a[href^="#"]');
-      var headings = [];
-      links.forEach(function (a) {
-        var id = a.getAttribute('href').slice(1);
-        var el = document.getElementById(id);
-        if (el) headings.push({ id: id, el: el, a: a });
-      });
-      function updateActive() {
-        var top = window.scrollY || document.documentElement.scrollTop;
-        var active = null;
-        for (var i = headings.length - 1; i >= 0; i--) {
-          if (headings[i].el.getBoundingClientRect().top <= 100) {
-            active = headings[i];
-            break;
-          }
-        }
-        if (!active && headings.length) active = headings[0];
-        links.forEach(function (a) { a.classList.remove('is-active'); });
-        if (active) active.a.classList.add('is-active');
-      }
-      window.addEventListener('scroll', updateActive, { passive: true });
-      window.addEventListener('resize', updateActive);
-      updateActive();
-    })();
-  </script>
-  <script>
-    (function () {
-      var content = document.querySelector('.doc-content');
-      if (!content) return;
-      var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3, h4, h5, h6'));
-      var docTops = [];
-      var STORAGE_KEY = 'clickup-wiki-sticky-headers';
-
-      function level(el) {
-        return parseInt(el.tagName.charAt(1), 10);
-      }
-
-      // Use offsetTop traversal — unaffected by position:sticky, unlike getBoundingClientRect
-      function docOffsetTop(el) {
-        var top = 0;
-        var node = el;
-        while (node) { top += node.offsetTop; node = node.offsetParent; }
-        return top;
-      }
-
-      function cachePositions() {
-        docTops = headings.map(docOffsetTop);
-      }
-
-      function updateStickyActive() {
-        var btn = document.querySelector('.doc-sticky-toggle');
-        if (btn && btn.getAttribute('aria-pressed') !== 'true') {
-          headings.forEach(function (el) { el.classList.remove('sticky-active'); });
-          updateTableStickyTop();
-          return;
-        }
-
-        // Measure the height of the currently-stuck headers (from previous frame)
-        // so that a new heading becomes "current" the moment it slides behind them.
-        var stickyHeight = 0;
-        headings.forEach(function (el) {
-          if (el.classList.contains('sticky-active')) stickyHeight += el.offsetHeight;
-        });
-
-        var scrollTop = window.scrollY + stickyHeight;
-        var currentIdx = 0;
-        for (var i = headings.length - 1; i >= 0; i--) {
-          if (docTops[i] <= scrollTop) { currentIdx = i; break; }
-        }
-
-        var currentLevel = level(headings[currentIdx]);
-        var chain = [];
-        for (var lvl = 1; lvl <= currentLevel; lvl++) {
-          for (var j = currentIdx; j >= 0; j--) {
-            if (level(headings[j]) === lvl) { chain.push(headings[j]); break; }
-          }
-        }
-
-        headings.forEach(function (el) {
-          el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
-        });
-
-        updateTableStickyTop();
-      }
-
-      function updateTableStickyTop() {
-        var btn = document.querySelector('.doc-sticky-toggle');
-        var isEnabled = btn && btn.getAttribute('aria-pressed') === 'true';
-        var top = 0;
-        if (isEnabled) {
-          headings.forEach(function (el) {
-            if (el.classList.contains('sticky-active')) {
-              var b = el.getBoundingClientRect().bottom;
-              if (b > top) top = b;
-            }
-          });
-        }
-        document.documentElement.style.setProperty('--table-sticky-top', top + 'px');
-      }
-
-      function setStickyEnabled(on) {
-        var btn = document.querySelector('.doc-sticky-toggle');
-        if (!btn) return;
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        try { localStorage.setItem(STORAGE_KEY, on ? 'on' : 'off'); } catch (e) { }
-        updateStickyActive();
-      }
-
-      cachePositions();
-      window.addEventListener('scroll', updateStickyActive, { passive: true });
-      window.addEventListener('resize', function () { cachePositions(); updateStickyActive(); });
-
-      var btn = document.querySelector('.doc-sticky-toggle');
-      if (btn) {
-        try {
-          var saved = localStorage.getItem(STORAGE_KEY);
-          if (saved === 'off') setStickyEnabled(false);
-        } catch (e) { }
-        btn.addEventListener('click', function () {
-          setStickyEnabled(btn.getAttribute('aria-pressed') !== 'true');
-        });
-      }
-      updateStickyActive();
-    })();
-  </script>
-  <script>
-    (function () {
-      function getScrollOffset(table) {
-        var stickyTop = parseFloat(
-          getComputedStyle(document.documentElement).getPropertyValue('--table-sticky-top')
-        ) || 0;
-        var thead = table ? table.querySelector('thead') : null;
-        var theadH = thead ? thead.offsetHeight : 0;
-        return stickyTop + theadH + 8;
-      }
-
-      function scrollToRow(el) {
-        var table = el.closest('table');
-        var offset = getScrollOffset(table);
-        var top = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
-      }
-
-      function highlightRow(el) {
-        el.classList.remove('row-highlight');
-        void el.offsetHeight;
-        el.classList.add('row-highlight');
-        if (window._rowHighlightTimeout) clearTimeout(window._rowHighlightTimeout);
-        window._rowHighlightTimeout = setTimeout(function () {
-          el.classList.remove('row-highlight');
-        }, 2100);
-      }
-
-      function handleHash(hash) {
-        if (!hash || hash.indexOf('row-') !== 0) return;
-        var el = document.getElementById(hash);
-        if (!el || el.tagName !== 'TR') return;
-        scrollToRow(el);
-        highlightRow(el);
-      }
-
-      window.addEventListener('load', function () {
-        handleHash(window.location.hash.slice(1));
-      });
-
-      window.addEventListener('hashchange', function () {
-        handleHash(window.location.hash.slice(1));
-      });
-
-      document.addEventListener('click', function (e) {
-        var a = e.target.closest('a[href^="#row-"]');
-        if (!a) return;
-        var href = a.getAttribute('href');
-        var hash = href.slice(1);
-        var el = document.getElementById(hash);
-        if (!el || el.tagName !== 'TR') return;
-        e.preventDefault();
-        history.pushState(null, '', href);
-        scrollToRow(el);
-        highlightRow(el);
-      });
-    })();
-  </script>
-  <script>
-    (function () {
-      var tooltip = document.createElement('div');
-      tooltip.className = 'row-preview-tooltip';
-      document.body.appendChild(tooltip);
-
-      function buildTooltip(row) {
-        var table = row.closest('table');
-        if (!table) return false;
-        var headerCells = table.querySelectorAll('thead th');
-        var dataCells = row.querySelectorAll('td');
-        if (!headerCells.length || !dataCells.length) return false;
-
-        var headHtml = '<tr>';
-        headerCells.forEach(function (th) { headHtml += '<th>' + th.innerHTML + '</th>'; });
-        headHtml += '</tr>';
-
-        var rowHtml = '<tr>';
-        dataCells.forEach(function (td) { rowHtml += '<td>' + td.innerHTML + '</td>'; });
-        rowHtml += '</tr>';
-
-        tooltip.innerHTML = '<table><thead>' + headHtml + '</thead><tbody>' + rowHtml + '</tbody></table>';
-        return true;
-      }
-
-      function positionTooltip(link) {
-        var rect = link.getBoundingClientRect();
-        var margin = 10;
-        var tw = tooltip.offsetWidth;
-        var th = tooltip.offsetHeight;
-
-        var top = rect.bottom + margin;
-        if (top + th > window.innerHeight - margin) {
-          top = rect.top - th - margin;
-        }
-
-        var left = rect.left;
-        if (left + tw > window.innerWidth - margin) {
-          left = window.innerWidth - tw - margin;
-        }
-        if (left < margin) left = margin;
-
-        tooltip.style.top = top + 'px';
-        tooltip.style.left = left + 'px';
-      }
-
-      function showTooltip(link) {
-        var hash = link.getAttribute('href').slice(1);
-        var row = document.getElementById(hash);
-        if (!row || row.tagName !== 'TR') return;
-        if (!buildTooltip(row)) return;
-        tooltip.classList.add('is-visible');
-        positionTooltip(link);
-      }
-
-      function hideTooltip() {
-        tooltip.classList.remove('is-visible');
-      }
-
-      document.addEventListener('mouseover', function (e) {
-        var a = e.target.closest('a[href^="#row-"]');
-        if (a) showTooltip(a);
-      });
-
-      document.addEventListener('mouseout', function (e) {
-        var a = e.target.closest('a[href^="#row-"]');
-        if (a && !a.contains(e.relatedTarget)) hideTooltip();
-      });
-    })();
-  </script>
-  <script>
-    (function () {
-      var tip = document.createElement('div');
-      tip.className = 'section-preview-tooltip';
-      document.body.appendChild(tip);
-
-      var headingTags = { H1: 1, H2: 2, H3: 3, H4: 4, H5: 5, H6: 6 };
-
-      function buildSectionPreview(heading) {
-        var level = headingTags[heading.tagName];
-        if (!level) return false;
-
-        var inner = document.createElement('div');
-        inner.className = 'sec-preview-inner';
-
-        var h = document.createElement(heading.tagName);
-        h.textContent = heading.textContent;
-        inner.appendChild(h);
-
-        var node = heading.nextElementSibling;
-        var charBudget = 1200;
-        var chars = 0;
-        while (node) {
-          var nodeLevel = headingTags[node.tagName];
-          if (nodeLevel && nodeLevel <= level) break;
-          var clone = node.cloneNode(true);
-          clone.querySelectorAll('a[href^="#"]').forEach(function (a) {
-            var span = document.createElement('span');
-            span.innerHTML = a.innerHTML;
-            span.style.fontWeight = a.style.fontWeight || '';
-            a.parentNode.replaceChild(span, a);
-          });
-          inner.appendChild(clone);
-          chars += (node.textContent || '').length;
-          if (chars >= charBudget) break;
-          node = node.nextElementSibling;
-        }
-
-        tip.innerHTML = '';
-        tip.appendChild(inner);
-        return true;
-      }
-
-      function positionTip(link) {
-        var rect = link.getBoundingClientRect();
-        var margin = 10;
-        var tw = tip.offsetWidth;
-        var th = tip.offsetHeight;
-
-        var top = rect.bottom + margin;
-        if (top + th > window.innerHeight - margin) {
-          top = rect.top - th - margin;
-        }
-
-        var left = rect.left;
-        if (left + tw > window.innerWidth - margin) {
-          left = window.innerWidth - tw - margin;
-        }
-        if (left < margin) left = margin;
-
-        tip.style.top = top + 'px';
-        tip.style.left = left + 'px';
-      }
-
-      function showTip(link) {
-        var hash = link.getAttribute('href').slice(1);
-        var heading = document.getElementById(hash);
-        if (!heading || !headingTags[heading.tagName]) return;
-        if (!buildSectionPreview(heading)) return;
-        tip.classList.add('is-visible');
-        positionTip(link);
-      }
-
-      function hideTip() {
-        tip.classList.remove('is-visible');
-      }
-
-      document.addEventListener('mouseover', function (e) {
-        var a = e.target.closest('a[href^="#sec-"]');
-        if (a) showTip(a);
-      });
-
-      document.addEventListener('mouseout', function (e) {
-        var a = e.target.closest('a[href^="#sec-"]');
-        if (a && !a.contains(e.relatedTarget)) hideTip();
-      });
-    })();
-  </script>
-  <script>
-    (function () {
-      var stack = [window.scrollY];
-      var idx = 0;
-      var ignoreScrollUntil = 0;
-      var scrollTimer = null;
-
-      var backBtn = document.getElementById('doc-nav-back');
-      var fwdBtn = document.getElementById('doc-nav-fwd');
-
-      function updateButtons() {
-        backBtn.disabled = idx <= 0;
-        fwdBtn.disabled = idx >= stack.length - 1;
-      }
-
-      function highlight(el) {
-        if (/^H[1-6]$/.test(el.tagName)) {
-          el.classList.remove('heading-highlight');
-          void el.offsetHeight;
-          el.classList.add('heading-highlight');
-          setTimeout(function () { el.classList.remove('heading-highlight'); }, 1800);
-        } else if (el.tagName === 'TR') {
-          el.classList.remove('row-highlight');
-          void el.offsetHeight;
-          el.classList.add('row-highlight');
-          setTimeout(function () { el.classList.remove('row-highlight'); }, 2100);
-        }
-      }
-
-      function elOffsetTop(el) {
-        var top = 0;
-        while (el) { top += el.offsetTop; el = el.offsetParent; }
-        return top;
-      }
-
-      function getTargetY(id) {
-        var el = document.getElementById(id);
-        if (!el) return 0;
-        var y = elOffsetTop(el);
-        if (el.tagName === 'TR') {
-          var stickyTop = parseFloat(
-            getComputedStyle(document.documentElement).getPropertyValue('--table-sticky-top')
-          ) || 0;
-          var thead = el.closest('table') ? el.closest('table').querySelector('thead') : null;
-          y -= stickyTop + (thead ? thead.offsetHeight : 0) + 8;
-        }
-        return Math.max(0, y);
-      }
-
-      function go(y) {
-        ignoreScrollUntil = Date.now() + 500;
-        window.scrollTo({ top: y, behavior: 'instant' });
-      }
-
-      document.addEventListener('click', function (e) {
-        var a = e.target.closest('a[href^="#"]');
-        if (!a) return;
-        e.preventDefault();
-        e.stopPropagation();
-
-        var id = a.getAttribute('href').replace(/^#/, '');
-        var destY = getTargetY(id);
-
-        stack = stack.slice(0, idx + 1);
-        stack[idx] = window.scrollY;
-        stack.push(destY);
-        idx = stack.length - 1;
-
-        go(destY);
-        try { history.replaceState(null, '', '#' + id); } catch (ex) { }
-
-        var target = document.getElementById(id);
-        if (target) highlight(target);
-
-        updateButtons();
-      }, true);
-
-      window.addEventListener('scroll', function () {
-        if (Date.now() < ignoreScrollUntil) return;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(function () {
-          if (Date.now() < ignoreScrollUntil) return;
-          if (idx < stack.length - 1) {
-            stack = stack.slice(0, idx + 1);
-          }
-          stack[idx] = window.scrollY;
-          updateButtons();
-        }, 250);
-      }, { passive: true });
-
-      backBtn.addEventListener('click', function () {
-        if (idx <= 0) return;
-        stack[idx] = window.scrollY;
-        idx--;
-        go(stack[idx]);
-        updateButtons();
-      });
-
-      fwdBtn.addEventListener('click', function () {
-        if (idx >= stack.length - 1) return;
-        stack[idx] = window.scrollY;
-        idx++;
-        go(stack[idx]);
-        updateButtons();
-      });
-
-      updateButtons();
-    })();
-  </script>
-</body>
-
-</html>
+      </div><h1 id="sec-4">4. Workspace</h1>
+<p>This section describes the workspace configuration and conventions.</p>
+<p>(To be filled in later.)</p>
+<h2 id="sec-4-1">4.1 System fields parameters</h2>
+<p>Parameters and configuration for system-level fields.</p>
+<h3 id="sec-4-1-1">4.1.1 Task Types</h3>
+<p>This section explains all task types used in this workspace.</p>
+<h4 id="sec-4-1-1-1">4.1.1.1 Task</h4>
+<p>The default actionable work-item entry type: something you intend to do, track to completion, and manage
+  through a workflow (states, ownership, timing, and urgency). Task is the most operational type—meant for
+  execution rather than just capture—so it relies on ClickUp's built-in workflow machinery such as
+  <em>Status</em>, <em>Assignment</em> and <em>Priority</em>.
+</p>
+<p><strong>Purpose</strong></p>
+<p>A Task represents a unit of work that has an owner (or owners), a lifecycle state, and often a due horizon. You
+  can plan, prioritize, and advance it while keeping context in description, comments, attachments, and
+  relationships.</p>
+<p><strong>Schema</strong></p>
+<p>Core task-defining fields, which define why Tasks feel native in ClickUp:</p>
+<ul>
+  <li><a href="#row-status"><strong>Status</strong></a> — The lifecycle state of the task; statuses are according
+    to the relevant <a href="#sec-4-1-2-2">status group</a>.</li>
+  <li><a href="#row-priority"><strong>Priority</strong></a> — Urgency or importance level of the task.</li>
+  <li><a href="#row-assignees"><strong>Assignees</strong></a> — The person(s) responsible for doing the task.</li>
+  <li><a href="#row-start-date"><strong>Start date</strong></a> — The date from which work can start being done on
+    the task (for whatever constraints apply).</li>
+  <li><a href="#row-due-date"><strong>Due date</strong></a> — The date by which the task must be completed.</li>
+  <li><a href="#row-time-estimate"><strong>Time estimate</strong></a> — Estimated effort or duration for the task.
+  </li>
+  <li><a href="#row-time-tracked"><strong>Time tracked</strong></a> — Actual time logged on the task.</li>
+</ul>
+<h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
+<p>An Event is an entry that represents something that happens at a defined period in time—it has a start and an
+  end. It is about when it occurs and when the user should be made aware of it in advance.</p>
+<p><strong>Purpose</strong></p>
+<p>Events let you record and track occurrences (meetings, deadlines, trips, etc.) and control how far in advance
+  they surface for notification or display. The workspace derives precise start and end times from the dates you
+  set, drives <em>Status</em> from those times, and computes a <strong>Relevance date</strong> so the event can be
+  shown or notified ahead of time.</p>
+<p><strong>Schema</strong></p>
+<ul>
+  <li><strong>Start date</strong> — The date/time when the event starts (user-facing; may be date-only).</li>
+  <li><strong>Due date</strong> — The date/time when the event ends (user-facing; may be date-only).</li>
+  <li><strong>Start time</strong> — A custom field: the precise datetime when the event starts. Used internally;
+    see below.</li>
+  <li><strong>End time</strong> — A custom field: the precise datetime when the event ends. Used internally; see
+    below.</li>
+  <li><strong>Relevance #</strong> — A number: how many units of time in advance the event should start being
+    shown or notified.</li>
+  <li><strong>Relevance Unit</strong> — Single choice: the unit for that advance period (e.g. days, weeks,
+    months).</li>
+  <li><strong>Relevance Date</strong> — A computed datetime: the date on which this event should start being
+    shown/notified to the user. Calculated as: <strong>Start time</strong> minus the relevance period
+    (<strong>Relevance #</strong> + <strong>Relevance Unit</strong>).</li>
+</ul>
+<p><strong>Why Start time and End time</strong></p>
+<p>ClickUp's <strong>Start date</strong> and <strong>Due date</strong> default to 4:00 AM on the given day when
+  the user does not specify a time. That default is unsuitable for events. <strong>Start time</strong> and
+  <strong>End time</strong> are auxiliary computational fields: the system populates them from <strong>Start
+    date</strong> and <strong>Due date</strong> using consistent rules (see below). The user works only with
+  <strong>Start date</strong> and <strong>Due date</strong>; <strong>Start time</strong> and <strong>End
+    time</strong> are not meant to be edited directly.
+</p>
+<p><strong>"Has a time" vs date-only</strong></p>
+<p>The system treats 4:00 AM Jerusalem time as "no time set" (ClickUp's default for date-only). Any other time is
+  treated as a real time and used as-is for <strong>Start time</strong> or <strong>End time</strong>.</p>
+<p><strong>When an event is created</strong></p>
+<p>The system reads <strong>Start date</strong>, <strong>Due date</strong>, <strong>Relevance #</strong>, and
+  <strong>Relevance Unit</strong>, and sets:
+</p>
+<ul>
+  <li><strong>Start time</strong></li>
+  <li><strong>End time</strong> </li>
+  <li><strong>Status</strong></li>
+  <li><strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are
+    set)</li>
+</ul>
+<p><em>Start date → Start time</em></p>
+<ul>
+  <li>If <strong>Start date</strong> has a real time, that time becomes <strong>Start time</strong>.</li>
+  <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that day.
+  </li>
+  <li>If there is no <strong>Start date</strong> but <strong>Due date</strong> exists with no time, <strong>Start
+      time</strong> is set to midnight of the due date.</li>
+  <li>Otherwise <strong>Start time</strong> is left empty.</li>
+</ul>
+<p><em>Due date → End time</em></p>
+<ul>
+  <li>If <strong>Due date</strong> has a real time, that time becomes <strong>End time</strong>.</li>
+  <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the <em>next</em>
+    day (so the event covers the whole day).</li>
+  <li>If there is no <strong>Due date</strong>, <strong>End time</strong> is left empty.</li>
+</ul>
+<p><strong>When the start date is changed</strong></p>
+<p>The system recalculates <strong>Start time</strong> (same rules as above), <strong>End time</strong> (still
+  from <strong>Due date</strong>), <strong>Status</strong>, and <strong>Relevance date</strong>, then updates on
+  the entry: <strong>Start time</strong>, <strong>Status</strong>, <strong>Relevance date</strong>. <strong>End
+    time</strong> is not changed, because it is derived only from <strong>Due date</strong>.</p>
+<p><strong>When the due date is changed</strong></p>
+<p>The system recalculates <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and
+  <strong>Relevance date</strong>, then updates: <strong>End time</strong> (always), <strong>Status</strong>,
+  <strong>Relevance date</strong>. <strong>Start time</strong> is updated only if the entry has no <strong>Start
+    date</strong> (i.e. <strong>Start time</strong> was originally derived from <strong>Due date</strong>). If the
+  entry already has a <strong>Start date</strong>, <strong>Start time</strong> is left as-is.
+</p>
+<p><strong>When Relevance # and/or Relevance Unit is changed</strong></p>
+<p>The system recalculates <strong>Relevance date</strong> (using <strong>Start time</strong> and the relevance
+  period from <strong>Relevance #</strong> and <strong>Relevance Unit</strong>), then updates <strong>Relevance
+    date</strong> on the entry. If <strong>Relevance #</strong> or <strong>Relevance Unit</strong> is cleared,
+  <strong>Relevance date</strong> is cleared or left unset.
+</p>
+<h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
+<p>A Record is an entry that represents something that is documented—a note, observation, or fact captured for
+  reference.</p>
+<p><strong>Purpose</strong></p>
+<p>Records let you document items with a <strong>Timestamp</strong> so you know when they were recorded (or when
+  the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the
+  content and the datetime.</p>
+<p><strong>Schema</strong></p>
+<ul>
+  <li><strong>Timestamp</strong> — The datetime when the record was made (or, if backdated, when the documented
+    thing occurred). When a Record is created, this field should be updated to the current time. The user can
+    change the value afterward—for example, when recording something that happened at an earlier datetime.</li>
+</ul>
+<h3 id="sec-4-1-2">4.1.2 Status groups</h3>
+<p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
+  (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
+  group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
+  practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is
+  strongly coupled with a task type, so the status group chosen at the location level typically functions as the
+  workflow track for that type.</p>
+<p>ClickUp forces every status to live inside one of its built-in subgroups—Not started, Active, Done, Closed—even
+  when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
+  and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
+  Whenever we mention a status, we annotate it with its subgroup in parentheses.</p>
+<h4 id="sec-4-1-2-1">4.1.2.1 Status transitions and triggers</h4>
+<p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
+  workspace, transitions can be driven by four kinds of triggers:</p>
+<ul>
+  <li><span class="trigger-type">Manual</span> — The user explicitly changes the status based on judgment calls
+    and intangible factors that the workspace can't reliably capture or analyze.</li>
+  <li><span class="trigger-type">Internal Conditional</span> — Some change <strong>in the entry</strong> or
+    <strong>elsewhere in the workspace</strong> triggers the transition.
+  </li>
+  <li><span class="trigger-type">External Conditional</span> — A real-world event outside the workspace happens,
+    but it's still something that can be pinpointed and articulated specifically.</li>
+  <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular
+    date-time boundary is reached.</li>
+</ul>
+<h4 id="sec-4-1-2-2">4.1.2.2 Task</h4>
+<p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
+  represents the lifecycle of an actionable work item.</p>
+<ul>
+  <li><strong>Backlog <span class="subgroup">(Not started)</span></strong> — The task exists, but there is no
+    intent to work on it yet. it may transition to <strong>To Do</strong> <em>if and only if</em> at least one of
+    <strong>Start date</strong> or <strong>Due date</strong> is set, which acts as the signal that the task is now
+    being planned.
+  </li>
+  <li><strong>To Do <span class="subgroup">(Not started)</span></strong> — The task has a <strong>Start date
+      and/or Due date</strong> set, so it is now an actual candidate for execution.</li>
+  <li><strong>In Progress <span class="subgroup">(Active)</span></strong> — Work has begun. The move from
+    <strong>To Do</strong> to <strong>In Progress</strong> is <strong>manual</strong>, representing the user
+    explicitly declaring that execution started.
+  </li>
+  <li><strong>Canceled <span class="subgroup">(Done)</span></strong> — The task will not be completed. This can
+    happen either before work started or mid-execution; the point is that it's intentionally stopped.</li>
+  <li><strong>Complete <span class="subgroup">(Closed)</span></strong> — The task is finished and successfully
+    completed.</li>
+</ul>
+<h5 id="sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</h5>
+<ul>
+  <li><strong>Backlog → To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
+    <em>at least one</em> of <strong>Start date</strong> or <strong>Due date</strong> is set.
+  </li>
+  <li><strong>To Do → In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work
+    has begun.</li>
+  <li><strong>(Backlog, To Do, In Progress) → Canceled:</strong> <span class="trigger-type">Manual</span> — The
+    user decides the task will not be completed.</li>
+  <li><strong>(Backlog, To Do, In Progress) → Complete:</strong> <span class="trigger-type">Manual</span> — The
+    user declares the task has been completed.</li>
+  <li><strong>In Progress → To Do:</strong> <span class="trigger-type">Manual</span> — Work is paused, typically
+    because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
+  <li><strong>(To Do, In Progress) → Backlog:</strong> <span class="trigger-type">Internal Conditional</span> —
+    Triggered when <strong>Start date</strong> <em>and</em> <strong>Due date</strong> are reset to
+    <strong>null</strong>.
+  </li>
+</ul>
+<h4 id="sec-4-1-2-3">4.1.2.3 Event</h4>
+<p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
+<ul>
+  <li><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
+    <strong>no Start date and no Due date</strong> are set.
+  </li>
+  <li><strong>Upcoming <span class="subgroup">(Not started)</span></strong> — <strong>Start date and/or Due
+      date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>start time has not
+      arrived yet</strong>.</li>
+  <li><strong>Occurring <span class="subgroup">(Active)</span></strong> — The current date-time is
+    <strong>on/after the event's start time</strong> (i.e., the event is happening now or has started and hasn't
+    ended yet).
+  </li>
+  <li><strong>Occurred <span class="subgroup">(Closed)</span></strong> — The current date-time is <strong>after
+      the event's end time</strong> (operationally: after the <strong>Due date/time</strong>, which we treat as
+    the event's end).</li>
+</ul>
+<h5 id="sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</h5>
+<ul>
+  <li><strong>Not Scheduled → Upcoming: Internal Conditional</strong> — Triggered when at least one of Start date
+    or Due date is set.</li>
+  <li><strong>Upcoming → Occurring: Chronological</strong> — Triggered when the current datetime reaches or passes
+    the event's start datetime.</li>
+  <li><strong>Occurring → Occurred: Chronological</strong> — Triggered when the current datetime reaches or passes
+    the event's end datetime (i.e., the due/end time).</li>
+  <li><strong>(Upcoming, Occurring) → Not Scheduled: Internal Conditional</strong> — Triggered when Start date and
+    Due date are reset to null.</li>
+  <li><strong>Occurring → Upcoming: Internal Conditional</strong> — Triggered when the event's start datetime is
+    moved forward to a datetime that has not yet happened.</li>
+</ul>
+<h4 id="sec-4-1-2-4">4.1.2.4 Shopping</h4>
+<p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
+  models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
+<ul>
+  <li><strong>Idea <span class="subgroup">(Not started)</span></strong> — On the wishlist; we may buy it
+    eventually but are not actively planning to.</li>
+  <li><strong>To Buy <span class="subgroup">(Not started)</span></strong> — We intend to buy it soon. When making
+    an online order or going to the store, this item belongs on the shopping list.</li>
+  <li><strong>In Cart <span class="subgroup">(Active)</span></strong> — For online shopping: the product is
+    selected and sitting in a site's cart, awaiting checkout.</li>
+  <li><strong>Ordered <span class="subgroup">(Active)</span></strong> — An order has been placed; we are waiting
+    for delivery.</li>
+  <li><strong>Cancelled <span class="subgroup">(Done)</span></strong> — The item was in the pipeline at some point
+    but will not be purchased; we have no plans to pursue it further.</li>
+  <li><strong>Received <span class="subgroup">(Closed)</span></strong> — The item has been purchased and received.
+  </li>
+</ul>
+<h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
+<p>Every transition is <strong>manual</strong>. The usual path is <strong>Idea → To Buy → In Cart → Ordered →
+    Received</strong>, but an item may move from any status to any other (e.g. <strong>Ordered</strong> back to
+  <strong>To Buy</strong> after an order is cancelled, or <strong>Idea</strong> to <strong>Cancelled</strong>).
+</p>
+<h4 id="sec-4-1-2-5">4.1.2.5 Statusless</h4>
+<p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
+  entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
+  group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
+  define this minimal, degenerate group with two placeholder statuses:</p>
+<ul>
+  <li><strong>-- <span class="subgroup">(Not started)</span></strong> — Represents the absence of a status;
+    entries that "have no status" live here.</li>
+  <li><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
+    the group; unused in practice.</li>
+</ul>
+<p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
+  status changes are ever made.</p> </main> </div> <footer class="doc-footer">ClickUp Wiki</footer> <script type="module">(function(){const n=[window.scrollY];let e=0,r=0,a=null;const u=document.getElementById("doc-nav-back"),f=document.getElementById("doc-nav-fwd");function s(){u.disabled=e<=0,f.disabled=e>=n.length-1}function g(t){/^H[1-6]$/.test(t.tagName)?(t.classList.remove("heading-highlight"),t.offsetHeight,t.classList.add("heading-highlight"),setTimeout(function(){t.classList.remove("heading-highlight")},1800)):t.tagName==="TR"&&(t.classList.remove("row-highlight"),t.offsetHeight,t.classList.add("row-highlight"),setTimeout(function(){t.classList.remove("row-highlight")},2100))}function h(t){let o=0,i=t;for(;i;)o+=i.offsetTop,i=i.offsetParent;return o}function m(t){const o=document.getElementById(t);if(!o)return 0;let i=h(o);if(o.tagName==="TR"){const l=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--table-sticky-top"))||0,c=o.closest("table")?o.closest("table").querySelector("thead"):null;i-=l+(c?c.offsetHeight:0)+8}return Math.max(0,i)}function d(t){r=Date.now()+500,window.scrollTo({top:t,behavior:"instant"})}document.addEventListener("click",function(t){const o=t.target.closest('a[href^="#"]');if(!o)return;t.preventDefault(),t.stopPropagation();const i=o.getAttribute("href").replace(/^#/,""),l=m(i);n.splice(e+1),n[e]=window.scrollY,n.push(l),e=n.length-1,d(l);try{history.replaceState(null,"","#"+i)}catch{}const c=document.getElementById(i);c&&g(c),s()},!0),window.addEventListener("scroll",function(){Date.now()<r||(a&&clearTimeout(a),a=setTimeout(function(){Date.now()<r||(e<n.length-1&&n.splice(e+1),n[e]=window.scrollY,s())},250))},{passive:!0}),u.addEventListener("click",function(){e<=0||(n[e]=window.scrollY,e--,d(n[e]),s())}),f.addEventListener("click",function(){e>=n.length-1||(n[e]=window.scrollY,e++,d(n[e]),s())}),s()})();</script> <script type="module">(function(){const i=document.createElement("div");i.className="section-preview-tooltip",document.body.appendChild(i);const a={H1:1,H2:2,H3:3,H4:4,H5:5,H6:6};function u(t){const n=a[t.tagName];if(!n)return!1;const e=document.createElement("div");e.className="sec-preview-inner document";const l=document.createElement(t.tagName);l.textContent=t.textContent,e.appendChild(l);let o=t.nextElementSibling,c=0;for(;o;){const f=a[o.tagName];if(f&&f<=n)break;const h=o.cloneNode(!0);if(h.querySelectorAll('a[href^="#"]').forEach(function(r){const d=document.createElement("span");d.innerHTML=r.innerHTML,d.style.fontWeight=r.style.fontWeight||"",r.parentNode.replaceChild(d,r)}),e.appendChild(h),c+=(o.textContent||"").length,c>=1200)break;o=o.nextElementSibling}i.innerHTML="",i.style.setProperty("--sec-preview-scale",String(.65)),i.appendChild(e);const s=e.scrollWidth*.65,H=e.scrollHeight*.65;return i.style.width=Math.min(s+2,520)+"px",i.style.height=Math.min(H+2,360)+"px",!0}function m(t){const n=t.getBoundingClientRect(),e=10,l=i.offsetWidth,o=i.offsetHeight;let c=n.bottom+e;c+o>window.innerHeight-e&&(c=n.top-o-e);let s=n.left;s+l>window.innerWidth-e&&(s=window.innerWidth-l-e),s<e&&(s=e),i.style.top=c+"px",i.style.left=s+"px"}function p(t){const n=t.getAttribute("href").slice(1),e=document.getElementById(n);!e||!a[e.tagName]||u(e)&&(i.classList.add("is-visible"),m(t))}function g(){i.classList.remove("is-visible")}document.addEventListener("mouseover",function(t){const n=t.target.closest('a[href^="#sec-"]');n&&p(n)}),document.addEventListener("mouseout",function(t){const n=t.target.closest('a[href^="#sec-"]');n&&!n.contains(t.relatedTarget)&&g()})})();</script> <script type="module">(function(){const n=document.createElement("div");n.className="row-preview-tooltip",document.body.appendChild(n);function c(o){const t=o.closest("table");if(!t)return!1;const e=t.querySelectorAll("thead th"),s=o.querySelectorAll("td");if(!e.length||!s.length)return!1;let r="<tr>";e.forEach(function(i){r+="<th>"+i.innerHTML+"</th>"}),r+="</tr>";let l="<tr>";return s.forEach(function(i){l+="<td>"+i.innerHTML+"</td>"}),l+="</tr>",n.innerHTML="<table><thead>"+r+"</thead><tbody>"+l+"</tbody></table>",!0}function a(o){const t=o.getBoundingClientRect(),e=10,s=n.offsetWidth,r=n.offsetHeight;let l=t.bottom+e;l+r>window.innerHeight-e&&(l=t.top-r-e);let i=t.left;i+s>window.innerWidth-e&&(i=window.innerWidth-s-e),i<e&&(i=e),n.style.top=l+"px",n.style.left=i+"px"}function d(o){const t=o.getAttribute("href").slice(1),e=document.getElementById(t);!e||e.tagName!=="TR"||c(e)&&(n.classList.add("is-visible"),a(o))}function f(){n.classList.remove("is-visible")}document.addEventListener("mouseover",function(o){const t=o.target.closest('a[href^="#row-"]');t&&d(t)}),document.addEventListener("mouseout",function(o){const t=o.target.closest('a[href^="#row-"]');t&&!t.contains(o.relatedTarget)&&f()})})();</script> <script type="module">(function(){function r(t){const e=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--table-sticky-top"))||0,o=t?t.querySelector("thead"):null,n=o?o.offsetHeight:0;return e+n+8}function c(t){const e=t.closest("table"),o=r(e),n=t.getBoundingClientRect().top+window.scrollY-o;window.scrollTo({top:Math.max(0,n),behavior:"instant"})}function s(t){t.classList.remove("row-highlight"),t.offsetHeight,t.classList.add("row-highlight"),window._rowHighlightTimeout&&clearTimeout(window._rowHighlightTimeout),window._rowHighlightTimeout=setTimeout(function(){t.classList.remove("row-highlight")},2100)}function l(t){if(!t||t.indexOf("row-")!==0)return;const e=document.getElementById(t);!e||e.tagName!=="TR"||(c(e),s(e))}window.addEventListener("load",function(){l(window.location.hash.slice(1))}),window.addEventListener("hashchange",function(){l(window.location.hash.slice(1))}),document.addEventListener("click",function(t){const e=t.target.closest('a[href^="#row-"]');if(!e)return;const o=e.getAttribute("href"),n=o.slice(1),i=document.getElementById(n);!i||i.tagName!=="TR"||(t.preventDefault(),history.pushState(null,"",o),c(i),s(i))})})();</script> <script type="module">(function(){const f=document.querySelector(".doc-content");if(!f)return;const n=Array.from(f.querySelectorAll("h1, h2, h3, h4, h5, h6"));let u=[];const d="clickup-wiki-sticky-headers";function y(e){return parseInt(e.tagName.charAt(1),10)}function b(e){let o=0,c=e;for(;c;)o+=c.offsetTop,c=c.offsetParent;return o}function g(){u=n.map(b)}function h(){const e=document.querySelector(".doc-sticky-toggle"),o=e&&e.getAttribute("aria-pressed")==="true";let c=0;o&&n.forEach(function(i){if(i.classList.contains("sticky-active")){const r=i.getBoundingClientRect().bottom;r>c&&(c=r)}}),document.documentElement.style.setProperty("--table-sticky-top",c+"px")}function s(){const e=document.querySelector(".doc-sticky-toggle");if(e&&e.getAttribute("aria-pressed")!=="true"){n.forEach(function(t){t.classList.remove("sticky-active")}),h();return}let o=0;n.forEach(function(t){t.classList.contains("sticky-active")&&(o+=t.offsetHeight)});const c=window.scrollY+o;let i=0;for(let t=n.length-1;t>=0;t--)if(u[t]<=c){i=t;break}const r=y(n[i]),k=[];for(let t=1;t<=r;t++)for(let a=i;a>=0;a--)if(y(n[a])===t){k.push(n[a]);break}n.forEach(function(t){t.classList.toggle("sticky-active",k.indexOf(t)!==-1)}),h()}function p(e){const o=document.querySelector(".doc-sticky-toggle");if(o){o.setAttribute("aria-pressed",e?"true":"false");try{localStorage.setItem(d,e?"on":"off")}catch{}s()}}g(),window.addEventListener("scroll",s,{passive:!0}),window.addEventListener("resize",function(){g(),s()});const l=document.querySelector(".doc-sticky-toggle");if(l){try{localStorage.getItem(d)==="off"&&p(!1)}catch{}l.addEventListener("click",function(){p(l.getAttribute("aria-pressed")!=="true")})}s()})();</script> <script type="module">(function(){const i=document.querySelector(".doc-toc"),l=document.querySelector(".doc-content");if(!i||!l)return;const o=i.querySelectorAll('a[href^="#"]'),n=[];o.forEach(function(t){const e=t.getAttribute("href").slice(1),s=document.getElementById(e);s&&n.push({id:e,el:s,a:t})});function c(){let t=null;for(let e=n.length-1;e>=0;e--)if(n[e].el.getBoundingClientRect().top<=100){t=n[e];break}!t&&n.length&&(t=n[0]),o.forEach(function(e){e.classList.remove("is-active")}),t&&t.a.classList.add("is-active")}window.addEventListener("scroll",c,{passive:!0}),window.addEventListener("resize",c),c()})();</script> </body> </html>

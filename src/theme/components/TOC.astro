@@ -1,0 +1,56 @@
+---
+export interface TocEntry {
+  id: string;
+  text: string;
+  children?: TocEntry[];
+}
+
+interface Props {
+  entries: TocEntry[];
+}
+
+const { entries } = Astro.props;
+---
+<ul class="doc-toc-list">
+  {entries.map((entry) => (
+    <li>
+      <a href={`#${entry.id}`}>{entry.text}</a>
+      {entry.children && entry.children.length > 0 && (
+        <ul>
+          {entry.children.map((child) => (
+            <li>
+              <a href={`#${child.id}`}>{child.text}</a>
+              {child.children && child.children.length > 0 && (
+                <ul>
+                  {child.children.map((grandchild) => (
+                    <li>
+                      <a href={`#${grandchild.id}`}>{grandchild.text}</a>
+                      {grandchild.children && grandchild.children.length > 0 && (
+                        <ul>
+                          {grandchild.children.map((ggchild) => (
+                            <li>
+                              <a href={`#${ggchild.id}`}>{ggchild.text}</a>
+                              {ggchild.children && ggchild.children.length > 0 && (
+                                <ul>
+                                  {ggchild.children.map((gggchild) => (
+                                    <li>
+                                      <a href={`#${gggchild.id}`}>{gggchild.text}</a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  ))}
+</ul>
