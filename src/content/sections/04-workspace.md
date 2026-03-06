@@ -44,17 +44,17 @@ order: 4
   shown or notified ahead of time.</p>
 <p><strong>Schema</strong></p>
 <ul>
-  <li><strong>Start date</strong> — The date/time when the event starts (user-facing; may be date-only).</li>
-  <li><strong>Due date</strong> — The date/time when the event ends (user-facing; may be date-only).</li>
-  <li><strong>Start time</strong> — A custom field: the precise datetime when the event starts. Used internally;
+  <li><a href="#row-start-date"><strong>Start date</strong></a> — The date/time when the event starts (user-facing; may be date-only).</li>
+  <li><a href="#row-due-date"><strong>Due date</strong></a> — The date/time when the event ends (user-facing; may be date-only).</li>
+  <li><a href="#row-start-time"><strong>Start time</strong></a> — A custom field: the precise datetime when the event starts. Used internally;
     see below.</li>
-  <li><strong>End time</strong> — A custom field: the precise datetime when the event ends. Used internally; see
+  <li><a href="#row-end-time"><strong>End time</strong></a> — A custom field: the precise datetime when the event ends. Used internally; see
     below.</li>
-  <li><strong>Relevance #</strong> — A number: how many units of time in advance the event should start being
+  <li><a href="#row-relevance-number"><strong>Relevance #</strong></a> — A number: how many units of time in advance the event should start being
     shown or notified.</li>
-  <li><strong>Relevance Unit</strong> — Single choice: the unit for that advance period (e.g. days, weeks,
+  <li><a href="#row-relevance-unit"><strong>Relevance Unit</strong></a> — Single choice: the unit for that advance period (e.g. days, weeks,
     months).</li>
-  <li><strong>Relevance Date</strong> — A computed datetime: the date on which this event should start being
+  <li><a href="#row-relevance-date"><strong>Relevance Date</strong></a> — A computed datetime: the date on which this event should start being
     shown/notified to the user. Calculated as: <strong>Start time</strong> minus the relevance period
     (<strong>Relevance #</strong> + <strong>Relevance Unit</strong>).</li>
 </ul>
