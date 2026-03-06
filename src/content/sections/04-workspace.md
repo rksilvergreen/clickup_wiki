@@ -261,3 +261,47 @@ order: 4
   wherever their scope applies.</p>
 <p>Each custom field is built from one of the <a href="#sec-3-2">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
   types, any parameters we use, and how we use them.</p>
+<div class="doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Field Type</th>
+        <th>Description</th>
+        <th>Scopes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="row-start-time">
+        <td>Start Time</td>
+        <td><a href="#row-ft-date">Date</a></td>
+        <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> begins.</td>
+        <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+      <tr id="row-end-time">
+        <td>End Time</td>
+        <td><a href="#row-ft-date">Date</a></td>
+        <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> ends.</td>
+        <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+      <tr id="row-relevance-number">
+        <td>Relevance #</td>
+        <td><a href="#row-ft-number">Number</a></td>
+        <td>How many units of time define the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
+        <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+      <tr id="row-relevance-unit">
+        <td>Relevance Unit</td>
+        <td><a href="#row-ft-dropdown">Dropdown</a></td>
+        <td>The unit of time that defines the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
+        <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+      <tr id="row-relevance-date">
+        <td>Relevance Date</td>
+        <td><a href="#row-ft-date">Date</a></td>
+        <td>The date on which this <a href="#sec-4-1-1-2">event</a> should start being shown or notified to the user.</td>
+        <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
