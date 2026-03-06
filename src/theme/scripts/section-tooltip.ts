@@ -5,9 +5,10 @@
  * real section. No content-restyling rules are needed.
  */
 (function () {
-  const SCALE = 0.65;
+  const SCALE = 1.00;
   const CHAR_BUDGET = 1200;
-  const MAX_HEIGHT = 360;
+  const MAX_HEIGHT = 520;
+  const MAX_WIDTH = 860;
 
   const tip = document.createElement('div');
   tip.className = 'section-preview-tooltip';
@@ -50,7 +51,7 @@
 
     const rawW = inner.scrollWidth * SCALE;
     const rawH = inner.scrollHeight * SCALE;
-    tip.style.width = Math.min(rawW + 2, 520) + 'px';
+    tip.style.width = Math.min(rawW + 2, MAX_WIDTH) + 'px';
     tip.style.height = Math.min(rawH + 2, MAX_HEIGHT) + 'px';
 
     return true;
