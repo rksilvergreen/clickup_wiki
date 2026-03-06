@@ -256,4 +256,8 @@ order: 4
 <p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
 <h2 id="sec-4-2">4.2 Custom fields</h2>
-<p>Custom fields defined and used in this workspace.</p>
+<p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
+  attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
+  wherever their scope applies.</p>
+<p>Each custom field is built from one of the <a href="#sec-3-2">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
+  types, any parameters we use, and how we use them.</p>
