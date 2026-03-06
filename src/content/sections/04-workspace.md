@@ -255,3 +255,5 @@ order: 4
 </ul>
 <p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
+<h2 id="sec-4-2">4.2 Custom fields</h2>
+<p>Custom fields defined and used in this workspace.</p>

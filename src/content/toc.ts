@@ -112,6 +112,7 @@ export const toc: TocEntry[] = [
           },
         ]
       },
+      { id: 'sec-4-2', text: '4.2 Custom fields' },
     ]
   },
 ];

@@ -14,6 +14,10 @@
   tip.className = 'section-preview-tooltip';
   document.body.appendChild(tip);
 
+  const backdrop = document.createElement('div');
+  backdrop.className = 'section-preview-backdrop';
+  document.body.insertBefore(backdrop, tip);
+
   const headingTags: Record<string, number> = { H1: 1, H2: 2, H3: 3, H4: 4, H5: 5, H6: 6 };
 
   function buildSectionPreview(heading: HTMLElement): boolean {
@@ -88,17 +92,26 @@
     tip.style.left = left + 'px';
   }
 
+  let activeLink: HTMLAnchorElement | null = null;
+
   function showTip(link: HTMLAnchorElement) {
+    if (link === activeLink) return;
     const hash = link.getAttribute('href')!.slice(1);
     const heading = document.getElementById(hash);
     if (!heading || !headingTags[heading.tagName]) return;
     if (!buildSectionPreview(heading)) return;
+    activeLink = link;
+    const isTocLink = link.closest('.doc-toc') !== null;
+    if (isTocLink) backdrop.classList.add('is-visible');
+    else backdrop.classList.remove('is-visible');
     tip.classList.add('is-visible');
     positionTip(link);
   }
 
   function hideTip() {
+    activeLink = null;
     tip.classList.remove('is-visible');
+    backdrop.classList.remove('is-visible');
   }
 
   document.addEventListener('mouseover', function (e) {

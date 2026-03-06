@@ -149,7 +149,7 @@ body {
   flex-direction: column;
   border-right: 1px solid var(--doc-border);
   background: #fff;
-  z-index: 10;
+  z-index: 10000;
 }
 
 .doc-toc-inner {
@@ -591,6 +591,26 @@ body {
   font-weight: 500;
   color: var(--doc-ink);
   white-space: nowrap;
+}
+
+/*
+ * Backdrop for TOC section preview — 50% black, blocks interaction with content.
+ * Only shown when preview is triggered from a TOC link.
+ */
+.section-preview-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s, visibility 0.12s;
+}
+
+.section-preview-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*
