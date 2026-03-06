@@ -62,17 +62,27 @@
     const margin = 10;
     const tw = tip.offsetWidth;
     const th = tip.offsetHeight;
+    const isTocLink = link.closest('.doc-toc') !== null;
 
-    let top = rect.bottom + margin;
-    if (top + th > window.innerHeight - margin) {
-      top = rect.top - th - margin;
-    }
+    let left: number;
+    let top: number;
 
-    let left = rect.left;
-    if (left + tw > window.innerWidth - margin) {
-      left = window.innerWidth - tw - margin;
+    if (isTocLink) {
+      // TOC: to the right of the link, same vertical height (top aligned)
+      left = rect.right + margin;
+      top = rect.top;
+      if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
+      if (top + th > window.innerHeight - margin) top = window.innerHeight - th - margin;
+      if (top < margin) top = margin;
+      if (left < margin) left = margin;
+    } else {
+      // Content: below the link (or above if no room)
+      top = rect.bottom + margin;
+      if (top + th > window.innerHeight - margin) top = rect.top - th - margin;
+      left = rect.left;
+      if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
+      if (left < margin) left = margin;
     }
-    if (left < margin) left = margin;
 
     tip.style.top = top + 'px';
     tip.style.left = left + 'px';
