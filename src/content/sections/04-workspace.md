@@ -22,18 +22,32 @@ order: 4
   relationships.</p>
 <p><strong>Schema</strong></p>
 <p>Core task-defining fields, which define why Tasks feel native in ClickUp:</p>
-<ul>
-  <li><a href="#row-status"><strong>Status</strong></a> — The lifecycle state of the task; statuses are according
-    to the relevant <a href="#sec-4-1-2-2">status group</a>.</li>
-  <li><a href="#row-priority"><strong>Priority</strong></a> — Urgency or importance level of the task.</li>
-  <li><a href="#row-assignees"><strong>Assignees</strong></a> — The person(s) responsible for doing the task.</li>
-  <li><a href="#row-start-date"><strong>Start date</strong></a> — The date from which work can start being done on
-    the task (for whatever constraints apply).</li>
-  <li><a href="#row-due-date"><strong>Due date</strong></a> — The date by which the task must be completed.</li>
-  <li><a href="#row-time-estimate"><strong>Time estimate</strong></a> — Estimated effort or duration for the task.
-  </li>
-  <li><a href="#row-time-tracked"><strong>Time tracked</strong></a> — Actual time logged on the task.</li>
-</ul>
+<div class="doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th><a href="#row-status">Status</a></th>
+        <th><a href="#row-priority">Priority</a></th>
+        <th><a href="#row-assignees">Assignees</a></th>
+        <th><a href="#row-start-date">Start date</a></th>
+        <th><a href="#row-due-date">Due date</a></th>
+        <th><a href="#row-time-estimate">Time estimate</a></th>
+        <th><a href="#row-time-tracked">Time tracked</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-1-2-2">status group</a>.</td>
+        <td>Urgency or importance level of the task.</td>
+        <td>The person(s) responsible for doing the task.</td>
+        <td>The date from which work can start being done on the task (for whatever constraints apply).</td>
+        <td>The date by which the task must be completed.</td>
+        <td>Estimated effort or duration for the task.</td>
+        <td>Actual time logged on the task.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
 <p>An Event is an entry that represents something that happens at a defined period in time—it has a start and an
   end. It is about when it occurs and when the user should be made aware of it in advance.</p>
@@ -43,21 +57,32 @@ order: 4
   set, drives <em>Status</em> from those times, and computes a <strong>Relevance date</strong> so the event can be
   shown or notified ahead of time.</p>
 <p><strong>Schema</strong></p>
-<ul>
-  <li><a href="#row-start-date"><strong>Start date</strong></a> — The date/time when the event starts (user-facing; may be date-only).</li>
-  <li><a href="#row-due-date"><strong>Due date</strong></a> — The date/time when the event ends (user-facing; may be date-only).</li>
-  <li><a href="#row-start-time"><strong>Start time</strong></a> — A custom field: the precise datetime when the event starts. Used internally;
-    see below.</li>
-  <li><a href="#row-end-time"><strong>End time</strong></a> — A custom field: the precise datetime when the event ends. Used internally; see
-    below.</li>
-  <li><a href="#row-relevance-number"><strong>Relevance #</strong></a> — A number: how many units of time in advance the event should start being
-    shown or notified.</li>
-  <li><a href="#row-relevance-unit"><strong>Relevance Unit</strong></a> — Single choice: the unit for that advance period (e.g. days, weeks,
-    months).</li>
-  <li><a href="#row-relevance-date"><strong>Relevance Date</strong></a> — A computed datetime: the date on which this event should start being
-    shown/notified to the user. Calculated as: <strong>Start time</strong> minus the relevance period
-    (<strong>Relevance #</strong> + <strong>Relevance Unit</strong>).</li>
-</ul>
+<div class="doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th><a href="#row-start-date">Start date</a></th>
+        <th><a href="#row-due-date">Due date</a></th>
+        <th><a href="#row-start-time">Start time</a></th>
+        <th><a href="#row-end-time">End time</a></th>
+        <th><a href="#row-relevance-number">Relevance #</a></th>
+        <th><a href="#row-relevance-unit">Relevance Unit</a></th>
+        <th><a href="#row-relevance-date">Relevance Date</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The date/time when the event starts (user-facing; may be date-only).</td>
+        <td>The date/time when the event ends (user-facing; may be date-only).</td>
+        <td>A custom field: the precise datetime when the event starts. Used internally; see below.</td>
+        <td>A custom field: the precise datetime when the event ends. Used internally; see below.</td>
+        <td>How many units of time in advance the event should start being shown or notified.</td>
+        <td>The unit for that advance period (e.g. days, weeks, months).</td>
+        <td>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start time minus the relevance period (Relevance # + Relevance Unit).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <p><strong>Why Start time and End time</strong></p>
 <p>ClickUp's <strong>Start date</strong> and <strong>Due date</strong> default to 4:00 AM on the given day when
   the user does not specify a time. That default is unsuitable for events. <strong>Start time</strong> and
@@ -122,11 +147,20 @@ order: 4
   the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the
   content and the datetime.</p>
 <p><strong>Schema</strong></p>
-<ul>
-  <li><strong>Timestamp</strong> — The datetime when the record was made (or, if backdated, when the documented
-    thing occurred). When a Record is created, this field should be updated to the current time. The user can
-    change the value afterward—for example, when recording something that happened at an earlier datetime.</li>
-</ul>
+<div class="doc-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th><a href="#row-ft-date">Timestamp</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The datetime when the record was made (or, if backdated, when the documented thing occurred). When a Record is created, this field should be updated to the current time. The user can change the value afterward—for example, when recording something that happened at an earlier datetime.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <h3 id="sec-4-1-2">4.1.2 Status groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status

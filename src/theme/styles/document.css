@@ -447,6 +447,10 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.15);
 }
 
+.document table thead th a {
+  color: #ffffff;
+}
+
 .document table thead th+th {
   border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
