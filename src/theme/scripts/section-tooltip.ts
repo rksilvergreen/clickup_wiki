@@ -7,8 +7,8 @@
 (function () {
   const SCALE = 1.00;
   const CHAR_BUDGET = 1200;
-  const MAX_HEIGHT = 520;
-  const MAX_WIDTH = 860;
+  const MAX_HEIGHT = 1020;
+  const MAX_WIDTH = 1500;
 
   const tip = document.createElement('div');
   tip.className = 'section-preview-tooltip';
@@ -54,8 +54,8 @@
 
     const rawW = inner.scrollWidth * SCALE;
     const rawH = inner.scrollHeight * SCALE;
-    tip.style.width = Math.min(rawW + 2, MAX_WIDTH) + 'px';
-    tip.style.height = Math.min(rawH + 2, MAX_HEIGHT) + 'px';
+    tip.dataset.idealW = String(Math.min(rawW + 2, MAX_WIDTH));
+    tip.dataset.idealH = String(Math.min(rawH + 2, MAX_HEIGHT));
 
     return true;
   }
@@ -63,30 +63,51 @@
   function positionTip(link: HTMLElement) {
     const rect = link.getBoundingClientRect();
     const margin = 10;
-    const tw = tip.offsetWidth;
-    const th = tip.offsetHeight;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const maxAvailW = vw - 2 * margin;
+    const maxAvailH = vh - 2 * margin;
     const isTocLink = link.closest('.doc-toc') !== null;
+
+    let idealW = Number(tip.dataset.idealW) || MAX_WIDTH;
+    let idealH = Number(tip.dataset.idealH) || MAX_HEIGHT;
+    let tw = Math.min(idealW, maxAvailW);
+    let th = Math.min(idealH, maxAvailH);
 
     let left: number;
     let top: number;
 
     if (isTocLink) {
-      // TOC: to the right of the link, same vertical height (top aligned)
       left = rect.right + margin;
       top = rect.top;
-      if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
-      if (top + th > window.innerHeight - margin) top = window.innerHeight - th - margin;
+      tw = Math.min(tw, vw - left - margin);
+      if (tw < 200) { left = margin; tw = maxAvailW; }
+      if (top + th > vh - margin) top = vh - th - margin;
       if (top < margin) top = margin;
-      if (left < margin) left = margin;
+      th = Math.min(th, vh - top - margin);
     } else {
-      // Content: below the link (or above if no room)
-      top = rect.bottom + margin;
-      if (top + th > window.innerHeight - margin) top = rect.top - th - margin;
       left = rect.left;
-      if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
+      if (left + tw > vw - margin) left = vw - tw - margin;
       if (left < margin) left = margin;
+      tw = Math.min(tw, vw - left - margin);
+
+      const spaceBelow = vh - rect.bottom - margin;
+      const spaceAbove = rect.top - margin;
+      if (th <= spaceBelow) {
+        top = rect.bottom + margin;
+      } else if (th <= spaceAbove) {
+        top = rect.top - th - margin;
+      } else if (spaceBelow >= spaceAbove) {
+        top = rect.bottom + margin;
+        th = spaceBelow;
+      } else {
+        top = margin;
+        th = spaceAbove;
+      }
     }
 
+    tip.style.width = tw + 'px';
+    tip.style.height = th + 'px';
     tip.style.top = top + 'px';
     tip.style.left = left + 'px';
   }
