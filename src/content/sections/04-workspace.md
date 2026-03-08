@@ -243,37 +243,37 @@ order: 4
 </ul>
 <h5 id="sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</h5>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming: Internal Conditional</strong> — Triggered when at least one of Start date
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of Start date
     or Due date is set.</li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>Occurring: Chronological</strong> — Triggered when the current datetime reaches or passes
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>Occurring:</strong> <span class="trigger-type">Chronological</span> — Triggered when the current datetime reaches or passes
     the event's start datetime.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span>Occurred: Chronological</strong> — Triggered when the current datetime reaches or passes
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span>Occurred:</strong> <span class="trigger-type">Chronological</span> — Triggered when the current datetime reaches or passes
     the event's end datetime (i.e., the due/end time).</li>
-  <li><strong>(<span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming, <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>Occurring) → <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span>Not Scheduled: Internal Conditional</strong> — Triggered when Start date and
+  <li><strong>(<span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming, <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>Occurring) → <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span>Not Scheduled:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when Start date and
     Due date are reset to null.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming: Internal Conditional</strong> — Triggered when the event's start datetime is
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when the event's start datetime is
     moved forward to a datetime that has not yet happened.</li>
 </ul>
 <h4 id="sec-4-1-2-4">4.1.2.4 Shopping</h4>
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
-  <li><strong>Idea <span class="subgroup">(Not started)</span></strong> — On the wishlist; we may buy it
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea <span class="subgroup">(Not started)</span></strong> — On the wishlist; we may buy it
     eventually but are not actively planning to.</li>
-  <li><strong>To Buy <span class="subgroup">(Not started)</span></strong> — We intend to buy it soon. When making
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy <span class="subgroup">(Not started)</span></strong> — We intend to buy it soon. When making
     an online order or going to the store, this item belongs on the shopping list.</li>
-  <li><strong>In Cart <span class="subgroup">(Active)</span></strong> — For online shopping: the product is
+  <li><span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart <span class="subgroup">(Active)</span></strong> — For online shopping: the product is
     selected and sitting in a site's cart, awaiting checkout.</li>
-  <li><strong>Ordered <span class="subgroup">(Active)</span></strong> — An order has been placed; we are waiting
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered <span class="subgroup">(Active)</span></strong> — An order has been placed; we are waiting
     for delivery.</li>
-  <li><strong>Cancelled <span class="subgroup">(Done)</span></strong> — The item was in the pipeline at some point
+  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled <span class="subgroup">(Done)</span></strong> — The item was in the pipeline at some point
     but will not be purchased; we have no plans to pursue it further.</li>
-  <li><strong>Received <span class="subgroup">(Closed)</span></strong> — The item has been purchased and received.
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">(Closed)</span></strong> — The item has been purchased and received.
   </li>
 </ul>
 <h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
-<p>Every transition is <strong>manual</strong>. The usual path is <strong>Idea → To Buy → In Cart → Ordered →
-    Received</strong>, but an item may move from any status to any other (e.g. <strong>Ordered</strong> back to
+<p>Every transition is <strong>manual</strong>. The usual path is <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> → <span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart</strong> → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> →
+    <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received</strong>, but an item may move from any status to any other (e.g. <strong>Ordered</strong> back to
   <strong>To Buy</strong> after an order is cancelled, or <strong>Idea</strong> to <strong>Cancelled</strong>).
 </p>
 <h4 id="sec-4-1-2-5">4.1.2.5 Statusless</h4>
@@ -282,9 +282,9 @@ order: 4
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
   define this minimal, degenerate group with two placeholder statuses:</p>
 <ul>
-  <li><strong>-- <span class="subgroup">(Not started)</span></strong> — Represents the absence of a status;
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>-- <span class="subgroup">(Not started)</span></strong> — Represents the absence of a status;
     entries that "have no status" live here.</li>
-  <li><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
     the group; unused in practice.</li>
 </ul>
 <p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
