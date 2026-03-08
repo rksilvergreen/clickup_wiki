@@ -36,14 +36,7 @@
     document.documentElement.style.setProperty('--table-sticky-top', top + 'px');
   }
 
-  function updateStickyActive() {
-    const btn = document.querySelector('.doc-sticky-toggle');
-    if (btn && btn.getAttribute('aria-pressed') !== 'true') {
-      headings.forEach(function (el) { el.classList.remove('sticky-active'); });
-      updateTableStickyTop();
-      return;
-    }
-
+  function computeChain(): HTMLElement[] {
     let stickyHeight = 0;
     headings.forEach(function (el) {
       if (el.classList.contains('sticky-active')) stickyHeight += el.offsetHeight;
@@ -62,10 +55,30 @@
         if (level(headings[j]) === lvl) { chain.push(headings[j]); break; }
       }
     }
+    return chain;
+  }
 
+  function applyChain(chain: HTMLElement[]) {
     headings.forEach(function (el) {
       el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
     });
+  }
+
+  function updateStickyActive() {
+    const btn = document.querySelector('.doc-sticky-toggle');
+    if (btn && btn.getAttribute('aria-pressed') !== 'true') {
+      headings.forEach(function (el) { el.classList.remove('sticky-active'); });
+      updateTableStickyTop();
+      return;
+    }
+
+    let prev: HTMLElement[] = [];
+    for (let pass = 0; pass < 4; pass++) {
+      const chain = computeChain();
+      applyChain(chain);
+      if (chain.length === prev.length && chain.every(function (el, i) { return el === prev[i]; })) break;
+      prev = chain;
+    }
 
     updateTableStickyTop();
   }
