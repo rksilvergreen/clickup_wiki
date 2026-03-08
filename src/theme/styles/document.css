@@ -265,6 +265,23 @@ body {
   position: sticky;
 }
 
+/* Extend sticky header background to the right so wider content doesn't peek through */
+.document h1.sticky-active::after,
+.document h2.sticky-active::after,
+.document h3.sticky-active::after,
+.document h4.sticky-active::after,
+.document h5.sticky-active::after,
+.document h6.sticky-active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100%;
+  background: var(--doc-cream);
+  pointer-events: none;
+}
+
 .document h1.sticky-active {
   top: var(--sticky-h1);
   z-index: 6;
