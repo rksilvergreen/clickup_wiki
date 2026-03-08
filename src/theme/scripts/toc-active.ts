@@ -22,7 +22,15 @@
     }
     if (!active && headings.length) active = headings[0];
     links.forEach(function (a) { a.classList.remove('is-active'); });
-    if (active) active.a.classList.add('is-active');
+    if (active) {
+      active.a.classList.add('is-active');
+      const tocEl = toc as HTMLElement;
+      const linkRect = active.a.getBoundingClientRect();
+      const tocRect = tocEl.getBoundingClientRect();
+      if (linkRect.bottom > tocRect.bottom - 20 || linkRect.top < tocRect.top + 20) {
+        active.a.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
   }
 
   window.addEventListener('scroll', updateActive, { passive: true });

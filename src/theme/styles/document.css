@@ -715,6 +715,10 @@ body {
   transform-origin: top left;
 }
 
+.section-preview-tooltip .sec-preview-inner> :first-child {
+  margin-top: 0;
+}
+
 .section-preview-tooltip::after {
   content: '';
   position: absolute;
