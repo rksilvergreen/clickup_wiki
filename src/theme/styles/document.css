@@ -500,6 +500,7 @@ body {
 .document .doc-schema-table tbody td {
   min-width: 0;
   transition: min-width 0.2s ease;
+  vertical-align: top;
 }
 
 .document .doc-schema-table tbody td:hover {
