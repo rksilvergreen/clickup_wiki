@@ -36,33 +36,15 @@
     document.documentElement.style.setProperty('--table-sticky-top', top + 'px');
   }
 
-  function computeChain(): HTMLElement[] {
-    let stickyHeight = 0;
-    headings.forEach(function (el) {
-      if (el.classList.contains('sticky-active')) stickyHeight += el.offsetHeight;
-    });
-
-    const scrollTop = window.scrollY + stickyHeight;
-    let currentIdx = 0;
-    for (let i = headings.length - 1; i >= 0; i--) {
-      if (docTops[i] <= scrollTop) { currentIdx = i; break; }
+  const stickySlot: number[] = [];
+  (function cacheStickySlots() {
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const style = getComputedStyle(document.documentElement);
+    for (let lvl = 1; lvl <= 6; lvl++) {
+      const val = style.getPropertyValue('--sticky-h' + lvl);
+      stickySlot[lvl] = parseFloat(val) * rem || 0;
     }
-
-    const currentLevel = level(headings[currentIdx]);
-    const chain: HTMLElement[] = [];
-    for (let lvl = 1; lvl <= currentLevel; lvl++) {
-      for (let j = currentIdx; j >= 0; j--) {
-        if (level(headings[j]) === lvl) { chain.push(headings[j]); break; }
-      }
-    }
-    return chain;
-  }
-
-  function applyChain(chain: HTMLElement[]) {
-    headings.forEach(function (el) {
-      el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
-    });
-  }
+  })();
 
   function updateStickyActive() {
     const btn = document.querySelector('.doc-sticky-toggle');
@@ -72,13 +54,24 @@
       return;
     }
 
-    let prev: HTMLElement[] = [];
-    for (let pass = 0; pass < 4; pass++) {
-      const chain = computeChain();
-      applyChain(chain);
-      if (chain.length === prev.length && chain.every(function (el, i) { return el === prev[i]; })) break;
-      prev = chain;
+    const scrollY = window.scrollY;
+    let currentIdx = 0;
+    for (let i = headings.length - 1; i >= 0; i--) {
+      const slot = stickySlot[level(headings[i])];
+      if (docTops[i] - slot <= scrollY) { currentIdx = i; break; }
     }
+
+    const currentLevel = level(headings[currentIdx]);
+    const chain: HTMLElement[] = [];
+    for (let lvl = 1; lvl <= currentLevel; lvl++) {
+      for (let j = currentIdx; j >= 0; j--) {
+        if (level(headings[j]) === lvl) { chain.push(headings[j]); break; }
+      }
+    }
+
+    headings.forEach(function (el) {
+      el.classList.toggle('sticky-active', chain.indexOf(el) !== -1);
+    });
 
     updateTableStickyTop();
   }
