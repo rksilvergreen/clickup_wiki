@@ -74,6 +74,7 @@
     const btn = document.querySelector('.doc-sticky-toggle');
     if (!btn) return;
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    document.documentElement.classList.toggle('sticky-on', on);
     try { localStorage.setItem(STORAGE_KEY, on ? 'on' : 'off'); } catch (_e) { /* noop */ }
     updateStickyActive();
   }
@@ -84,10 +85,12 @@
 
   const btn = document.querySelector('.doc-sticky-toggle');
   if (btn) {
+    let initialOn = true;
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'off') setStickyEnabled(false);
+      if (saved === 'off') initialOn = false;
     } catch (_e) { /* noop */ }
+    setStickyEnabled(initialOn);
     btn.addEventListener('click', function () {
       setStickyEnabled(btn.getAttribute('aria-pressed') !== 'true');
     });

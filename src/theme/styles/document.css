@@ -292,6 +292,32 @@ body {
   z-index: 1;
 }
 
+/* When sticky headers are on, offset anchor-scroll targets so content
+   isn't hidden behind the sticky header stack. */
+.sticky-on .document h1 {
+  scroll-margin-top: var(--sticky-h1);
+}
+
+.sticky-on .document h2 {
+  scroll-margin-top: var(--sticky-h2);
+}
+
+.sticky-on .document h3 {
+  scroll-margin-top: var(--sticky-h3);
+}
+
+.sticky-on .document h4 {
+  scroll-margin-top: var(--sticky-h4);
+}
+
+.sticky-on .document h5 {
+  scroll-margin-top: var(--sticky-h5);
+}
+
+.sticky-on .document h6 {
+  scroll-margin-top: var(--sticky-h6);
+}
+
 .document h1:not(:first-child) {
   margin-top: 2.25rem;
 }

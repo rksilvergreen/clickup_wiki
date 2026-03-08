@@ -33,6 +33,17 @@
     return top;
   }
 
+  function getStickyOffset(el: HTMLElement): number {
+    if (!document.documentElement.classList.contains('sticky-on')) return 0;
+    const tag = el.tagName;
+    if (/^H[1-6]$/.test(tag)) {
+      const level = tag.charAt(1);
+      const val = getComputedStyle(document.documentElement).getPropertyValue('--sticky-h' + level);
+      return parseFloat(val) * parseFloat(getComputedStyle(document.documentElement).fontSize) || 0;
+    }
+    return 0;
+  }
+
   function getTargetY(id: string): number {
     const el = document.getElementById(id);
     if (!el) return 0;
@@ -43,6 +54,8 @@
       ) || 0;
       const thead = el.closest('table') ? el.closest('table')!.querySelector('thead') : null;
       y -= stickyTop + (thead ? thead.offsetHeight : 0) + 8;
+    } else {
+      y -= getStickyOffset(el);
     }
     return Math.max(0, y);
   }
