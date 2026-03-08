@@ -14,10 +14,20 @@
 
   function updateActive() {
     let active: (typeof headings)[number] | null = null;
-    for (let i = headings.length - 1; i >= 0; i--) {
-      if (headings[i].el.getBoundingClientRect().top <= 100) {
-        active = headings[i];
-        break;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5;
+    if (atBottom) {
+      for (let i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].el.getBoundingClientRect().top <= window.innerHeight) {
+          active = headings[i];
+          break;
+        }
+      }
+    } else {
+      for (let i = headings.length - 1; i >= 0; i--) {
+        if (headings[i].el.getBoundingClientRect().top <= 100) {
+          active = headings[i];
+          break;
+        }
       }
     }
     if (!active && headings.length) active = headings[0];
