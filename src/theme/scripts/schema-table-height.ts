@@ -4,14 +4,6 @@
  */
 (function () {
   document.querySelectorAll<HTMLTableElement>('.doc-schema-table').forEach(function (table) {
-    table.addEventListener('mouseenter', function () {
-      if (!table.style.minHeight) {
-        table.style.minHeight = table.offsetHeight + 'px';
-      }
-    });
-
-    table.addEventListener('mouseleave', function () {
-      table.style.minHeight = '';
-    });
+    table.style.minHeight = table.offsetHeight + 'px';
   });
 })();
