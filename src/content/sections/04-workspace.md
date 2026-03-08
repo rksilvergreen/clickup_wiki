@@ -156,36 +156,36 @@ order: 4
 <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
-  <li><strong>Backlog <span class="subgroup">(Not started)</span></strong> — The task exists, but there is no
-    intent to work on it yet. it may transition to <strong>To Do</strong> <em>if and only if</em> at least one of
+  <li><span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span><strong>Backlog <span class="subgroup">(Not started)</span></strong> — The task exists, but there is no
+    intent to work on it yet. it may transition to <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>To Do</strong> <em>if and only if</em> at least one of
     <strong>Start date</strong> or <strong>Due date</strong> is set, which acts as the signal that the task is now
     being planned.
   </li>
-  <li><strong>To Do <span class="subgroup">(Not started)</span></strong> — The task has a <strong>Start date
+  <li><span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>To Do <span class="subgroup">(Not started)</span></strong> — The task has a <strong>Start date
       and/or Due date</strong> set, so it is now an actual candidate for execution.</li>
-  <li><strong>In Progress <span class="subgroup">(Active)</span></strong> — Work has begun. The move from
-    <strong>To Do</strong> to <strong>In Progress</strong> is <strong>manual</strong>, representing the user
+  <li><span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">(Active)</span></strong> — Work has begun. The move from
+    <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>To Do</strong> to <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>In Progress</strong> is <strong>manual</strong>, representing the user
     explicitly declaring that execution started.
   </li>
-  <li><strong>Canceled <span class="subgroup">(Done)</span></strong> — The task will not be completed. This can
+  <li><span class="status-dot" style="background-color:#dc8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">(Done)</span></strong> — The task will not be completed. This can
     happen either before work started or mid-execution; the point is that it's intentionally stopped.</li>
-  <li><strong>Complete <span class="subgroup">(Closed)</span></strong> — The task is finished and successfully
+  <li><span class="status-dot" style="background-color:#30a46c" aria-hidden="true"></span><strong>Complete <span class="subgroup">(Closed)</span></strong> — The task is finished and successfully
     completed.</li>
 </ul>
 <h5 id="sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</h5>
 <ul>
-  <li><strong>Backlog → To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
+  <li><span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span><strong>Backlog → <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
     <em>at least one</em> of <strong>Start date</strong> or <strong>Due date</strong> is set.
   </li>
-  <li><strong>To Do → In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work
+  <li><span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>To Do → <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work
     has begun.</li>
-  <li><strong>(Backlog, To Do, In Progress) → Canceled:</strong> <span class="trigger-type">Manual</span> — The
+  <li><strong>(<span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span>Backlog, <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#dc8084" aria-hidden="true"></span>Canceled:</strong> <span class="trigger-type">Manual</span> — The
     user decides the task will not be completed.</li>
-  <li><strong>(Backlog, To Do, In Progress) → Complete:</strong> <span class="trigger-type">Manual</span> — The
+  <li><strong>(<span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span>Backlog, <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#30a46c" aria-hidden="true"></span>Complete:</strong> <span class="trigger-type">Manual</span> — The
     user declares the task has been completed.</li>
-  <li><strong>In Progress → To Do:</strong> <span class="trigger-type">Manual</span> — Work is paused, typically
+  <li><span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>In Progress → <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Manual</span> — Work is paused, typically
     because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
-  <li><strong>(To Do, In Progress) → Backlog:</strong> <span class="trigger-type">Internal Conditional</span> —
+  <li><strong>(<span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span>Backlog:</strong> <span class="trigger-type">Internal Conditional</span> —
     Triggered when <strong>Start date</strong> <em>and</em> <strong>Due date</strong> are reset to
     <strong>null</strong>.
   </li>
@@ -193,31 +193,31 @@ order: 4
 <h4 id="sec-4-1-2-3">4.1.2.3 Event</h4>
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
-  <li><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
+  <li><span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
     <strong>no Start date and no Due date</strong> are set.
   </li>
-  <li><strong>Upcoming <span class="subgroup">(Not started)</span></strong> — <strong>Start date and/or Due
+  <li><span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">(Not started)</span></strong> — <strong>Start date and/or Due
       date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>start time has not
       arrived yet</strong>.</li>
-  <li><strong>Occurring <span class="subgroup">(Active)</span></strong> — The current date-time is
+  <li><span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">(Active)</span></strong> — The current date-time is
     <strong>on/after the event's start time</strong> (i.e., the event is happening now or has started and hasn't
     ended yet).
   </li>
-  <li><strong>Occurred <span class="subgroup">(Closed)</span></strong> — The current date-time is <strong>after
+  <li><span class="status-dot" style="background-color:#30a46c" aria-hidden="true"></span><strong>Occurred <span class="subgroup">(Closed)</span></strong> — The current date-time is <strong>after
       the event's end time</strong> (operationally: after the <strong>Due date/time</strong>, which we treat as
     the event's end).</li>
 </ul>
 <h5 id="sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</h5>
 <ul>
-  <li><strong>Not Scheduled → Upcoming: Internal Conditional</strong> — Triggered when at least one of Start date
+  <li><span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span><strong>Not Scheduled → <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>Upcoming: Internal Conditional</strong> — Triggered when at least one of Start date
     or Due date is set.</li>
-  <li><strong>Upcoming → Occurring: Chronological</strong> — Triggered when the current datetime reaches or passes
+  <li><span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span><strong>Upcoming → <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>Occurring: Chronological</strong> — Triggered when the current datetime reaches or passes
     the event's start datetime.</li>
-  <li><strong>Occurring → Occurred: Chronological</strong> — Triggered when the current datetime reaches or passes
+  <li><span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#30a46c" aria-hidden="true"></span>Occurred: Chronological</strong> — Triggered when the current datetime reaches or passes
     the event's end datetime (i.e., the due/end time).</li>
-  <li><strong>(Upcoming, Occurring) → Not Scheduled: Internal Conditional</strong> — Triggered when Start date and
+  <li><strong>(<span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>Upcoming, <span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span>Occurring) → <span class="status-dot" style="background-color:#656f7d" aria-hidden="true"></span>Not Scheduled: Internal Conditional</strong> — Triggered when Start date and
     Due date are reset to null.</li>
-  <li><strong>Occurring → Upcoming: Internal Conditional</strong> — Triggered when the event's start datetime is
+  <li><span class="status-dot" style="background-color:#7a6ae6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#fff187" aria-hidden="true"></span>Upcoming: Internal Conditional</strong> — Triggered when the event's start datetime is
     moved forward to a datetime that has not yet happened.</li>
 </ul>
 <h4 id="sec-4-1-2-4">4.1.2.4 Shopping</h4>

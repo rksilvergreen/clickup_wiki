@@ -711,6 +711,18 @@ body {
   font-weight: 500;
 }
 
+.document .status-dot {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: 50%;
+  margin-right: 0.35em;
+  vertical-align: 0.15em;
+  flex-shrink: 0;
+}
+
 .document footer,
 .doc-footer {
   margin-top: 3rem;
