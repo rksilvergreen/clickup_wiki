@@ -6,7 +6,7 @@ order: 4
 <h1 id="sec-4">4. Workspace</h1>
 <p>This section describes the workspace configuration and conventions.</p>
 <p>(To be filled in later.)</p>
-<h2 id="sec-4-1">4.1 System fields parameters</h2>
+<h2 id="sec-4-1">4.1 System Fields Parameters</h2>
 <p>Parameters and configuration for system-level fields.</p>
 <h3 id="sec-4-1-1">4.1.1 Task Types</h3>
 <p>This section explains all task types used in this workspace.</p>
@@ -161,7 +161,7 @@ order: 4
     </tbody>
   </table>
 </div>
-<h3 id="sec-4-1-2">4.1.2 Status groups</h3>
+<h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
@@ -172,7 +172,7 @@ order: 4
   when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
   Whenever we mention a status, we annotate it with its subgroup in parentheses.</p>
-<h4 id="sec-4-1-2-1">4.1.2.1 Status transitions and triggers</h4>
+<h4 id="sec-4-1-2-1">4.1.2.1 Status Transitions and Triggers</h4>
 <p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
@@ -186,7 +186,7 @@ order: 4
   <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular
     date-time boundary is reached.</li>
 </ul>
-<h4 id="sec-4-1-2-2">4.1.2.2 Task</h4>
+<h4 id="sec-4-1-2-2">4.1.2.2 Task Status Group</h4>
 <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
@@ -224,7 +224,7 @@ order: 4
     <strong>null</strong>.
   </li>
 </ul>
-<h4 id="sec-4-1-2-3">4.1.2.3 Event</h4>
+<h4 id="sec-4-1-2-3">4.1.2.3 Event Status Group</h4>
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
@@ -254,7 +254,7 @@ order: 4
   <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when the event's start datetime is
     moved forward to a datetime that has not yet happened.</li>
 </ul>
-<h4 id="sec-4-1-2-4">4.1.2.4 Shopping</h4>
+<h4 id="sec-4-1-2-4">4.1.2.4 Shopping Status Group</h4>
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
@@ -273,10 +273,10 @@ order: 4
 </ul>
 <h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
 <p>Every transition is <strong>manual</strong>. The usual path is <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> → <span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart</strong> → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> →
-    <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received</strong>, but an item may move from any status to any other (e.g. <strong>Ordered</strong> back to
-  <strong>To Buy</strong> after an order is cancelled, or <strong>Idea</strong> to <strong>Cancelled</strong>).
+    <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received</strong>, but an item may move from any status to any other (e.g. <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> back to
+  <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> after an order is cancelled, or <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> to <span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled</strong>).
 </p>
-<h4 id="sec-4-1-2-5">4.1.2.5 Statusless</h4>
+<h4 id="sec-4-1-2-5">4.1.2.5 Statusless Status Group</h4>
 <p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
   entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
@@ -287,9 +287,9 @@ order: 4
   <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
     the group; unused in practice.</li>
 </ul>
-<p>All entries on a Statusless list remain in <strong>--</strong> at all times. There are no transitions; no
+<p>All entries on a Statusless list remain in <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
-<h2 id="sec-4-2">4.2 Custom fields</h2>
+<h2 id="sec-4-2">4.2 Custom Fields</h2>
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>

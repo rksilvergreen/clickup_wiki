@@ -20,7 +20,7 @@ order: 2
   <li><strong>Permissions</strong>: who can view/edit</li>
 </ul>
 <hr />
-<h2 id="sec-2-2">2.2 Field type</h2>
+<h2 id="sec-2-2">2.2 Field Type</h2>
 <p>A <strong>field type</strong> is the classification that determines the field's fundamental data shape and
   interaction model: what values look like, how they are edited, how they are validated, and what operations make
   sense.
@@ -86,13 +86,13 @@ order: 2
     An entry's <strong>effective definition</strong> is derived from the combination of all scopes it is exposed
     to.</li>
 </ul>
-<h3 id="sec-2-6-1">2.6.1 Single database with scopes</h3>
+<h3 id="sec-2-6-1">2.6.1 Single Database with Scopes</h3>
 <p>In many no-code database platforms, the workspace often <em>looks</em> like it contains many separate databases
   scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as
   <strong>one big</strong> <strong>database</strong> of entries with a shared universe of fields—where differences
   in what you see and what applies are explained by scopes.
 </p>
-<h3 id="sec-2-6-2">2.6.2 Scope exposure and scope selector fields</h3>
+<h3 id="sec-2-6-2">2.6.2 Scope Exposure and Scope Selector Fields</h3>
 <p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the
   entry to additional scopes.
   Examples (in abstract terms):</p>
@@ -104,10 +104,10 @@ order: 2
     So some fields are not merely data holders; they are <em>context-binding mechanisms</em> that determine which
     schemas/settings/rules apply.</li>
 </ul>
-<h3 id="sec-2-6-3">2.6.3 Scope hierarchies and inheritance</h3>
+<h3 id="sec-2-6-3">2.6.3 Scope Hierarchies and Inheritance</h3>
 <p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
   Inheritance means that exposure to a child implies exposure to its ancestors.</p>
-<h4 id="sec-2-6-3-1">2.6.3.1 Examples of possible scope hierarchies:</h4>
+<h4 id="sec-2-6-3-1">2.6.3.1 Examples of Possible Scope Hierarchies:</h4>
 <h5 id="sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</h5>
 <p>How entries are grouped by the projects they support and the goals they aim to achieve.</p>
 <div class="doc-tree">
@@ -199,7 +199,7 @@ order: 2
     </li>
   </ul>
 </div>
-<h3 id="sec-2-6-4">2.6.4 Per-scope parameterization</h3>
+<h3 id="sec-2-6-4">2.6.4 Per-Scope Parameterization</h3>
 <p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters.
   Scopes can provide those parameters at different levels.
   For example:</p>
@@ -210,13 +210,13 @@ order: 2
   <li>a templated or AI-driven field can have different prompts/specs per scope
     This allows consistent field kinds while enabling contextual variation.</li>
 </ul>
-<h3 id="sec-2-6-5">2.6.5 Scoped scope-hierarchies</h3>
+<h3 id="sec-2-6-5">2.6.5 Scoped Scope-Hierarchies</h3>
 <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
   particular scope so that only entries already exposed to that scope can access that selector, and only then can
   they branch into a further scope hierarchy.
   This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.
 </p>
-<h4 id="sec-2-6-5-1">2.6.5.1 Examples of possible scoped scope hierarchies:</h4>
+<h4 id="sec-2-6-5-1">2.6.5.1 Examples of Possible Scoped Scope Hierarchies:</h4>
 <h5 id="sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</h5>
 <p>The <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
     Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
@@ -241,6 +241,6 @@ order: 2
     </li>
   </ul>
 </div>
-<h3 id="sec-2-6-6">2.6.6 Entry-local scope</h3>
+<h3 id="sec-2-6-6">2.6.6 Entry-Local Scope</h3>
 <p>In addition to shared scopes, an entry may have an <strong>entry-local scope</strong> that applies only to
   itself—allowing truly per-entry schema/settings/rules extensions.</p>

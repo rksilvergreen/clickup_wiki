@@ -5,7 +5,7 @@ order: 3
 
 <h1 id="sec-3">3. ClickUp</h1>
       <h2 id="sec-3-1">3.1 Fields</h2>
-      <h3 id="sec-3-1-1">3.1.1 Base scope fields</h3>
+      <h3 id="sec-3-1-1">3.1.1 Base Scope Fields</h3>
       <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
         you don’t show them as columns in a view.</p>
       <h4 id="sec-3-1-1-1">3.1.1.1 Base Scope Table</h4>
@@ -215,7 +215,7 @@ order: 3
           </tbody>
         </table>
       </div>
-      <h4 id="sec-3-1-1-2">3.1.1.2 ClickUp's inadequacy</h4>
+      <h4 id="sec-3-1-1-2">3.1.1.2 ClickUp's Inadequacy</h4>
       <p>ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit
         the same base schema— fields like assignee, due date, priority, and workflow status.
         That’s fine when the entry <em>is</em> a work item, but it becomes a mismatch when the entry represents
@@ -227,24 +227,24 @@ order: 3
         (Spaces/Folders/Lists) and also non-location scopes such as Task Types. A Custom Field becomes available
         wherever its scope applies.</p>
       <h2 id="sec-3-2">3.2 Field Types</h2>
-      <h3 id="sec-3-2-1">3.2.1 Field-type families</h3>
-      <h4 id="sec-3-2-1-1">3.2.1.1 System-only field types</h4>
+      <h3 id="sec-3-2-1">3.2.1 Field-Type Families</h3>
+      <h4 id="sec-3-2-1-1">3.2.1.1 System-Only Field Types</h4>
       <p>Some field types exist only as part of ClickUp’s built-in system and aren’t available as Custom Field types you
         can create. Examples include Lists, Status, Task Type, Tags, Priority, Dependencies, and Time Estimate.</p>
-      <h4 id="sec-3-2-1-2">3.2.1.2 Parameterized field types</h4>
+      <h4 id="sec-3-2-1-2">3.2.1.2 Parameterized Field Types</h4>
       <p>Some field types aren’t “complete” until you define parameters such as an option set, a scale, a range, or a
         referenced target.
         Common parameter patterns include option sets (Dropdown, Labels), scales (Rating), ranges (Progress Manual), and
         relationship/selection configuration (Rollup).</p>
-      <h4 id="sec-3-2-1-3">3.2.1.3 Computational field types</h4>
+      <h4 id="sec-3-2-1-3">3.2.1.3 Computational Field Types</h4>
       <p>Some fields represent derived values rather than directly-entered values. Examples include Formula and Progress
         (Auto).</p>
-      <h4 id="sec-3-2-1-4">3.2.1.4 AI field types</h4>
+      <h4 id="sec-3-2-1-4">3.2.1.4 AI Field Types</h4>
       <p>AI fields are computational fields whose values are generated or inferred using AI, typically based on task
         content plus configuration.
         Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, Progress Updates, Translation,
         T-Shirt Size, and Action Items.</p>
-      <h4 id="sec-3-2-1-5">3.2.1.5 Scope-selecting field types</h4>
+      <h4 id="sec-3-2-1-5">3.2.1.5 Scope-Selecting Field Types</h4>
       <p>Some fields determine which scopes apply to a task (and therefore influence what else becomes relevant or
         available). There are two of these: Lists and Task Type.</p>
       <h3 id="sec-3-2-2">3.2.2 Field Types Table</h3>

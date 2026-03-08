@@ -9,18 +9,18 @@ export const toc: TocEntry[] = [
   {
     id: 'sec-2', text: '2. Ontology', children: [
       { id: 'sec-2-1', text: '2.1 Field' },
-      { id: 'sec-2-2', text: '2.2 Field type' },
+      { id: 'sec-2-2', text: '2.2 Field Type' },
       { id: 'sec-2-3', text: '2.3 Schema' },
       { id: 'sec-2-4', text: '2.4 Entry' },
       { id: 'sec-2-5', text: '2.5 Database' },
       {
         id: 'sec-2-6', text: '2.6 Scope', children: [
-          { id: 'sec-2-6-1', text: '2.6.1 Single database with scopes' },
-          { id: 'sec-2-6-2', text: '2.6.2 Scope exposure and scope selector fields' },
+          { id: 'sec-2-6-1', text: '2.6.1 Single Database with Scopes' },
+          { id: 'sec-2-6-2', text: '2.6.2 Scope Exposure and Scope Selector Fields' },
           {
-            id: 'sec-2-6-3', text: '2.6.3 Scope hierarchies and inheritance', children: [
+            id: 'sec-2-6-3', text: '2.6.3 Scope Hierarchies and Inheritance', children: [
               {
-                id: 'sec-2-6-3-1', text: '2.6.3.1 Examples of possible scope hierarchies:', children: [
+                id: 'sec-2-6-3-1', text: '2.6.3.1 Examples of Possible Scope Hierarchies:', children: [
                   { id: 'sec-2-6-3-1-1', text: '2.6.3.1.1 Project Scope Hierarchy' },
                   { id: 'sec-2-6-3-1-2', text: '2.6.3.1.2 Type Scope Hierarchy' },
                   { id: 'sec-2-6-3-1-3', text: '2.6.3.1.3 Responsibility Scope Hierarchy' },
@@ -28,17 +28,17 @@ export const toc: TocEntry[] = [
               },
             ]
           },
-          { id: 'sec-2-6-4', text: '2.6.4 Per-scope parameterization' },
+          { id: 'sec-2-6-4', text: '2.6.4 Per-Scope Parameterization' },
           {
-            id: 'sec-2-6-5', text: '2.6.5 Scoped scope-hierarchies', children: [
+            id: 'sec-2-6-5', text: '2.6.5 Scoped Scope-Hierarchies', children: [
               {
-                id: 'sec-2-6-5-1', text: '2.6.5.1 Examples of possible scoped scope hierarchies:', children: [
+                id: 'sec-2-6-5-1', text: '2.6.5.1 Examples of Possible Scoped Scope Hierarchies:', children: [
                   { id: 'sec-2-6-5-1-1', text: '2.6.5.1.1 Status Scope Hierarchy' },
                 ]
               },
             ]
           },
-          { id: 'sec-2-6-6', text: '2.6.6 Entry-local scope' },
+          { id: 'sec-2-6-6', text: '2.6.6 Entry-Local Scope' },
         ]
       },
     ]
@@ -48,9 +48,9 @@ export const toc: TocEntry[] = [
       {
         id: 'sec-3-1', text: '3.1 Fields', children: [
           {
-            id: 'sec-3-1-1', text: '3.1.1 Base scope fields', children: [
+            id: 'sec-3-1-1', text: '3.1.1 Base Scope Fields', children: [
               { id: 'sec-3-1-1-1', text: '3.1.1.1 Base Scope Table' },
-              { id: 'sec-3-1-1-2', text: '3.1.1.2 ClickUp\'s inadequacy' },
+              { id: 'sec-3-1-1-2', text: '3.1.1.2 ClickUp\'s Inadequacy' },
             ]
           },
           { id: 'sec-3-1-2', text: '3.1.2 Custom Fields' },
@@ -59,12 +59,12 @@ export const toc: TocEntry[] = [
       {
         id: 'sec-3-2', text: '3.2 Field Types', children: [
           {
-            id: 'sec-3-2-1', text: '3.2.1 Field-type families', children: [
-              { id: 'sec-3-2-1-1', text: '3.2.1.1 System-only field types' },
-              { id: 'sec-3-2-1-2', text: '3.2.1.2 Parameterized field types' },
-              { id: 'sec-3-2-1-3', text: '3.2.1.3 Computational field types' },
-              { id: 'sec-3-2-1-4', text: '3.2.1.4 AI field types' },
-              { id: 'sec-3-2-1-5', text: '3.2.1.5 Scope-selecting field types' },
+            id: 'sec-3-2-1', text: '3.2.1 Field-Type Families', children: [
+              { id: 'sec-3-2-1-1', text: '3.2.1.1 System-Only Field Types' },
+              { id: 'sec-3-2-1-2', text: '3.2.1.2 Parameterized Field Types' },
+              { id: 'sec-3-2-1-3', text: '3.2.1.3 Computational Field Types' },
+              { id: 'sec-3-2-1-4', text: '3.2.1.4 AI Field Types' },
+              { id: 'sec-3-2-1-5', text: '3.2.1.5 Scope-Selecting Field Types' },
             ]
           },
           { id: 'sec-3-2-2', text: '3.2.2 Field Types Table' },
@@ -81,7 +81,7 @@ export const toc: TocEntry[] = [
   {
     id: 'sec-4', text: '4. Workspace', children: [
       {
-        id: 'sec-4-1', text: '4.1 System fields parameters', children: [
+        id: 'sec-4-1', text: '4.1 System Fields Parameters', children: [
           {
             id: 'sec-4-1-1', text: '4.1.1 Task Types', children: [
               { id: 'sec-4-1-1-1', text: '4.1.1.1 Task' },
@@ -90,29 +90,29 @@ export const toc: TocEntry[] = [
             ]
           },
           {
-            id: 'sec-4-1-2', text: '4.1.2 Status groups', children: [
-              { id: 'sec-4-1-2-1', text: '4.1.2.1 Status transitions and triggers' },
+            id: 'sec-4-1-2', text: '4.1.2 Status Groups', children: [
+              { id: 'sec-4-1-2-1', text: '4.1.2.1 Status Transitions and Triggers' },
               {
-                id: 'sec-4-1-2-2', text: '4.1.2.2 Task', children: [
+                id: 'sec-4-1-2-2', text: '4.1.2.2 Task Status Group', children: [
                   { id: 'sec-4-1-2-2-1', text: '4.1.2.2.1 Task Transitions' },
                 ]
               },
               {
-                id: 'sec-4-1-2-3', text: '4.1.2.3 Event', children: [
+                id: 'sec-4-1-2-3', text: '4.1.2.3 Event Status Group', children: [
                   { id: 'sec-4-1-2-3-1', text: '4.1.2.3.1 Event Transitions' },
                 ]
               },
               {
-                id: 'sec-4-1-2-4', text: '4.1.2.4 Shopping', children: [
+                id: 'sec-4-1-2-4', text: '4.1.2.4 Shopping Status Group', children: [
                   { id: 'sec-4-1-2-4-1', text: '4.1.2.4.1 Shopping Transitions' },
                 ]
               },
-              { id: 'sec-4-1-2-5', text: '4.1.2.5 Statusless' },
+              { id: 'sec-4-1-2-5', text: '4.1.2.5 Statusless Status Group' },
             ]
           },
         ]
       },
-      { id: 'sec-4-2', text: '4.2 Custom fields' },
+      { id: 'sec-4-2', text: '4.2 Custom Fields' },
     ]
   },
 ];
