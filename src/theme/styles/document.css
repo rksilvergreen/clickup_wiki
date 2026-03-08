@@ -713,13 +713,14 @@ body {
 
 .document .status-dot {
   display: inline-block;
-  width: 0.45em;
-  height: 0.45em;
+  width: 0.60em;
+  height: 0.60em;
   min-width: 6px;
   min-height: 6px;
   border-radius: 50%;
+  border: 1px solid #b9b9b9;
   margin-right: 0.35em;
-  vertical-align: 0.15em;
+  vertical-align: 0.06em;
   flex-shrink: 0;
 }
 
