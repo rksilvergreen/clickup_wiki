@@ -485,7 +485,7 @@ body {
   color: #fff;
   position: sticky;
   top: var(--table-sticky-top, 0px);
-  z-index: 1;
+  z-index: 7;
 }
 
 .document table thead th {
