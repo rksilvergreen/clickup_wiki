@@ -22,8 +22,8 @@ order: 4
   relationships.</p>
 <p><strong>Schema</strong></p>
 <p>Core task-defining fields, which define why Tasks feel native in ClickUp:</p>
-<div class="doc-table-wrap">
-  <table>
+<div class="doc-table-wrap doc-schema-table-wrap">
+  <table class="doc-schema-table">
     <thead>
       <tr>
         <th><a href="#row-status">Status</a></th>
@@ -57,8 +57,8 @@ order: 4
   set, drives <em>Status</em> from those times, and computes a <strong>Relevance date</strong> so the event can be
   shown or notified ahead of time.</p>
 <p><strong>Schema</strong></p>
-<div class="doc-table-wrap">
-  <table>
+<div class="doc-table-wrap doc-schema-table-wrap">
+  <table class="doc-schema-table">
     <thead>
       <tr>
         <th><a href="#row-start-date">Start date</a></th>
@@ -147,8 +147,8 @@ order: 4
   the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the
   content and the datetime.</p>
 <p><strong>Schema</strong></p>
-<div class="doc-table-wrap">
-  <table>
+<div class="doc-table-wrap doc-schema-table-wrap">
+  <table class="doc-schema-table">
     <thead>
       <tr>
         <th><a href="#row-ft-date">Timestamp</a></th>

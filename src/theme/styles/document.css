@@ -478,6 +478,20 @@ body {
   border-bottom: 1px solid var(--doc-border);
 }
 
+/* Schema table: hover a data cell to expand that column */
+.document .doc-schema-table {
+  table-layout: auto;
+}
+
+.document .doc-schema-table tbody td {
+  min-width: 0;
+  transition: min-width 0.2s ease;
+}
+
+.document .doc-schema-table tbody td:hover {
+  min-width: 280px;
+}
+
 .document table td+td {
   border-left: 1px solid var(--doc-border);
 }
