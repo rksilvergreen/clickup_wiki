@@ -151,7 +151,7 @@ order: 4
   <table class="doc-schema-table">
     <thead>
       <tr>
-        <th><a href="#row-ft-date">Timestamp</a></th>
+        <th><a href="#row-timestamp">Timestamp</a></th>
       </tr>
     </thead>
     <tbody>
@@ -296,7 +296,7 @@ order: 4
 <p>Each custom field is built from one of the <a href="#sec-3-2">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
   types, any parameters we use, and how we use them.</p>
 <div class="doc-table-wrap">
-  <table>
+  <table class="doc-custom-fields-table">
     <thead>
       <tr>
         <th>Name</th>
@@ -335,6 +335,12 @@ order: 4
         <td><a href="#row-ft-date">Date</a></td>
         <td>The date on which this <a href="#sec-4-1-1-2">event</a> should start being shown or notified to the user.</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
+      </tr>
+      <tr id="row-timestamp">
+        <td>Timestamp</td>
+        <td><a href="#row-ft-date">Date</a></td>
+        <td>A single datetime, often representing when the documented occurrence happened.</td>
+        <td><a href="#sec-4-1-1-3">Record</a></td>
       </tr>
     </tbody>
   </table>

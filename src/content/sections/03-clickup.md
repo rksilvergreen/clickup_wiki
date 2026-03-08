@@ -10,7 +10,7 @@ order: 3
         you don’t show them as columns in a view.</p>
       <h4 id="sec-3-1-1-1">3.1.1.1 Base Scope Table</h4>
       <div class="doc-table-wrap">
-        <table>
+        <table class="doc-base-scope-table">
           <thead>
             <tr>
               <th>Name</th>
@@ -249,7 +249,7 @@ order: 3
         available). There are two of these: Lists and Task Type.</p>
       <h3 id="sec-3-2-2">3.2.2 Field Types Table</h3>
       <div class="doc-table-wrap">
-        <table>
+        <table class="doc-field-types-table">
           <thead>
             <tr>
               <th>Field type</th>

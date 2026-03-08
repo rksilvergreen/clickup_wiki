@@ -19,6 +19,19 @@
     rowHtml += '</tr>';
 
     tooltip.innerHTML = '<table><thead>' + headHtml + '</thead><tbody>' + rowHtml + '</tbody></table>';
+
+    // Match tooltip header color to source table
+    tooltip.removeAttribute('data-preview-type');
+    if (table.classList.contains('doc-base-scope-table')) {
+      tooltip.setAttribute('data-preview-type', 'base-scope');
+    } else if (table.classList.contains('doc-custom-fields-table')) {
+      tooltip.setAttribute('data-preview-type', 'custom-fields');
+    } else if (table.classList.contains('doc-field-types-table')) {
+      tooltip.setAttribute('data-preview-type', 'field-types');
+    } else if (table.classList.contains('doc-schema-table')) {
+      tooltip.setAttribute('data-preview-type', 'schema');
+    }
+
     return true;
   }
 
