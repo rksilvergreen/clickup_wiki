@@ -168,10 +168,10 @@ order: 4
   practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is
   strongly coupled with a task type, so the status group chosen at the location level typically functions as the
   workflow track for that type.</p>
-<p>ClickUp forces every status to live inside one of its built-in subgroups—Not started, Active, Done, Closed—even
+<p>ClickUp forces every status to live inside one of its built-in subgroups—<span class="subgroup">Not started</span>, <span class="subgroup">Active</span>, <span class="subgroup">Done</span>, <span class="subgroup">Closed</span>—even
   when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
-  Whenever we mention a status, we annotate it with its subgroup in parentheses.</p>
+  Whenever we mention a status, we annotate it with its subgroup as a pill.</p>
 <h4 id="sec-4-1-2-1">4.1.2.1 Status Transitions and Triggers</h4>
 <p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
@@ -190,20 +190,20 @@ order: 4
 <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">(Not started)</span></strong> — The task exists, but there is no
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no
     intent to work on it yet. it may transition to <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> <em>if and only if</em> at least one of
     <strong>Start date</strong> or <strong>Due date</strong> is set, which acts as the signal that the task is now
     being planned.
   </li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">(Not started)</span></strong> — The task has a <strong>Start date
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task has a <strong>Start date
       and/or Due date</strong> set, so it is now an actual candidate for execution.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">(Active)</span></strong> — Work has begun. The move from
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun. The move from
     <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> to <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress</strong> is <strong>manual</strong>, representing the user
     explicitly declaring that execution started.
   </li>
-  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">(Done)</span></strong> — The task will not be completed. This can
+  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">Done</span></strong> — The task will not be completed. This can
     happen either before work started or mid-execution; the point is that it's intentionally stopped.</li>
-  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">(Closed)</span></strong> — The task is finished and successfully
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">Closed</span></strong> — The task is finished and successfully
     completed.</li>
 </ul>
 <h5 id="sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</h5>
@@ -227,17 +227,17 @@ order: 4
 <h4 id="sec-4-1-2-3">4.1.2.3 Event Status Group</h4>
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">(Not started)</span></strong> — The event exists, but
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but
     <strong>no Start date and no Due date</strong> are set.
   </li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">(Not started)</span></strong> — <strong>Start date and/or Due
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <strong>Start date and/or Due
       date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>start time has not
       arrived yet</strong>.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">(Active)</span></strong> — The current date-time is
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is
     <strong>on/after the event's start time</strong> (i.e., the event is happening now or has started and hasn't
     ended yet).
   </li>
-  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">(Closed)</span></strong> — The current date-time is <strong>after
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">Closed</span></strong> — The current date-time is <strong>after
       the event's end time</strong> (operationally: after the <strong>Due date/time</strong>, which we treat as
     the event's end).</li>
 </ul>
@@ -258,17 +258,17 @@ order: 4
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea <span class="subgroup">(Not started)</span></strong> — On the wishlist; we may buy it
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea <span class="subgroup">Not started</span></strong> — On the wishlist; we may buy it
     eventually but are not actively planning to.</li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy <span class="subgroup">(Not started)</span></strong> — We intend to buy it soon. When making
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy <span class="subgroup">Not started</span></strong> — We intend to buy it soon. When making
     an online order or going to the store, this item belongs on the shopping list.</li>
-  <li><span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart <span class="subgroup">(Active)</span></strong> — For online shopping: the product is
+  <li><span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart <span class="subgroup">Active</span></strong> — For online shopping: the product is
     selected and sitting in a site's cart, awaiting checkout.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered <span class="subgroup">(Active)</span></strong> — An order has been placed; we are waiting
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered <span class="subgroup">Active</span></strong> — An order has been placed; we are waiting
     for delivery.</li>
-  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled <span class="subgroup">(Done)</span></strong> — The item was in the pipeline at some point
+  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled <span class="subgroup">Done</span></strong> — The item was in the pipeline at some point
     but will not be purchased; we have no plans to pursue it further.</li>
-  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">(Closed)</span></strong> — The item has been purchased and received.
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">Closed</span></strong> — The item has been purchased and received.
   </li>
 </ul>
 <h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
@@ -282,9 +282,9 @@ order: 4
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
   define this minimal, degenerate group with two placeholder statuses:</p>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>-- <span class="subgroup">(Not started)</span></strong> — Represents the absence of a status;
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>-- <span class="subgroup">Not started</span></strong> — Represents the absence of a status;
     entries that "have no status" live here.</li>
-  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">(Closed)</span></strong> — Required by ClickUp as the closed status for
+  <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">Closed</span></strong> — Required by ClickUp as the closed status for
     the group; unused in practice.</li>
 </ul>
 <p>All entries on a Statusless list remain in <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>--</strong> at all times. There are no transitions; no
