@@ -34,8 +34,7 @@
     let node = heading.nextElementSibling as HTMLElement | null;
     let chars = 0;
     while (node) {
-      const nodeLevel = headingTags[node.tagName];
-      if (nodeLevel && nodeLevel <= level) break;
+      if (headingTags[node.tagName]) break;
       const clone = node.cloneNode(true) as HTMLElement;
       clone.querySelectorAll('a[href^="#"]').forEach(function (a) {
         const span = document.createElement('span');
