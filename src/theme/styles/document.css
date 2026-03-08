@@ -151,7 +151,7 @@ body {
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--doc-border);
-  background: #fff;
+  background: #fcf8f1;
   z-index: 10000;
 }
 
@@ -161,6 +161,7 @@ body {
   overflow-x: hidden;
   min-height: 0;
   padding: 0.5rem 0 2rem 1.25rem;
+  scrollbar-color: var(--doc-border) #f3eee7;;
 }
 
 .doc-toc-list,
