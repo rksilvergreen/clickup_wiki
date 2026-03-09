@@ -534,6 +534,20 @@ body {
   padding: 0;
 }
 
+/* Tighter space between field title and its computation list */
+.document p:has(+ ul.doc-field-comp) {
+  margin-bottom: 0.4rem;
+}
+
+.document p+ul.doc-field-comp {
+  margin-top: 0.25rem;
+}
+
+/* More space between end of computation list and next field title */
+.document ul.doc-field-comp+p {
+  margin-top: 1.5rem;
+}
+
 .document .doc-field-comp .doc-fc-block {
   margin-bottom: 0.75em;
 }
