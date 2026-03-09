@@ -33,7 +33,7 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-task-name">
-              <td>Task name</td>
+              <td>Task Name</td>
               <td>Task title.</td>
               <td><a href="#row-ft-text">Text</a></td>
               <td>No</td>
@@ -51,7 +51,7 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-task-type">
-              <td>Task type</td>
+              <td>Task Type</td>
               <td>Task classification.</td>
               <td><a href="#row-ft-task-type">Task Type</a></td>
               <td>No</td>
@@ -75,25 +75,25 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-start-date">
-              <td>Start date</td>
+              <td>Start Date</td>
               <td>Planned start timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
             </tr>
             <tr id="row-due-date">
-              <td>Due date</td>
+              <td>Due Date</td>
               <td>Planned due timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
             </tr>
             <tr id="row-time-estimate">
-              <td>Time estimate</td>
+              <td>Time Estimate</td>
               <td>Planned effort.</td>
               <td><a href="#row-ft-time-estimate">Time Estimate</a></td>
               <td>No</td>
             </tr>
             <tr id="row-time-tracked">
-              <td>Time tracked</td>
+              <td>Time Tracked</td>
               <td>Logged work time.</td>
               <td><a href="#row-ft-time-tracked">Time Tracked</a></td>
               <td>Yes</td>
@@ -117,7 +117,7 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-linked-tasks">
-              <td>Linked tasks</td>
+              <td>Linked Tasks</td>
               <td>Non-blocking links to other tasks.</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
@@ -135,7 +135,7 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-parent-task">
-              <td>Parent task</td>
+              <td>Parent Task</td>
               <td>Parent (if this is a subtask).</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
@@ -159,43 +159,43 @@ order: 3
               <td>No</td>
             </tr>
             <tr id="row-assigned-comments">
-              <td>Assigned comments</td>
+              <td>Assigned Comments</td>
               <td>Assignable/resolvable comments.</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>No</td>
             </tr>
             <tr id="row-latest-comment">
-              <td>Latest comment</td>
+              <td>Latest Comment</td>
               <td>Most recent comment (as a column).</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>Yes</td>
             </tr>
             <tr id="row-created-by">
-              <td>Created by</td>
+              <td>Created By</td>
               <td>Creator user.</td>
               <td><a href="#row-ft-people">People</a></td>
               <td>No</td>
             </tr>
             <tr id="row-date-created">
-              <td>Date created</td>
+              <td>Date Created</td>
               <td>Creation timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
             </tr>
             <tr id="row-date-updated">
-              <td>Date updated</td>
+              <td>Date Updated</td>
               <td>Last-updated timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
             </tr>
             <tr id="row-date-done">
-              <td>Date done</td>
+              <td>Date Done</td>
               <td>Completion timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
             </tr>
             <tr id="row-date-closed">
-              <td>Date closed</td>
+              <td>Date Closed</td>
               <td>Closed timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
@@ -217,7 +217,7 @@ order: 3
       </div>
       <h4 id="sec-3-1-1-2">3.1.1.2 ClickUp's Inadequacy</h4>
       <p>ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit
-        the same base schema— fields like assignee, due date, priority, and workflow status.
+        the same base schema— fields like Assignees, Due Date, Priority, and Status.
         That’s fine when the entry <em>is</em> a work item, but it becomes a mismatch when the entry represents
         something else entirely, like a record or event. Those fields are either meaningless or create the wrong mental
         model, and while you can hide some columns in specific views, you can’t truly remove the task-shaped defaults
