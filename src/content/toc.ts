@@ -95,7 +95,7 @@ export const toc: TocEntry[] = [
                   { id: 'sec-4-1-1-2-1', text: '4.1.1.2.1 Event Fields' },
                   {
                     id: 'sec-4-1-1-2-2', text: '4.1.1.2.2 Event Operational Rules', children: [
-                      { id: 'sec-4-1-1-2-2-1', text: '4.1.1.2.2.1 Datetime transformations' },
+                      { id: 'sec-4-1-1-2-2-1', text: '4.1.1.2.2.1 Field computations' },
                     ]
                   },
                 ]

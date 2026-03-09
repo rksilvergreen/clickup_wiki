@@ -110,24 +110,32 @@ order: 4
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) recalculate <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) recalculate <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Relevance date</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) recalculate <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) recalculate <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) recalculate <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Relevance # / Relevance Unit changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Relevance date</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>current time &gt; Start time</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>current time &gt; End time</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
   </li>
 </ol>
-<h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Datetime transformations</h6>
-<p><strong>Start date → Start time</strong></p>
+<h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Field computations</h6>
+<p><strong>Start time</strong></p>
 <ul>
   <li>If <strong>Start date</strong> is not set:
     <ul>
@@ -138,12 +146,24 @@ order: 4
   <li>If <strong>Start date</strong> has a real time, that time becomes <strong>Start time</strong>.</li>
   <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that day.</li>
 </ul>
-<p><strong>Due date → End time</strong></p>
+<p><strong>End time</strong></p>
 <ul>
   <li>If <strong>Due date</strong> is not set, <strong>End time</strong> is empty.</li>
   <li>If <strong>Due date</strong> has a real time, that time becomes <strong>End time</strong>.</li>
   <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the
     <em>next</em> day.</li>
+</ul>
+<p><strong>Relevance date</strong></p>
+<ul>
+  <li>If <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set, <strong>Relevance date</strong> is set to <strong>Start time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</li>
+  <li>If either is not set, <strong>Relevance date</strong> is empty.</li>
+</ul>
+<p><strong>Status</strong></p>
+<ul>
+  <li>If <strong>Start date</strong> and <strong>Due date</strong> are not set, <strong>Status</strong> is set to <strong>Not Scheduled</strong>.</li>
+  <li>If <strong>Start date</strong> and/or <strong>Due date</strong> are set and current time &lt; <strong>Start time</strong>, <strong>Status</strong> is set to <strong>Upcoming</strong>.</li>
+  <li>If current time ≥ <strong>Start time</strong> and current time ≤ <strong>End time</strong>, <strong>Status</strong> is set to <strong>Occurring</strong>.</li>
+  <li>If current time &gt; <strong>End time</strong>, <strong>Status</strong> is set to <strong>Occurred</strong>.</li>
 </ul>
 <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
 <p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
