@@ -44,20 +44,36 @@ order: 4
   </table>
 </div>
 <h5 id="sec-4-1-1-1-2">4.1.1.1.2 Task Operational Rules</h5>
-<p>Status transitions driven by <strong>Start date</strong> and <strong>Due date</strong>:</p>
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date or Due date set</strong> →</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>Backlog</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set status to <strong>To Do</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date and Due date cleared</strong> →</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set status to <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
   </li>
 </ol>
-<p>All other transitions are manual. See <a href="#sec-4-1-2-2-1">Task Transitions</a> for the full list.</p>
+<h6 id="sec-4-1-1-1-2-1">4.1.1.1.2.1 Field computations</h6>
+<p><strong>Status</strong></p>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Backlog</strong>.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
+    <div class="doc-fc-nested">
+      <div class="doc-fc-block">
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> status is <strong>Backlog</strong>.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>To Do</strong>.</span></div>
+      </div>
+    </div>
+  </li>
+</ul>
+<p>All other statuses are manual. See <a href="#sec-4-1-2-2-1">Task Transitions</a> for the full list.</p>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
@@ -136,34 +152,73 @@ order: 4
 </ol>
 <h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Field computations</h6>
 <p><strong>Start time</strong></p>
-<ul>
-  <li>If <strong>Start date</strong> is not set:
-    <ul>
-      <li>if <strong>Due date</strong> is not set, <strong>Start time</strong> is empty;</li>
-      <li>if <strong>Due date</strong> is set, <strong>Start time</strong> is set to midnight of the due date.</li>
-    </ul>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> is not set.</span></div>
+    <div class="doc-fc-nested">
+      <div class="doc-fc-block">
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is not set.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is empty.</span></div>
+      </div>
+      <div class="doc-fc-block">
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is set.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to midnight of the due date.</span></div>
+      </div>
+    </div>
   </li>
-  <li>If <strong>Start date</strong> has a real time, that time becomes <strong>Start time</strong>.</li>
-  <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that day.</li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> has a real time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to that time.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> is date-only.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to midnight of that day.</span></div>
+  </li>
 </ul>
 <p><strong>End time</strong></p>
-<ul>
-  <li>If <strong>Due date</strong> is not set, <strong>End time</strong> is empty.</li>
-  <li>If <strong>Due date</strong> has a real time, that time becomes <strong>End time</strong>.</li>
-  <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the
-    <em>next</em> day.</li>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is empty.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> has a real time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is set to that time.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is date-only.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is set to midnight of the <em>next</em> day.</span></div>
+  </li>
 </ul>
 <p><strong>Relevance date</strong></p>
-<ul>
-  <li>If <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set, <strong>Relevance date</strong> is set to <strong>Start time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</li>
-  <li>If either is not set, <strong>Relevance date</strong> is empty.</li>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> is set to <strong>Start time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> is empty.</span></div>
+  </li>
 </ul>
 <p><strong>Status</strong></p>
-<ul>
-  <li>If <strong>Start date</strong> and <strong>Due date</strong> are not set, <strong>Status</strong> is set to <strong>Not Scheduled</strong>.</li>
-  <li>If <strong>Start date</strong> and/or <strong>Due date</strong> are set and current time &lt; <strong>Start time</strong>, <strong>Status</strong> is set to <strong>Upcoming</strong>.</li>
-  <li>If current time ≥ <strong>Start time</strong> and current time ≤ <strong>End time</strong>, <strong>Status</strong> is set to <strong>Occurring</strong>.</li>
-  <li>If current time &gt; <strong>End time</strong>, <strong>Status</strong> is set to <strong>Occurred</strong>.</li>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Not Scheduled</strong>.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and/or <strong>Due date</strong> are set and current time &lt; <strong>Start time</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Upcoming</strong>.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time ≥ <strong>Start time</strong> and current time ≤ <strong>End time</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Occurring</strong>.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time &gt; <strong>End time</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Occurred</strong>.</span></div>
+  </li>
 </ul>
 <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
 <p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records

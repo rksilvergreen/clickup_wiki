@@ -528,6 +528,50 @@ body {
   min-width: 0;
 }
 
+.document .doc-field-comp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.document .doc-field-comp .doc-fc-block {
+  margin-bottom: 0.75em;
+}
+
+.document .doc-field-comp .doc-fc-block:last-child {
+  margin-bottom: 0;
+}
+
+.document .doc-fc-line {
+  display: flex;
+  margin-left: 1em;
+}
+
+.document .doc-fc-line.doc-fc-then {
+  margin-top: 0.35em;
+}
+
+.document .doc-fc-keyword {
+  flex-shrink: 0;
+  width: 3.5em;
+  font-style: italic;
+}
+
+.document .doc-fc-line .doc-fc-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.document .doc-field-comp strong {
+  padding-left: 0.08em;
+  padding-right: 0.08em;
+}
+
+.document .doc-fc-nested {
+  margin-left: 1.5em;
+  margin-top: 0.35em;
+}
+
 .document .doc-tree {
   background: var(--doc-surface);
   border: 1px solid var(--doc-border);
