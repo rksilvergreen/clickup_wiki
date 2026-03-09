@@ -43,25 +43,17 @@ order: 4
     </tbody>
   </table>
 </div>
-<h5 id="sec-4-1-1-1-2">4.1.1.1.2 Task Operational Rules</h5>
-<ol class="doc-rules-list" style="list-style: none">
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date or Due date set</strong> →</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>Backlog</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date and Due date cleared</strong> →</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
-  </li>
-</ol>
-<h6 id="sec-4-1-1-1-2-1">4.1.1.1.2.1 Field computations</h6>
+<h5 id="sec-4-1-1-1-2">4.1.1.1.2 Task Constraints</h5>
 <p><strong>Status</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Backlog</strong>.</span></div>
+    <div class="doc-fc-nested">
+      <div class="doc-fc-block">
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Backlog</strong>.</span></div>
+      </div>
+    </div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
@@ -73,7 +65,21 @@ order: 4
     </div>
   </li>
 </ul>
-<p>All other statuses are manual. See <a href="#sec-4-1-2-2-1">Task Transitions</a> for the full list.</p>
+<h5 id="sec-4-1-1-1-3">4.1.1.1.3 Task Operational Rules</h5>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+</ol>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
@@ -86,6 +92,7 @@ order: 4
   <table class="doc-schema-table">
     <thead>
       <tr>
+        <th><a href="#row-status">Status</a></th>
         <th><a href="#row-start-date">Start date</a></th>
         <th><a href="#row-due-date">Due date</a></th>
         <th><a href="#row-start-time">Start time</a></th>
@@ -97,6 +104,7 @@ order: 4
     </thead>
     <tbody>
       <tr>
+        <td>The lifecycle state of the event; derived from Start time and End time (Not Scheduled, Upcoming, Occurring, Occurred).</td>
         <td>The date/time when the event starts (user-facing; may be date-only).</td>
         <td>The date/time when the event ends (user-facing; may be date-only).</td>
         <td>A custom field: the precise datetime when the event starts. Used internally.</td>
@@ -115,42 +123,7 @@ order: 4
   using the rules below, treating any time other than the 4:00 AM default as a real time and using it as-is. The
   user works only with <strong>Start date</strong> and <strong>Due date</strong>; <strong>Start time</strong> and
   <strong>End time</strong> are not meant to be edited directly.</p>
-<h5 id="sec-4-1-1-2-2">4.1.1.2.2 Event Operational Rules</h5>
-<ol class="doc-rules-list" style="list-style: none">
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Event creation</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Relevance date</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Relevance # / Relevance Unit changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Relevance date</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>current time &gt; Start time</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>current time &gt; End time</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
-  </li>
-</ol>
-<h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Field computations</h6>
+<h5 id="sec-4-1-1-2-2">4.1.1.2.2 Event Constraints</h5>
 <p><strong>Start time</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
@@ -220,6 +193,41 @@ order: 4
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Occurred</strong>.</span></div>
   </li>
 </ul>
+<h5 id="sec-4-1-1-2-3">4.1.1.2.3 Event Operational Rules</h5>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Event created</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Relevance date</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Relevance # / Relevance Unit changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Relevance date</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>current time &gt; Start time</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>current time &gt; End time</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+  </li>
+</ol>
 <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
 <p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
   let you document items with a <strong>Timestamp</strong> so you know when they were recorded (or when the thing

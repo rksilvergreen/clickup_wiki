@@ -922,7 +922,7 @@ body {
   margin-top: 0;
 }
 
-.section-preview-tooltip::after {
+.section-preview-tooltip.has-overflow::after {
   content: '';
   position: absolute;
   bottom: 0;

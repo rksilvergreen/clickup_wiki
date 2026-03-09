@@ -87,21 +87,15 @@ export const toc: TocEntry[] = [
               {
                 id: 'sec-4-1-1-1', text: '4.1.1.1 Task', children: [
                   { id: 'sec-4-1-1-1-1', text: '4.1.1.1.1 Task Fields' },
-                  {
-                    id: 'sec-4-1-1-1-2', text: '4.1.1.1.2 Task Operational Rules', children: [
-                      { id: 'sec-4-1-1-1-2-1', text: '4.1.1.1.2.1 Field computations' },
-                    ]
-                  },
+                  { id: 'sec-4-1-1-1-2', text: '4.1.1.1.2 Task Constraints' },
+                  { id: 'sec-4-1-1-1-3', text: '4.1.1.1.3 Task Operational Rules' },
                 ]
               },
               {
                 id: 'sec-4-1-1-2', text: '4.1.1.2 Event', children: [
                   { id: 'sec-4-1-1-2-1', text: '4.1.1.2.1 Event Fields' },
-                  {
-                    id: 'sec-4-1-1-2-2', text: '4.1.1.2.2 Event Operational Rules', children: [
-                      { id: 'sec-4-1-1-2-2-1', text: '4.1.1.2.2.1 Field computations' },
-                    ]
-                  },
+                  { id: 'sec-4-1-1-2-2', text: '4.1.1.2.2 Event Constraints' },
+                  { id: 'sec-4-1-1-2-3', text: '4.1.1.2.3 Event Operational Rules' },
                 ]
               },
               {

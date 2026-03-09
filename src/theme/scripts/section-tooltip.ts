@@ -126,6 +126,7 @@
     else backdrop.classList.remove('is-visible');
     tip.classList.add('is-visible');
     positionTip(link);
+    tip.classList.toggle('has-overflow', tip.scrollHeight > tip.clientHeight + 1);
   }
 
   function hideTip() {
