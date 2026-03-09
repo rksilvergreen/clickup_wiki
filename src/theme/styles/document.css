@@ -503,8 +503,14 @@ body {
   margin-left: 1em;
 }
 
+.document .doc-rule-header+.doc-rule-line,
 .document .doc-rule-line.doc-rule-then {
   margin-top: 0.35em;
+}
+
+.document .doc-rule-num {
+  flex-shrink: 0;
+  width: 3em;
 }
 
 .document .doc-rule-keyword,

@@ -46,13 +46,15 @@ order: 4
 <h5 id="sec-4-1-1-1-2">4.1.1.1.2 Task Operational Rules</h5>
 <p>Status transitions driven by <strong>Start date</strong> and <strong>Due date</strong>:</p>
 <ol class="doc-rules-list" style="list-style: none">
-  <li>(1) <strong>Start date or Due date set</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>Backlog</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) transition to <strong>To Do</strong> (the signal that the task is now being planned).</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date or Due date set</strong> →</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set status to <strong>To Do</strong>.</span></div>
   </li>
-  <li>(2) <strong>Start date and Due date cleared</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) transition to <strong>Backlog</strong>.</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date and Due date cleared</strong> →</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set status to <strong>Backlog</strong>.</span></div>
   </li>
 </ol>
 <p>All other transitions are manual. See <a href="#sec-4-1-2-2-1">Task Transitions</a> for the full list.</p>
@@ -99,29 +101,29 @@ order: 4
   <strong>End time</strong> are not meant to be edited directly.</p>
 <h5 id="sec-4-1-1-2-2">4.1.1.2.2 Event Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
-  <li>(1) <strong>Event creation</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) event is being created.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set).</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Event creation</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set).</span></div>
   </li>
-  <li>(2) <strong>Start date changed</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Start date</strong> was changed.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong> (per <em>Start date → Start time</em> in Datetime transformations),</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) recalculate <strong>Status</strong> and <strong>Relevance date</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong> on the entry. <strong>End time</strong> is not changed.</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong> (per <em>Start date → Start time</em> in Datetime transformations),</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) recalculate <strong>Status</strong> and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong> on the entry. <strong>End time</strong> is not changed.</span></div>
   </li>
-  <li>(3) <strong>Due date changed</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Due date</strong> was changed.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) update <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong> only if the entry has no <strong>Start date</strong>.</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) update <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong> only if the entry has no <strong>Start date</strong>.</span></div>
   </li>
-  <li>(4) <strong>Relevance # / Relevance Unit changed</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Relevance #</strong> or <strong>Relevance Unit</strong> was changed.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Relevance date</strong> and update it on the entry;</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) if either field is cleared, clear <strong>Relevance date</strong>.</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Relevance # / Relevance Unit changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Relevance date</strong> and update it on the entry;</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) if either field is cleared, clear <strong>Relevance date</strong>.</span></div>
   </li>
 </ol>
 <h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Datetime transformations</h6>
@@ -163,9 +165,9 @@ order: 4
 </div>
 <h5 id="sec-4-1-1-3-2">4.1.1.3.2 Record Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
-  <li>(1) <strong>Record creation</strong> →<br />
-    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) Record is being created.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime. The user can change the value afterward.</span></div>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Record creation</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime. The user can change the value afterward.</span></div>
   </li>
 </ol>
 <h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
