@@ -140,28 +140,48 @@
       }
 
       if (strong.closest('.doc-rule-content')) {
-        const matched = findContainedField(text, scope.fields);
-        if (matched) {
-          strong.classList.add('has-field-tip');
-          strong.dataset.tipText = matched;
-        }
+        wrapFieldNamesInElement(strong, scope.fields);
       }
     }
   }
 
-  function findContainedField(text: string, fields: Record<string, string>): string | null {
-    let best: string | null = null;
-    let bestLen = 0;
+  function wrapFieldNamesInElement(el: HTMLElement, fields: Record<string, string>): void {
+    const text = el.textContent || '';
+    const matches: { name: string; index: number }[] = [];
     for (const name in fields) {
-      if (text.includes(name) && name.length > bestLen) {
-        best = name;
-        bestLen = name.length;
+      let idx = 0;
+      while ((idx = text.indexOf(name, idx)) !== -1) {
+        matches.push({ name, index: idx });
+        idx += name.length;
       }
     }
-    if (!best) return null;
-    const allMatches = Object.keys(fields).filter(function (n) { return text.includes(n); });
-    if (allMatches.length === 1) return fields[best];
-    return allMatches.map(function (n) { return n + ': ' + fields[n]; }).join('\n');
+    if (matches.length === 0) return;
+    matches.sort((a, b) => a.index - b.index);
+    const nonOverlapping: { name: string; index: number }[] = [];
+    for (const m of matches) {
+      const end = m.index + m.name.length;
+      if (nonOverlapping.length === 0 || m.index >= nonOverlapping[nonOverlapping.length - 1].index + nonOverlapping[nonOverlapping.length - 1].name.length) {
+        nonOverlapping.push(m);
+      }
+    }
+    const frag = document.createDocumentFragment();
+    let lastEnd = 0;
+    for (const m of nonOverlapping) {
+      if (m.index > lastEnd) {
+        frag.appendChild(document.createTextNode(text.slice(lastEnd, m.index)));
+      }
+      const span = document.createElement('span');
+      span.className = 'has-field-tip';
+      span.dataset.tipText = fields[m.name];
+      span.textContent = m.name;
+      frag.appendChild(span);
+      lastEnd = m.index + m.name.length;
+    }
+    if (lastEnd < text.length) {
+      frag.appendChild(document.createTextNode(text.slice(lastEnd)));
+    }
+    el.textContent = '';
+    el.appendChild(frag);
   }
 
   document.addEventListener('mouseover', function (e) {
