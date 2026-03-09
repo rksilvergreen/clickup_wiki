@@ -1,46 +1,80 @@
 (function () {
-  const TASK_FIELDS: Record<string, string> = {
-    'Status': 'The lifecycle state of the task.',
-    'Priority': 'Urgency or importance level of the task.',
-    'Assignees': 'The person(s) responsible for doing the task.',
-    'Start date': 'The date from which work can start being done on the task.',
-    'Due date': 'The date by which the task must be completed.',
-    'Time estimate': 'Estimated effort or duration for the task.',
-    'Time tracked': 'Actual time logged on the task.',
-  };
-
-  const EVENT_FIELDS: Record<string, string> = {
-    'Status': 'The lifecycle state of the event; derived from Start time and End time.',
-    'Start date': 'The date/time when the event starts (user-facing; may be date-only).',
-    'Due date': 'The date/time when the event ends (user-facing; may be date-only).',
-    'Start time': 'The precise datetime when the event starts. Used internally.',
-    'End time': 'The precise datetime when the event ends. Used internally.',
-    'Relevance #': 'How many units of time in advance the event should start being shown or notified.',
-    'Relevance Unit': 'The unit for that advance period (e.g. days, weeks, months).',
-    'Relevance date': 'The date on which this event should start being shown/notified to the user.',
-    'Relevance Date': 'The date on which this event should start being shown/notified to the user.',
-  };
-
-  const RECORD_FIELDS: Record<string, string> = {
-    'Timestamp': 'The datetime when the record was made (or, if backdated, when the documented thing occurred).',
-  };
-
   interface StatusDef { color: string; tip: string }
 
-  const TASK_STATUSES: Record<string, StatusDef> = {
-    'Backlog': { color: '#656f7d', tip: 'The task exists, but there is no intent to work on it yet.' },
-    'To Do': { color: '#fff187', tip: 'The task has a Start date and/or Due date set; it is now a candidate for execution.' },
-    'In Progress': { color: '#7a6ae6', tip: 'Work has begun on the task.' },
-    'Canceled': { color: '#dc8084', tip: 'The task will not be completed.' },
-    'Complete': { color: '#30a46c', tip: 'The task is finished and successfully completed.' },
-  };
+  function readFieldsFromTable(sectionId: string): Record<string, string> {
+    const heading = document.getElementById(sectionId);
+    if (!heading) return {};
+    const table = findNextElement(heading, '.doc-schema-table') as HTMLTableElement | null;
+    if (!table) return {};
+    const ths = table.querySelectorAll('thead th');
+    const tds = table.querySelectorAll('tbody td');
+    const fields: Record<string, string> = {};
+    ths.forEach(function (th, i) {
+      const name = (th.textContent || '').trim();
+      const desc = tds[i] ? (tds[i].textContent || '').trim() : '';
+      if (name && desc) fields[name] = desc;
+    });
+    return fields;
+  }
 
-  const EVENT_STATUSES: Record<string, StatusDef> = {
-    'Not Scheduled': { color: '#656f7d', tip: 'The event exists, but no Start date and no Due date are set.' },
-    'Upcoming': { color: '#fff187', tip: 'Start date and/or Due date is set; the event\'s start time has not arrived yet.' },
-    'Occurring': { color: '#7a6ae6', tip: 'The current date-time is on/after the event\'s start time.' },
-    'Occurred': { color: '#30a46c', tip: 'The current date-time is after the event\'s end time.' },
-  };
+  function findNextElement(heading: Element, selector: string): Element | null {
+    let node = heading.nextElementSibling;
+    while (node) {
+      const match = node.querySelector(selector);
+      if (match) return match;
+      if (/^H[1-6]$/.test(node.tagName)) {
+        const headLevel = parseInt(heading.tagName[1], 10);
+        const nodeLevel = parseInt(node.tagName[1], 10);
+        if (nodeLevel <= headLevel) break;
+      }
+      node = node.nextElementSibling;
+    }
+    return null;
+  }
+
+  function readStatusesFromGroup(sectionId: string): Record<string, StatusDef> {
+    const heading = document.getElementById(sectionId);
+    if (!heading) return {};
+    const level = parseInt(heading.tagName[1], 10);
+    const statuses: Record<string, StatusDef> = {};
+    let node = heading.nextElementSibling;
+    while (node) {
+      if (/^H[1-6]$/.test(node.tagName) && parseInt(node.tagName[1], 10) <= level) break;
+      if (node.tagName === 'UL') {
+        node.querySelectorAll(':scope > li').forEach(function (li) {
+          const dot = li.querySelector('.status-dot') as HTMLElement | null;
+          const strong = li.querySelector('strong') as HTMLElement | null;
+          if (!dot || !strong) return;
+          const color = dot.style.backgroundColor || '';
+          const rawName = (strong.textContent || '').trim();
+          const subgroup = strong.querySelector('.subgroup');
+          const subgroupText = subgroup ? (subgroup.textContent || '').trim() : '';
+          const name = subgroupText ? rawName.replace(subgroupText, '').trim() : rawName;
+          const liText = li.textContent || '';
+          const dashIdx = liText.indexOf('—');
+          const tip = dashIdx >= 0 ? liText.slice(dashIdx + 1).trim() : '';
+          if (name && tip) statuses[name] = { color, tip };
+        });
+        break;
+      }
+      node = node.nextElementSibling;
+    }
+    return statuses;
+  }
+
+  const TASK_FIELDS_ID = 'sec-4-1-1-1-1';
+  const EVENT_FIELDS_ID = 'sec-4-1-1-2-1';
+  const RECORD_FIELDS_ID = 'sec-4-1-1-3-1';
+  const TASK_STATUS_GROUP_ID = 'sec-4-1-2-2';
+  const EVENT_STATUS_GROUP_ID = 'sec-4-1-2-3';
+
+  type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
+
+  const SCOPES: SectionScope[] = [
+    { id: 'sec-4-1-1-1', fields: readFieldsFromTable(TASK_FIELDS_ID), statuses: readStatusesFromGroup(TASK_STATUS_GROUP_ID) },
+    { id: 'sec-4-1-1-2', fields: readFieldsFromTable(EVENT_FIELDS_ID), statuses: readStatusesFromGroup(EVENT_STATUS_GROUP_ID) },
+    { id: 'sec-4-1-1-3', fields: readFieldsFromTable(RECORD_FIELDS_ID), statuses: {} },
+  ];
 
   const tip = document.createElement('div');
   tip.className = 'field-status-tooltip';
@@ -78,17 +112,8 @@
   }
 
   function isInsideFieldsTable(el: HTMLElement): boolean {
-    const table = el.closest('.doc-schema-table');
-    return table !== null;
+    return el.closest('.doc-schema-table') !== null;
   }
-
-  type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
-
-  const SCOPES: SectionScope[] = [
-    { id: 'sec-4-1-1-1', fields: TASK_FIELDS, statuses: TASK_STATUSES },
-    { id: 'sec-4-1-1-2', fields: EVENT_FIELDS, statuses: EVENT_STATUSES },
-    { id: 'sec-4-1-1-3', fields: RECORD_FIELDS, statuses: {} },
-  ];
 
   function collectSectionElements(headingId: string): HTMLElement[] {
     const heading = document.getElementById(headingId);
@@ -159,7 +184,6 @@
     matches.sort((a, b) => a.index - b.index);
     const nonOverlapping: { name: string; index: number }[] = [];
     for (const m of matches) {
-      const end = m.index + m.name.length;
       if (nonOverlapping.length === 0 || m.index >= nonOverlapping[nonOverlapping.length - 1].index + nonOverlapping[nonOverlapping.length - 1].name.length) {
         nonOverlapping.push(m);
       }
