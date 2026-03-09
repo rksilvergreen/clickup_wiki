@@ -11,17 +11,12 @@ order: 4
 <h3 id="sec-4-1-1">4.1.1 Task Types</h3>
 <p>This section explains all task types used in this workspace.</p>
 <h4 id="sec-4-1-1-1">4.1.1.1 Task</h4>
-<p>The default actionable work-item entry type: something you intend to do, track to completion, and manage
-  through a workflow (states, ownership, timing, and urgency). Task is the most operational type—meant for
-  execution rather than just capture—so it relies on ClickUp's built-in workflow machinery such as
-  <em>Status</em>, <em>Assignment</em> and <em>Priority</em>.
-</p>
-<p><strong>Purpose</strong></p>
-<p>A Task represents a unit of work that has an owner (or owners), a lifecycle state, and often a due horizon. You
-  can plan, prioritize, and advance it while keeping context in description, comments, attachments, and
-  relationships.</p>
-<p><strong>Schema</strong></p>
-<p>Core task-defining fields, which define why Tasks feel native in ClickUp:</p>
+<p>The default actionable work-item entry type, representing a unit of work that you intend to do, track to
+  completion, and manage through a workflow. A Task has an owner (or owners), a lifecycle state, and often a due
+  horizon; you can plan, prioritize, and advance it while keeping context in description, comments, attachments,
+  and relationships. As the most operational type—meant for execution rather than just capture—it relies on
+  ClickUp's built-in workflow machinery such as <em>Status</em>, <em>Assignment</em>, and <em>Priority</em>.</p>
+<h5 id="sec-4-1-1-1-1">4.1.1.1.1 Task Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">
   <table class="doc-schema-table">
     <thead>
@@ -49,14 +44,13 @@ order: 4
   </table>
 </div>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
-<p>An Event is an entry that represents something that happens at a defined period in time—it has a start and an
-  end. It is about when it occurs and when the user should be made aware of it in advance.</p>
-<p><strong>Purpose</strong></p>
-<p>Events let you record and track occurrences (meetings, deadlines, trips, etc.) and control how far in advance
-  they surface for notification or display. The workspace derives precise start and end times from the dates you
-  set, drives <em>Status</em> from those times, and computes a <strong>Relevance date</strong> so the event can be
-  shown or notified ahead of time.</p>
-<p><strong>Schema</strong></p>
+<p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
+  about when it occurs and when the user should be made aware of it in advance. Events let you record and track
+  occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
+  display. The workspace derives precise start and end times from the dates you set, drives <em>Status</em> from
+  those times, and computes a <strong>Relevance date</strong> so the event can be shown or notified ahead of
+  time.</p>
+<h5 id="sec-4-1-1-2-1">4.1.1.2.1 Event Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">
   <table class="doc-schema-table">
     <thead>
@@ -74,8 +68,8 @@ order: 4
       <tr>
         <td>The date/time when the event starts (user-facing; may be date-only).</td>
         <td>The date/time when the event ends (user-facing; may be date-only).</td>
-        <td>A custom field: the precise datetime when the event starts. Used internally; see below.</td>
-        <td>A custom field: the precise datetime when the event ends. Used internally; see below.</td>
+        <td>A custom field: the precise datetime when the event starts. Used internally.</td>
+        <td>A custom field: the precise datetime when the event ends. Used internally.</td>
         <td>How many units of time in advance the event should start being shown or notified.</td>
         <td>The unit for that advance period (e.g. days, weeks, months).</td>
         <td>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start time minus the relevance period (Relevance # + Relevance Unit).</td>
@@ -83,70 +77,58 @@ order: 4
     </tbody>
   </table>
 </div>
-<p><strong>Why Start time and End time</strong></p>
 <p>ClickUp's <strong>Start date</strong> and <strong>Due date</strong> default to 4:00 AM on the given day when
-  the user does not specify a time. That default is unsuitable for events. <strong>Start time</strong> and
-  <strong>End time</strong> are auxiliary computational fields: the system populates them from <strong>Start
-    date</strong> and <strong>Due date</strong> using consistent rules (see below). The user works only with
-  <strong>Start date</strong> and <strong>Due date</strong>; <strong>Start time</strong> and <strong>End
-    time</strong> are not meant to be edited directly.
-</p>
-<p><strong>"Has a time" vs date-only</strong></p>
-<p>The system treats 4:00 AM Jerusalem time as "no time set" (ClickUp's default for date-only). Any other time is
-  treated as a real time and used as-is for <strong>Start time</strong> or <strong>End time</strong>.</p>
-<p><strong>When an event is created</strong></p>
-<p>The system reads <strong>Start date</strong>, <strong>Due date</strong>, <strong>Relevance #</strong>, and
-  <strong>Relevance Unit</strong>, and sets:
-</p>
-<ul>
-  <li><strong>Start time</strong></li>
-  <li><strong>End time</strong> </li>
-  <li><strong>Status</strong></li>
-  <li><strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are
-    set)</li>
-</ul>
-<p><em>Start date → Start time</em></p>
+  the user does not specify a time—the system treats this 4:00 AM Jerusalem time as "no time set." That default
+  is unsuitable for events, so <strong>Start time</strong> and <strong>End time</strong> exist as auxiliary
+  computational fields: the system populates them from <strong>Start date</strong> and <strong>Due date</strong>
+  using the rules below, treating any time other than the 4:00 AM default as a real time and using it as-is. The
+  user works only with <strong>Start date</strong> and <strong>Due date</strong>; <strong>Start time</strong> and
+  <strong>End time</strong> are not meant to be edited directly.</p>
+<h5 id="sec-4-1-1-2-2">4.1.1.2.2 Event Operational Rules</h5>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>(1) <strong>Event creation</strong> — The system reads <strong>Start date</strong>, <strong>Due date</strong>,
+    <strong>Relevance #</strong>, and <strong>Relevance Unit</strong>, and sets: <strong>Start time</strong>,
+    <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong> (if
+    <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set).</li>
+  <li>(2) <strong>Start date changed</strong> — The system recalculates <strong>Start time</strong> (same rules as
+    <em>Start date → Start time</em> in Datetime transformations below), <strong>Status</strong>, and
+    <strong>Relevance date</strong>, then updates them on the entry. <strong>End time</strong> is not changed,
+    because it is derived only from <strong>Due date</strong>.</li>
+  <li>(3) <strong>Due date changed</strong> — The system recalculates <strong>Start time</strong>,
+    <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>, then updates:
+    <strong>End time</strong> (always), <strong>Status</strong>, and <strong>Relevance date</strong>.
+    <strong>Start time</strong> is updated only if the entry has no <strong>Start date</strong> (i.e.
+    <strong>Start time</strong> was originally derived from <strong>Due date</strong>). If the entry already has
+    a <strong>Start date</strong>, <strong>Start time</strong> is left as-is.</li>
+  <li>(4) <strong>Relevance # / Relevance Unit changed</strong> — The system recalculates
+    <strong>Relevance date</strong> (using <strong>Start time</strong> and the relevance period from
+    <strong>Relevance #</strong> and <strong>Relevance Unit</strong>), then updates
+    <strong>Relevance date</strong> on the entry. If either field is cleared,
+    <strong>Relevance date</strong> is cleared or left unset.</li>
+</ol>
+<h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Datetime transformations</h6>
+<p><strong>Start date → Start time</strong></p>
 <ul>
   <li>If <strong>Start date</strong> has a real time, that time becomes <strong>Start time</strong>.</li>
-  <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that day.
-  </li>
-  <li>If there is no <strong>Start date</strong> but <strong>Due date</strong> exists with no time, <strong>Start
-      time</strong> is set to midnight of the due date.</li>
+  <li>If <strong>Start date</strong> is date-only, <strong>Start time</strong> is set to midnight of that
+    day.</li>
+  <li>If there is no <strong>Start date</strong> but <strong>Due date</strong> exists with no time,
+    <strong>Start time</strong> is set to midnight of the due date.</li>
   <li>Otherwise <strong>Start time</strong> is left empty.</li>
 </ul>
-<p><em>Due date → End time</em></p>
+<p><strong>Due date → End time</strong></p>
 <ul>
   <li>If <strong>Due date</strong> has a real time, that time becomes <strong>End time</strong>.</li>
-  <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the <em>next</em>
-    day (so the event covers the whole day).</li>
+  <li>If <strong>Due date</strong> is date-only, <strong>End time</strong> is set to midnight of the
+    <em>next</em> day (so the event covers the whole day).</li>
   <li>If there is no <strong>Due date</strong>, <strong>End time</strong> is left empty.</li>
 </ul>
-<p><strong>When the start date is changed</strong></p>
-<p>The system recalculates <strong>Start time</strong> (same rules as above), <strong>End time</strong> (still
-  from <strong>Due date</strong>), <strong>Status</strong>, and <strong>Relevance date</strong>, then updates on
-  the entry: <strong>Start time</strong>, <strong>Status</strong>, <strong>Relevance date</strong>. <strong>End
-    time</strong> is not changed, because it is derived only from <strong>Due date</strong>.</p>
-<p><strong>When the due date is changed</strong></p>
-<p>The system recalculates <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and
-  <strong>Relevance date</strong>, then updates: <strong>End time</strong> (always), <strong>Status</strong>,
-  <strong>Relevance date</strong>. <strong>Start time</strong> is updated only if the entry has no <strong>Start
-    date</strong> (i.e. <strong>Start time</strong> was originally derived from <strong>Due date</strong>). If the
-  entry already has a <strong>Start date</strong>, <strong>Start time</strong> is left as-is.
-</p>
-<p><strong>When Relevance # and/or Relevance Unit is changed</strong></p>
-<p>The system recalculates <strong>Relevance date</strong> (using <strong>Start time</strong> and the relevance
-  period from <strong>Relevance #</strong> and <strong>Relevance Unit</strong>), then updates <strong>Relevance
-    date</strong> on the entry. If <strong>Relevance #</strong> or <strong>Relevance Unit</strong> is cleared,
-  <strong>Relevance date</strong> is cleared or left unset.
-</p>
 <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
-<p>A Record is an entry that represents something that is documented—a note, observation, or fact captured for
-  reference.</p>
-<p><strong>Purpose</strong></p>
-<p>Records let you document items with a <strong>Timestamp</strong> so you know when they were recorded (or when
-  the thing actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the
-  content and the datetime.</p>
-<p><strong>Schema</strong></p>
+<p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
+  let you document items with a <strong>Timestamp</strong> so you know when they were recorded (or when the thing
+  actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the content
+  and the datetime.</p>
+<h5 id="sec-4-1-1-3-1">4.1.1.3.1 Record Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">
   <table class="doc-schema-table">
     <thead>
@@ -156,11 +138,16 @@ order: 4
     </thead>
     <tbody>
       <tr>
-        <td>The datetime when the record was made (or, if backdated, when the documented thing occurred). When a Record is created, this field should be updated to the current time. The user can change the value afterward—for example, when recording something that happened at an earlier datetime.</td>
+        <td>The datetime when the record was made (or, if backdated, when the documented thing occurred).</td>
       </tr>
     </tbody>
   </table>
 </div>
+<h5 id="sec-4-1-1-3-2">4.1.1.3.2 Record Operational Rules</h5>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>(1) When a Record is created, <strong>Timestamp</strong> is set to the current datetime. The user can change
+    the value afterward—for example, when recording something that happened at an earlier datetime.</li>
+</ol>
 <h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status

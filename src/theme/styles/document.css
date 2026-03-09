@@ -469,6 +469,14 @@ body {
   height: 4px;
 }
 
+.document .doc-rules-list li {
+  margin-bottom: 1em;
+}
+
+.document .doc-rules-list li:last-child {
+  margin-bottom: 0;
+}
+
 .document .doc-tree {
   background: var(--doc-surface);
   border: 1px solid var(--doc-border);
