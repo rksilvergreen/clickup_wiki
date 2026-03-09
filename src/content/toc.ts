@@ -87,6 +87,7 @@ export const toc: TocEntry[] = [
               {
                 id: 'sec-4-1-1-1', text: '4.1.1.1 Task', children: [
                   { id: 'sec-4-1-1-1-1', text: '4.1.1.1.1 Task Fields' },
+                  { id: 'sec-4-1-1-1-2', text: '4.1.1.1.2 Task Operational Rules' },
                 ]
               },
               {

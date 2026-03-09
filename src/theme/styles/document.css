@@ -498,6 +498,30 @@ body {
   margin-bottom: 0;
 }
 
+.document .doc-rule-line {
+  display: flex;
+  margin-left: 1em;
+}
+
+.document .doc-rule-line.doc-rule-then {
+  margin-top: 0.35em;
+}
+
+.document .doc-rule-keyword,
+.document .doc-rule-cont {
+  flex-shrink: 0;
+  width: 4.5em;
+}
+
+.document .doc-rule-keyword {
+  font-style: italic;
+}
+
+.document .doc-rule-content {
+  flex: 1;
+  min-width: 0;
+}
+
 .document .doc-tree {
   background: var(--doc-surface);
   border: 1px solid var(--doc-border);

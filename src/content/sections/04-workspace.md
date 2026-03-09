@@ -43,6 +43,19 @@ order: 4
     </tbody>
   </table>
 </div>
+<h5 id="sec-4-1-1-1-2">4.1.1.1.2 Task Operational Rules</h5>
+<p>Status transitions driven by <strong>Start date</strong> and <strong>Due date</strong>:</p>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>(1) <strong>Start date or Due date set</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) transition to <strong>To Do</strong> (the signal that the task is now being planned).</span></div>
+  </li>
+  <li>(2) <strong>Start date and Due date cleared</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) transition to <strong>Backlog</strong>.</span></div>
+  </li>
+</ol>
+<p>All other transitions are manual. See <a href="#sec-4-1-2-2-1">Task Transitions</a> for the full list.</p>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
@@ -86,25 +99,30 @@ order: 4
   <strong>End time</strong> are not meant to be edited directly.</p>
 <h5 id="sec-4-1-1-2-2">4.1.1.2.2 Event Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
-  <li>(1) <strong>Event creation</strong> — The system reads <strong>Start date</strong>, <strong>Due date</strong>,
-    <strong>Relevance #</strong>, and <strong>Relevance Unit</strong>, and sets: <strong>Start time</strong>,
-    <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong> (if
-    <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set).</li>
-  <li>(2) <strong>Start date changed</strong> — The system recalculates <strong>Start time</strong> (same rules as
-    <em>Start date → Start time</em> in Datetime transformations below), <strong>Status</strong>, and
-    <strong>Relevance date</strong>, then updates them on the entry. <strong>End time</strong> is not changed,
-    because it is derived only from <strong>Due date</strong>.</li>
-  <li>(3) <strong>Due date changed</strong> — The system recalculates <strong>Start time</strong>,
-    <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>, then updates:
-    <strong>End time</strong> (always), <strong>Status</strong>, and <strong>Relevance date</strong>.
-    <strong>Start time</strong> is updated only if the entry has no <strong>Start date</strong> (i.e.
-    <strong>Start time</strong> was originally derived from <strong>Due date</strong>). If the entry already has
-    a <strong>Start date</strong>, <strong>Start time</strong> is left as-is.</li>
-  <li>(4) <strong>Relevance # / Relevance Unit changed</strong> — The system recalculates
-    <strong>Relevance date</strong> (using <strong>Start time</strong> and the relevance period from
-    <strong>Relevance #</strong> and <strong>Relevance Unit</strong>), then updates
-    <strong>Relevance date</strong> on the entry. If either field is cleared,
-    <strong>Relevance date</strong> is cleared or left unset.</li>
+  <li>(1) <strong>Event creation</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) event is being created.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong> (if <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set).</span></div>
+  </li>
+  <li>(2) <strong>Start date changed</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Start date</strong> was changed.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong> (per <em>Start date → Start time</em> in Datetime transformations),</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) recalculate <strong>Status</strong> and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong> on the entry. <strong>End time</strong> is not changed.</span></div>
+  </li>
+  <li>(3) <strong>Due date changed</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Due date</strong> was changed.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Start time</strong>, <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) update <strong>End time</strong>, <strong>Status</strong>, and <strong>Relevance date</strong>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) update <strong>Start time</strong> only if the entry has no <strong>Start date</strong>.</span></div>
+  </li>
+  <li>(4) <strong>Relevance # / Relevance Unit changed</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) <strong>Relevance #</strong> or <strong>Relevance Unit</strong> was changed.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) recalculate <strong>Relevance date</strong> and update it on the entry;</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) if either field is cleared, clear <strong>Relevance date</strong>.</span></div>
+  </li>
 </ol>
 <h6 id="sec-4-1-1-2-2-1">4.1.1.2.2.1 Datetime transformations</h6>
 <p><strong>Start date → Start time</strong></p>
@@ -145,8 +163,10 @@ order: 4
 </div>
 <h5 id="sec-4-1-1-3-2">4.1.1.3.2 Record Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
-  <li>(1) When a Record is created, <strong>Timestamp</strong> is set to the current datetime. The user can change
-    the value afterward—for example, when recording something that happened at an earlier datetime.</li>
+  <li>(1) <strong>Record creation</strong> →<br />
+    <div class="doc-rule-line"><span class="doc-rule-keyword"><em>If</em></span><span class="doc-rule-content">(i) Record is being created.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime. The user can change the value afterward.</span></div>
+  </li>
 </ol>
 <h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
