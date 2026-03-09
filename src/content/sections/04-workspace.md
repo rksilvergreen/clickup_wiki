@@ -47,37 +47,27 @@ order: 4
 <p><strong>Status</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are not set.</span></div>
-    <div class="doc-fc-nested">
-      <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> status is <strong>To Do</strong> or <strong>In Progress</strong>.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Backlog</strong>.</span></div>
-      </div>
-    </div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Backlog</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
-    <div class="doc-fc-nested">
-      <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> status is <strong>Backlog</strong>.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>To Do</strong>.</span></div>
-      </div>
-    </div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must <em>not</em> be <strong>Backlog</strong>.</span></div>
   </li>
 </ul>
 <h5 id="sec-4-1-1-1-3">4.1.1.1.3 Task Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
   </li>
 </ol>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
@@ -127,105 +117,105 @@ order: 4
 <p><strong>Start time</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> is not set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> is <em>not</em> set.</span></div>
     <div class="doc-fc-nested">
       <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is not set.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is empty.</span></div>
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is <em>not</em> set.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> must be empty.</span></div>
       </div>
       <div class="doc-fc-block">
         <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is set.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to midnight of the due date.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> must be midnight of the due date.</span></div>
       </div>
     </div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> has a real time.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to that time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> must be that time.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> is date-only.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> is set to midnight of that day.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start time</strong> must be midnight of that day.</span></div>
   </li>
 </ul>
 <p><strong>End time</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is empty.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> must be empty.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> has a real time.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is set to that time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> must be that time.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due date</strong> is date-only.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> is set to midnight of the <em>next</em> day.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End time</strong> must be midnight of the <em>next</em> day.</span></div>
   </li>
 </ul>
 <p><strong>Relevance date</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Relevance #</strong> and <strong>Relevance Unit</strong> are set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> is set to <strong>Start time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> must be <strong>Start time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> is empty.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance date</strong> must be empty.</span></div>
   </li>
 </ul>
 <p><strong>Status</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Not Scheduled</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and <strong>Due date</strong> are <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Not Scheduled</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start date</strong> and/or <strong>Due date</strong> are set and current time &lt; <strong>Start time</strong>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Upcoming</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Upcoming</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time ≥ <strong>Start time</strong> and current time ≤ <strong>End time</strong>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Occurring</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Occurring</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time &gt; <strong>End time</strong>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> is set to <strong>Occurred</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Occurred</strong>.</span></div>
   </li>
 </ul>
 <h5 id="sec-4-1-1-2-3">4.1.1.2.3 Event Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Event created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Start time</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <strong>End time</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <strong>Status</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <strong>Relevance date</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Start time</strong> constraints,</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <strong>Relevance date</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Start time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <strong>End time</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) set <strong>Status</strong>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) set <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Start time</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <strong>End time</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <strong>Status</strong> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <strong>Relevance date</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Relevance # / Relevance Unit changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Relevance date</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Relevance date</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>current time &gt; Start time</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>current time &gt; End time</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
   </li>
 </ol>
 <h4 id="sec-4-1-1-3">4.1.1.3 Record</h4>
