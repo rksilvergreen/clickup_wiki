@@ -9,48 +9,40 @@ interface Props {
   entries: TocEntry[];
 }
 
+interface FlatEntry {
+  id: string;
+  num: string;
+  name: string;
+  depth: number;
+}
+
+function flatten(entries: TocEntry[], depth: number = 0): FlatEntry[] {
+  const result: FlatEntry[] = [];
+  for (const entry of entries) {
+    const match = entry.text.match(/^([\d.]+)\s+(.+)$/);
+    result.push({
+      id: entry.id,
+      num: match ? match[1] : '',
+      name: match ? match[2] : entry.text,
+      depth,
+    });
+    if (entry.children) {
+      result.push(...flatten(entry.children, depth + 1));
+    }
+  }
+  return result;
+}
+
 const { entries } = Astro.props;
+const flat = flatten(entries);
 ---
 <ul class="doc-toc-list">
-  {entries.map((entry) => (
+  {flat.map((entry) => (
     <li>
-      <a href={`#${entry.id}`}>{entry.text}</a>
-      {entry.children && entry.children.length > 0 && (
-        <ul>
-          {entry.children.map((child) => (
-            <li>
-              <a href={`#${child.id}`}>{child.text}</a>
-              {child.children && child.children.length > 0 && (
-                <ul>
-                  {child.children.map((grandchild) => (
-                    <li>
-                      <a href={`#${grandchild.id}`}>{grandchild.text}</a>
-                      {grandchild.children && grandchild.children.length > 0 && (
-                        <ul>
-                          {grandchild.children.map((ggchild) => (
-                            <li>
-                              <a href={`#${ggchild.id}`}>{ggchild.text}</a>
-                              {ggchild.children && ggchild.children.length > 0 && (
-                                <ul>
-                                  {ggchild.children.map((gggchild) => (
-                                    <li>
-                                      <a href={`#${gggchild.id}`}>{gggchild.text}</a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      <a href={`#${entry.id}`} data-depth={entry.depth}>
+        <span class="toc-num">{entry.num}</span>
+        <span class="toc-name" style={`padding-left: ${entry.depth * 0.5}rem`}>{entry.name}</span>
+      </a>
     </li>
   ))}
 </ul>

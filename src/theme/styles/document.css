@@ -187,13 +187,40 @@ body {
   left: 0;
   top: 4px;
   bottom: 0;
-  width: 280px;
+  width: var(--doc-toc-width, 280px);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--doc-border);
   background: var(--doc-toc-bg);
   z-index: 10000;
+}
+
+.doc-toc-resize {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: 6px;
+  bottom: 0;
+  cursor: col-resize;
+  z-index: 10001;
+}
+
+.doc-toc-resize::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.doc-toc-resize:hover::after,
+.doc-toc-resize.is-dragging::after {
+  background: var(--doc-highlight);
 }
 
 .doc-toc-inner {
@@ -205,8 +232,7 @@ body {
   scrollbar-color: var(--doc-scrollbar-thumb) var(--doc-scrollbar-track);
 }
 
-.doc-toc-list,
-.doc-toc .doc-toc-list ul {
+.doc-toc-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -217,33 +243,28 @@ body {
   padding: 0;
 }
 
-.doc-toc-list>li>a {
-  display: block;
-  padding: 0.35rem 1rem 0.35rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--doc-ink);
-  text-decoration: none;
-  border-left: 3px solid transparent;
-}
-
-.doc-toc-list ul li a {
-  display: block;
-  padding: 0.25rem 1rem 0.25rem 1.25rem;
-  font-size: 0.85rem;
+.doc-toc-list a {
+  display: flex;
+  align-items: baseline;
+  padding: 0.25rem 1rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: var(--doc-ink-light);
   text-decoration: none;
   border-left: 3px solid transparent;
 }
 
-.doc-toc-list ul ul li a {
-  padding-left: 1.75rem;
-  font-size: 0.8rem;
+.doc-toc-list a[data-depth="0"] {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--doc-ink);
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
 }
 
-.doc-toc-list ul ul ul li a {
-  padding-left: 2.25rem;
+.toc-num {
+  flex-shrink: 0;
+  margin-right: 0.4em;
 }
 
 .doc-toc a:hover {
@@ -263,7 +284,7 @@ body {
 }
 
 .doc-content {
-  margin-left: 280px;
+  margin-left: var(--doc-toc-width, 280px);
   flex: 1;
   max-width: 720px;
   padding: 3rem 2.5rem;

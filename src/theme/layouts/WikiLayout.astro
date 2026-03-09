@@ -42,6 +42,7 @@ const { title, tocEntries } = Astro.props;
       <div class="doc-toc-inner">
         <TOC entries={tocEntries} />
       </div>
+      <div class="doc-toc-resize" aria-hidden="true"></div>
     </nav>
     <main class="document doc-content">
       <slot />
@@ -49,6 +50,7 @@ const { title, tocEntries } = Astro.props;
   </div>
   <footer class="doc-footer">{title}</footer>
 
+  <script src="../scripts/toc-resize.ts"></script>
   <script src="../scripts/toc-active.ts"></script>
   <script src="../scripts/sticky-headers.ts"></script>
   <script src="../scripts/row-navigation.ts"></script>
