@@ -59,35 +59,35 @@ order: 4
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start date</strong> is <em>not</em> set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due date</strong> is <em>not</em> set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Status</strong> is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Status</strong> is <strong>Backlog</strong>.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><span class="doc-rule-group"><span class="doc-rule-group-line"><strong>Start date</strong> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><strong>Due date</strong> is set.</span></span></span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><strong>Start date</strong> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><strong>Due date</strong> is set.</span></span></span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start date</strong> is <em>not</em> set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due date</strong> is <em>not</em> set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Status</strong> is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Status</strong> is <strong>Backlog</strong>.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><span class="doc-rule-group"><span class="doc-rule-group-line"><strong>Start date</strong> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><strong>Due date</strong> is set.</span></span></span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><strong>Start date</strong> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><strong>Due date</strong> is set.</span></span></span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
 </ol>
@@ -115,11 +115,11 @@ order: 4
     </thead>
     <tbody>
       <tr>
-        <td>The lifecycle state of the event; derived from Start time and End time (Not Scheduled, Upcoming, Occurring, Occurred).</td>
-        <td>The date/time when the event starts (user-facing; may be date-only).</td>
-        <td>The date/time when the event ends (user-facing; may be date-only).</td>
-        <td>A custom field: the precise datetime when the event starts. Used internally.</td>
-        <td>A custom field: the precise datetime when the event ends. Used internally.</td>
+        <td>The lifecycle state of the event. Statuses are according to the relevant <a href="#sec-4-1-2-3">status group</a>.</td>
+        <td>The date/time when the event starts.</td>
+        <td>The date/time when the event ends.</td>
+        <td>The precise datetime when the event starts. Used internally.</td>
+        <td>The precise datetime when the event ends. Used internally.</td>
         <td>How many units of time in advance the event should start being shown or notified.</td>
         <td>The unit for that advance period (e.g. days, weeks, months).</td>
         <td>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start time minus the relevance period (Relevance # + Relevance Unit).</td>
