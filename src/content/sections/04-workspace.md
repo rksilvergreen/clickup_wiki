@@ -259,7 +259,14 @@ order: 4
     </tbody>
   </table>
 </div>
-<h5 id="sec-4-1-1-3-2">4.1.1.3.2 Record Operational Rules</h5>
+<h5 id="sec-4-1-1-3-2">4.1.1.3.2 Record Constraints</h5>
+<p><strong>Timestamp</strong></p>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><strong>Timestamp</strong> must be set.</span></div>
+  </li>
+</ul>
+<h5 id="sec-4-1-1-3-3">4.1.1.3.3 Record Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Record creation</strong> →</span></div>

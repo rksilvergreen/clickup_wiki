@@ -101,7 +101,8 @@ export const toc: TocEntry[] = [
               {
                 id: 'sec-4-1-1-3', text: '4.1.1.3 Record', children: [
                   { id: 'sec-4-1-1-3-1', text: '4.1.1.3.1 Record Fields' },
-                  { id: 'sec-4-1-1-3-2', text: '4.1.1.3.2 Record Operational Rules' },
+                  { id: 'sec-4-1-1-3-2', text: '4.1.1.3.2 Record Constraints' },
+                  { id: 'sec-4-1-1-3-3', text: '4.1.1.3.3 Record Operational Rules' },
                 ]
               },
             ]
