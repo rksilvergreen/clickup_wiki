@@ -59,15 +59,40 @@ order: 4
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> and/or <strong>Due date</strong> are set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">and</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <strong>Status</strong> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Status</strong> is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">and</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Start date</strong> is set</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">or</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Start date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">and</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
+  </li>
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due date changed</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content"><strong>Status</strong> is <strong>Backlog</strong>.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">and</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Start date</strong> is set</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">or</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><strong>Due date</strong> is set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
 </ol>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>

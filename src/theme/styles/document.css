@@ -504,7 +504,8 @@ body {
 }
 
 .document .doc-rule-header+.doc-rule-line,
-.document .doc-rule-line.doc-rule-then {
+.document .doc-rule-line.doc-rule-then,
+.document .doc-rule-line.doc-rule-conditions {
   margin-top: 0.35em;
 }
 
@@ -516,7 +517,7 @@ body {
 .document .doc-rule-keyword,
 .document .doc-rule-cont {
   flex-shrink: 0;
-  width: 4.5em;
+  width: 6.5em;
 }
 
 .document .doc-rule-keyword {
