@@ -21,24 +21,62 @@ order: 4
   <table class="doc-schema-table">
     <thead>
       <tr>
-        <th><a href="#row-status">Status</a></th>
-        <th><a href="#row-priority">Priority</a></th>
-        <th><a href="#row-assignees">Assignees</a></th>
-        <th><a href="#row-start-date">Start date</a></th>
-        <th><a href="#row-due-date">Due date</a></th>
-        <th><a href="#row-time-estimate">Time estimate</a></th>
-        <th><a href="#row-time-tracked">Time tracked</a></th>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Nullable</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><a href="#row-status">Status</a></td>
         <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-1-2-2">status group</a>.</td>
+        <td>Backlog</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><a href="#row-priority">Priority</a></td>
         <td>Urgency or importance level of the task.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-assignees">Assignees</a></td>
         <td>The person(s) responsible for doing the task.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-start-date">Start date</a></td>
         <td>The date from which work can start being done on the task (for whatever constraints apply).</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-due-date">Due date</a></td>
         <td>The date by which the task must be completed.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-time-estimate">Time estimate</a></td>
         <td>Estimated effort or duration for the task.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-time-tracked">Time tracked</a></td>
         <td>Actual time logged on the task.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>
@@ -103,26 +141,69 @@ order: 4
   <table class="doc-schema-table">
     <thead>
       <tr>
-        <th><a href="#row-status">Status</a></th>
-        <th><a href="#row-start-date">Start date</a></th>
-        <th><a href="#row-due-date">Due date</a></th>
-        <th><a href="#row-start-time">Start time</a></th>
-        <th><a href="#row-end-time">End time</a></th>
-        <th><a href="#row-relevance-number">Relevance #</a></th>
-        <th><a href="#row-relevance-unit">Relevance Unit</a></th>
-        <th><a href="#row-relevance-date">Relevance Date</a></th>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Nullable</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><a href="#row-status">Status</a></td>
         <td>The lifecycle state of the event. Statuses are according to the relevant <a href="#sec-4-1-2-3">status group</a>.</td>
+        <td>Not Scheduled</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><a href="#row-start-date">Start date</a></td>
         <td>The date/time when the event starts.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-due-date">Due date</a></td>
         <td>The date/time when the event ends.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-start-time">Start time</a></td>
         <td>The precise datetime when the event starts. Used internally.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-end-time">End time</a></td>
         <td>The precise datetime when the event ends. Used internally.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-relevance-number">Relevance #</a></td>
         <td>How many units of time in advance the event should start being shown or notified.</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-relevance-unit">Relevance Unit</a></td>
         <td>The unit for that advance period (e.g. days, weeks, months).</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><a href="#row-relevance-date">Relevance Date</a></td>
         <td>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start time minus the relevance period (Relevance # + Relevance Unit).</td>
+        <td>—</td>
+        <td>Yes</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>
@@ -249,12 +330,20 @@ order: 4
   <table class="doc-schema-table">
     <thead>
       <tr>
-        <th><a href="#row-timestamp">Timestamp</a></th>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Nullable</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><a href="#row-timestamp">Timestamp</a></td>
         <td>The datetime when the record was made (or, if backdated, when the documented thing occurred).</td>
+        <td>Current datetime</td>
+        <td>No</td>
+        <td>Yes</td>
       </tr>
     </tbody>
   </table>

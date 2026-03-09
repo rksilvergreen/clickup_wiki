@@ -6,12 +6,11 @@
     if (!heading) return {};
     const table = findNextElement(heading, '.doc-schema-table') as HTMLTableElement | null;
     if (!table) return {};
-    const ths = table.querySelectorAll('thead th');
-    const tds = table.querySelectorAll('tbody td');
     const fields: Record<string, string> = {};
-    ths.forEach(function (th, i) {
-      const name = (th.textContent || '').trim();
-      const desc = tds[i] ? (tds[i].textContent || '').trim() : '';
+    table.querySelectorAll('tbody tr').forEach(function (tr) {
+      const cells = tr.querySelectorAll('td');
+      const name = cells[0] ? (cells[0].textContent || '').trim() : '';
+      const desc = cells[1] ? (cells[1].textContent || '').trim() : '';
       if (name && desc) fields[name] = desc;
     });
     return fields;
