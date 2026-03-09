@@ -1006,6 +1006,36 @@ body {
   flex-shrink: 0;
 }
 
+.field-status-tooltip {
+  position: fixed;
+  z-index: 10000;
+  background: var(--doc-surface);
+  border: 1px solid var(--doc-border);
+  border-radius: 5px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--doc-ink-light);
+  padding: 0.4rem 0.65rem;
+  max-width: 320px;
+  line-height: 1.45;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s, visibility 0.12s;
+}
+
+.field-status-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.has-field-tip {
+  cursor: help;
+  border-bottom: 1px dotted var(--doc-border);
+}
+
 .document footer,
 .doc-footer {
   margin-top: 3rem;
