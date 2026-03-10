@@ -362,6 +362,77 @@ order: 4
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime.</span></div>
   </li>
 </ol>
+<h4 id="sec-4-1-1-4">4.1.1.4 Thought</h4>
+<p>A Thought is a <a href="#sec-4-1-1-3">Record</a> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a <strong>Timestamp</strong> and the content. Structurally it is the same as Record.</p>
+<h5 id="sec-4-1-1-4-1">4.1.1.4.1 Thought Fields</h5>
+<div class="doc-table-wrap doc-schema-table-wrap">
+  <table class="doc-schema-table">
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Nullable</th>
+        <th>Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#row-timestamp">Timestamp</a></td>
+        <td>The datetime when the thought was recorded (or, if backdated, when the documented thing occurred).</td>
+        <td>Current datetime</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h5 id="sec-4-1-1-4-2">4.1.1.4.2 Thought Constraints</h5>
+<p><strong>Timestamp</strong></p>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><strong>Timestamp</strong> must be set.</span></div>
+  </li>
+</ul>
+<h5 id="sec-4-1-1-4-3">4.1.1.4.3 Thought Operational Rules</h5>
+<ol class="doc-rules-list" style="list-style: none">
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Thought creation</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime. The user can change the value afterward.</span></div>
+  </li>
+</ol>
+<h4 id="sec-4-1-1-5">4.1.1.5 Milestone</h4>
+<p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
+<h5 id="sec-4-1-1-5-1">4.1.1.5.1 Milestone Fields</h5>
+<div class="doc-table-wrap doc-schema-table-wrap">
+  <table class="doc-schema-table">
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+        <th>Default Value</th>
+        <th>Nullable</th>
+        <th>Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#row-due-date">Due Date</a></td>
+        <td>The date by which the milestone is expected to be reached.</td>
+        <td>—</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h5 id="sec-4-1-1-5-2">4.1.1.5.2 Milestone Constraints</h5>
+<p><strong>Due Date</strong></p>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><strong>Due Date</strong> must be set.</span></div>
+  </li>
+</ul>
 <h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
@@ -541,7 +612,7 @@ order: 4
         <td>Timestamp</td>
         <td><a href="#row-ft-date">Date</a></td>
         <td>A single datetime, often representing when the documented occurrence happened.</td>
-        <td><a href="#sec-4-1-1-3">Record</a></td>
+        <td><a href="#sec-4-1-1-3">Record</a>, <a href="#sec-4-1-1-4">Thought</a></td>
       </tr>
     </tbody>
   </table>

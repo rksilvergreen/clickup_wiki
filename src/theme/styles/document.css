@@ -763,7 +763,9 @@ body {
 /* Links to task types: same color as schema table headers */
 .document a[href="#sec-4-1-1-1"],
 .document a[href="#sec-4-1-1-2"],
-.document a[href="#sec-4-1-1-3"] {
+.document a[href="#sec-4-1-1-3"],
+.document a[href="#sec-4-1-1-4"],
+.document a[href="#sec-4-1-1-5"] {
   color: var(--doc-highlight);
 }
 
@@ -771,7 +773,9 @@ body {
 .document a[href^="#row-"]:not([href^="#row-ft-"]):hover,
 .document a[href="#sec-4-1-1-1"]:hover,
 .document a[href="#sec-4-1-1-2"]:hover,
-.document a[href="#sec-4-1-1-3"]:hover {
+.document a[href="#sec-4-1-1-3"]:hover,
+.document a[href="#sec-4-1-1-4"]:hover,
+.document a[href="#sec-4-1-1-5"]:hover {
   text-decoration: underline;
 }
 
