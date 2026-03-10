@@ -262,6 +262,11 @@ body {
   padding-bottom: 0.35rem;
 }
 
+.doc-toc-list a[data-depth="1"] {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--doc-ink) 50%, var(--doc-ink-light) 50%);
+}
+
 .toc-num {
   flex-shrink: 0;
   margin-right: 0.4em;
