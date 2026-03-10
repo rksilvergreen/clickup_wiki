@@ -143,6 +143,16 @@ export const toc: TocEntry[] = [
         ]
       },
       { id: 'sec-4-2', text: '4.2 Custom Fields' },
+      {
+        id: 'sec-4-3', text: '4.3 Templates', children: [
+          { id: 'sec-4-3-1', text: '4.3.1 Space Templates' },
+          { id: 'sec-4-3-2', text: '4.3.2 Folder Templates' },
+          { id: 'sec-4-3-3', text: '4.3.3 List Templates' },
+          { id: 'sec-4-3-4', text: '4.3.4 Task Templates' },
+          { id: 'sec-4-3-5', text: '4.3.5 Doc Templates' },
+          { id: 'sec-4-3-6', text: '4.3.6 View Templates' },
+        ]
+      },
     ]
   },
 ];

@@ -602,3 +602,11 @@ order: 4
     </tbody>
   </table>
 </div>
+<h2 id="sec-4-3">4.3 Templates</h2>
+<p>Templates are reusable predefined structures that let us create entries, lists, documents, or other workspace elements in a consistent way without rebuilding them from scratch each time. In ClickUp, a template can preserve things like field values, descriptions, subtasks, views, or broader setup, depending on what is being templated. Their role in the workspace is to turn recurring patterns into repeatable starting points, so that common processes, standard structures, and known best practices can be instantiated quickly and consistently.</p>
+<h3 id="sec-4-3-1">4.3.1 Space Templates</h3>
+<h3 id="sec-4-3-2">4.3.2 Folder Templates</h3>
+<h3 id="sec-4-3-3">4.3.3 List Templates</h3>
+<h3 id="sec-4-3-4">4.3.4 Task Templates</h3>
+<h3 id="sec-4-3-5">4.3.5 Doc Templates</h3>
+<h3 id="sec-4-3-6">4.3.6 View Templates</h3>
