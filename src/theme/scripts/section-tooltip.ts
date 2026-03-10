@@ -55,12 +55,6 @@
     while (node) {
       if (headingTags[node.tagName]) break;
       const clone = node.cloneNode(true) as HTMLElement;
-      clone.querySelectorAll('a[href^="#"]').forEach(function (a) {
-        const span = document.createElement('span');
-        span.innerHTML = a.innerHTML;
-        (span as HTMLElement).style.fontWeight = (a as HTMLElement).style.fontWeight || '';
-        a.parentNode!.replaceChild(span, a);
-      });
       inner.appendChild(clone);
       chars += (node.textContent || '').length;
       if (chars >= CHAR_BUDGET) break;

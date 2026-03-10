@@ -607,6 +607,15 @@ order: 4
 <h3 id="sec-4-3-1">4.3.1 Space Templates</h3>
 <h3 id="sec-4-3-2">4.3.2 Folder Templates</h3>
 <h3 id="sec-4-3-3">4.3.3 List Templates</h3>
+
+<h4 id="sec-4-3-3-1">4.3.3.1 Events</h4>
+
+<p>Template for lists whose associated task type is <a href="#sec-4-1-1-2">Event</a>.</p>
+<p><strong>Status group:</strong> <a href="#sec-4-1-2-3">Event</a></p>
+<p><strong>Custom fields:</strong> None</p>
+<p><strong>Views:</strong> <a href="#sec-4-3-6-1">Events — Main</a></p>
+<p><strong>Automations:</strong> None</p>
+
 <h3 id="sec-4-3-4">4.3.4 Task Templates</h3>
 <h3 id="sec-4-3-5">4.3.5 Doc Templates</h3>
 <h3 id="sec-4-3-6">4.3.6 View Templates</h3>

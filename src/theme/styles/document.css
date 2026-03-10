@@ -772,6 +772,26 @@ body {
   text-decoration: underline;
 }
 
+/* Links to status groups: pink */
+.document a[href^="#sec-4-1-2"] {
+  color: #ec4899;
+}
+
+.document a[href^="#sec-4-1-2"]:hover {
+  color: #f472b6;
+  text-decoration: underline;
+}
+
+/* Links to views: orange */
+.document a[href^="#sec-4-3-6"] {
+  color: #f97316;
+}
+
+.document a[href^="#sec-4-3-6"]:hover {
+  color: #fb923c;
+  text-decoration: underline;
+}
+
 /* Links to task types: same color as schema table headers */
 .document a[href="#sec-4-1-1-1"],
 .document a[href="#sec-4-1-1-2"],
@@ -946,6 +966,10 @@ body {
 .section-preview-tooltip.is-visible {
   opacity: 1;
   visibility: visible;
+}
+
+.section-preview-tooltip a {
+  pointer-events: none;
 }
 
 .section-preview-tooltip .sec-preview-inner {
