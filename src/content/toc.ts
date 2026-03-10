@@ -150,7 +150,11 @@ export const toc: TocEntry[] = [
           { id: 'sec-4-3-3', text: '4.3.3 List Templates' },
           { id: 'sec-4-3-4', text: '4.3.4 Task Templates' },
           { id: 'sec-4-3-5', text: '4.3.5 Doc Templates' },
-          { id: 'sec-4-3-6', text: '4.3.6 View Templates' },
+          {
+            id: 'sec-4-3-6', text: '4.3.6 View Templates', children: [
+              { id: 'sec-4-3-6-1', text: '4.3.6.1 Events — Main' },
+            ]
+          },
         ]
       },
     ]

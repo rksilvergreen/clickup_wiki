@@ -610,3 +610,16 @@ order: 4
 <h3 id="sec-4-3-4">4.3.4 Task Templates</h3>
 <h3 id="sec-4-3-5">4.3.5 Doc Templates</h3>
 <h3 id="sec-4-3-6">4.3.6 View Templates</h3>
+
+<h4 id="sec-4-3-6-1">4.3.6.1 Events — Main</h4>
+
+<p>This is the template for the main list view of event lists.</p>
+
+<ul>
+  <li><strong>View type:</strong> List</li>
+  <li><strong>Columns:</strong> Assignee, Start Date, Due Date, Relevance #, Relevance Unit</li>
+  <li><strong>Filters:</strong> Leave empty for now</li>
+  <li><strong>Grouping:</strong> Status — Descending</li>
+  <li><strong>Subtasks:</strong> Collapsed</li>
+</ul>
+
