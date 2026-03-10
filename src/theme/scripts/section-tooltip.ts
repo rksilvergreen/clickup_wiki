@@ -53,7 +53,8 @@
     let node = heading.nextElementSibling as HTMLElement | null;
     let chars = 0;
     while (node) {
-      if (headingTags[node.tagName]) break;
+      const nodeLevel = headingTags[node.tagName];
+      if (nodeLevel && nodeLevel <= level) break;
       const clone = node.cloneNode(true) as HTMLElement;
       inner.appendChild(clone);
       chars += (node.textContent || '').length;

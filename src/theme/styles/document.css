@@ -706,30 +706,6 @@ body {
   table-layout: fixed;
 }
 
-.document .doc-base-scope-table th:nth-child(1),
-.document .doc-custom-fields-table th:nth-child(1) {
-  width: 18%;
-}
-
-.document .doc-base-scope-table th:nth-child(2),
-.document .doc-custom-fields-table th:nth-child(2) {
-  width: 34%;
-}
-
-.document .doc-base-scope-table th:nth-child(3),
-.document .doc-custom-fields-table th:nth-child(3) {
-  width: 16%;
-}
-
-.document .doc-base-scope-table th:nth-child(4),
-.document .doc-custom-fields-table th:nth-child(4) {
-  width: 16%;
-}
-
-.document .doc-base-scope-table th:nth-child(5),
-.document .doc-custom-fields-table th:nth-child(5) {
-  width: 16%;
-}
 
 /* Field types table: purple headers */
 .document .doc-field-types-table thead {
@@ -906,65 +882,6 @@ body {
   visibility: visible;
 }
 
-.row-preview-tooltip table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
-
-.row-preview-tooltip thead {
-  background: var(--doc-table-default);
-  color: #fff;
-}
-
-.row-preview-tooltip[data-preview-type="base-scope"] thead,
-.row-preview-tooltip[data-preview-type="custom-fields"] thead {
-  background: var(--doc-table-base-scope);
-}
-
-.row-preview-tooltip[data-preview-type="field-types"] thead {
-  background: var(--doc-table-field-types);
-}
-
-.row-preview-tooltip[data-preview-type="schema"] thead {
-  background: var(--doc-table-default);
-}
-
-.row-preview-tooltip thead th {
-  padding: 0.45rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-}
-
-.row-preview-tooltip thead th+th {
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.row-preview-tooltip thead th:first-child {
-  border-top-left-radius: 5px;
-}
-
-.row-preview-tooltip thead th:last-child {
-  border-top-right-radius: 5px;
-}
-
-.row-preview-tooltip tbody td {
-  padding: 0.45rem 0.75rem;
-  color: var(--doc-ink-light);
-  vertical-align: top;
-}
-
-.row-preview-tooltip tbody td+td {
-  border-left: 1px solid var(--doc-border);
-}
-
-.row-preview-tooltip tbody td:first-child {
-  font-weight: 500;
-  color: var(--doc-ink);
-  white-space: nowrap;
-}
 
 /*
  * Backdrop for TOC section preview — 50% black, blocks interaction with content.

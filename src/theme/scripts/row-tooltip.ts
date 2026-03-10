@@ -6,32 +6,35 @@
   function buildTooltip(row: HTMLTableRowElement): boolean {
     const table = row.closest('table');
     if (!table) return false;
-    const headerCells = table.querySelectorAll('thead th');
-    const dataCells = row.querySelectorAll('td');
-    if (!headerCells.length || !dataCells.length) return false;
 
-    let headHtml = '<tr>';
-    headerCells.forEach(function (th) { headHtml += '<th>' + th.innerHTML + '</th>'; });
-    headHtml += '</tr>';
+    const sourceThs = table.querySelectorAll<HTMLElement>('thead th');
+    if (!sourceThs.length) return false;
+    const colWidths: number[] = [];
+    sourceThs.forEach(th => colWidths.push(th.getBoundingClientRect().width));
 
-    let rowHtml = '<tr>';
-    dataCells.forEach(function (td) { rowHtml += '<td>' + td.innerHTML + '</td>'; });
-    rowHtml += '</tr>';
+    const tableClone = table.cloneNode(false) as HTMLTableElement;
+    tableClone.style.tableLayout = 'fixed';
+    tableClone.style.width = 'auto';
 
-    tooltip.innerHTML = '<table><thead>' + headHtml + '</thead><tbody>' + rowHtml + '</tbody></table>';
-
-    // Match tooltip header color to source table
-    tooltip.removeAttribute('data-preview-type');
-    if (table.classList.contains('doc-base-scope-table')) {
-      tooltip.setAttribute('data-preview-type', 'base-scope');
-    } else if (table.classList.contains('doc-custom-fields-table')) {
-      tooltip.setAttribute('data-preview-type', 'custom-fields');
-    } else if (table.classList.contains('doc-field-types-table')) {
-      tooltip.setAttribute('data-preview-type', 'field-types');
-    } else if (table.classList.contains('doc-schema-table')) {
-      tooltip.setAttribute('data-preview-type', 'schema');
+    const thead = table.querySelector('thead');
+    if (thead) {
+      const theadClone = thead.cloneNode(true) as HTMLElement;
+      theadClone.querySelectorAll<HTMLElement>('th').forEach((th, i) => {
+        if (i < colWidths.length) th.style.width = colWidths[i] + 'px';
+      });
+      tableClone.appendChild(theadClone);
     }
 
+    const tbody = document.createElement('tbody');
+    tbody.appendChild(row.cloneNode(true));
+    tableClone.appendChild(tbody);
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'document';
+    wrapper.appendChild(tableClone);
+
+    tooltip.innerHTML = '';
+    tooltip.appendChild(wrapper);
     return true;
   }
 
