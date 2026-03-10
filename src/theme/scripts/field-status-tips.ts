@@ -44,7 +44,7 @@
           const dot = li.querySelector('.status-dot') as HTMLElement | null;
           const strong = li.querySelector('strong') as HTMLElement | null;
           if (!dot || !strong) return;
-          const color = dot.style.backgroundColor || '';
+          const color = dot.getAttribute('title') || dot.style.backgroundColor || '';
           const rawName = (strong.textContent || '').trim();
           const subgroup = strong.querySelector('.subgroup');
           const subgroupText = subgroup ? (subgroup.textContent || '').trim() : '';
@@ -152,6 +152,7 @@
         const dot = document.createElement('span');
         dot.className = 'status-dot';
         dot.style.backgroundColor = statusDef.color;
+        dot.title = statusDef.color;
         dot.setAttribute('aria-hidden', 'true');
         strong.parentNode!.insertBefore(dot, strong);
 
