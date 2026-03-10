@@ -530,6 +530,22 @@ order: 4
 </ul>
 <p>All entries on a Statusless list remain in <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
+<h3 id="sec-4-1-3">4.1.3 Tags</h3>
+<p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
+<p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <a href="#sec-4-1-1-1">Task</a>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
+<p>The following tags are used in this workspace:</p>
+<ul class="doc-tag-list">
+  <li><span class="doc-tag" style="background-color:#b1b1b1" title="#b1b1b1">bureaucracy</span> — Administrative or procedural work: forms, paperwork, official processes.</li>
+  <li><span class="doc-tag" style="background-color:#a875ff" title="#a875ff">contact required</span> — Requires reaching out to someone outside the household—a service rep, friend, or family member.</li>
+  <li><span class="doc-tag" style="background-color:#b7c059" title="#b7c059">digital</span> — Can be done entirely on a device (computer, phone, tablet).</li>
+  <li><span class="doc-tag" style="background-color:#63beb4" title="#63beb4">household</span> — Physical work or chores in and around the home.</li>
+  <li><span class="doc-tag" style="background-color:#3e63dd" title="#3e63dd">maintenance</span> — Keeping something in working order—upkeep, repairs, routine care.</li>
+  <li><span class="doc-tag" style="background-color:#248f7d" title="#248f7d">medical</span> — Relates to health: appointments, treatments, or medical administration.</li>
+  <li><span class="doc-tag" style="background-color:#0091ff" title="#0091ff">outside</span> — Must be done away from home; requires going out.</li>
+  <li><span class="doc-tag" style="background-color:#ab4aba" title="#ab4aba">recreation</span> — Leisure, hobby, or entertainment—something enjoyable rather than obligatory.</li>
+  <li><span class="doc-tag" style="background-color:#6e56cf" title="#6e56cf">self-care</span> — Personal well-being: rest, reflection, or looking after oneself.</li>
+  <li><span class="doc-tag" style="background-color:#96f1fb" title="#96f1fb">social</span> — Involves spending time or interacting with others outside the household.</li>
+</ul>
 <h2 id="sec-4-2">4.2 Custom Fields</h2>
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms

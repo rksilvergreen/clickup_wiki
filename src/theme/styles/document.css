@@ -1018,6 +1018,34 @@ body {
   margin-right: 0.25em;
 }
 
+.document .doc-tag-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.document .doc-tag-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.document .doc-tag-list li::before {
+  content: none;
+}
+
+.document .doc-tag {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #fff;
+  flex-shrink: 0;
+  cursor: help;
+}
+
 .document .status-dot {
   display: inline-block;
   width: 0.60em;

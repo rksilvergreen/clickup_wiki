@@ -139,6 +139,7 @@ export const toc: TocEntry[] = [
               { id: 'sec-4-1-2-5', text: '4.1.2.5 Statusless Status Group' },
             ]
           },
+          { id: 'sec-4-1-3', text: '4.1.3 Tags' },
         ]
       },
       { id: 'sec-4-2', text: '4.2 Custom Fields' },
