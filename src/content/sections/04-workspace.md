@@ -364,43 +364,7 @@ order: 4
 </ol>
 <h4 id="sec-4-1-1-4">4.1.1.4 Thought</h4>
 <p>A Thought is a <a href="#sec-4-1-1-3">Record</a> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a <strong>Timestamp</strong> and the content. Structurally it is the same as Record.</p>
-<h5 id="sec-4-1-1-4-1">4.1.1.4.1 Thought Fields</h5>
-<div class="doc-table-wrap doc-schema-table-wrap">
-  <table class="doc-schema-table">
-    <thead>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-        <th>Default Value</th>
-        <th>Nullable</th>
-        <th>Required</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="#row-timestamp">Timestamp</a></td>
-        <td>The datetime when the thought was recorded (or, if backdated, when the documented thing occurred).</td>
-        <td>Current datetime</td>
-        <td>No</td>
-        <td>Yes</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<h5 id="sec-4-1-1-4-2">4.1.1.4.2 Thought Constraints</h5>
-<p><strong>Timestamp</strong></p>
-<ul class="doc-field-comp">
-  <li class="doc-fc-block">
-    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><strong>Timestamp</strong> must be set.</span></div>
-  </li>
-</ul>
-<h5 id="sec-4-1-1-4-3">4.1.1.4.3 Thought Operational Rules</h5>
-<ol class="doc-rules-list" style="list-style: none">
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Thought creation</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <strong>Timestamp</strong> to the current datetime. The user can change the value afterward.</span></div>
-  </li>
-</ol>
+<p>The schema of a Thought is identical to that of a <a href="#sec-4-1-1-3">Record</a>.</p>
 <h4 id="sec-4-1-1-5">4.1.1.5 Milestone</h4>
 <p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
 <h5 id="sec-4-1-1-5-1">4.1.1.5.1 Milestone Fields</h5>
@@ -433,6 +397,11 @@ order: 4
     <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><strong>Due Date</strong> must be set.</span></div>
   </li>
 </ul>
+<h4 id="sec-4-1-1-6">4.1.1.6 Data</h4>
+<p>A Data type represents arbitrary information that is worth storing in the workspace. It is meant for content that may take many different forms and does not need to fit a fixed schema; its sole purpose is to preserve information.</p>
+<h4 id="sec-4-1-1-7">4.1.1.7 Parent Task</h4>
+<p>A Parent Task is a practical workaround used for items that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
+<p>The schema of a Parent Task is identical to that of a <a href="#sec-4-1-1-1">Task</a>; it uses the same fields, constraints, and operational rules.</p>
 <h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status

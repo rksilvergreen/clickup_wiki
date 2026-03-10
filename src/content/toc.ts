@@ -106,19 +106,16 @@ export const toc: TocEntry[] = [
                 ]
               },
               {
-                id: 'sec-4-1-1-4', text: '4.1.1.4 Thought', children: [
-                  { id: 'sec-4-1-1-4-1', text: '4.1.1.4.1 Thought Fields' },
-                  { id: 'sec-4-1-1-4-2', text: '4.1.1.4.2 Thought Constraints' },
-                  { id: 'sec-4-1-1-4-3', text: '4.1.1.4.3 Thought Operational Rules' },
-                ]
+                id: 'sec-4-1-1-4', text: '4.1.1.4 Thought'
               },
               {
                 id: 'sec-4-1-1-5', text: '4.1.1.5 Milestone', children: [
                   { id: 'sec-4-1-1-5-1', text: '4.1.1.5.1 Milestone Fields' },
                   { id: 'sec-4-1-1-5-2', text: '4.1.1.5.2 Milestone Constraints' },
-                  { id: 'sec-4-1-1-5-3', text: '4.1.1.5.3 Milestone Operational Rules' },
                 ]
               },
+              { id: 'sec-4-1-1-6', text: '4.1.1.6 Data' },
+              { id: 'sec-4-1-1-7', text: '4.1.1.7 Parent Task' },
             ]
           },
           {
