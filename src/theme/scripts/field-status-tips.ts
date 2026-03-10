@@ -61,22 +61,22 @@
     return statuses;
   }
 
-  const TASK_FIELDS_ID = 'sec-4-1-1-1-1';
-  const EVENT_FIELDS_ID = 'sec-4-1-1-2-1';
-  const RECORD_FIELDS_ID = 'sec-4-1-1-3-1';
-  const THOUGHT_FIELDS_ID = 'sec-4-1-1-4-1';
-  const MILESTONE_FIELDS_ID = 'sec-4-1-1-5-1';
-  const TASK_STATUS_GROUP_ID = 'sec-4-1-2-2';
-  const EVENT_STATUS_GROUP_ID = 'sec-4-1-2-3';
+  const TASK_FIELDS_ID = 'sec-4-1-1-1';
+  const EVENT_FIELDS_ID = 'sec-4-1-2-1';
+  const RECORD_FIELDS_ID = 'sec-4-1-3-1';
+  const THOUGHT_FIELDS_ID = 'sec-4-1-4-1';
+  const MILESTONE_FIELDS_ID = 'sec-4-1-5-1';
+  const TASK_STATUS_GROUP_ID = 'sec-4-2-2';
+  const EVENT_STATUS_GROUP_ID = 'sec-4-2-3';
 
   type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
 
   const SCOPES: SectionScope[] = [
-    { id: 'sec-4-1-1-1', fields: readFieldsFromTable(TASK_FIELDS_ID), statuses: readStatusesFromGroup(TASK_STATUS_GROUP_ID) },
-    { id: 'sec-4-1-1-2', fields: readFieldsFromTable(EVENT_FIELDS_ID), statuses: readStatusesFromGroup(EVENT_STATUS_GROUP_ID) },
-    { id: 'sec-4-1-1-3', fields: readFieldsFromTable(RECORD_FIELDS_ID), statuses: {} },
-    { id: 'sec-4-1-1-4', fields: readFieldsFromTable(THOUGHT_FIELDS_ID), statuses: {} },
-    { id: 'sec-4-1-1-5', fields: readFieldsFromTable(MILESTONE_FIELDS_ID), statuses: {} },
+    { id: 'sec-4-1-1', fields: readFieldsFromTable(TASK_FIELDS_ID), statuses: readStatusesFromGroup(TASK_STATUS_GROUP_ID) },
+    { id: 'sec-4-1-2', fields: readFieldsFromTable(EVENT_FIELDS_ID), statuses: readStatusesFromGroup(EVENT_STATUS_GROUP_ID) },
+    { id: 'sec-4-1-3', fields: readFieldsFromTable(RECORD_FIELDS_ID), statuses: {} },
+    { id: 'sec-4-1-4', fields: readFieldsFromTable(THOUGHT_FIELDS_ID), statuses: {} },
+    { id: 'sec-4-1-5', fields: readFieldsFromTable(MILESTONE_FIELDS_ID), statuses: {} },
   ];
 
   const tip = document.createElement('div');
