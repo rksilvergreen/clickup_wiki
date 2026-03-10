@@ -695,10 +695,40 @@ body {
   border-top-right-radius: 5px;
 }
 
-/* Base scope and custom fields tables: blue headers */
+/* Base scope and custom fields tables: blue headers, matching columns */
 .document .doc-base-scope-table thead,
 .document .doc-custom-fields-table thead {
   background: var(--doc-table-base-scope);
+}
+
+.document .doc-base-scope-table,
+.document .doc-custom-fields-table {
+  table-layout: fixed;
+}
+
+.document .doc-base-scope-table th:nth-child(1),
+.document .doc-custom-fields-table th:nth-child(1) {
+  width: 18%;
+}
+
+.document .doc-base-scope-table th:nth-child(2),
+.document .doc-custom-fields-table th:nth-child(2) {
+  width: 34%;
+}
+
+.document .doc-base-scope-table th:nth-child(3),
+.document .doc-custom-fields-table th:nth-child(3) {
+  width: 16%;
+}
+
+.document .doc-base-scope-table th:nth-child(4),
+.document .doc-custom-fields-table th:nth-child(4) {
+  width: 16%;
+}
+
+.document .doc-base-scope-table th:nth-child(5),
+.document .doc-custom-fields-table th:nth-child(5) {
+  width: 16%;
 }
 
 /* Field types table: purple headers */
@@ -804,6 +834,15 @@ body {
 .document a[href="#sec-4-1-4"],
 .document a[href="#sec-4-1-5"] {
   color: var(--doc-highlight);
+}
+
+.document a.doc-link-plain {
+  color: var(--doc-ink);
+}
+
+.document a.doc-link-plain:hover {
+  color: var(--doc-ink);
+  text-decoration: underline;
 }
 
 .document a[href^="#row-ft-"]:hover,

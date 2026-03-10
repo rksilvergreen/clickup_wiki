@@ -48,7 +48,7 @@ export const toc: TocEntry[] = [
       {
         id: 'sec-3-1', text: '3.1 Fields', children: [
           {
-            id: 'sec-3-1-1', text: '3.1.1 Base Scope Fields', children: [
+            id: 'sec-3-1-1', text: '3.1.1 Base Scope', children: [
               { id: 'sec-3-1-1-1', text: '3.1.1.1 Base Scope Table' },
               { id: 'sec-3-1-1-2', text: '3.1.1.2 ClickUp\'s Inadequacy' },
             ]
