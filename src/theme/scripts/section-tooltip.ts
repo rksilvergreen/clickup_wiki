@@ -1,8 +1,9 @@
 /**
- * Section preview tooltip — clones the actual section DOM and renders it
- * inside a container with the .document class, then applies CSS
- * transform: scale() so the preview is a pixel-perfect miniature of the
- * real section. No content-restyling rules are needed.
+ * Section preview tooltip — always built from the live DOM on hover.
+ * No caching: each hover fetches the target element and its content from
+ * the current document, so the preview reflects the section as it is now.
+ * Clones the actual section DOM and renders it in a container with the
+ * .document class.
  */
 (function () {
   const SCALE = 1.00;
@@ -19,6 +20,24 @@
   document.body.insertBefore(backdrop, tip);
 
   const headingTags: Record<string, number> = { H1: 1, H2: 2, H3: 3, H4: 4, H5: 5, H6: 6 };
+
+  function isRowLink(href: string): boolean {
+    return href.startsWith('#row-');
+  }
+
+  function findSectionHeadingForElement(el: Element): HTMLElement | null {
+    if (headingTags[(el as HTMLElement).tagName]) return el as HTMLElement;
+    let curr: Element | null = el;
+    while (curr) {
+      let prev = curr.previousElementSibling;
+      while (prev) {
+        if (headingTags[(prev as HTMLElement).tagName]) return prev as HTMLElement;
+        prev = prev.previousElementSibling;
+      }
+      curr = curr.parentElement;
+    }
+    return null;
+  }
 
   function buildSectionPreview(heading: HTMLElement): boolean {
     const level = headingTags[heading.tagName];
@@ -116,10 +135,16 @@
 
   function showTip(link: HTMLAnchorElement) {
     if (link === activeLink) return;
-    const hash = link.getAttribute('href')!.slice(1);
-    const heading = document.getElementById(hash);
-    if (!heading || !headingTags[heading.tagName]) return;
-    if (!buildSectionPreview(heading)) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    if (isRowLink(href)) return;
+
+    const hash = href.slice(1);
+    const target = document.getElementById(hash);
+    if (!target) return;
+
+    const heading = findSectionHeadingForElement(target);
+    if (!heading || !buildSectionPreview(heading)) return;
     activeLink = link;
     const isTocLink = link.closest('.doc-toc') !== null;
     if (isTocLink) backdrop.classList.add('is-visible');
@@ -136,12 +161,12 @@
   }
 
   document.addEventListener('mouseover', function (e) {
-    const a = (e.target as HTMLElement).closest('a[href^="#sec-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null;
     if (a) showTip(a);
   });
 
   document.addEventListener('mouseout', function (e) {
-    const a = (e.target as HTMLElement).closest('a[href^="#sec-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null;
     if (a && !a.contains(e.relatedTarget as Node)) hideTip();
   });
 })();

@@ -613,13 +613,35 @@ order: 4
 
 <h4 id="sec-4-3-6-1">4.3.6.1 Events — Main</h4>
 
-<p>This is the template for the main list view of event lists.</p>
+<p>This is the template for the main list view of <a href="#sec-4-1-1-2">event</a> lists.</p>
 
+<p><strong>View type:</strong> List</p>
+<p><strong>Columns:</strong> <a href="#row-assignees">Assignee</a>, <a href="#row-start-date">Start Date</a>, <a href="#row-due-date">Due Date</a>, <a href="#row-relevance-number">Relevance #</a>, <a href="#row-relevance-unit">Relevance Unit</a></p>
+<p><strong>Filters:</strong> <a href="#sec-4-4-1" class="doc-filter-link">Assignee | Me mode OR Unassigned</a></p>
+<p><strong>Grouping:</strong> <a href="#row-status">Status</a> — Descending</p>
+<p><strong>Subtasks:</strong> Collapsed</p>
+
+<h2 id="sec-4-4">4.4 Filters</h2>
+
+<p>Filters are the mechanisms that let us define which entries appear in a given view or context. They make it possible to narrow the visible set of entries according to field values. ClickUp allows filters to be saved and reused across views.</p>
+
+<h3 id="sec-4-4-1">4.4.1 Assignee | Me mode OR Unassigned</h3>
+
+<p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
 <ul>
-  <li><strong>View type:</strong> List</li>
-  <li><strong>Columns:</strong> Assignee, Start Date, Due Date, Relevance #, Relevance Unit</li>
-  <li><strong>Filters:</strong> Leave empty for now</li>
-  <li><strong>Grouping:</strong> Status — Descending</li>
-  <li><strong>Subtasks:</strong> Collapsed</li>
+  <li><a href="#row-assignees">Assignee</a> <em>is</em> Me mode <em>or</em> Unassigned</li>
+</ul>
+
+<h3 id="sec-4-4-2">4.4.2 Due This Week</h3>
+
+<p>Shows entries whose <a href="#row-due-date">Due Date</a> falls within the current week.</p>
+<ul>
+  <li><a href="#row-assignees">Assignee</a> <em>is</em> Me mode <em>or</em> Unassigned</li>
+  <em>and</em>
+  <li><a href="#row-due-date">Due Date</a> <em>is</em> This week</li>
+  <em>and</em>
+  <li><a href="#row-task-type">Task Type</a> <em>is</em> <a href="#sec-4-1-1-1">Task</a> or Meeting Note or <a href="#sec-4-1-1-4">Thought</a></li>
+  <em>and</em>
+  <li><a href="#row-status">Status</a> <em>is</em> Not started or Active</li>
 </ul>
 

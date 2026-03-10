@@ -760,6 +760,18 @@ body {
   color: var(--doc-table-base-scope);
 }
 
+/* Links to filters: teal */
+.document a.doc-filter-link,
+.document a[href^="#sec-4-4"] {
+  color: #14b8a6;
+}
+
+.document a.doc-filter-link:hover,
+.document a[href^="#sec-4-4"]:hover {
+  color: #2dd4bf;
+  text-decoration: underline;
+}
+
 /* Links to task types: same color as schema table headers */
 .document a[href="#sec-4-1-1-1"],
 .document a[href="#sec-4-1-1-2"],

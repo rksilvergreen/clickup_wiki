@@ -157,6 +157,12 @@ export const toc: TocEntry[] = [
           },
         ]
       },
+      {
+        id: 'sec-4-4', text: '4.4 Filters', children: [
+          { id: 'sec-4-4-1', text: '4.4.1 Assignee | Me mode OR Unassigned' },
+          { id: 'sec-4-4-2', text: '4.4.2 Due This Week' },
+        ]
+      },
     ]
   },
 ];
