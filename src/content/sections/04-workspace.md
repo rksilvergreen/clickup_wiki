@@ -615,11 +615,11 @@ order: 4
 
 <h4 id="sec-4-5-3-1">4.5.3.1 Events</h4>
 
-<p>Template for lists whose associated task type is <a href="#sec-4-1-2">Event</a>.</p>
+<p>Our first list template. Use it for lists of <a href="#sec-4-1-2">Event</a> entries.</p>
+<p><strong>Task type:</strong> <a href="#sec-4-1-2">Event</a></p>
 <p><strong>Status group:</strong> <a href="#sec-4-2-3">Event</a></p>
-<p><strong>Custom fields:</strong> None</p>
 <p><strong>Views:</strong> <a href="#sec-4-5-6-1">Events — Main</a></p>
-<p><strong>Automations:</strong> None</p>
+<p><strong>Automations:</strong> —</p>
 
 <h3 id="sec-4-5-4">4.5.4 Task Templates</h3>
 <h3 id="sec-4-5-5">4.5.5 Doc Templates</h3>
@@ -663,4 +663,18 @@ order: 4
 
 <p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
 
-<p>In our workspace, we use two kinds of automations: <strong>ClickUp automations</strong>, which are built directly into ClickUp, and <strong>webhook automations</strong>, which begin with webhook events sent out from ClickUp to server-side logic that we built, where the event is processed and results in some resulting action. We use webhook automations in cases where ClickUp's native automation system is not sufficient for the behavior we need.</p>
+<p>In our workspace, we use two kinds of automations: ClickUp automations, which are built directly into ClickUp, and webhook automations, which begin with webhook events sent out from ClickUp to server-side logic.</p>
+
+<h3 id="sec-4-7-1">4.7.1 ClickUp Automations</h3>
+
+<p>Automations configured and run inside ClickUp using its built-in triggers and actions.</p>
+
+<h4 id="sec-4-7-1-1">4.7.1.1 "Start Time" arrives → Set "OCCURING" status</h4>
+
+<p>When an <a href="#sec-4-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to OCCURING.</p>
+
+<p>This automation helps enforce the <a href="#sec-4-1-2-3">Event Operational Rules</a></p>
+
+<h3 id="sec-4-7-2">4.7.2 Webhook Automations</h3>
+
+<p>Automations that start from webhook events sent to our server; used when ClickUp automations are not sufficient.</p>

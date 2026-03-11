@@ -161,7 +161,20 @@ export const toc: TocEntry[] = [
           { id: 'sec-4-6-2', text: '4.6.2 Due This Week' },
         ]
       },
-      { id: 'sec-4-7', text: '4.7 Automations' },
+      {
+        id: 'sec-4-7',
+        text: '4.7 Automations',
+        children: [
+          {
+            id: 'sec-4-7-1',
+            text: '4.7.1 ClickUp Automations',
+            children: [
+              { id: 'sec-4-7-1-1', text: '4.7.1.1 "Start Time" arrives → Set "OCCURING" status' },
+            ]
+          },
+          { id: 'sec-4-7-2', text: '4.7.2 Webhook Automations' },
+        ]
+      },
     ]
   },
 ];
