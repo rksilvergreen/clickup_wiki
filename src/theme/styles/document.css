@@ -1,4 +1,5 @@
 :root {
+  --heading-indent-step: 1.25rem;
   --sticky-h1: 0.5rem;
   --sticky-h2: 5rem;
   --sticky-h3: 8.25rem;
@@ -291,7 +292,7 @@ body {
 .doc-content {
   margin-left: var(--doc-toc-width, 280px);
   flex: 1;
-  max-width: 720px;
+  max-width: 900px;
   padding: 3rem 2.5rem;
   min-width: 0;
 }
@@ -304,6 +305,10 @@ body {
 }
 
 .document {}
+
+.document>* {
+  margin-left: calc(var(--section-depth, 0) * var(--heading-indent-step));
+}
 
 .document h1,
 .document h2,
@@ -342,6 +347,22 @@ body {
   top: 0;
   left: 100%;
   width: 100vw;
+  height: 100%;
+  background: var(--doc-cream);
+  pointer-events: none;
+}
+
+/* Extend sticky header background to the left to fill the indentation gap */
+.document h2.sticky-active::before,
+.document h3.sticky-active::before,
+.document h4.sticky-active::before,
+.document h5.sticky-active::before,
+.document h6.sticky-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: calc(var(--section-depth, 0) * var(--heading-indent-step));
   height: 100%;
   background: var(--doc-cream);
   pointer-events: none;
@@ -460,7 +481,8 @@ body {
 
 .document ul {
   list-style: none;
-  margin: 0.75rem 0 1.25rem 0;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .document ul li {
@@ -557,7 +579,8 @@ body {
 
 .document .doc-field-comp {
   list-style: none;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 0;
 }
 
@@ -618,7 +641,8 @@ body {
   border: 1px solid var(--doc-border);
   border-radius: 6px;
   padding: 1rem 1.25rem 1rem 1.5rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
@@ -649,7 +673,8 @@ body {
 }
 
 .document .doc-table-wrap {
-  margin: 1rem 0 1.5rem 0;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   border: 1px solid var(--doc-border);
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -944,6 +969,10 @@ body {
   margin-top: 0;
 }
 
+.section-preview-tooltip .sec-preview-inner>* {
+  margin-left: 0 !important;
+}
+
 .section-preview-tooltip.has-overflow::after {
   content: '';
   position: absolute;
@@ -977,7 +1006,8 @@ body {
   border: 1px solid var(--doc-border);
   border-radius: 6px;
   padding: 1.25rem 1.5rem;
-  margin: 1.25rem 0;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
@@ -1017,7 +1047,8 @@ body {
 
 .document .doc-tag-list {
   list-style: none;
-  margin: 0.75rem 0 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
   padding: 0;
 }
 

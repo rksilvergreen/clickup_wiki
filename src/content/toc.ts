@@ -161,6 +161,7 @@ export const toc: TocEntry[] = [
           { id: 'sec-4-6-2', text: '4.6.2 Due This Week' },
         ]
       },
+      { id: 'sec-4-7', text: '4.7 Automations' },
     ]
   },
 ];

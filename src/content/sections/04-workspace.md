@@ -659,3 +659,8 @@ order: 4
   <li><a href="#row-status">Status</a> <em>is</em> Not started or Active</li>
 </ul>
 
+<h2 id="sec-4-7">4.7 Automations</h2>
+
+<p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
+
+<p>In our workspace, we use two kinds of automations: <strong>ClickUp automations</strong>, which are built directly into ClickUp, and <strong>webhook automations</strong>, which begin with webhook events sent out from ClickUp to server-side logic that we built, where the event is processed and results in some resulting action. We use webhook automations in cases where ClickUp's native automation system is not sufficient for the behavior we need.</p>
