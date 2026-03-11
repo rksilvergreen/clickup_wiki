@@ -169,10 +169,24 @@ export const toc: TocEntry[] = [
             id: 'sec-4-7-1',
             text: '4.7.1 ClickUp Automations',
             children: [
-              { id: 'sec-4-7-1-1', text: '4.7.1.1 "Start Time" arrives → Set "OCCURING" status' },
+              { id: 'sec-4-7-1-1', text: '4.7.1.1 "Start Time" arrives → Set "Occurring" status' },
+              { id: 'sec-4-7-1-2', text: '4.7.1.2 "End Time" arrives → Set "Occurred" status' },
+              { id: 'sec-4-7-1-3', text: '4.7.1.3 Event created → Add to list Automations - Events' },
+              { id: 'sec-4-7-1-4', text: '4.7.1.4 Event moved here → Add to list Automations - Events' },
             ]
           },
           { id: 'sec-4-7-2', text: '4.7.2 Webhook Automations' },
+        ]
+      },
+      { id: 'sec-4-8', text: '4.8 Spaces' },
+      {
+        id: 'sec-4-9',
+        text: '4.9 Workflows',
+        children: [
+          { id: 'sec-4-9-1', text: '4.9.1 Daily Routine' },
+          { id: 'sec-4-9-2', text: '4.9.2 Task Intake' },
+          { id: 'sec-4-9-3', text: '4.9.3 Task Management' },
+          { id: 'sec-4-9-4', text: '4.9.4 Sprint Planning' },
         ]
       },
     ]

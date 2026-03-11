@@ -25,6 +25,10 @@
     return href.startsWith('#row-');
   }
 
+  function isStatusLink(href: string): boolean {
+    return href.startsWith('#st-');
+  }
+
   function findSectionHeadingForElement(el: Element): HTMLElement | null {
     if (headingTags[(el as HTMLElement).tagName]) return el as HTMLElement;
     let curr: Element | null = el;
@@ -132,7 +136,7 @@
     if (link === activeLink) return;
     const href = link.getAttribute('href');
     if (!href || href === '#') return;
-    if (isRowLink(href)) return;
+    if (isRowLink(href) || isStatusLink(href)) return;
 
     const hash = href.slice(1);
     const target = document.getElementById(hash);

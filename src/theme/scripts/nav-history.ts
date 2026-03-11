@@ -23,6 +23,11 @@
       void el.offsetHeight;
       el.classList.add('row-highlight');
       setTimeout(function () { el.classList.remove('row-highlight'); }, 2100);
+    } else if (el.tagName === 'LI' && el.id && el.id.startsWith('st-')) {
+      el.classList.remove('status-highlight');
+      void el.offsetHeight;
+      el.classList.add('status-highlight');
+      setTimeout(function () { el.classList.remove('status-highlight'); }, 2100);
     }
   }
 
@@ -54,6 +59,14 @@
       ) || 0;
       const thead = el.closest('table') ? el.closest('table')!.querySelector('thead') : null;
       y -= stickyTop + (thead ? thead.offsetHeight : 0) + 8;
+    } else if (id.startsWith('st-')) {
+      if (document.documentElement.classList.contains('sticky-on')) {
+        const root = document.documentElement;
+        const fontSize = parseFloat(getComputedStyle(root).fontSize) || 16;
+        const val = getComputedStyle(root).getPropertyValue('--sticky-h4');
+        y -= (parseFloat(val) * fontSize) || 0;
+        y -= 8;
+      }
     } else {
       y -= getStickyOffset(el);
     }

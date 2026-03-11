@@ -615,11 +615,18 @@ order: 4
 
 <h4 id="sec-4-5-3-1">4.5.3.1 Events</h4>
 
-<p>Our first list template. Use it for lists of <a href="#sec-4-1-2">Event</a> entries.</p>
+<p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <a href="#sec-4-5-3-1">Automations - Events</a> list, and provides views for working with events.</p>
 <p><strong>Task type:</strong> <a href="#sec-4-1-2">Event</a></p>
 <p><strong>Status group:</strong> <a href="#sec-4-2-3">Event</a></p>
-<p><strong>Views:</strong> <a href="#sec-4-5-6-1">Events — Main</a></p>
-<p><strong>Automations:</strong> —</p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><a href="#sec-4-5-6-1">Events — Main</a></li>
+</ul>
+<p><strong>Automations:</strong></p>
+<ul>
+  <li><a href="#sec-4-7-1-3" class="doc-automation-link">Event created → Add to list Automations - Events</a></li>
+  <li><a href="#sec-4-7-1-4" class="doc-automation-link">Event moved here → Add to list Automations - Events</a></li>
+</ul>
 
 <h3 id="sec-4-5-4">4.5.4 Task Templates</h3>
 <h3 id="sec-4-5-5">4.5.5 Doc Templates</h3>
@@ -669,12 +676,50 @@ order: 4
 
 <p>Automations configured and run inside ClickUp using its built-in triggers and actions.</p>
 
-<h4 id="sec-4-7-1-1">4.7.1.1 "Start Time" arrives → Set "OCCURING" status</h4>
+<h4 id="sec-4-7-1-1">4.7.1.1 Start Time arrives → Set Occurring status</h4>
 
-<p>When an <a href="#sec-4-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to OCCURING.</p>
+<p>When an <a href="#sec-4-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-2-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-2-3">Event Operational Rules</a></p>
+
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-start-time">Start Time</a> arrives →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-2-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</span></div>
+
+<h4 id="sec-4-7-1-2">4.7.1.2 End Time arrives → Set Occurred status</h4>
+
+<p>When an <a href="#sec-4-1-2">event</a>'s <a href="#row-end-time">End Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-2-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</p>
+
+<p>This automation helps enforce the <a href="#sec-4-1-2-3">Event Operational Rules</a></p>
+
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-end-time">End Time</a> arrives →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-2-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</span></div>
+
+<h4 id="sec-4-7-1-3">4.7.1.3 Event created → Add to list Automations - Events</h4>
+
+<p>When an <a href="#sec-4-1-2">event</a> is created, add it to the list <a href="#sec-4-5-3-1">Automations - Events</a>.</p>
+
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-2">Event</a> created →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-5-3-1">Automations - Events</a>.</span></div>
+
+<h4 id="sec-4-7-1-4">4.7.1.4 Event moved here → Add to list Automations - Events</h4>
+
+<p>When an <a href="#sec-4-1-2">event</a> is moved into the list, add it to the list <a href="#sec-4-5-3-1">Automations - Events</a>.</p>
+
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-2">Event</a> moved here →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-5-3-1">Automations - Events</a>.</span></div>
 
 <h3 id="sec-4-7-2">4.7.2 Webhook Automations</h3>
 
 <p>Automations that start from webhook events sent to our server; used when ClickUp automations are not sufficient.</p>
+
+<h2 id="sec-4-8">4.8 Spaces</h2>
+
+<h2 id="sec-4-9">4.9 Workflows</h2>
+
+<h3 id="sec-4-9-1">4.9.1 Daily Routine</h3>
+
+<h3 id="sec-4-9-2">4.9.2 Task Intake</h3>
+
+<h3 id="sec-4-9-3">4.9.3 Task Management</h3>
+
+<h3 id="sec-4-9-4">4.9.4 Sprint Planning</h3>

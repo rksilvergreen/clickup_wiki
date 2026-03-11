@@ -1,5 +1,14 @@
 (function () {
-  interface StatusDef { color: string; tip: string }
+  interface StatusDef {
+    color: string;
+    tip: string;
+    li: HTMLLIElement;
+    id: string;
+  }
+
+  function slugify(name: string): string {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
 
   function readFieldsFromTable(sectionId: string): Record<string, string> {
     const heading = document.getElementById(sectionId);
@@ -34,6 +43,7 @@
   function readStatusesFromGroup(sectionId: string): Record<string, StatusDef> {
     const heading = document.getElementById(sectionId);
     if (!heading) return {};
+    const groupSuffix = sectionId.replace(/^sec-/, '');
     const level = parseInt(heading.tagName[1], 10);
     const statuses: Record<string, StatusDef> = {};
     let node = heading.nextElementSibling;
@@ -49,10 +59,14 @@
           const subgroup = strong.querySelector('.subgroup');
           const subgroupText = subgroup ? (subgroup.textContent || '').trim() : '';
           const name = subgroupText ? rawName.replace(subgroupText, '').trim() : rawName;
+          const slug = slugify(name);
+          if (!slug) return;
           const liText = li.textContent || '';
           const dashIdx = liText.indexOf('—');
           const tip = dashIdx >= 0 ? liText.slice(dashIdx + 1).trim() : '';
-          if (name && tip) statuses[name] = { color, tip };
+          const id = 'st-' + groupSuffix + '-' + slug;
+          (li as HTMLElement).id = id;
+          if (name) statuses[name] = { color, tip, li: li as HTMLLIElement, id };
         });
         break;
       }
@@ -61,41 +75,51 @@
     return statuses;
   }
 
-  const TASK_FIELDS_ID = 'sec-4-1-1-1';
-  const EVENT_FIELDS_ID = 'sec-4-1-2-1';
-  const RECORD_FIELDS_ID = 'sec-4-1-3-1';
-  const THOUGHT_FIELDS_ID = 'sec-4-1-4-1';
-  const MILESTONE_FIELDS_ID = 'sec-4-1-5-1';
-  const TASK_STATUS_GROUP_ID = 'sec-4-2-2';
-  const EVENT_STATUS_GROUP_ID = 'sec-4-2-3';
+  const taskStatuses = readStatusesFromGroup('sec-4-2-2');
+  const eventStatuses = readStatusesFromGroup('sec-4-2-3');
+  const shoppingStatuses = readStatusesFromGroup('sec-4-2-4');
+  readStatusesFromGroup('sec-4-2-5');
+
+  const allStatusDefs: Record<string, StatusDef> = {};
+  for (const group of [taskStatuses, eventStatuses, shoppingStatuses]) {
+    for (const name in group) {
+      allStatusDefs[group[name].id] = group[name];
+    }
+  }
 
   type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
 
   const SCOPES: SectionScope[] = [
-    { id: 'sec-4-1-1', fields: readFieldsFromTable(TASK_FIELDS_ID), statuses: readStatusesFromGroup(TASK_STATUS_GROUP_ID) },
-    { id: 'sec-4-1-2', fields: readFieldsFromTable(EVENT_FIELDS_ID), statuses: readStatusesFromGroup(EVENT_STATUS_GROUP_ID) },
-    { id: 'sec-4-1-3', fields: readFieldsFromTable(RECORD_FIELDS_ID), statuses: {} },
-    { id: 'sec-4-1-4', fields: readFieldsFromTable(THOUGHT_FIELDS_ID), statuses: {} },
-    { id: 'sec-4-1-5', fields: readFieldsFromTable(MILESTONE_FIELDS_ID), statuses: {} },
+    { id: 'sec-4-1-1', fields: readFieldsFromTable('sec-4-1-1-1'), statuses: taskStatuses },
+    { id: 'sec-4-1-2', fields: readFieldsFromTable('sec-4-1-2-1'), statuses: eventStatuses },
+    { id: 'sec-4-1-3', fields: readFieldsFromTable('sec-4-1-3-1'), statuses: {} },
+    { id: 'sec-4-1-4', fields: readFieldsFromTable('sec-4-1-4-1'), statuses: {} },
+    { id: 'sec-4-1-5', fields: readFieldsFromTable('sec-4-1-5-1'), statuses: {} },
   ];
 
-  const tip = document.createElement('div');
-  tip.className = 'field-status-tooltip';
-  document.body.appendChild(tip);
+  // --- Tooltip elements ---
 
-  let hideTimer: ReturnType<typeof setTimeout> | null = null;
+  const fieldTip = document.createElement('div');
+  fieldTip.className = 'field-status-tooltip';
+  document.body.appendChild(fieldTip);
 
-  function showTip(anchor: HTMLElement, text: string) {
-    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
-    tip.textContent = text;
-    tip.classList.add('is-visible');
+  const statusTip = document.createElement('div');
+  statusTip.className = 'status-preview-tooltip';
+  document.body.appendChild(statusTip);
+
+  let fieldHideTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function showFieldTip(anchor: HTMLElement, text: string) {
+    if (fieldHideTimer) { clearTimeout(fieldHideTimer); fieldHideTimer = null; }
+    fieldTip.textContent = text;
+    fieldTip.classList.add('is-visible');
 
     const rect = anchor.getBoundingClientRect();
     const margin = 8;
-    tip.style.left = '0';
-    tip.style.top = '0';
-    const tw = tip.offsetWidth;
-    const th = tip.offsetHeight;
+    fieldTip.style.left = '0';
+    fieldTip.style.top = '0';
+    const tw = fieldTip.offsetWidth;
+    const th = fieldTip.offsetHeight;
 
     let left = rect.left + rect.width / 2 - tw / 2;
     if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
@@ -104,15 +128,64 @@
     let top = rect.top - th - margin;
     if (top < margin) top = rect.bottom + margin;
 
-    tip.style.left = left + 'px';
-    tip.style.top = top + 'px';
+    fieldTip.style.left = left + 'px';
+    fieldTip.style.top = top + 'px';
   }
 
-  function hideTip() {
-    hideTimer = setTimeout(function () {
-      tip.classList.remove('is-visible');
+  function hideFieldTip() {
+    fieldHideTimer = setTimeout(function () {
+      fieldTip.classList.remove('is-visible');
     }, 80);
   }
+
+  function buildStatusPreview(li: HTMLLIElement): void {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'document';
+    const ul = document.createElement('ul');
+    const clone = li.cloneNode(true) as HTMLLIElement;
+    clone.removeAttribute('id');
+    ul.appendChild(clone);
+    wrapper.appendChild(ul);
+    statusTip.innerHTML = '';
+    statusTip.appendChild(wrapper);
+  }
+
+  function positionStatusTip(anchor: HTMLElement) {
+    const rect = anchor.getBoundingClientRect();
+    const margin = 10;
+    statusTip.style.left = '0';
+    statusTip.style.top = '0';
+    const tw = statusTip.offsetWidth;
+    const th = statusTip.offsetHeight;
+
+    let left = rect.left;
+    if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
+    if (left < margin) left = margin;
+
+    let top = rect.bottom + margin;
+    if (top + th > window.innerHeight - margin) top = rect.top - th - margin;
+    if (top < margin) top = margin;
+
+    statusTip.style.left = left + 'px';
+    statusTip.style.top = top + 'px';
+  }
+
+  let activeStatusLink: HTMLElement | null = null;
+
+  function showStatusTip(anchor: HTMLElement, li: HTMLLIElement) {
+    if (anchor === activeStatusLink) return;
+    activeStatusLink = anchor;
+    buildStatusPreview(li);
+    statusTip.classList.add('is-visible');
+    positionStatusTip(anchor);
+  }
+
+  function hideStatusTip() {
+    activeStatusLink = null;
+    statusTip.classList.remove('is-visible');
+  }
+
+  // --- Element processing ---
 
   function isInsideFieldsTable(el: HTMLElement): boolean {
     return el.closest('.doc-schema-table') !== null;
@@ -144,20 +217,26 @@
 
     for (const strong of allStrongs) {
       if (isInsideFieldsTable(strong)) continue;
+      if (strong.closest('a')) continue;
       const text = (strong.textContent || '').trim();
 
       const statusDef = scope.statuses[text];
       if (statusDef) {
         if (strong.previousElementSibling?.classList.contains('status-dot')) continue;
+
+        const a = document.createElement('a');
+        a.href = '#' + statusDef.id;
+        a.className = 'status-link';
+
         const dot = document.createElement('span');
         dot.className = 'status-dot';
         dot.style.backgroundColor = statusDef.color;
         dot.title = statusDef.color;
         dot.setAttribute('aria-hidden', 'true');
-        strong.parentNode!.insertBefore(dot, strong);
 
-        strong.classList.add('has-field-tip');
-        strong.dataset.tipText = statusDef.tip;
+        strong.parentNode!.insertBefore(a, strong);
+        a.appendChild(dot);
+        a.appendChild(strong);
         continue;
       }
 
@@ -212,13 +291,35 @@
     el.appendChild(frag);
   }
 
+  // --- Hover handlers ---
+
   document.addEventListener('mouseover', function (e) {
     const el = (e.target as HTMLElement).closest('.has-field-tip') as HTMLElement | null;
-    if (el && el.dataset.tipText) showTip(el, el.dataset.tipText);
+    if (el && el.dataset.tipText) showFieldTip(el, el.dataset.tipText);
   });
 
   document.addEventListener('mouseout', function (e) {
     const el = (e.target as HTMLElement).closest('.has-field-tip') as HTMLElement | null;
-    if (el && !el.contains(e.relatedTarget as Node)) hideTip();
+    if (el && !el.contains(e.relatedTarget as Node)) hideFieldTip();
+  });
+
+  document.addEventListener('mouseover', function (e) {
+    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href) return;
+    const id = href.slice(1);
+    const def = allStatusDefs[id];
+    if (def) {
+      showStatusTip(a, def.li);
+      return;
+    }
+    const li = document.getElementById(id) as HTMLLIElement | null;
+    if (li && li.tagName === 'LI') showStatusTip(a, li);
+  });
+
+  document.addEventListener('mouseout', function (e) {
+    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;
+    if (a && !a.contains(e.relatedTarget as Node)) hideStatusTip();
   });
 })();
