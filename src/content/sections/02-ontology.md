@@ -106,10 +106,9 @@ order: 2
 </ul>
 <h3 id="sec-2-6-3">2.6.3 Scope Hierarchies and Inheritance</h3>
 <p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
-  Inheritance means that exposure to a child implies exposure to its ancestors.</p>
-<h4 id="sec-2-6-3-1">2.6.3.1 Examples of Possible Scope Hierarchies:</h4>
-<h5 id="sec-2-6-3-1-1">2.6.3.1.1 Project Scope Hierarchy</h5>
-<p>How entries are grouped by the projects they support and the goals they aim to achieve.</p>
+  Inheritance means that exposure to a child implies exposure to its ancestors.
+  Examples of possible scope hierarchies:</p>
+<p><strong>Project Scope Hierarchy</strong> — How entries are grouped by the projects they support and the goals they aim to achieve.</p>
 <div class="doc-tree">
   <ul>
     <li>🟦 General (space)<ul>
@@ -139,8 +138,7 @@ order: 2
     </li>
   </ul>
 </div>
-<h5 id="sec-2-6-3-1-2">2.6.3.1.2 Type Scope Hierarchy</h5>
-<p>Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
+<p><strong>Type Scope Hierarchy</strong> — Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
   one kind of entry from another across the workspace.</p>
 <div class="doc-tree">
   <ul>
@@ -166,8 +164,7 @@ order: 2
     </li>
   </ul>
 </div>
-<h5 id="sec-2-6-3-1-3">2.6.3.1.3 Responsibility Scope Hierarchy</h5>
-<p>Groups entries by who is accountable for interacting with them and carrying them forward.</p>
+<p><strong>Responsibility Scope Hierarchy</strong> — Groups entries by who is accountable for interacting with them and carrying them forward.</p>
 <div class="doc-tree">
   <ul>
     <li>🧪 Research<ul>
@@ -214,14 +211,11 @@ order: 2
 <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
   particular scope so that only entries already exposed to that scope can access that selector, and only then can
   they branch into a further scope hierarchy.
-  This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.
-</p>
-<h4 id="sec-2-6-5-1">2.6.5.1 Examples of Possible Scoped Scope Hierarchies:</h4>
-<h5 id="sec-2-6-5-1-1">2.6.5.1.1 Status Scope Hierarchy</h5>
-<p>The <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
-    Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
+  This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.</p>
+<p>For example, the <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
+  Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
   into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models
-  their progression state.</p>
+  their progression state:</p>
 <div class="doc-tree">
   <ul>
     <li>⬜ Not Started<ul>

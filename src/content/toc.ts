@@ -17,27 +17,9 @@ export const toc: TocEntry[] = [
         id: 'sec-2-6', text: '2.6 Scope', children: [
           { id: 'sec-2-6-1', text: '2.6.1 Single Database with Scopes' },
           { id: 'sec-2-6-2', text: '2.6.2 Scope Exposure and Scope Selector Fields' },
-          {
-            id: 'sec-2-6-3', text: '2.6.3 Scope Hierarchies and Inheritance', children: [
-              {
-                id: 'sec-2-6-3-1', text: '2.6.3.1 Examples of Possible Scope Hierarchies:', children: [
-                  { id: 'sec-2-6-3-1-1', text: '2.6.3.1.1 Project Scope Hierarchy' },
-                  { id: 'sec-2-6-3-1-2', text: '2.6.3.1.2 Type Scope Hierarchy' },
-                  { id: 'sec-2-6-3-1-3', text: '2.6.3.1.3 Responsibility Scope Hierarchy' },
-                ]
-              },
-            ]
-          },
+          { id: 'sec-2-6-3', text: '2.6.3 Scope Hierarchies and Inheritance' },
           { id: 'sec-2-6-4', text: '2.6.4 Per-Scope Parameterization' },
-          {
-            id: 'sec-2-6-5', text: '2.6.5 Scoped Scope-Hierarchies', children: [
-              {
-                id: 'sec-2-6-5-1', text: '2.6.5.1 Examples of Possible Scoped Scope Hierarchies:', children: [
-                  { id: 'sec-2-6-5-1-1', text: '2.6.5.1.1 Status Scope Hierarchy' },
-                ]
-              },
-            ]
-          },
+          { id: 'sec-2-6-5', text: '2.6.5 Scoped Scope-Hierarchies' },
           { id: 'sec-2-6-6', text: '2.6.6 Entry-Local Scope' },
         ]
       },
