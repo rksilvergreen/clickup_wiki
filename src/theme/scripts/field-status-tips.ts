@@ -75,10 +75,10 @@
     return statuses;
   }
 
-  const taskStatuses = readStatusesFromGroup('sec-4-2-2');
-  const eventStatuses = readStatusesFromGroup('sec-4-2-3');
-  const shoppingStatuses = readStatusesFromGroup('sec-4-2-4');
-  readStatusesFromGroup('sec-4-2-5');
+  const taskStatuses = readStatusesFromGroup('sec-4-4-1-2');
+  const eventStatuses = readStatusesFromGroup('sec-4-4-1-3');
+  const shoppingStatuses = readStatusesFromGroup('sec-4-4-1-4');
+  readStatusesFromGroup('sec-4-4-1-5');
 
   const allStatusDefs: Record<string, StatusDef> = {};
   for (const group of [taskStatuses, eventStatuses, shoppingStatuses]) {
@@ -90,11 +90,11 @@
   type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
 
   const SCOPES: SectionScope[] = [
-    { id: 'sec-4-1-1', fields: readFieldsFromTable('sec-4-1-1-1'), statuses: taskStatuses },
-    { id: 'sec-4-1-2', fields: readFieldsFromTable('sec-4-1-2-1'), statuses: eventStatuses },
-    { id: 'sec-4-1-3', fields: readFieldsFromTable('sec-4-1-3-1'), statuses: {} },
-    { id: 'sec-4-1-4', fields: readFieldsFromTable('sec-4-1-4-1'), statuses: {} },
-    { id: 'sec-4-1-5', fields: readFieldsFromTable('sec-4-1-5-1'), statuses: {} },
+    { id: 'sec-4-1-1-1', fields: readFieldsFromTable('sec-4-1-1-1-1'), statuses: taskStatuses },
+    { id: 'sec-4-1-1-2', fields: readFieldsFromTable('sec-4-1-1-2-1'), statuses: eventStatuses },
+    { id: 'sec-4-1-1-3', fields: readFieldsFromTable('sec-4-1-1-3-1'), statuses: {} },
+    { id: 'sec-4-1-1-4', fields: readFieldsFromTable('sec-4-1-1-4'), statuses: {} },
+    { id: 'sec-4-1-1-5', fields: readFieldsFromTable('sec-4-1-1-5-1'), statuses: {} },
   ];
 
   // --- Tooltip elements ---

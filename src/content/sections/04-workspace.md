@@ -32,7 +32,7 @@ order: 4
     <tbody>
       <tr>
         <td><a href="#row-status">Status</a></td>
-        <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-1-1-2-2">status group</a>.</td>
+        <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-4-1-2">status group</a>.</td>
         <td>Backlog</td>
         <td>No</td>
         <td>Yes</td>
@@ -152,7 +152,7 @@ order: 4
     <tbody>
       <tr>
         <td><a href="#row-status">Status</a></td>
-        <td>The lifecycle state of the event. Statuses are according to the relevant <a href="#sec-4-1-1-2-3">status group</a>.</td>
+        <td>The lifecycle state of the event. Statuses are according to the relevant <a href="#sec-4-4-1-3">status group</a>.</td>
         <td>Not Scheduled</td>
         <td>No</td>
         <td>Yes</td>
@@ -403,7 +403,8 @@ order: 4
 <h4 id="sec-4-1-1-7">4.1.1.7 Parent Task</h4>
 <p>A Parent Task is a practical workaround used for items that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
 <p>The schema of a Parent Task is identical to that of a <a href="#sec-4-1-1-1">Task</a>; it uses the same fields, constraints, and operational rules.</p>
-<h3 id="sec-4-1-2">4.1.2 Status Groups</h3>
+<h2 id="sec-4-4">4.4 ClickUp Elements</h2>
+<h3 id="sec-4-4-1">4.4.1 Status Groups</h3>
 <p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
@@ -414,7 +415,7 @@ order: 4
   when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
   Whenever we mention a status, we annotate it with its subgroup as a pill.</p>
-<h4 id="sec-4-1-2-1">4.1.2.1 Status Transitions and Triggers</h4>
+<h4 id="sec-4-4-1-1">4.4.1.1 Status Transitions and Triggers</h4>
 <p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
@@ -428,7 +429,7 @@ order: 4
   <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular
     date-time boundary is reached.</li>
 </ul>
-<h4 id="sec-4-1-2-2">4.1.2.2 Task Status Group</h4>
+<h4 id="sec-4-4-1-2">4.4.1.2 Task Status Group</h4>
 <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
@@ -448,7 +449,7 @@ order: 4
   <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">Closed</span></strong> — The task is finished and successfully
     completed.</li>
 </ul>
-<h5 id="sec-4-1-2-2-1">4.1.2.2.1 Task Transitions</h5>
+<h5 id="sec-4-4-1-2-1">4.4.1.2.1 Task Transitions</h5>
 <ul>
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
     <em>at least one</em> of <strong>Start Date</strong> or <strong>Due Date</strong> is set.
@@ -466,7 +467,7 @@ order: 4
     <strong>null</strong>.
   </li>
 </ul>
-<h4 id="sec-4-1-2-3">4.1.2.3 Event Status Group</h4>
+<h4 id="sec-4-4-1-3">4.4.1.3 Event Status Group</h4>
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but
@@ -475,15 +476,15 @@ order: 4
   <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <strong>Start Date and/or Due
       Date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>Start Time has not
       arrived yet</strong>.</li>
-  <li id="st-4-1-2-3-occurring"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is
+  <li id="st-4-4-1-3-occurring"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is
     <strong>on/after the event's Start Time</strong> (i.e., the event is happening now or has started and hasn't
     ended yet).
   </li>
-  <li id="st-4-1-2-3-occurred"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">Closed</span></strong> — The current date-time is <strong>after
+  <li id="st-4-4-1-3-occurred"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">Closed</span></strong> — The current date-time is <strong>after
       the event's End Time</strong> (operationally: after the <strong>Due Date/Time</strong>, which we treat as
     the event's end).</li>
 </ul>
-<h5 id="sec-4-1-2-3-1">4.1.2.3.1 Event Transitions</h5>
+<h5 id="sec-4-4-1-3-1">4.4.1.3.1 Event Transitions</h5>
 <ul>
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of Start Date
     or Due Date is set.</li>
@@ -496,7 +497,7 @@ order: 4
   <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>Upcoming:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when the event's start datetime is
     moved forward to a datetime that has not yet happened.</li>
 </ul>
-<h4 id="sec-4-1-2-4">4.1.2.4 Shopping Status Group</h4>
+<h4 id="sec-4-4-1-4">4.4.1.4 Shopping Status Group</h4>
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
@@ -513,12 +514,12 @@ order: 4
   <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">Closed</span></strong> — The item has been purchased and received.
   </li>
 </ul>
-<h5 id="sec-4-1-2-4-1">4.1.2.4.1 Shopping Transitions</h5>
+<h5 id="sec-4-4-1-4-1">4.4.1.4.1 Shopping Transitions</h5>
 <p>Every transition is <strong>manual</strong>. The usual path is <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> → <span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart</strong> → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> →
     <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received</strong>, but an item may move from any status to any other (e.g. <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> back to
   <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> after an order is cancelled, or <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> to <span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled</strong>).
 </p>
-<h4 id="sec-4-1-2-5">4.1.2.5 Statusless Status Group</h4>
+<h4 id="sec-4-4-1-5">4.4.1.5 Statusless Status Group</h4>
 <p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
   entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
@@ -531,7 +532,7 @@ order: 4
 </ul>
 <p>All entries on a Statusless list remain in <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
-<h3 id="sec-4-1-3">4.1.3 Tags</h3>
+<h3 id="sec-4-4-2">4.4.2 Tags</h3>
 <p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
 <p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <a href="#sec-4-1-1-1">Task</a>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
 <p>The following tags are used in this workspace:</p>
@@ -547,7 +548,7 @@ order: 4
   <li><span class="doc-tag" style="background-color:#6e56cf" title="#6e56cf">self-care</span> — Personal well-being: rest, reflection, or looking after oneself.</li>
   <li><span class="doc-tag" style="background-color:#96f1fb" title="#96f1fb">social</span> — Involves spending time or interacting with others outside the household.</li>
 </ul>
-<h3 id="sec-4-1-4">4.1.4 Custom Fields</h3>
+<h3 id="sec-4-4-3">4.4.3 Custom Fields</h3>
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>
@@ -610,53 +611,53 @@ order: 4
     </tbody>
   </table>
 </div>
-<h3 id="sec-4-1-5">4.1.5 Templates</h3>
+<h3 id="sec-4-4-4">4.4.4 Templates</h3>
 <p>Templates are reusable predefined structures that let us create entries, lists, documents, or other workspace elements in a consistent way without rebuilding them from scratch each time. In ClickUp, a template can preserve things like field values, descriptions, subtasks, views, or broader setup, depending on what is being templated. Their role in the workspace is to turn recurring patterns into repeatable starting points, so that common processes, standard structures, and known best practices can be instantiated quickly and consistently.</p>
-<h4 id="sec-4-1-5-1">4.1.5.1 Space Templates</h4>
-<h4 id="sec-4-1-5-2">4.1.5.2 Folder Templates</h4>
-<h4 id="sec-4-1-5-3">4.1.5.3 List Templates</h4>
+<h4 id="sec-4-4-4-1">4.4.4.1 Space Templates</h4>
+<h4 id="sec-4-4-4-2">4.4.4.2 Folder Templates</h4>
+<h4 id="sec-4-4-4-3">4.4.4.3 List Templates</h4>
 
-<h5 id="sec-4-1-5-3-1">4.1.5.3.1 Events</h5>
+<h5 id="sec-4-4-4-3-1">4.4.4.3.1 Events</h5>
 
-<p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <a href="#sec-4-1-5-3-1">Automations - Events</a> list, and provides views for working with events.</p>
+<p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <a href="#sec-4-4-4-3-1">Automations - Events</a> list, and provides views for working with events.</p>
 <p><strong>Task type:</strong> <a href="#sec-4-1-1-2">Event</a></p>
-<p><strong>Status group:</strong> <a href="#sec-4-1-1-2-3">Event</a></p>
+<p><strong>Status group:</strong> <a href="#sec-4-4-1-3">Event</a></p>
 <p><strong>Views:</strong></p>
 <ul>
-  <li><a href="#sec-4-1-5-6-1">Events — Main</a></li>
+  <li><a href="#sec-4-4-4-6-1">Events — Main</a></li>
 </ul>
 <p><strong>Automations:</strong></p>
 <ul>
-  <li><a href="#sec-4-1-7-1-3" class="doc-automation-link">Event created → Add to list Automations - Events</a></li>
-  <li><a href="#sec-4-1-7-1-4" class="doc-automation-link">Event moved here → Add to list Automations - Events</a></li>
+  <li><a href="#sec-4-4-6-2-3" class="doc-automation-link">Event created → Add to list Automations - Events</a></li>
+  <li><a href="#sec-4-4-6-2-4" class="doc-automation-link">Event moved here → Add to list Automations - Events</a></li>
 </ul>
 
-<h4 id="sec-4-1-5-4">4.1.5.4 Task Templates</h4>
-<h4 id="sec-4-1-5-5">4.1.5.5 Doc Templates</h4>
-<h4 id="sec-4-1-5-6">4.1.5.6 View Templates</h4>
+<h4 id="sec-4-4-4-4">4.4.4.4 Task Templates</h4>
+<h4 id="sec-4-4-4-5">4.4.4.5 Doc Templates</h4>
+<h4 id="sec-4-4-4-6">4.4.4.6 View Templates</h4>
 
-<h5 id="sec-4-1-5-6-1">4.1.5.6.1 Events — Main</h5>
+<h5 id="sec-4-4-4-6-1">4.4.4.6.1 Events — Main</h5>
 
 <p>This is the template for the main list view of <a href="#sec-4-1-1-2">event</a> lists.</p>
 
 <p><strong>View type:</strong> List</p>
 <p><strong>Columns:</strong> <a href="#row-assignees">Assignee</a>, <a href="#row-start-date">Start Date</a>, <a href="#row-due-date">Due Date</a>, <a href="#row-relevance-number">Relevance #</a>, <a href="#row-relevance-unit">Relevance Unit</a></p>
-<p><strong>Filters:</strong> <a href="#sec-4-1-6-1" class="doc-filter-link">Assignee | Me mode OR Unassigned</a></p>
+<p><strong>Filters:</strong> <a href="#sec-4-4-5-1" class="doc-filter-link">Assignee | Me mode OR Unassigned</a></p>
 <p><strong>Grouping:</strong> <a href="#row-status">Status</a> — Descending</p>
 <p><strong>Subtasks:</strong> Collapsed</p>
 
-<h3 id="sec-4-1-6">4.1.6 Filters</h3>
+<h3 id="sec-4-4-5">4.4.5 Filters</h3>
 
 <p>Filters are the mechanisms that let us define which entries appear in a given view or context. They make it possible to narrow the visible set of entries according to field values. ClickUp allows filters to be saved and reused across views.</p>
 
-<h4 id="sec-4-1-6-1">4.1.6.1 Assignee | Me mode OR Unassigned</h4>
+<h4 id="sec-4-4-5-1">4.4.5.1 Assignee | Me mode OR Unassigned</h4>
 
 <p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
 <ul>
   <li><a href="#row-assignees">Assignee</a> <em>is</em> Me mode <em>or</em> Unassigned</li>
 </ul>
 
-<h4 id="sec-4-1-6-2">4.1.6.2 Due This Week</h4>
+<h4 id="sec-4-4-5-2">4.4.5.2 Due This Week</h4>
 
 <p>Shows entries whose <a href="#row-due-date">Due Date</a> falls within the current week.</p>
 <ul>
@@ -669,49 +670,53 @@ order: 4
   <li><a href="#row-status">Status</a> <em>is</em> Not started or Active</li>
 </ul>
 
-<h3 id="sec-4-1-7">4.1.7 Automations</h3>
+<h3 id="sec-4-4-6">4.4.6 Automations</h3>
 
 <p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
 
 <p>In our workspace, we use two kinds of automations: ClickUp automations, which are built directly into ClickUp, and webhook automations, which begin with webhook events sent out from ClickUp to server-side logic.</p>
 
-<h4 id="sec-4-1-7-1">4.1.7.1 ClickUp Automations</h4>
+<h4 id="sec-4-4-6-1">4.4.6.1 Task Automations</h4>
 
-<p>Automations configured and run inside ClickUp using its built-in triggers and actions.</p>
+<p>(To be filled in.)</p>
 
-<h5 id="sec-4-1-7-1-1">4.1.7.1.1 Start Time arrives → Set Occurring status</h5>
+<h4 id="sec-4-4-6-2">4.4.6.2 Event Automations</h4>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-1-2-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</p>
+<h5 id="sec-4-4-6-2-1">4.4.6.2.1 Start Time arrives → Set Occurring status</h5>
+
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-start-time">Start Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-1-2-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</span></div>
 
-<h5 id="sec-4-1-7-1-2">4.1.7.1.2 End Time arrives → Set Occurred status</h5>
+<h5 id="sec-4-4-6-2-2">4.4.6.2.2 End Time arrives → Set Occurred status</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-end-time">End Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-1-2-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-end-time">End Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-end-time">End Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-1-2-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</span></div>
 
-<h5 id="sec-4-1-7-1-3">4.1.7.1.3 Event created → Add to list Automations - Events</h5>
+<h5 id="sec-4-4-6-2-3">4.4.6.2.3 Event created → Add to list Automations - Events</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a> is created, add it to the list <a href="#sec-4-1-5-3-1">Automations - Events</a>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a> is created, add it to the list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-1-2">Event</a> created →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-1-5-3-1">Automations - Events</a>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</span></div>
 
-<h5 id="sec-4-1-7-1-4">4.1.7.1.4 Event moved here → Add to list Automations - Events</h5>
+<h5 id="sec-4-4-6-2-4">4.4.6.2.4 Event moved here → Add to list Automations - Events</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a> is moved into the list, add it to the list <a href="#sec-4-1-5-3-1">Automations - Events</a>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a> is moved into the list, add it to the list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-1-2">Event</a> moved here →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-1-5-3-1">Automations - Events</a>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</span></div>
 
-<h4 id="sec-4-1-7-2">4.1.7.2 Webhook Automations</h4>
+<h2 id="sec-4-5">4.5 External Integrations</h2>
+
+<h3 id="sec-4-5-1">4.5.1 Webhook Automations</h3>
 
 <p>Automations that start from webhook events sent to our server; used when ClickUp automations are not sufficient.</p>
 

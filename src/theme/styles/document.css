@@ -804,22 +804,22 @@ body {
 
 /* Links to filters: teal */
 .document a.doc-filter-link,
-.document a[href^="#sec-4-1-6"] {
+.document a[href^="#sec-4-4-5"] {
   color: #14b8a6;
 }
 
 .document a.doc-filter-link:hover,
-.document a[href^="#sec-4-1-6"]:hover {
+.document a[href^="#sec-4-4-5"]:hover {
   color: #2dd4bf;
   text-decoration: underline;
 }
 
 /* Links to status groups: pink (4.1.2.x) */
-.document a[href^="#sec-4-1-2"] {
+.document a[href^="#sec-4-4-1"] {
   color: #ec4899;
 }
 
-.document a[href^="#sec-4-1-2"]:hover {
+.document a[href^="#sec-4-4-1"]:hover {
   color: #f472b6;
   text-decoration: underline;
 }
@@ -836,12 +836,12 @@ body {
 
 /* Links to automations: yellow */
 .document a.doc-automation-link,
-.document a[href^="#sec-4-1-7-1"] {
+.document a[href^="#sec-4-4-6-"] {
   color: #eab308;
 }
 
 .document a.doc-automation-link:hover,
-.document a[href^="#sec-4-1-7-1"]:hover {
+.document a[href^="#sec-4-4-6-"]:hover {
   color: #facc15;
   text-decoration: underline;
 }
