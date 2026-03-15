@@ -97,8 +97,6 @@
     { id: 'sec-4-1-1-5', fields: readFieldsFromTable('sec-4-1-1-5-1'), statuses: {} },
   ];
 
-  // --- Tooltip elements ---
-
   const fieldTip = document.createElement('div');
   fieldTip.className = 'field-status-tooltip';
   document.body.appendChild(fieldTip);
@@ -184,8 +182,6 @@
     activeStatusLink = null;
     statusTip.classList.remove('is-visible');
   }
-
-  // --- Element processing ---
 
   function isInsideFieldsTable(el: HTMLElement): boolean {
     return el.closest('.doc-schema-table') !== null;
@@ -290,8 +286,6 @@
     el.textContent = '';
     el.appendChild(frag);
   }
-
-  // --- Hover handlers ---
 
   document.addEventListener('mouseover', function (e) {
     const el = (e.target as HTMLElement).closest('.has-field-tip') as HTMLElement | null;

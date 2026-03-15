@@ -1,21 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
-import WikiLayout from '../theme/layouts/WikiLayout.astro';
-import { toc } from '../content/toc';
-import config from '../../wiki.config';
+import { getCollection } from "astro:content";
+import DocLayout from "doc-shell/layouts/DocLayout.astro";
+import { toc } from "../content/toc";
+import config from "../../wiki.config";
+import "../styles/clickup.css";
 
-const sections = await getCollection('sections');
+const sections = await getCollection("sections");
 sections.sort((a, b) => a.data.order - b.data.order);
 
 const renderedSections = await Promise.all(
   sections.map(async (section) => {
     const { Content } = await section.render();
     return { id: section.id, Content };
-  })
+  }),
 );
 ---
-<WikiLayout title={config.title} tocEntries={toc}>
-  {renderedSections.map(({ Content }) => (
-    <Content />
-  ))}
-</WikiLayout>
+
+<DocLayout title={config.title} tocEntries={toc}>
+  {renderedSections.map(({ Content }) => <Content />)}
+</DocLayout>
+<script src="../scripts/field-status-tips.ts"></script>
+<script src="../scripts/sync-table-cols.ts"></script>
