@@ -113,6 +113,7 @@ export const toc: TocEntry[] = [
           { id: 'sec-4-3-2', text: '4.3.2 Task Intake' },
           { id: 'sec-4-3-3', text: '4.3.3 Task Management' },
           { id: 'sec-4-3-4', text: '4.3.4 Sprint Planning' },
+          { id: 'sec-4-3-5', text: '4.3.5 Meetings' },
         ]
       },
       {

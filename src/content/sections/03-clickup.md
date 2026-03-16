@@ -287,7 +287,7 @@ order: 3
             <tr>
               <th>Field type</th>
               <th>Description</th>
-              <th>System-only field type</th>
+              <th>System Only</th>
               <th>Parameters</th>
               <th>Computational</th>
               <th>AI</th>

@@ -223,6 +223,7 @@
         const a = document.createElement('a');
         a.href = '#' + statusDef.id;
         a.className = 'status-link';
+        a.setAttribute('data-skip-preview', '');
 
         const dot = document.createElement('span');
         dot.className = 'status-dot';
@@ -315,5 +316,9 @@
   document.addEventListener('mouseout', function (e) {
     const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;
     if (a && !a.contains(e.relatedTarget as Node)) hideStatusTip();
+  });
+
+  document.querySelectorAll('a[href^="#st-"]').forEach(function (a) {
+    a.setAttribute('data-skip-preview', '');
   });
 })();

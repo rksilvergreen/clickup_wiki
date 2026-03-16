@@ -172,35 +172,35 @@ order: 4
         <td>No</td>
       </tr>
       <tr>
-        <td><a href="#row-start-time">Start Time</a></td>
+        <td><a href="#row-cf-start-time">Start Time</a></td>
         <td>The precise datetime when the event starts. Used internally.</td>
         <td>—</td>
         <td>Yes</td>
         <td>No</td>
       </tr>
       <tr>
-        <td><a href="#row-end-time">End Time</a></td>
+        <td><a href="#row-cf-end-time">End Time</a></td>
         <td>The precise datetime when the event ends. Used internally.</td>
         <td>—</td>
         <td>Yes</td>
         <td>No</td>
       </tr>
       <tr>
-        <td><a href="#row-relevance-number">Relevance #</a></td>
+        <td><a href="#row-cf-relevance-number">Relevance #</a></td>
         <td>How many units of time in advance the event should start being shown or notified.</td>
         <td>1</td>
         <td>Yes</td>
         <td>No</td>
       </tr>
       <tr>
-        <td><a href="#row-relevance-unit">Relevance Unit</a></td>
+        <td><a href="#row-cf-relevance-unit">Relevance Unit</a></td>
         <td>The unit for that advance period (e.g. days, weeks, months).</td>
         <td>Weeks</td>
         <td>Yes</td>
         <td>No</td>
       </tr>
       <tr>
-        <td><a href="#row-relevance-date">Relevance Date</a></td>
+        <td><a href="#row-cf-relevance-date">Relevance Date</a></td>
         <td>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start Time minus the relevance period (Relevance # + Relevance Unit).</td>
         <td>—</td>
         <td>Yes</td>
@@ -340,7 +340,7 @@ order: 4
     </thead>
     <tbody>
       <tr>
-        <td><a href="#row-timestamp">Timestamp</a></td>
+        <td><a href="#row-cf-timestamp">Timestamp</a></td>
         <td>The datetime when the record was made (or, if backdated, when the documented thing occurred).</td>
         <td>Current datetime</td>
         <td>No</td>
@@ -566,47 +566,47 @@ order: 4
       </tr>
     </thead>
     <tbody>
-      <tr id="row-start-time">
+      <tr id="row-cf-start-time">
         <td>Start Time</td>
         <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> begins.</td>
         <td><a href="#row-ft-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
-      <tr id="row-end-time">
+      <tr id="row-cf-end-time">
         <td>End Time</td>
         <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> ends.</td>
         <td><a href="#row-ft-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
-      <tr id="row-relevance-number">
+      <tr id="row-cf-relevance-number">
         <td>Relevance #</td>
         <td>How many units of time define the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
         <td><a href="#row-ft-number">Number</a></td>
         <td>No</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
-      <tr id="row-relevance-unit">
+      <tr id="row-cf-relevance-unit">
         <td>Relevance Unit</td>
         <td>The unit of time that defines the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
         <td><a href="#row-ft-dropdown">Dropdown</a></td>
         <td>No</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
-      <tr id="row-relevance-date">
+      <tr id="row-cf-relevance-date">
         <td>Relevance Date</td>
         <td>The date on which this <a href="#sec-4-1-1-2">event</a> should start being shown or notified to the user.</td>
         <td><a href="#row-ft-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
-      <tr id="row-timestamp">
+      <tr id="row-cf-timestamp">
         <td>Timestamp</td>
         <td>A single datetime, often representing when the documented occurrence happened.</td>
         <td><a href="#row-ft-date">Date</a></td>
         <td>No</td>
-        <td><a href="#sec-4-1-1-1-3">Record</a>, <a href="#sec-4-1-1-1-4">Thought</a></td>
+        <td><a href="#sec-4-1-1-3">Record</a>, <a href="#sec-4-1-1-4">Thought</a></td>
       </tr>
     </tbody>
   </table>
@@ -641,7 +641,7 @@ order: 4
 <p>This is the template for the main list view of <a href="#sec-4-1-1-2">event</a> lists.</p>
 
 <p><strong>View type:</strong> List</p>
-<p><strong>Columns:</strong> <a href="#row-assignees">Assignee</a>, <a href="#row-start-date">Start Date</a>, <a href="#row-due-date">Due Date</a>, <a href="#row-relevance-number">Relevance #</a>, <a href="#row-relevance-unit">Relevance Unit</a></p>
+<p><strong>Columns:</strong> <a href="#row-assignees">Assignee</a>, <a href="#row-start-date">Start Date</a>, <a href="#row-due-date">Due Date</a>, <a href="#row-cf-relevance-number">Relevance #</a>, <a href="#row-cf-relevance-unit">Relevance Unit</a></p>
 <p><strong>Filters:</strong> <a href="#sec-4-4-5-1" class="doc-filter-link">Assignee | Me mode OR Unassigned</a></p>
 <p><strong>Grouping:</strong> <a href="#row-status">Status</a> — Descending</p>
 <p><strong>Subtasks:</strong> Collapsed</p>
@@ -684,20 +684,20 @@ order: 4
 
 <h5 id="sec-4-4-6-2-1">4.4.6.2.1 Start Time arrives → Set Occurring status</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-cf-start-time">Start Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-start-time">Start Time</a> arrives →</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-cf-start-time">Start Time</a> arrives →</span></div>
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurring" class="status-link"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring</strong></a>.</span></div>
 
 <h5 id="sec-4-4-6-2-2">4.4.6.2.2 End Time arrives → Set Occurred status</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-end-time">End Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#row-cf-end-time">End Time</a> is reached, set its <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-end-time">End Time</a> arrives →</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#row-cf-end-time">End Time</a> arrives →</span></div>
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#row-status">Status</a> to <a href="#st-4-4-1-3-occurred" class="status-link"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred</strong></a>.</span></div>
 
 <h5 id="sec-4-4-6-2-3">4.4.6.2.3 Event created → Add to list Automations - Events</h5>
@@ -732,3 +732,5 @@ order: 4
 <h3 id="sec-4-3-3">4.3.3 Task Management</h3>
 
 <h3 id="sec-4-3-4">4.3.4 Sprint Planning</h3>
+
+<h3 id="sec-4-3-5">4.3.5 Meetings</h3>
