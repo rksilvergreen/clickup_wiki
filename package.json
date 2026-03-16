@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && ssh automation \"rm -rf ~/clickup_wiki/site/* ~/clickup_wiki/site/.[!.]* 2>/dev/null; mkdir -p ~/clickup_wiki/site\" && scp -r dist/* automation:~/clickup_wiki/site/"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
