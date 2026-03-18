@@ -1,23 +1,7 @@
 ---
-import { getCollection } from "astro:content";
-import DocLayout from "doc-shell/layouts/DocLayout.astro";
-import { toc } from "../content/toc";
-import config from "../../wiki.config";
+import HomeLayout from "doc-shell/layouts/HomeLayout.astro";
+import { siteTitle, documents } from "../../wiki.config";
 import "../styles/clickup.css";
-
-const sections = await getCollection("sections");
-sections.sort((a, b) => a.data.order - b.data.order);
-
-const renderedSections = await Promise.all(
-  sections.map(async (section) => {
-    const { Content } = await section.render();
-    return { id: section.id, Content };
-  }),
-);
 ---
 
-<DocLayout title={config.title} tocEntries={toc}>
-  {renderedSections.map(({ Content }) => <Content />)}
-</DocLayout>
-<script src="../scripts/field-status-tips.ts"></script>
-<script src="../scripts/sync-table-cols.ts"></script>
+<HomeLayout title={siteTitle} documents={documents} />
