@@ -1,11 +1,8 @@
 import type { TocEntry } from 'doc-shell/types';
 
 export const tocs: Record<string, TocEntry[]> = {
-  introduction: [
+  wiki: [
     { id: 'sec-1', text: '1. Introduction' },
-  ],
-
-  ontology: [
     {
       id: 'sec-2', text: '2. Ontology', children: [
         { id: 'sec-2-1', text: '2.1 Field' },
@@ -25,9 +22,6 @@ export const tocs: Record<string, TocEntry[]> = {
         },
       ]
     },
-  ],
-
-  clickup: [
     {
       id: 'sec-3', text: '3. ClickUp', children: [
         {
@@ -63,9 +57,6 @@ export const tocs: Record<string, TocEntry[]> = {
         },
       ]
     },
-  ],
-
-  workspace: [
     {
       id: 'sec-4', text: '4. Workspace', children: [
         {
