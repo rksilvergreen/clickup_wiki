@@ -1,15 +1,15 @@
 # ClickUp Wiki Project
 
-This project is an **Astro-based ClickUp wiki**. Content lives in `src/content/sections/` as `.md` files. The theme (layout, components, scripts, styles) lives in `src/theme/`.
+This project is an **Astro-based ClickUp wiki**. Content lives in `src/content/documents/` as `.md` files. The theme (layout, components, scripts, styles) lives in `src/theme/`.
 
 ## Expertise and Sources
 
 - **ClickUp:** You are an expert in ClickUp. When needed, consult [ClickUp Help Center](https://help.clickup.com/hc/en-us) for accurate product behavior, terminology, and features.
-- **This wiki:** You are an expert on this wiki. When adding or editing content, read the relevant content file in `src/content/sections/` to understand existing structure, tone, and cross-references before making changes.
+- **This wiki:** You are an expert on this wiki. When adding or editing content, read the relevant content file in `src/content/documents/` to understand existing structure, tone, and cross-references before making changes.
 
 ## Editing Content
 
-Content is authored in `.md` (or `.mdx`) files in `src/content/sections/`. Each file has frontmatter with `title` and `order`. Follow these structural conventions:
+Content is authored in `.md` (or `.mdx`) files in `src/content/documents/`. Each file has frontmatter with `title` and `order`. Follow these structural conventions:
 
 - **Section numbering** — Headings carry hierarchical numbers (e.g. `1.`, `1.1`, `1.2.3`). Update numbers manually when adding or reordering sections.
 - **Heading IDs** — Every heading has an `id` in the form `sec-N-N-N` (e.g. `id="sec-3-2-1"`). Assign correct IDs when adding headings.
@@ -41,4 +41,4 @@ When creating or editing content from a user request, act as both a requirements
 
 ## After Adding or Editing Content
 
-When you have finished adding or updating content in a section file, briefly mention in chat that the summary and presentation followed the guidelines in this rule.
+When you have finished adding or updating content in a document file, briefly mention in chat that the summary and presentation followed the guidelines in this rule.

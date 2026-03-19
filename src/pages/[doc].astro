@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 
 const { document } = Astro.props;
-const sections = await getCollection("sections");
+const sections = await getCollection("documents");
 const docSections = sections
   .filter((s) => s.id.startsWith(document.slug + "/"))
   .sort((a, b) => a.data.order - b.data.order);

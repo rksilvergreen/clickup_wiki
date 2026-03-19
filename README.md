@@ -24,7 +24,7 @@ Open `http://localhost:4321` in a browser. Changes to content, styles, or compon
 | Path | Purpose |
 |------|---------|
 | `wiki.config.ts` | Document title, feature flags |
-| `src/content/sections/` | Content files (`.md` or `.mdx`) — one per top-level section |
+| `src/content/documents/` | Content files (`.md` or `.mdx`) — one per top-level document section |
 | `src/content/toc.ts` | Table of contents data structure |
 | `src/content/config.ts` | Astro content collection schema |
 | `src/pages/index.astro` | Page that assembles all sections |
@@ -35,7 +35,7 @@ Open `http://localhost:4321` in a browser. Changes to content, styles, or compon
 
 ## Content format
 
-Content files live in `src/content/sections/` and use frontmatter:
+Content files live in `src/content/documents/` and use frontmatter:
 
 ```md
 ---
