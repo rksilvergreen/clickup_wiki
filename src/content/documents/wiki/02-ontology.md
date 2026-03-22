@@ -19,92 +19,49 @@ order: 2
   <li><strong>Scope</strong>: under what contexts it appears</li>
   <li><strong>Permissions</strong>: who can view/edit</li>
 </ul>
-<hr />
-<h2 id="sec-2-2">2.2 Field Type</h2>
-<p>The classification that determines the field's fundamental data shape and
-  interaction model: what values look like, how they are edited, how they are validated, and what operations make
-  sense.
-  Field types often come in several broad categories:</p>
-<ul>
-  <li><strong>Primitive-like types</strong>: number, text, date/time, boolean</li>
-  <li><strong>Reference/relational types</strong>: links to other entries, collections of references</li>
-  <li><strong>Parameterized types</strong>: the field kind is fixed, but it requires configuration parameters to
-    become fully defined<ul>
-      <li>e.g., a "choice" field whose allowed options are a parameter</li>
-      <li>or a "state/status" field whose allowed states are a parameter</li>
-    </ul>
-  </li>
-  <li><strong>Computed types</strong>: values are not directly stored but derived from other stored data,
-    relationships, or system state (often displayed like a normal field but ontologically distinct)</li>
-</ul>
-<hr />
-<h2 id="sec-2-3">2.3 Schema</h2>
-<p>A <strong>schema</strong> is a specification that defines a valid <strong>entry</strong>. It consists of:</p>
+<h2 id="sec-2-2">2.2 Schema</h2>
+<p>A specification that defines a valid <strong>entry</strong>. It consists of:</p>
 <ul>
   <li><strong>Fields</strong>: the set of fields that apply.</li>
-  <li><strong>Constraints</strong>: rules that determine validity.<ul>
-      <li><strong>Unary constraint</strong>: a restriction involving a single field (e.g., "required").</li>
-      <li><strong>Relational constraint</strong>: a restriction involving two or more fields (e.g., start_date ≤
-        due_date).</li>
-    </ul>
-  </li>
+  <li><strong>Constraints</strong>: rules that determine validity. They may restrict the value of a single field, such
+    as whether it is required, typed, or limited to a permitted range or set of values, and they may also govern the
+    relationship between multiple fields, such as dependency, consistency, exclusivity, or conditional validity.</li>
   <li><strong>Operational rules</strong>: rules that define how field values change over time in response to
     defined triggers. Each operational rule includes:<ul>
-      <li>a <strong>trigger condition</strong>: one of<ul>
-          <li>creation of a new entry under the schema</li>
-          <li>a field value change</li>
-          <li>passage of time</li>
-        </ul>
-      </li>
+      <li>a <strong>trigger condition</strong>: specifies the circumstance under which the rule is activated. This may be
+        the creation of a new entry under the schema, a change in a field value, or the passage of time.</li>
       <li>a <strong>state update</strong>: one or more field values are changed.</li>
     </ul>
-  </li>
+    Operational rules often exist to enforce constraints, although not necessarily.</li>
 </ul>
-<hr />
-<h2 id="sec-2-4">2.4 Entry</h2>
-<p>An <strong>entry</strong> is a concrete instance governed by a schema. It consists of a set of values, one per
+<h2 id="sec-2-3">2.3 Entry</h2>
+<p>A concrete instance governed by a schema. It consists of a set of values, one per
   field included in the schema.
   The set of an entry's field values at a given moment is its <strong>state</strong>.
   An entry is <strong>valid</strong> under its schema if each value belongs to its field's allowed domain and all
   schema constraints are satisfied.</p>
-<hr />
-<h2 id="sec-2-5">2.5 Database</h2>
-<p>A <strong>database</strong> is a system that stores and operates over a collection of entries. It is organized
-  around one or more schemas that define how entries are structured and validated.
-  Beyond storage, a database commonly includes behavior such as validation, transformations, computed/projection
-  values, automation triggers, permissions, and other operational rules.</p>
-<hr />
-<h2 id="sec-2-6">2.6 Scope</h2>
-<p>A <strong>scope</strong> is a reusable context layer that contributes a bundle of applicability for entries
+<h2 id="sec-2-4">2.4 Database</h2>
+<p>A  structured collection of entries governed by one or more schemas, together with the organizational framework that stores and makes those entries accessible..</p>
+<h2 id="sec-2-5">2.5 Scope</h2>
+<p>A context layer that contributes a bundle of applicability for entries
   exposed to it. A scope can contribute:</p>
 <ul>
   <li><strong>Schemas</strong> that apply in that context</li>
   <li><strong>Settings/policies</strong> (permissions, presentation rules, workflow behaviors)</li>
   <li><strong>Per-scope parameterization</strong> of fields (where the same field kind has different parameters in
     different contexts)</li>
-  <li><strong>Automations</strong> that are triggered by conditions inside the scope.
-    An entry's <strong>effective definition</strong> is derived from the combination of all scopes it is exposed
-    to.</li>
+  <li><strong>Automations</strong> that are triggered by conditions inside the scope.</li>
 </ul>
-<h3 id="sec-2-6-1">2.6.1 Single Database with Scopes</h3>
-<p>In many no-code database platforms, the workspace often <em>looks</em> like it contains many separate databases
-  scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as
-  <strong>one big</strong> <strong>database</strong> of entries with a shared universe of fields—where differences
-  in what you see and what applies are explained by scopes.
+<p>All of an entry's attributes are derived from the scopes it is exposed to, taken together: each scope contributes
+  part of what applies to that entry, and the result is the union of those contributions.</p>
+<h2 id="sec-2-6">2.6 Unified Database Model</h2>
+<p>In many no-code database platforms, the workspace often looks like it contains many separate databases
+  scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.
 </p>
-<h3 id="sec-2-6-2">2.6.2 Scope Exposure and Scope Selector Fields</h3>
+<h3 id="sec-2-6-1">2.6.1 Scope Exposure</h3>
 <p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the
-  entry to additional scopes.
-  Examples (in abstract terms):</p>
-<ul>
-  <li>A "location" selector whose value points to a container/context, thereby exposing the entry to that context
-    scope (and possibly its parent scopes).</li>
-  <li>A "type" selector whose value chooses a node in a type hierarchy, exposing the entry to that type scope (and
-    its ancestors).
-    So some fields are not merely data holders; they are <em>context-binding mechanisms</em> that determine which
-    schemas/settings/rules apply.</li>
-</ul>
-<h3 id="sec-2-6-3">2.6.3 Scope Hierarchies and Inheritance</h3>
+  entry to additional scopes. These are not merely data holders; they are context-binding mechanisms that determine which schemas/settings/rules apply.</p>
+<h3 id="sec-2-6-2">2.6.2 Scope Hierarchies</h3>
 <p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
   Inheritance means that exposure to a child implies exposure to its ancestors.
   Examples of possible scope hierarchies:</p>
@@ -196,7 +153,7 @@ order: 2
     </li>
   </ul>
 </div>
-<h3 id="sec-2-6-4">2.6.4 Per-Scope Parameterization</h3>
+<h3 id="sec-2-6-3">2.6.3 Per-Scope Parameterization</h3>
 <p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters.
   Scopes can provide those parameters at different levels.
   For example:</p>
@@ -207,7 +164,7 @@ order: 2
   <li>a templated or AI-driven field can have different prompts/specs per scope
     This allows consistent field kinds while enabling contextual variation.</li>
 </ul>
-<h3 id="sec-2-6-5">2.6.5 Scoped Scope-Hierarchies</h3>
+<h3 id="sec-2-6-4">2.6.4 Scoped Scope Hierarchies</h3>
 <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
   particular scope so that only entries already exposed to that scope can access that selector, and only then can
   they branch into a further scope hierarchy.
@@ -235,6 +192,6 @@ order: 2
     </li>
   </ul>
 </div>
-<h3 id="sec-2-6-6">2.6.6 Entry-Local Scope</h3>
+<h3 id="sec-2-6-5">2.6.5 Entry-Local Scope</h3>
 <p>In addition to shared scopes, an entry may have an <strong>entry-local scope</strong> that applies only to
   itself—allowing truly per-entry schema/settings/rules extensions.</p>

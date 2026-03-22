@@ -6,18 +6,17 @@ export const tocs: Record<string, TocEntry[]> = {
     {
       id: 'sec-2', text: '2. Ontology', children: [
         { id: 'sec-2-1', text: '2.1 Field' },
-        { id: 'sec-2-2', text: '2.2 Field Type' },
-        { id: 'sec-2-3', text: '2.3 Schema' },
-        { id: 'sec-2-4', text: '2.4 Entry' },
-        { id: 'sec-2-5', text: '2.5 Database' },
+        { id: 'sec-2-2', text: '2.2 Schema' },
+        { id: 'sec-2-3', text: '2.3 Entry' },
+        { id: 'sec-2-4', text: '2.4 Database' },
+        { id: 'sec-2-5', text: '2.5 Scope' },
         {
-          id: 'sec-2-6', text: '2.6 Scope', children: [
-            { id: 'sec-2-6-1', text: '2.6.1 Single Database with Scopes' },
-            { id: 'sec-2-6-2', text: '2.6.2 Scope Exposure and Scope Selector Fields' },
-            { id: 'sec-2-6-3', text: '2.6.3 Scope Hierarchies and Inheritance' },
-            { id: 'sec-2-6-4', text: '2.6.4 Per-Scope Parameterization' },
-            { id: 'sec-2-6-5', text: '2.6.5 Scoped Scope-Hierarchies' },
-            { id: 'sec-2-6-6', text: '2.6.6 Entry-Local Scope' },
+          id: 'sec-2-6', text: '2.6 Unified Database Model', children: [
+            { id: 'sec-2-6-1', text: '2.6.1 Scope Exposure' },
+            { id: 'sec-2-6-2', text: '2.6.2 Scope Hierarchies' },
+            { id: 'sec-2-6-3', text: '2.6.3 Per-Scope Parameterization' },
+            { id: 'sec-2-6-4', text: '2.6.4 Scoped Scope-Hierarchies' },
+            { id: 'sec-2-6-5', text: '2.6.5 Entry-Local Scope' },
           ]
         },
       ]
