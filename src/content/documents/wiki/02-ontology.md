@@ -8,12 +8,12 @@ order: 2
   formalizes core concepts, and provides a conceptual foundation for analyzing how these platforms represent data,
   enforce structure, and apply behavior.</p>
 <h2 id="sec-2-1">2.1 Field</h2>
-<p>A <strong>field</strong> is a reusable property descriptor: it defines a named "slot" that can hold a value.
+<p>A reusable property descriptor: it defines a named "slot" that can hold a value.
   A field definition typically includes:</p>
 <ul>
   <li><strong>Identity</strong>: stable field identifier</li>
   <li><strong>Name</strong>: human-readable presentation</li>
-  <li><strong>Field type</strong>: what kind of data/interaction this field represents</li>
+  <li><strong>Field type</strong>: what kind of data this field represents</li>
   <li><strong>Nullability:</strong> whether a value must be set</li>
   <li><strong>Default value</strong>: what value is assumed when none is provided</li>
   <li><strong>Scope</strong>: under what contexts it appears</li>
@@ -21,7 +21,7 @@ order: 2
 </ul>
 <hr />
 <h2 id="sec-2-2">2.2 Field Type</h2>
-<p>A <strong>field type</strong> is the classification that determines the field's fundamental data shape and
+<p>The classification that determines the field's fundamental data shape and
   interaction model: what values look like, how they are edited, how they are validated, and what operations make
   sense.
   Field types often come in several broad categories:</p>
