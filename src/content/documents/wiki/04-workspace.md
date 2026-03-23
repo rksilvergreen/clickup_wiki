@@ -146,7 +146,7 @@ order: 4
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
   occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
   display. The workspace derives precise start and end times from the dates you set, drives <em>Status</em> from
-  those times, and computes a <strong>Relevance Date</strong> so the event can be shown or notified ahead of
+  those times, and computes a <em>Relevance Date</em> so the event can be shown or notified ahead of
   time.</p>
 <h5 id="sec-4-1-1-2-1">4.1.1.2.1 Event Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">

@@ -143,6 +143,7 @@
 
 /* Keep operational-rules body text at regular document tone. */
 .document .doc-rules-list .doc-rule-content,
+.document .doc-rules-list .doc-rule-content em,
 .document .doc-rules-list .doc-rule-num,
 .document .doc-rules-list .doc-rule-cont,
 .document .doc-rules-list .doc-rule-group-op {
