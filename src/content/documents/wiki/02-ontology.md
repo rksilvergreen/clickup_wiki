@@ -20,7 +20,7 @@ order: 2
   <li><strong>Permissions</strong>: who can view/edit</li>
 </ul>
 <h2 id="sec-2-2">2.2 Schema</h2>
-<p>A specification that defines a valid <em>entry</em>. It consists of:</p>
+<p>A specification that defines a valid entry. It consists of:</p>
 <ul>
   <li><strong>Fields</strong>: the set of fields that apply.</li>
   <li><strong>Constraints</strong>: rules that determine validity. They may restrict the value of a single field, such
@@ -37,8 +37,8 @@ order: 2
 <h2 id="sec-2-3">2.3 Entry</h2>
 <p>A concrete instance governed by a schema. It consists of a set of values, one per
   field included in the schema.
-  The set of an entry's field values at a given moment is its <strong>state</strong>.
-  An entry is <strong>valid</strong> under its schema if each value belongs to its field's allowed domain and all
+  The set of an entry's field values at a given moment is its state.
+  An entry is valid under its schema if each value belongs to its field's allowed domain and all
   schema constraints are satisfied.</p>
 <h2 id="sec-2-4">2.4 Database</h2>
 <p>A  structured collection of entries governed by one or more schemas, together with the organizational framework that stores and makes those entries accessible..</p>
@@ -59,10 +59,10 @@ order: 2
   scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.
 </p>
 <h3 id="sec-2-6-1">2.6.1 Scope Exposure</h3>
-<p>Entries become exposed to scopes through <strong>scope selector fields</strong>: fields whose values attach the
+<p>Entries become exposed to scopes through scope selector fields: fields whose values attach the
   entry to additional scopes. These are not merely data holders; they are context-binding mechanisms that determine which schemas/settings/rules apply.</p>
 <h3 id="sec-2-6-2">2.6.2 Scope Hierarchies</h3>
-<p>Scopes can form <strong>hierarchies</strong> where child scopes inherit from parents.
+<p>Scopes can form hierarchies where child scopes inherit from parents.
   Inheritance means that exposure to a child implies exposure to its ancestors.
   Examples of possible scope hierarchies:</p>
 <p><strong>Project Scope Hierarchy</strong> — How entries are grouped by the projects they support and the goals they aim to achieve.</p>
@@ -154,7 +154,7 @@ order: 2
   </ul>
 </div>
 <h3 id="sec-2-6-3">2.6.3 Per-Scope Parameterization</h3>
-<p>Some field types are <em>parameterized</em>: their full meaning requires configuration parameters.
+<p>Some field types are parameterized: their full meaning requires configuration parameters.
   Scopes can provide those parameters at different levels.
   For example:</p>
 <ul>
@@ -169,10 +169,7 @@ order: 2
   particular scope so that only entries already exposed to that scope can access that selector, and only then can
   they branch into a further scope hierarchy.
   This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.</p>
-<p>For example, the <strong>Status Scope Hierarchy</strong> is scoped under the <strong>Task</strong> scope of the <strong>Type
-  Scope Hierarchy</strong>. That scope exposes a <strong>status</strong> field that acts as a scope selector
-  into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models
-  their progression state:</p>
+<p>For example, the Status Scope Hierarchy is scoped under the Task scope of the Type Scope Hierarchy. That scope exposes a status field that acts as a scope selector into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models their progression state:</p>
 <div class="doc-tree">
   <ul>
     <li>⬜ Not Started<ul>
@@ -193,5 +190,4 @@ order: 2
   </ul>
 </div>
 <h3 id="sec-2-6-5">2.6.5 Entry-Local Scope</h3>
-<p>In addition to shared scopes, an entry may have an <strong>entry-local scope</strong> that applies only to
-  itself—allowing truly per-entry schema/settings/rules extensions.</p>
+<p>In addition to shared scopes, an entry may have an entry-local scope tha applies only to itself—allowing truly per-entry schema/settings/rules extensions.</p>
