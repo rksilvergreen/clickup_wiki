@@ -44,7 +44,7 @@ order: 4
       <tr>
         <td><a href="#row-status">Status</a></td>
         <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-4-1-2">status group</a>.</td>
-        <td>Backlog</td>
+        <td><a href="#st-4-4-1-2-backlog" class="status-link"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog</strong></a></td>
         <td>No</td>
         <td>Yes</td>
       </tr>
@@ -444,7 +444,7 @@ order: 4
 <p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no
+  <li id="st-4-4-1-2-backlog"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no
     intent to work on it yet. it may transition to <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> <em>if and only if</em> at least one of
     <strong>Start Date</strong> or <strong>Due Date</strong> is set, which acts as the signal that the task is now
     being planned.
