@@ -1,4 +1,9 @@
 (function () {
+  interface FieldDef {
+    desc: string;
+    href: string;
+  }
+
   interface StatusDef {
     color: string;
     tip: string;
@@ -10,17 +15,23 @@
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   }
 
-  function readFieldsFromTable(sectionId: string): Record<string, string> {
+  function readFieldsFromTable(sectionId: string): Record<string, FieldDef> {
     const heading = document.getElementById(sectionId);
-    if (!heading) return {};
+    if (!heading) return Object.create(null);
     const table = findNextElement(heading, '.doc-schema-table') as HTMLTableElement | null;
-    if (!table) return {};
-    const fields: Record<string, string> = {};
+    if (!table) return Object.create(null);
+    const sectionSlug = sectionId.replace(/^sec-/, '');
+    const fields: Record<string, FieldDef> = Object.create(null);
     table.querySelectorAll('tbody tr').forEach(function (tr) {
       const cells = tr.querySelectorAll('td');
       const name = cells[0] ? (cells[0].textContent || '').trim() : '';
       const desc = cells[1] ? (cells[1].textContent || '').trim() : '';
-      if (name && desc) fields[name] = desc;
+      if (!name) return;
+      const row = tr as HTMLTableRowElement;
+      const localRowId = row.id || ('row-' + sectionSlug + '-' + slugify(name));
+      row.id = localRowId;
+      const href = '#' + localRowId;
+      fields[name] = { desc, href };
     });
     return fields;
   }
@@ -87,7 +98,7 @@
     }
   }
 
-  type SectionScope = { id: string; fields: Record<string, string>; statuses: Record<string, StatusDef> };
+  type SectionScope = { id: string; fields: Record<string, FieldDef>; statuses: Record<string, StatusDef> };
 
   const SCOPES: SectionScope[] = [
     { id: 'sec-4-1-1-1', fields: readFieldsFromTable('sec-4-1-1-1-1'), statuses: taskStatuses },
@@ -97,44 +108,9 @@
     { id: 'sec-4-1-1-5', fields: readFieldsFromTable('sec-4-1-1-5-1'), statuses: {} },
   ];
 
-  const fieldTip = document.createElement('div');
-  fieldTip.className = 'field-status-tooltip';
-  document.body.appendChild(fieldTip);
-
   const statusTip = document.createElement('div');
   statusTip.className = 'status-preview-tooltip';
   document.body.appendChild(statusTip);
-
-  let fieldHideTimer: ReturnType<typeof setTimeout> | null = null;
-
-  function showFieldTip(anchor: HTMLElement, text: string) {
-    if (fieldHideTimer) { clearTimeout(fieldHideTimer); fieldHideTimer = null; }
-    fieldTip.textContent = text;
-    fieldTip.classList.add('is-visible');
-
-    const rect = anchor.getBoundingClientRect();
-    const margin = 8;
-    fieldTip.style.left = '0';
-    fieldTip.style.top = '0';
-    const tw = fieldTip.offsetWidth;
-    const th = fieldTip.offsetHeight;
-
-    let left = rect.left + rect.width / 2 - tw / 2;
-    if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
-    if (left < margin) left = margin;
-
-    let top = rect.top - th - margin;
-    if (top < margin) top = rect.bottom + margin;
-
-    fieldTip.style.left = left + 'px';
-    fieldTip.style.top = top + 'px';
-  }
-
-  function hideFieldTip() {
-    fieldHideTimer = setTimeout(function () {
-      fieldTip.classList.remove('is-visible');
-    }, 80);
-  }
 
   function buildStatusPreview(li: HTMLLIElement): void {
     const wrapper = document.createElement('div');
@@ -237,20 +213,32 @@
         continue;
       }
 
-      const fieldDesc = scope.fields[text];
-      if (fieldDesc) {
-        strong.classList.add('has-field-tip');
-        strong.dataset.tipText = fieldDesc;
+      const fieldDef = scope.fields[text];
+      if (fieldDef) {
+        const a = document.createElement('a');
+        a.href = fieldDef.href;
+        a.setAttribute('data-skip-preview', '');
+        strong.parentNode!.insertBefore(a, strong);
+        a.appendChild(strong);
         continue;
       }
 
-      if (strong.closest('.doc-rule-content')) {
-        wrapFieldNamesInElement(strong, scope.fields);
-      }
+    }
+
+    // Ensure field names embedded in trigger/condition phrases are linked,
+    // even when they appear as part of larger text nodes (e.g. "Start Date changed").
+    const ruleContents: HTMLElement[] = [];
+    for (const el of container) {
+      el.querySelectorAll('.doc-rule-content').forEach(function (n) {
+        ruleContents.push(n as HTMLElement);
+      });
+    }
+    for (const content of ruleContents) {
+      linkFieldNamesInTextNodes(content, scope.fields);
     }
   }
 
-  function wrapFieldNamesInElement(el: HTMLElement, fields: Record<string, string>): void {
+  function wrapFieldNamesInElement(el: HTMLElement, fields: Record<string, FieldDef>): void {
     const text = el.textContent || '';
     const matches: { name: string; index: number }[] = [];
     for (const name in fields) {
@@ -274,11 +262,11 @@
       if (m.index > lastEnd) {
         frag.appendChild(document.createTextNode(text.slice(lastEnd, m.index)));
       }
-      const span = document.createElement('span');
-      span.className = 'has-field-tip';
-      span.dataset.tipText = fields[m.name];
-      span.textContent = m.name;
-      frag.appendChild(span);
+      const a = document.createElement('a');
+      a.href = fields[m.name].href;
+      a.setAttribute('data-skip-preview', '');
+      a.textContent = m.name;
+      frag.appendChild(a);
       lastEnd = m.index + m.name.length;
     }
     if (lastEnd < text.length) {
@@ -288,15 +276,110 @@
     el.appendChild(frag);
   }
 
-  document.addEventListener('mouseover', function (e) {
-    const el = (e.target as HTMLElement).closest('.has-field-tip') as HTMLElement | null;
-    if (el && el.dataset.tipText) showFieldTip(el, el.dataset.tipText);
-  });
+  function linkFieldNamesInTextNodes(root: HTMLElement, fields: Record<string, FieldDef>): void {
+    const names = Object.keys(fields).sort((a, b) => b.length - a.length);
+    if (!names.length) return;
 
-  document.addEventListener('mouseout', function (e) {
-    const el = (e.target as HTMLElement).closest('.has-field-tip') as HTMLElement | null;
-    if (el && !el.contains(e.relatedTarget as Node)) hideFieldTip();
-  });
+    const escaped = names.map(function (name) {
+      return name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    });
+    const pattern = new RegExp(escaped.join('|'), 'g');
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    let current = walker.nextNode();
+    while (current) {
+      textNodes.push(current as Text);
+      current = walker.nextNode();
+    }
+
+    for (const node of textNodes) {
+      const parent = node.parentElement;
+      if (!parent) continue;
+      if (parent.closest('a')) continue;
+      const text = node.nodeValue || '';
+      pattern.lastIndex = 0;
+      if (!pattern.test(text)) continue;
+
+      // If this text lives inside <strong>, rebuild it so linked field tokens
+      // use the same markup shape as elsewhere: <a><strong>Field</strong></a>.
+      if (parent.tagName === 'STRONG' && parent.parentNode) {
+        const strongEl = parent as HTMLElement;
+        const fullText = strongEl.textContent || '';
+        pattern.lastIndex = 0;
+        if (!pattern.test(fullText)) continue;
+
+        pattern.lastIndex = 0;
+        const outerFrag = document.createDocumentFragment();
+        let strongLast = 0;
+        let strongMatch: RegExpExecArray | null;
+
+        while ((strongMatch = pattern.exec(fullText)) !== null) {
+          const name = strongMatch[0];
+          const idx = strongMatch.index;
+
+          if (idx > strongLast) {
+            const strongChunk = document.createElement('strong');
+            strongChunk.textContent = fullText.slice(strongLast, idx);
+            outerFrag.appendChild(strongChunk);
+          }
+
+          const def = fields[name];
+          if (def) {
+            const a = document.createElement('a');
+            a.href = def.href;
+            a.setAttribute('data-skip-preview', '');
+            const linkedStrong = document.createElement('strong');
+            linkedStrong.textContent = name;
+            a.appendChild(linkedStrong);
+            outerFrag.appendChild(a);
+          } else {
+            const strongChunk = document.createElement('strong');
+            strongChunk.textContent = name;
+            outerFrag.appendChild(strongChunk);
+          }
+
+          strongLast = idx + name.length;
+        }
+
+        if (strongLast < fullText.length) {
+          const strongChunk = document.createElement('strong');
+          strongChunk.textContent = fullText.slice(strongLast);
+          outerFrag.appendChild(strongChunk);
+        }
+
+        strongEl.parentNode.replaceChild(outerFrag, strongEl);
+        continue;
+      }
+
+      pattern.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match: RegExpExecArray | null;
+      while ((match = pattern.exec(text)) !== null) {
+        const name = match[0];
+        const idx = match.index;
+        if (idx > lastIndex) {
+          frag.appendChild(document.createTextNode(text.slice(lastIndex, idx)));
+        }
+        const def = fields[name];
+        if (def) {
+          const a = document.createElement('a');
+          a.href = def.href;
+          a.setAttribute('data-skip-preview', '');
+          a.textContent = name;
+          frag.appendChild(a);
+        } else {
+          frag.appendChild(document.createTextNode(name));
+        }
+        lastIndex = idx + name.length;
+      }
+      if (lastIndex < text.length) {
+        frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+      parent.replaceChild(frag, node);
+    }
+  }
 
   document.addEventListener('mouseover', function (e) {
     const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;

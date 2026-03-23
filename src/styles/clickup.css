@@ -349,6 +349,14 @@
   color: var(--doc-link-base-scope);
 }
 
+/* In constraint/rule contexts, field-row links should look like plain highlighted tokens. */
+.document .doc-fc-line .doc-fc-content a[href^="#row-"],
+.document .doc-rules-list .doc-rule-content a[href^="#row-"] {
+  color: var(--doc-ink-light);
+  font-style: italic;
+  text-decoration: none;
+}
+
 /* Links to filters: teal */
 .document a.doc-filter-link,
 .document a[href^="#sec-4-4-5"] {
