@@ -354,21 +354,28 @@
 }
 
 /* Links to custom-field table rows */
-.document a[href^="#row-cf-"] {
+.document a[href^="#row-cf-"]:not(.schema-field-ref) {
   color: var(--doc-link-custom-fields);
 }
 
 /* Links to base-scope table rows: blue */
-.document a[href^="#row-"]:not([href^="#row-ft-"]):not([href^="#row-cf-"]) {
+.document a[href^="#row-"]:not([href^="#row-ft-"]):not([href^="#row-cf-"]):not(.schema-field-ref) {
   color: var(--doc-link-base-scope);
 }
 
-/* In constraint/rule contexts, field-row links should look like plain highlighted tokens. */
-.document .doc-fc-line .doc-fc-content a[href^="#row-"],
-.document .doc-rules-list .doc-rule-content a[href^="#row-"] {
-  color: var(--doc-ink-light);
+/* Auto-linked field references within task-type sections. */
+.document a.schema-field-ref {
+  color: var(--doc-ink);
   font-style: italic;
+  font-weight: 400;
   text-decoration: none;
+}
+
+.document a.schema-field-ref strong,
+.document a.schema-field-ref em {
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 /* Links to filters: teal */

@@ -213,28 +213,10 @@
         continue;
       }
 
-      const fieldDef = scope.fields[text];
-      if (fieldDef) {
-        const a = document.createElement('a');
-        a.href = fieldDef.href;
-        a.setAttribute('data-skip-preview', '');
-        strong.parentNode!.insertBefore(a, strong);
-        a.appendChild(strong);
-        continue;
-      }
-
     }
 
-    // Ensure field names embedded in trigger/condition phrases are linked,
-    // even when they appear as part of larger text nodes (e.g. "Start Date changed").
-    const ruleContents: HTMLElement[] = [];
     for (const el of container) {
-      el.querySelectorAll('.doc-rule-content').forEach(function (n) {
-        ruleContents.push(n as HTMLElement);
-      });
-    }
-    for (const content of ruleContents) {
-      linkFieldNamesInTextNodes(content, scope.fields);
+      linkFieldNamesInTextNodes(el, scope.fields);
     }
   }
 
@@ -297,58 +279,60 @@
       const parent = node.parentElement;
       if (!parent) continue;
       if (parent.closest('a')) continue;
+      if (parent.closest('.doc-schema-table')) continue;
       const text = node.nodeValue || '';
       pattern.lastIndex = 0;
       if (!pattern.test(text)) continue;
 
-      // If this text lives inside <strong>, rebuild it so linked field tokens
-      // use the same markup shape as elsewhere: <a><strong>Field</strong></a>.
-      if (parent.tagName === 'STRONG' && parent.parentNode) {
-        const strongEl = parent as HTMLElement;
-        const fullText = strongEl.textContent || '';
+      const wrapperTag = parent.tagName === 'STRONG' || parent.tagName === 'EM'
+        ? parent.tagName.toLowerCase() as 'strong' | 'em' : null;
+      if (wrapperTag && parent.parentNode) {
+        const wrapperEl = parent as HTMLElement;
+        const fullText = wrapperEl.textContent || '';
         pattern.lastIndex = 0;
         if (!pattern.test(fullText)) continue;
 
         pattern.lastIndex = 0;
         const outerFrag = document.createDocumentFragment();
-        let strongLast = 0;
-        let strongMatch: RegExpExecArray | null;
+        let wrapLast = 0;
+        let wrapMatch: RegExpExecArray | null;
 
-        while ((strongMatch = pattern.exec(fullText)) !== null) {
-          const name = strongMatch[0];
-          const idx = strongMatch.index;
+        while ((wrapMatch = pattern.exec(fullText)) !== null) {
+          const name = wrapMatch[0];
+          const idx = wrapMatch.index;
 
-          if (idx > strongLast) {
-            const strongChunk = document.createElement('strong');
-            strongChunk.textContent = fullText.slice(strongLast, idx);
-            outerFrag.appendChild(strongChunk);
+          if (idx > wrapLast) {
+            const chunk = document.createElement(wrapperTag);
+            chunk.textContent = fullText.slice(wrapLast, idx);
+            outerFrag.appendChild(chunk);
           }
 
           const def = fields[name];
           if (def) {
             const a = document.createElement('a');
             a.href = def.href;
+            a.className = 'schema-field-ref';
             a.setAttribute('data-skip-preview', '');
-            const linkedStrong = document.createElement('strong');
-            linkedStrong.textContent = name;
-            a.appendChild(linkedStrong);
+            const linked = document.createElement(wrapperTag);
+            linked.textContent = name;
+            a.appendChild(linked);
             outerFrag.appendChild(a);
           } else {
-            const strongChunk = document.createElement('strong');
-            strongChunk.textContent = name;
-            outerFrag.appendChild(strongChunk);
+            const chunk = document.createElement(wrapperTag);
+            chunk.textContent = name;
+            outerFrag.appendChild(chunk);
           }
 
-          strongLast = idx + name.length;
+          wrapLast = idx + name.length;
         }
 
-        if (strongLast < fullText.length) {
-          const strongChunk = document.createElement('strong');
-          strongChunk.textContent = fullText.slice(strongLast);
-          outerFrag.appendChild(strongChunk);
+        if (wrapLast < fullText.length) {
+          const chunk = document.createElement(wrapperTag);
+          chunk.textContent = fullText.slice(wrapLast);
+          outerFrag.appendChild(chunk);
         }
 
-        strongEl.parentNode.replaceChild(outerFrag, strongEl);
+        wrapperEl.parentNode.replaceChild(outerFrag, wrapperEl);
         continue;
       }
 
@@ -366,6 +350,7 @@
         if (def) {
           const a = document.createElement('a');
           a.href = def.href;
+          a.className = 'schema-field-ref';
           a.setAttribute('data-skip-preview', '');
           a.textContent = name;
           frag.appendChild(a);

@@ -27,7 +27,7 @@ order: 4
   completion, and manage through a workflow. A Task has an owner (or owners), a lifecycle state, and often a due
   horizon; you can plan, prioritize, and advance it while keeping context in description, comments, attachments,
   and relationships. As the most operational type—meant for execution rather than just capture—it relies on
-  ClickUp's built-in workflow machinery such as Status, Assignment, and Priority.</p>
+  ClickUp's built-in workflow machinery such as Status, Assignees, and Priority.</p>
 <h5 id="sec-4-1-1-1-1">4.1.1.1.1 Task Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">
   <table class="doc-schema-table">
@@ -145,7 +145,7 @@ order: 4
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
   occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
-  display. The workspace derives precise start and end times from the dates you set, drives <em>Status</em> from
+  display. The workspace derives precise Start Time and End Time from the dates you set, derives <em>Status</em> from
   those times, and computes a <em>Relevance Date</em> so the event can be shown or notified ahead of
   time.</p>
 <h5 id="sec-4-1-1-2-1">4.1.1.2.1 Event Fields</h5>
