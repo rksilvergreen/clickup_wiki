@@ -13,7 +13,7 @@ order: 3
         you don’t show them as columns in a view.</p>
       <h3 id="sec-3-1-1">3.1.1 Base Scope Table</h3>
       <div class="doc-table-wrap">
-        <table class="doc-base-scope-table">
+        <table id="base-scope" class="doc-base-scope-table">
           <thead>
             <tr>
               <th>Name</th>
@@ -24,227 +24,227 @@ order: 3
             </tr>
           </thead>
           <tbody>
-            <tr id="row-task-id">
+            <tr id="base-scope-row-task-id">
               <td>Task ID</td>
               <td>System task identifier.</td>
-              <td><a href="#row-ft-text">Text</a></td>
+              <td><a href="#field-types-row-text">Text</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-custom-task-id">
+            <tr id="base-scope-row-custom-task-id">
               <td>Custom Task ID</td>
               <td>Workspace custom identifier (if enabled).</td>
-              <td><a href="#row-ft-text">Text</a></td>
+              <td><a href="#field-types-row-text">Text</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-task-name">
+            <tr id="base-scope-row-task-name">
               <td>Task Name</td>
               <td>Task title.</td>
-              <td><a href="#row-ft-text">Text</a></td>
+              <td><a href="#field-types-row-text">Text</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-description">
+            <tr id="base-scope-row-description">
               <td>Description</td>
               <td>Main rich-text body.</td>
-              <td><a href="#row-ft-text-area-long-text">Text area</a></td>
+              <td><a href="#field-types-row-text-area-long-text">Text area</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-status">
+            <tr id="base-scope-row-status">
               <td>Status</td>
               <td>Workflow state.</td>
-              <td><a href="#row-ft-status">Status</a></td>
+              <td><a href="#field-types-row-status">Status</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-task-type">
+            <tr id="base-scope-row-task-type">
               <td>Task Type</td>
               <td>Task classification.</td>
-              <td><a href="#row-ft-task-type">Task Type</a></td>
+              <td><a href="#field-types-row-task-type">Task Type</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-priority">
+            <tr id="base-scope-row-priority">
               <td>Priority</td>
               <td>Urgency/importance.</td>
-              <td><a href="#row-ft-priority">Priority</a></td>
+              <td><a href="#field-types-row-priority">Priority</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-assignees">
+            <tr id="base-scope-row-assignees">
               <td>Assignees</td>
               <td>Responsible people (users/teams).</td>
-              <td><a href="#row-ft-people">People</a></td>
+              <td><a href="#field-types-row-people">People</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-followers-watchers">
+            <tr id="base-scope-row-followers-watchers">
               <td>Followers / Watchers</td>
               <td>Subscribed people.</td>
-              <td><a href="#row-ft-people">People</a></td>
+              <td><a href="#field-types-row-people">People</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-start-date">
+            <tr id="base-scope-row-start-date">
               <td>Start Date</td>
               <td>Planned start timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-due-date">
+            <tr id="base-scope-row-due-date">
               <td>Due Date</td>
               <td>Planned due timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-time-estimate">
+            <tr id="base-scope-row-time-estimate">
               <td>Time Estimate</td>
               <td>Planned effort.</td>
-              <td><a href="#row-ft-time-estimate">Time Estimate</a></td>
+              <td><a href="#field-types-row-time-estimate">Time Estimate</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-time-tracked">
+            <tr id="base-scope-row-time-tracked">
               <td>Time Tracked</td>
               <td>Logged work time.</td>
-              <td><a href="#row-ft-time-tracked">Time Tracked</a></td>
+              <td><a href="#field-types-row-time-tracked">Time Tracked</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-lists">
+            <tr id="base-scope-row-lists">
               <td>Lists</td>
               <td>List membership (home + additional lists).</td>
-              <td><a href="#row-ft-lists">Lists</a></td>
+              <td><a href="#field-types-row-lists">Lists</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-tags">
+            <tr id="base-scope-row-tags">
               <td>Tags</td>
               <td>Categorization tags.</td>
-              <td><a href="#row-ft-tags">Tags</a></td>
+              <td><a href="#field-types-row-tags">Tags</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-dependencies">
+            <tr id="base-scope-row-dependencies">
               <td>Dependencies</td>
               <td>Blocking / waiting relationships.</td>
-              <td><a href="#row-ft-dependencies">Dependencies</a></td>
+              <td><a href="#field-types-row-dependencies">Dependencies</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-linked-tasks">
+            <tr id="base-scope-row-linked-tasks">
               <td>Linked Tasks</td>
               <td>Non-blocking links to other tasks.</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-linked-docs">
+            <tr id="base-scope-row-linked-docs">
               <td>Linked Docs</td>
               <td>Links to Docs.</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-subtasks">
+            <tr id="base-scope-row-subtasks">
               <td>Subtasks</td>
               <td>Child tasks under this task.</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-parent-task">
+            <tr id="base-scope-row-parent-task">
               <td>Parent Task</td>
               <td>Parent (if this is a subtask).</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-checklists">
+            <tr id="base-scope-row-checklists">
               <td>Checklists</td>
               <td>Checklist items within the task.</td>
-              <td><a href="#row-ft-text-area-long-text">Text area</a></td>
+              <td><a href="#field-types-row-text-area-long-text">Text area</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-attachments">
+            <tr id="base-scope-row-attachments">
               <td>Attachments</td>
               <td>Files attached to the task.</td>
-              <td><a href="#row-ft-files">Files</a></td>
+              <td><a href="#field-types-row-files">Files</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-comments">
+            <tr id="base-scope-row-comments">
               <td>Comments</td>
               <td>Task comment thread content.</td>
-              <td><a href="#row-ft-text-area-long-text">Text area</a></td>
+              <td><a href="#field-types-row-text-area-long-text">Text area</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-assigned-comments">
+            <tr id="base-scope-row-assigned-comments">
               <td>Assigned Comments</td>
               <td>Assignable/resolvable comments.</td>
-              <td><a href="#row-ft-text-area-long-text">Text area</a></td>
+              <td><a href="#field-types-row-text-area-long-text">Text area</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-latest-comment">
+            <tr id="base-scope-row-latest-comment">
               <td>Latest Comment</td>
               <td>Most recent comment (as a column).</td>
-              <td><a href="#row-ft-text-area-long-text">Text area</a></td>
+              <td><a href="#field-types-row-text-area-long-text">Text area</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-created-by">
+            <tr id="base-scope-row-created-by">
               <td>Created By</td>
               <td>Creator user.</td>
-              <td><a href="#row-ft-people">People</a></td>
+              <td><a href="#field-types-row-people">People</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-date-created">
+            <tr id="base-scope-row-date-created">
               <td>Date Created</td>
               <td>Creation timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-date-updated">
+            <tr id="base-scope-row-date-updated">
               <td>Date Updated</td>
               <td>Last-updated timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-date-done">
+            <tr id="base-scope-row-date-done">
               <td>Date Done</td>
               <td>Completion timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-date-closed">
+            <tr id="base-scope-row-date-closed">
               <td>Date Closed</td>
               <td>Closed timestamp.</td>
-              <td><a href="#row-ft-date">Date</a></td>
+              <td><a href="#field-types-row-date">Date</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-pull-requests">
+            <tr id="base-scope-row-pull-requests">
               <td>Pull Requests</td>
               <td>Linked PRs via integration.</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>Yes</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
-            <tr id="row-sprints">
+            <tr id="base-scope-row-sprints">
               <td>Sprints</td>
               <td>Sprint association (if enabled).</td>
-              <td><a href="#row-ft-relationships">Relationship</a></td>
+              <td><a href="#field-types-row-relationships">Relationship</a></td>
               <td>No</td>
               <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
@@ -287,7 +287,7 @@ order: 3
         available). There are two of these: Lists and Task Type.</p>
       <h3 id="sec-3-3-6">3.3.6 Field Types Table</h3>
       <div class="doc-table-wrap">
-        <table class="doc-field-types-table">
+        <table id="field-types" class="doc-field-types-table">
           <thead>
             <tr>
               <th>Field type</th>
@@ -300,7 +300,7 @@ order: 3
             </tr>
           </thead>
           <tbody>
-            <tr id="row-ft-lists">
+            <tr id="field-types-row-lists">
               <td>Lists</td>
               <td>Multi-valued field of ClickUp lists</td>
               <td>Yes</td>
@@ -309,7 +309,7 @@ order: 3
               <td>No</td>
               <td>Yes</td>
             </tr>
-            <tr id="row-ft-status">
+            <tr id="field-types-row-status">
               <td>Status</td>
               <td>Single-choice state field representing the entry’s workflow state.</td>
               <td>Yes</td>
@@ -318,7 +318,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-task-type">
+            <tr id="field-types-row-task-type">
               <td>Task Type</td>
               <td>Single-choice classification field selecting the task’s type.</td>
               <td>Yes</td>
@@ -327,7 +327,7 @@ order: 3
               <td>No</td>
               <td>Yes</td>
             </tr>
-            <tr id="row-ft-tags">
+            <tr id="field-types-row-tags">
               <td>Tags</td>
               <td>Multi-valued label field referencing tag objects used for categorization.</td>
               <td>Yes</td>
@@ -336,7 +336,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-description">
+            <tr id="field-types-row-description">
               <td>Description</td>
               <td>Rich-text content field for task narrative/specification.</td>
               <td>Yes</td>
@@ -345,7 +345,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-comment">
+            <tr id="field-types-row-comment">
               <td>Comment</td>
               <td>ClickUp comments</td>
               <td>Yes</td>
@@ -354,7 +354,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-priority">
+            <tr id="field-types-row-priority">
               <td>Priority</td>
               <td>Single-choice urgency/importance field.</td>
               <td>Yes</td>
@@ -363,7 +363,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-duration">
+            <tr id="field-types-row-duration">
               <td>Duration</td>
               <td>Duration value representing planned span between start and end (when enabled).</td>
               <td>Yes</td>
@@ -372,7 +372,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-dependencies">
+            <tr id="field-types-row-dependencies">
               <td>Dependencies</td>
               <td>Relationship field expressing blocking / waiting relationships between tasks.</td>
               <td>Yes</td>
@@ -381,7 +381,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-time-estimate">
+            <tr id="field-types-row-time-estimate">
               <td>Time Estimate</td>
               <td>Duration value representing expected effort.</td>
               <td>Yes</td>
@@ -390,7 +390,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-time-tracked">
+            <tr id="field-types-row-time-tracked">
               <td>Time Tracked</td>
               <td>Duration value representing recorded effort.</td>
               <td>Yes</td>
@@ -399,7 +399,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-sprint-points">
+            <tr id="field-types-row-sprint-points">
               <td>Sprint Points</td>
               <td>Numeric estimation field (story points) for sprint planning.</td>
               <td>Yes</td>
@@ -408,7 +408,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-action-items">
+            <tr id="field-types-row-action-items">
               <td>Action Items</td>
               <td>Generates actionable follow-up items inferred from task content.</td>
               <td>No</td>
@@ -417,7 +417,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-button">
+            <tr id="field-types-row-button">
               <td>Button</td>
               <td>Manual trigger field used to initiate configured automation behavior from an entry.</td>
               <td>No</td>
@@ -426,7 +426,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-categorize">
+            <tr id="field-types-row-categorize">
               <td>Categorize</td>
               <td>Assigns tasks into dropdown categories using AI, optionally guided by custom instructions and task
                 variables.</td>
@@ -436,7 +436,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-checkbox">
+            <tr id="field-types-row-checkbox">
               <td>Checkbox</td>
               <td>Boolean field.</td>
               <td>No</td>
@@ -445,7 +445,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-custom-dropdown">
+            <tr id="field-types-row-custom-dropdown">
               <td>Custom Dropdown</td>
               <td>Generates/assigns values for a dropdown AI Field according to a user-defined prompt and configured
                 dropdown options.</td>
@@ -455,7 +455,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-custom-text">
+            <tr id="field-types-row-custom-text">
               <td>Custom Text</td>
               <td>Generates text output according to a user-defined prompt to fill a text-based AI Field.</td>
               <td>No</td>
@@ -464,7 +464,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-date">
+            <tr id="field-types-row-date">
               <td>Date</td>
               <td>Date/time field.</td>
               <td>No</td>
@@ -473,7 +473,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-dropdown">
+            <tr id="field-types-row-dropdown">
               <td>Dropdown</td>
               <td>Single-choice categorical field with a finite option set.</td>
               <td>No</td>
@@ -482,7 +482,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-email">
+            <tr id="field-types-row-email">
               <td>Email</td>
               <td>Email-address formatted string field.</td>
               <td>No</td>
@@ -491,7 +491,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-files">
+            <tr id="field-types-row-files">
               <td>Files</td>
               <td>Field holding file attachments (uploaded or cloud-linked).</td>
               <td>No</td>
@@ -500,7 +500,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-formula">
+            <tr id="field-types-row-formula">
               <td>Formula</td>
               <td>Computed field defined as an expression over other fields.</td>
               <td>No</td>
@@ -509,7 +509,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-labels">
+            <tr id="field-types-row-labels">
               <td>Labels</td>
               <td>Multi-valued categorical field using a defined option set.</td>
               <td>No</td>
@@ -518,7 +518,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-location">
+            <tr id="field-types-row-location">
               <td>Location</td>
               <td>Address/location field (map/geocoded address representation).</td>
               <td>No</td>
@@ -527,7 +527,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-money">
+            <tr id="field-types-row-money">
               <td>Money</td>
               <td>Currency-typed numeric field.</td>
               <td>No</td>
@@ -536,7 +536,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-number">
+            <tr id="field-types-row-number">
               <td>Number</td>
               <td>Numeric field.</td>
               <td>No</td>
@@ -545,7 +545,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-people">
+            <tr id="field-types-row-people">
               <td>People</td>
               <td>People selector field (users and optionally Teams).</td>
               <td>No</td>
@@ -554,7 +554,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-phone">
+            <tr id="field-types-row-phone">
               <td>Phone</td>
               <td>Phone-number formatted string field with country/area code support.</td>
               <td>No</td>
@@ -563,7 +563,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-progress-auto">
+            <tr id="field-types-row-progress-auto">
               <td>Progress (Auto)</td>
               <td>Automatically computed progress value based on completion of specified action items (e.g.,
                 subtasks/checklists).</td>
@@ -573,7 +573,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-progress-manual">
+            <tr id="field-types-row-progress-manual">
               <td>Progress (Manual)</td>
               <td>Manually set progress value over a configured numeric range.</td>
               <td>No</td>
@@ -582,7 +582,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-progress-updates">
+            <tr id="field-types-row-progress-updates">
               <td>Progress Updates</td>
               <td>Generates a synthesized progress update for tasks based on recent task activity within a selected time
                 window and output format.</td>
@@ -592,7 +592,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-rating">
+            <tr id="field-types-row-rating">
               <td>Rating</td>
               <td>Ordinal rating field using a configured scale.</td>
               <td>No</td>
@@ -601,7 +601,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-relationships">
+            <tr id="field-types-row-relationships">
               <td>Relationships</td>
               <td>Field representing links between tasks via relationship edges.</td>
               <td>No</td>
@@ -610,7 +610,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-rollup">
+            <tr id="field-types-row-rollup">
               <td>Rollup</td>
               <td>Field that displays selected fields from related tasks.</td>
               <td>No</td>
@@ -619,7 +619,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-sentiment">
+            <tr id="field-types-row-sentiment">
               <td>Sentiment</td>
               <td>Classifies task sentiment as positive, neutral, or negative using task content (including description,
                 Custom Fields, and comments).</td>
@@ -629,7 +629,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-signature">
+            <tr id="field-types-row-signature">
               <td>Signature</td>
               <td>Signature capture field (typed or drawn).</td>
               <td>No</td>
@@ -638,7 +638,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-summary">
+            <tr id="field-types-row-summary">
               <td>Summary</td>
               <td>Generates a concise representation of task content (e.g., description, attachments, and conversations)
                 as a summary in a selected format.</td>
@@ -648,7 +648,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-t-shirt-size">
+            <tr id="field-types-row-t-shirt-size">
               <td>T-Shirt Size</td>
               <td>Estimates task size/effort using t-shirt sizing based on task data and contextual information from its
                 List.</td>
@@ -658,7 +658,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-text">
+            <tr id="field-types-row-text">
               <td>Text</td>
               <td>Single-line text field.</td>
               <td>No</td>
@@ -667,7 +667,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-text-area-long-text">
+            <tr id="field-types-row-text-area-long-text">
               <td>Text area / Long Text</td>
               <td>Multi-line text field with rich text support.</td>
               <td>No</td>
@@ -676,7 +676,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-translation">
+            <tr id="field-types-row-translation">
               <td>Translation</td>
               <td>Translates a selected task property (title or description) into a specified target language.</td>
               <td>No</td>
@@ -685,7 +685,7 @@ order: 3
               <td>Yes</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-voting">
+            <tr id="field-types-row-voting">
               <td>Voting</td>
               <td>Vote-count field used for prioritization/sentiment-style scoring.</td>
               <td>No</td>
@@ -694,7 +694,7 @@ order: 3
               <td>No</td>
               <td>No</td>
             </tr>
-            <tr id="row-ft-website">
+            <tr id="field-types-row-website">
               <td>Website</td>
               <td>URL field.</td>
               <td>No</td>

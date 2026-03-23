@@ -349,33 +349,29 @@
 }
 
 /* Links to field-type table rows: purple */
-.document a[href^="#row-ft-"] {
+.document a[href^="#field-types-row-"] {
   color: var(--doc-link-field-types);
 }
 
 /* Links to custom-field table rows */
-.document a[href^="#row-cf-"]:not(.schema-field-ref) {
+.document a[href^="#custom-fields-row-"] {
   color: var(--doc-link-custom-fields);
 }
 
 /* Links to base-scope table rows: blue */
-.document a[href^="#row-"]:not([href^="#row-ft-"]):not([href^="#row-cf-"]):not(.schema-field-ref) {
+.document a[href^="#base-scope-row-"] {
   color: var(--doc-link-base-scope);
 }
 
-/* Auto-linked field references within task-type sections. */
-.document a.schema-field-ref {
+/* Schema field references: italic white links */
+.document a[href^="#task-fields-row-"],
+.document a[href^="#event-fields-row-"],
+.document a[href^="#record-fields-row-"],
+.document a[href^="#milestone-fields-row-"] {
   color: var(--doc-ink);
   font-style: italic;
   font-weight: 400;
   text-decoration: none;
-}
-
-.document a.schema-field-ref strong,
-.document a.schema-field-ref em {
-  font-style: inherit;
-  font-weight: inherit;
-  color: inherit;
 }
 
 /* Links to filters: teal */
