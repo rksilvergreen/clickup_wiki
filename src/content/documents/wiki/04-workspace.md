@@ -552,7 +552,7 @@ order: 4
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>
-<p>Each custom field is built from one of the <a href="#sec-3-2">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
+<p>Each custom field is built from one of the <a href="#sec-3-3">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
   types, any parameters we use, and how we use them.</p>
 <div class="doc-table-wrap">
   <table class="doc-custom-fields-table">

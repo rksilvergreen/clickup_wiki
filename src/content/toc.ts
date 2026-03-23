@@ -24,34 +24,26 @@ export const tocs: Record<string, TocEntry[]> = {
     {
       id: 'sec-3', text: '3. ClickUp', children: [
         {
-          id: 'sec-3-1', text: '3.1 Fields', children: [
-            {
-              id: 'sec-3-1-1', text: '3.1.1 Base Scope', children: [
-                { id: 'sec-3-1-1-1', text: '3.1.1.1 Base Scope Table' },
-                { id: 'sec-3-1-1-2', text: '3.1.1.2 ClickUp\'s Inadequacy' },
-              ]
-            },
-            { id: 'sec-3-1-2', text: '3.1.2 Custom Fields' },
+          id: 'sec-3-1', text: '3.1 Base Scope', children: [
+            { id: 'sec-3-1-1', text: '3.1.1 Base Scope Table' },
+            { id: 'sec-3-1-2', text: '3.1.2 ClickUp\'s Inadequacy' },
+          ]
+        },
+        { id: 'sec-3-2', text: '3.2 Custom Fields' },
+        {
+          id: 'sec-3-3', text: '3.3 Field Types', children: [
+            { id: 'sec-3-3-1', text: '3.3.1 System-Only Field Types' },
+            { id: 'sec-3-3-2', text: '3.3.2 Parameterized Field Types' },
+            { id: 'sec-3-3-3', text: '3.3.3 Computational Field Types' },
+            { id: 'sec-3-3-4', text: '3.3.4 AI Field Types' },
+            { id: 'sec-3-3-5', text: '3.3.5 Scope-Selecting Field Types' },
+            { id: 'sec-3-3-6', text: '3.3.6 Field Types Table' },
           ]
         },
         {
-          id: 'sec-3-2', text: '3.2 Field Types', children: [
-            {
-              id: 'sec-3-2-1', text: '3.2.1 Field-Type Families', children: [
-                { id: 'sec-3-2-1-1', text: '3.2.1.1 System-Only Field Types' },
-                { id: 'sec-3-2-1-2', text: '3.2.1.2 Parameterized Field Types' },
-                { id: 'sec-3-2-1-3', text: '3.2.1.3 Computational Field Types' },
-                { id: 'sec-3-2-1-4', text: '3.2.1.4 AI Field Types' },
-                { id: 'sec-3-2-1-5', text: '3.2.1.5 Scope-Selecting Field Types' },
-              ]
-            },
-            { id: 'sec-3-2-2', text: '3.2.2 Field Types Table' },
-          ]
-        },
-        {
-          id: 'sec-3-3', text: '3.3 Scope', children: [
-            { id: 'sec-3-3-1', text: '3.3.1 Location Scope Hierarchy' },
-            { id: 'sec-3-3-2', text: '3.3.2 Task Type Scope Hierarchy' },
+          id: 'sec-3-4', text: '3.4 Scope', children: [
+            { id: 'sec-3-4-1', text: '3.4.1 Location Scope Hierarchy' },
+            { id: 'sec-3-4-2', text: '3.4.2 Task Type Scope Hierarchy' },
           ]
         },
       ]

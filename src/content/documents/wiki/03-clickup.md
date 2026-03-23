@@ -8,11 +8,10 @@ order: 3
   by ClickUp, and describes how information is represented, organized, and managed within the system. It shows how the
   terms defined in the <a href="#sec-2">ontology</a> are realized in ClickUp. The purpose is to provide a clear and
   consistent reference for understanding the platform's logic, capabilities, and constraints.</p>
-      <h2 id="sec-3-1">3.1 Fields</h2>
-      <h3 id="sec-3-1-1">3.1.1 Base Scope</h3>
+      <h2 id="sec-3-1">3.1 Base Scope</h2>
       <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
         you don’t show them as columns in a view.</p>
-      <h4 id="sec-3-1-1-1">3.1.1.1 Base Scope Table</h4>
+      <h3 id="sec-3-1-1">3.1.1 Base Scope Table</h3>
       <div class="doc-table-wrap">
         <table class="doc-base-scope-table">
           <thead>
@@ -30,261 +29,263 @@ order: 3
               <td>System task identifier.</td>
               <td><a href="#row-ft-text">Text</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-custom-task-id">
               <td>Custom Task ID</td>
               <td>Workspace custom identifier (if enabled).</td>
               <td><a href="#row-ft-text">Text</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-task-name">
               <td>Task Name</td>
               <td>Task title.</td>
               <td><a href="#row-ft-text">Text</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-description">
               <td>Description</td>
               <td>Main rich-text body.</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-status">
               <td>Status</td>
               <td>Workflow state.</td>
               <td><a href="#row-ft-status">Status</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-task-type">
               <td>Task Type</td>
               <td>Task classification.</td>
               <td><a href="#row-ft-task-type">Task Type</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-priority">
               <td>Priority</td>
               <td>Urgency/importance.</td>
               <td><a href="#row-ft-priority">Priority</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-assignees">
               <td>Assignees</td>
               <td>Responsible people (users/teams).</td>
               <td><a href="#row-ft-people">People</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-followers-watchers">
               <td>Followers / Watchers</td>
               <td>Subscribed people.</td>
               <td><a href="#row-ft-people">People</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-start-date">
               <td>Start Date</td>
               <td>Planned start timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-due-date">
               <td>Due Date</td>
               <td>Planned due timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-time-estimate">
               <td>Time Estimate</td>
               <td>Planned effort.</td>
               <td><a href="#row-ft-time-estimate">Time Estimate</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-time-tracked">
               <td>Time Tracked</td>
               <td>Logged work time.</td>
               <td><a href="#row-ft-time-tracked">Time Tracked</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-lists">
               <td>Lists</td>
               <td>List membership (home + additional lists).</td>
               <td><a href="#row-ft-lists">Lists</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-tags">
               <td>Tags</td>
               <td>Categorization tags.</td>
               <td><a href="#row-ft-tags">Tags</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-dependencies">
               <td>Dependencies</td>
               <td>Blocking / waiting relationships.</td>
               <td><a href="#row-ft-dependencies">Dependencies</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-linked-tasks">
               <td>Linked Tasks</td>
               <td>Non-blocking links to other tasks.</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-linked-docs">
               <td>Linked Docs</td>
               <td>Links to Docs.</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-subtasks">
               <td>Subtasks</td>
               <td>Child tasks under this task.</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-parent-task">
               <td>Parent Task</td>
               <td>Parent (if this is a subtask).</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-checklists">
               <td>Checklists</td>
               <td>Checklist items within the task.</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-attachments">
               <td>Attachments</td>
               <td>Files attached to the task.</td>
               <td><a href="#row-ft-files">Files</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-comments">
               <td>Comments</td>
               <td>Task comment thread content.</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-assigned-comments">
               <td>Assigned Comments</td>
               <td>Assignable/resolvable comments.</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-latest-comment">
               <td>Latest Comment</td>
               <td>Most recent comment (as a column).</td>
               <td><a href="#row-ft-text-area-long-text">Text area</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-created-by">
               <td>Created By</td>
               <td>Creator user.</td>
               <td><a href="#row-ft-people">People</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-date-created">
               <td>Date Created</td>
               <td>Creation timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-date-updated">
               <td>Date Updated</td>
               <td>Last-updated timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-date-done">
               <td>Date Done</td>
               <td>Completion timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-date-closed">
               <td>Date Closed</td>
               <td>Closed timestamp.</td>
               <td><a href="#row-ft-date">Date</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-pull-requests">
               <td>Pull Requests</td>
               <td>Linked PRs via integration.</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>Yes</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
             <tr id="row-sprints">
               <td>Sprints</td>
               <td>Sprint association (if enabled).</td>
               <td><a href="#row-ft-relationships">Relationship</a></td>
               <td>No</td>
-              <td><a href="#sec-3-1-1" class="doc-link-plain">Base Scope</a></td>
+              <td><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <h4 id="sec-3-1-1-2">3.1.1.2 ClickUp's Inadequacy</h4>
+      <h3 id="sec-3-1-2">3.1.2 ClickUp's Inadequacy</h3>
       <p>ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit
         the same base schema— fields like Assignees, Due Date, Priority, and Status.
-        That’s fine when the entry <em>is</em> a work item, but it becomes a mismatch when the entry represents
+        That’s fine when the entry is a work item, but it becomes a mismatch when the entry represents
         something else entirely, like a record or event. Those fields are either meaningless or create the wrong mental
         model, and while you can hide some columns in specific views, you can’t truly remove the task-shaped defaults
         across ClickUp.</p>
-      <h3 id="sec-3-1-2">3.1.2 Custom Fields</h3>
-      <p>These are fields you create and attach to <strong>scopes</strong>. In practice, scopes include location scopes
+      <h2 id="sec-3-2">3.2 Custom Fields</h2>
+      <p>These are fields you create and attach to scopes. In practice, scopes include location scopes
         (Spaces/Folders/Lists) and also non-location scopes such as Task Types. A Custom Field becomes available
         wherever its scope applies.</p>
-      <h2 id="sec-3-2">3.2 Field Types</h2>
-      <h3 id="sec-3-2-1">3.2.1 Field-Type Families</h3>
-      <h4 id="sec-3-2-1-1">3.2.1.1 System-Only Field Types</h4>
+      <h2 id="sec-3-3">3.3 Field Types</h2>
+      <p>ClickUp provides a range of field types that differ not only in the kind of value they hold, but also in how
+        they are configured, computed, restricted, and used within the platform. This section examines those field
+        types and highlights some of their main properties.</p>
+      <h3 id="sec-3-3-1">3.3.1 System-Only Field Types</h3>
       <p>Some field types exist only as part of ClickUp’s built-in system and aren’t available as Custom Field types you
         can create. Examples include Lists, Status, Task Type, Tags, Priority, Dependencies, and Time Estimate.</p>
-      <h4 id="sec-3-2-1-2">3.2.1.2 Parameterized Field Types</h4>
+      <h3 id="sec-3-3-2">3.3.2 Parameterized Field Types</h3>
       <p>Some field types aren’t “complete” until you define parameters such as an option set, a scale, a range, or a
         referenced target.
         Common parameter patterns include option sets (Dropdown, Labels), scales (Rating), ranges (Progress Manual), and
         relationship/selection configuration (Rollup).</p>
-      <h4 id="sec-3-2-1-3">3.2.1.3 Computational Field Types</h4>
+      <h3 id="sec-3-3-3">3.3.3 Computational Field Types</h3>
       <p>Some fields represent derived values rather than directly-entered values. Examples include Formula and Progress
         (Auto).</p>
-      <h4 id="sec-3-2-1-4">3.2.1.4 AI Field Types</h4>
+      <h3 id="sec-3-3-4">3.3.4 AI Field Types</h3>
       <p>AI fields are computational fields whose values are generated or inferred using AI, typically based on task
         content plus configuration.
         Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, Progress Updates, Translation,
         T-Shirt Size, and Action Items.</p>
-      <h4 id="sec-3-2-1-5">3.2.1.5 Scope-Selecting Field Types</h4>
+      <h3 id="sec-3-3-5">3.3.5 Scope-Selecting Field Types</h3>
       <p>Some fields determine which scopes apply to a task (and therefore influence what else becomes relevant or
         available). There are two of these: Lists and Task Type.</p>
-      <h3 id="sec-3-2-2">3.2.2 Field Types Table</h3>
+      <h3 id="sec-3-3-6">3.3.6 Field Types Table</h3>
       <div class="doc-table-wrap">
         <table class="doc-field-types-table">
           <thead>
@@ -705,10 +706,10 @@ order: 3
           </tbody>
         </table>
       </div>
-      <h2 id="sec-3-3">3.3 Scope</h2>
+      <h2 id="sec-3-4">3.4 Scope</h2>
       <p>These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part
         of?”, and one that answers “what kind of entry is this meant to represent?”.</p>
-      <h3 id="sec-3-3-1">3.3.1 Location Scope Hierarchy</h3>
+      <h3 id="sec-3-4-1">3.4.1 Location Scope Hierarchy</h3>
       <p>This is the <strong>project hierarchy</strong>: the chain of project containers an entry sits inside. A space
         usually represents a broad domain (like a product area or department), folders group related sub-projects inside
         that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an
@@ -745,9 +746,9 @@ order: 3
           </li>
         </ul>
       </div>
-      <h3 id="sec-3-3-2">3.3.2 Task Type Scope Hierarchy</h3>
+      <h3 id="sec-3-4-2">3.4.2 Task Type Scope Hierarchy</h3>
       <p>This is the <strong>purpose hierarchy</strong> (even though ClickUp implements it as flat). A task type scope
-        doesn’t say <em>where</em> the entry lives; it says <em>what it is</em>. It’s the semantic category of the
+        doesn’t say where the entry lives; it says what it is. It’s the semantic category of the
         entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live
         in the same project scope, but have different purposes (a bug vs. a feature request vs. a meeting note), and
         that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope
