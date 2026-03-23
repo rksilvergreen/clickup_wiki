@@ -4,8 +4,19 @@ order: 4
 ---
 
 <h1 id="sec-4">4. Workspace</h1>
-<p>This section describes the workspace configuration and conventions.</p>
-<p>(To be filled in later.)</p>
+<p>The workspace is the concrete implementation documented in this wiki. It describes the principal
+  structures, conventions, and operating patterns that define what the workspace contains and how it is
+  intended to function in practice.</p>
+<p>A central concern in its design is the attempt to impose, as far as possible, a meaningful type scope
+  over the workspace, even though ClickUp does not natively support general scope hierarchies beyond its
+  project hierarchy. As a result, part of the workspace's structure reflects deliberate conventions and
+  modeling decisions intended to compensate for that limitation and to preserve clearer semantic
+  distinctions between different kinds of entries.</p>
+<p>This section does not attempt to document every individual ClickUp element, location, or workflow in
+  exhaustive detail. Rather, it focuses on the main pillars of the workspace: its core structures, principal
+  conventions, recurring patterns, and central organizational themes. Its purpose is not to prescribe the
+  construction and maintenance of every project in full detail, but to provide a clear account of the
+  workspace's overall design and governing logic.</p>
 <h2 id="sec-4-1">4.1 Type Scope</h2>
 <p>The Type Scope hierarchy is built on the idea that the <a href="#row-task-type">Task Type</a> field functions as a scope selector field. In ClickUp, this is not a formally recognized scope mechanism in the same way that location is for the project scope, but in our workspace we deliberately treat it as one. That is, we recognize that type meaningfully determines applicability, behavior, and structure, and we organize the workspace accordingly even if ClickUp itself does not systematically model task type as a true scope hierarchy.</p>
 <p>This means that task type is not just a label for classification. It acts as a contextual boundary that helps determine what belongs to an entry and what does not. We create fields, status groups, tags, templates, automations, views, and filters that are intended for a specific task type and should not be used across others indiscriminately. The Type Scope section therefore describes the type-based structure we impose on the workspace: a conceptual scope hierarchy that we enforce through design, convention, and configuration rather than through a native ClickUp scoping system.</p>
