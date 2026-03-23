@@ -128,6 +128,19 @@
   font-weight: 400;
 }
 
+/* In Trigger lines, non-linked text should read as regular body text. */
+.document .doc-rules-list .doc-rule-header .doc-rule-content strong {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--doc-ink-light);
+}
+
+/* Keep linked field/status tokens in Trigger lines visually special. */
+.document .doc-rules-list .doc-rule-header .doc-rule-content a strong {
+  font-style: italic;
+  color: var(--doc-ink);
+}
+
 /* Keep operational-rules body text at regular document tone. */
 .document .doc-rules-list .doc-rule-content,
 .document .doc-rules-list .doc-rule-num,
