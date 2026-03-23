@@ -27,7 +27,7 @@ order: 4
   completion, and manage through a workflow. A Task has an owner (or owners), a lifecycle state, and often a due
   horizon; you can plan, prioritize, and advance it while keeping context in description, comments, attachments,
   and relationships. As the most operational type—meant for execution rather than just capture—it relies on
-  ClickUp's built-in workflow machinery such as <em>Status</em>, <em>Assignment</em>, and <em>Priority</em>.</p>
+  ClickUp's built-in workflow machinery such as Status, Assignment, and Priority.</p>
 <h5 id="sec-4-1-1-1-1">4.1.1.1.1 Task Fields</h5>
 <div class="doc-table-wrap doc-schema-table-wrap">
   <table class="doc-schema-table">

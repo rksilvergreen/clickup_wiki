@@ -706,7 +706,7 @@ order: 3
           </tbody>
         </table>
       </div>
-      <h2 id="sec-3-4">3.4 Scope</h2>
+      <h2 id="sec-3-4">3.4 Scopes</h2>
       <p>These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part
         of?”, and one that answers “what kind of entry is this meant to represent?”.</p>
       <h3 id="sec-3-4-1">3.4.1 Location Scope Hierarchy</h3>

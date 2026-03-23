@@ -41,7 +41,7 @@ export const tocs: Record<string, TocEntry[]> = {
           ]
         },
         {
-          id: 'sec-3-4', text: '3.4 Scope', children: [
+          id: 'sec-3-4', text: '3.4 Scopes', children: [
             { id: 'sec-3-4-1', text: '3.4.1 Location Scope Hierarchy' },
             { id: 'sec-3-4-2', text: '3.4.2 Task Type Scope Hierarchy' },
           ]
