@@ -20,7 +20,7 @@ order: 2
   <li><strong>Permissions</strong>: who can view/edit</li>
 </ul>
 <h2 id="sec-2-2">2.2 Schema</h2>
-<p>A specification that defines a valid <strong>entry</strong>. It consists of:</p>
+<p>A specification that defines a valid <em>entry</em>. It consists of:</p>
 <ul>
   <li><strong>Fields</strong>: the set of fields that apply.</li>
   <li><strong>Constraints</strong>: rules that determine validity. They may restrict the value of a single field, such
@@ -154,7 +154,7 @@ order: 2
   </ul>
 </div>
 <h3 id="sec-2-6-3">2.6.3 Per-Scope Parameterization</h3>
-<p>Some field types are <strong>parameterized</strong>: their full meaning requires configuration parameters.
+<p>Some field types are <em>parameterized</em>: their full meaning requires configuration parameters.
   Scopes can provide those parameters at different levels.
   For example:</p>
 <ul>
