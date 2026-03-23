@@ -375,8 +375,8 @@ order: 4
   </li>
 </ol>
 <h4 id="sec-4-1-1-4">4.1.1.4 Thought</h4>
-<p>A Thought is a <a href="#sec-4-1-1-1-3">Record</a> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a <strong>Timestamp</strong> and the content. Structurally it is the same as Record.</p>
-<p>The schema of a Thought is identical to that of a <a href="#sec-4-1-1-1-3">Record</a>.</p>
+<p>A Thought is a <a href="#sec-4-1-1-3">Record</a> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a timestamp and the content. Structurally it is the same as <a href="#sec-4-1-1-3">Record</a>.</p>
+<p>The schema of a Thought is identical to that of a <a href="#sec-4-1-1-3">Record</a>.</p>
 <h4 id="sec-4-1-1-5">4.1.1.5 Milestone</h4>
 <p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
 <h5 id="sec-4-1-1-5-1">4.1.1.5.1 Milestone Fields</h5>
@@ -412,11 +412,11 @@ order: 4
 <h4 id="sec-4-1-1-6">4.1.1.6 Data</h4>
 <p>A Data type represents arbitrary information that is worth storing in the workspace. It is meant for content that may take many different forms and does not need to fit a fixed schema; its sole purpose is to preserve information.</p>
 <h4 id="sec-4-1-1-7">4.1.1.7 Parent Task</h4>
-<p>A Parent Task is a practical workaround used for items that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
+<p>A Parent Task is a practical workaround used for <a href="#sec-4-1-1-1">Tasks</a> that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
 <p>The schema of a Parent Task is identical to that of a <a href="#sec-4-1-1-1">Task</a>; it uses the same fields, constraints, and operational rules.</p>
 <h2 id="sec-4-4">4.4 ClickUp Elements</h2>
 <h3 id="sec-4-4-1">4.4.1 Status Groups</h3>
-<p>Status Groups are a parameter of ClickUp's base-schema field <em>Status</em> that is set at the Location level
+<p>Status Groups are a parameter of ClickUp's base-schema field <a href="#row-status">Status</a> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
   practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is
@@ -427,13 +427,13 @@ order: 4
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
   Whenever we mention a status, we annotate it with its subgroup as a pill.</p>
 <h4 id="sec-4-4-1-1">4.4.1.1 Status Transitions and Triggers</h4>
-<p>A status change is a <strong>transition</strong>: moving an entry from one lifecycle state to another. In our
+<p>A status change is a transition: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
   <li><span class="trigger-type">Manual</span> — The user explicitly changes the status based on judgment calls
     and intangible factors that the workspace can't reliably capture or analyze.</li>
-  <li><span class="trigger-type">Internal Conditional</span> — Some change <strong>in the entry</strong> or
-    <strong>elsewhere in the workspace</strong> triggers the transition.
+  <li><span class="trigger-type">Internal Conditional</span> — Some change in the entry or
+    elsewhere in the workspace triggers the transition.
   </li>
   <li><span class="trigger-type">External Conditional</span> — A real-world event outside the workspace happens,
     but it's still something that can be pinpointed and articulated specifically.</li>
@@ -441,32 +441,24 @@ order: 4
     date-time boundary is reached.</li>
 </ul>
 <h4 id="sec-4-4-1-2">4.4.1.2 Task Status Group</h4>
-<p>Connected to the task type <strong>Task</strong>, this status group is exclusive to that task type. It
+<p>Connected to the task type <a href="#sec-4-1-1-1">Task</a>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
   <li id="st-4-4-1-2-backlog"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no
-    intent to work on it yet. it may transition to <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> <em>if and only if</em> at least one of
-    <strong>Start Date</strong> or <strong>Due Date</strong> is set, which acts as the signal that the task is now
-    being planned.
+    intent to work on it yet.
   </li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task has a <strong>Start Date
-      or Due Date</strong> set, so it is now an actual candidate for execution.</li>
-  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun. The move from
-    <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> to <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress</strong> is <strong>manual</strong>, representing the user
-    explicitly declaring that execution started.
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task is a candidate for execution.</li>
+  <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun on this task.
   </li>
-  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">Done</span></strong> — The task will not be completed. This can
-    happen either before work started or mid-execution; the point is that it's intentionally stopped.</li>
+  <li><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">Done</span></strong> — The task will not be completed.</li>
   <li><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">Closed</span></strong> — The task is finished and successfully
     completed.</li>
 </ul>
 <h5 id="sec-4-4-1-2-1">4.4.1.2.1 Task Transitions</h5>
 <ul>
-  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when
-    <em>at least one</em> of <strong>Start Date</strong> or <strong>Due Date</strong> is set.
+  <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of <strong>Start Date</strong> or <strong>Due Date</strong> is set.
   </li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work
-    has begun.</li>
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>In Progress:</strong> <span class="trigger-type">Manual</span> — The user declares that work has begun.</li>
   <li><strong>(<span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span>Backlog, <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span>Canceled:</strong> <span class="trigger-type">Manual</span> — The
     user decides the task will not be completed.</li>
   <li><strong>(<span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span>Backlog, <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span>Complete:</strong> <span class="trigger-type">Manual</span> — The
@@ -474,7 +466,7 @@ order: 4
   <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do:</strong> <span class="trigger-type">Manual</span> — Work is paused, typically
     because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
   <li><strong>(<span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span>To Do, <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span>In Progress) → <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span>Backlog:</strong> <span class="trigger-type">Internal Conditional</span> —
-    Triggered when <strong>Start Date</strong> <em>and</em> <strong>Due Date</strong> are reset to
+    Triggered when <strong>Start Date</strong> and <strong>Due Date</strong> are reset to
     <strong>null</strong>.
   </li>
 </ul>
@@ -482,7 +474,7 @@ order: 4
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but
-    <strong>no Start Date and no Due Date</strong> are set.
+    no <strong>Start Date</strong> and no <strong>Due Date</strong> are set.
   </li>
   <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <strong>Start Date or Due
       Date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>Start Time has not

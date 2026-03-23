@@ -100,12 +100,16 @@
 
   type SectionScope = { id: string; fields: Record<string, FieldDef>; statuses: Record<string, StatusDef> };
 
+  const taskFieldDefs = readFieldsFromTable('sec-4-1-1-1-1');
+
   const SCOPES: SectionScope[] = [
-    { id: 'sec-4-1-1-1', fields: readFieldsFromTable('sec-4-1-1-1-1'), statuses: taskStatuses },
+    { id: 'sec-4-1-1-1', fields: taskFieldDefs, statuses: taskStatuses },
     { id: 'sec-4-1-1-2', fields: readFieldsFromTable('sec-4-1-1-2-1'), statuses: eventStatuses },
     { id: 'sec-4-1-1-3', fields: readFieldsFromTable('sec-4-1-1-3-1'), statuses: {} },
     { id: 'sec-4-1-1-4', fields: readFieldsFromTable('sec-4-1-1-4'), statuses: {} },
     { id: 'sec-4-1-1-5', fields: readFieldsFromTable('sec-4-1-1-5-1'), statuses: {} },
+    /* Task Status Group transitions: same Task fields as 4.1.1.1.1, same statuses as 4.4.1.2 */
+    { id: 'sec-4-4-1-2-1', fields: taskFieldDefs, statuses: taskStatuses },
   ];
 
   const statusTip = document.createElement('div');
