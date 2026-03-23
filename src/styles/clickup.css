@@ -91,7 +91,13 @@
 .document .doc-fc-keyword {
   flex-shrink: 0;
   width: 3.5em;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* If/Then keywords are authored as <em> but should render as bold */
+.document .doc-fc-keyword em {
+  font-style: normal;
 }
 
 .document .doc-fc-line .doc-fc-content {
@@ -102,6 +108,24 @@
 .document .doc-field-comp strong {
   padding-left: 0.08em;
   padding-right: 0.08em;
+}
+
+/* Field preview tokens inside if/then blocks: italicize them. */
+.document .doc-fc-line .doc-fc-content strong {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Rule blocks (used in sections like 4.1.1.1.3): swap styles too. */
+.document .doc-rule-keyword {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.document .doc-rule-content strong,
+.document .doc-rule-group .doc-rule-group-line strong {
+  font-style: italic;
+  font-weight: 400;
 }
 
 .document .doc-fc-nested {
