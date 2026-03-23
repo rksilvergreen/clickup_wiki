@@ -4,7 +4,7 @@ order: 3
 ---
 
 <h1 id="sec-3">3. ClickUp</h1>
-<p class="doc-intro">The following section defines the principal structures, entities, features, and behaviors provided
+<p>The following section defines the principal structures, entities, features, and behaviors provided
   by ClickUp, and describes how information is represented, organized, and managed within the system. It shows how the
   terms defined in the <a href="#sec-2">ontology</a> are realized in ClickUp. The purpose is to provide a clear and
   consistent reference for understanding the platform's logic, capabilities, and constraints.</p>
