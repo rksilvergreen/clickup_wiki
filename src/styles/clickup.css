@@ -128,6 +128,14 @@
   font-weight: 400;
 }
 
+/* Keep operational-rules body text at regular document tone. */
+.document .doc-rules-list .doc-rule-content,
+.document .doc-rules-list .doc-rule-num,
+.document .doc-rules-list .doc-rule-cont,
+.document .doc-rules-list .doc-rule-group-op {
+  color: var(--doc-ink-light);
+}
+
 .document .doc-fc-nested {
   margin-left: 1.5em;
   margin-top: 0.35em;

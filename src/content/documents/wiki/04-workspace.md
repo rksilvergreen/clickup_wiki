@@ -97,26 +97,26 @@ order: 4
 <p><strong>Status</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and <strong>Due Date</strong> are <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and <strong>Due Date</strong> are not set.</span></div>
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Backlog</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and/or <strong>Due Date</strong> are set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must <em>not</em> be <strong>Backlog</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> or <strong>Due Date</strong> are set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must not be <strong>Backlog</strong>.</span></div>
   </li>
 </ul>
 <h5 id="sec-4-1-1-1-3">4.1.1.1.3 Task Operational Rules</h5>
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> and/or <strong>Due Date</strong> are set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> or <strong>Due Date</strong> are set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>To Do</strong>.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Start Date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due Date</strong> is not set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
   </li>
   <li>
@@ -128,9 +128,9 @@ order: 4
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Due Date changed</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <strong>Start Date</strong> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <strong>Due Date</strong> is not set.</span></div>
     <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <strong>Status</strong> to <strong>Backlog</strong>.</span></div>
   </li>
   <li>
@@ -231,10 +231,10 @@ order: 4
 <p><strong>Start Time</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> is not set.</span></div>
     <div class="doc-fc-nested">
       <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due Date</strong> is <em>not</em> set.</span></div>
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due Date</strong> is not set.</span></div>
         <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Start Time</strong> must be empty.</span></div>
       </div>
       <div class="doc-fc-block">
@@ -255,7 +255,7 @@ order: 4
 <p><strong>End Time</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due Date</strong> is <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Due Date</strong> is not set.</span></div>
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>End Time</strong> must be empty.</span></div>
   </li>
   <li class="doc-fc-block">
@@ -274,18 +274,18 @@ order: 4
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance Date</strong> must be <strong>Start Time</strong> minus the relevance period (<strong>Relevance #</strong> × <strong>Relevance Unit</strong>).</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is not set.</span></div>
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Relevance Date</strong> must be empty.</span></div>
   </li>
 </ul>
 <p><strong>Status</strong></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and <strong>Due Date</strong> are <em>not</em> set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and <strong>Due Date</strong> are not set.</span></div>
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Not Scheduled</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> and/or <strong>Due Date</strong> are set and current time &lt; <strong>Start Time</strong>.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <strong>Start Date</strong> or <strong>Due Date</strong> are set and current time &lt; <strong>Start Time</strong>.</span></div>
     <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <strong>Status</strong> must be <strong>Upcoming</strong>.</span></div>
   </li>
   <li class="doc-fc-block">
@@ -450,7 +450,7 @@ order: 4
     being planned.
   </li>
   <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task has a <strong>Start Date
-      and/or Due Date</strong> set, so it is now an actual candidate for execution.</li>
+      or Due Date</strong> set, so it is now an actual candidate for execution.</li>
   <li><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun. The move from
     <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do</strong> to <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress</strong> is <strong>manual</strong>, representing the user
     explicitly declaring that execution started.
@@ -484,7 +484,7 @@ order: 4
   <li><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but
     <strong>no Start Date and no Due Date</strong> are set.
   </li>
-  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <strong>Start Date and/or Due
+  <li><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <strong>Start Date or Due
       Date</strong> is set. "Upcoming" means the event has been scheduled, and its <strong>Start Time has not
       arrived yet</strong>.</li>
   <li id="st-4-4-1-3-occurring"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is
