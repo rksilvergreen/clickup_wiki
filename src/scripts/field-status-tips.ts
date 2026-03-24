@@ -108,7 +108,7 @@
   }
 
   document.addEventListener('mouseover', function (e) {
-    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#status-"]') as HTMLAnchorElement | null;
     if (!a) return;
     const href = a.getAttribute('href');
     if (!href) return;
@@ -123,11 +123,11 @@
   });
 
   document.addEventListener('mouseout', function (e) {
-    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#st-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#status-"]') as HTMLAnchorElement | null;
     if (a && !a.contains(e.relatedTarget as Node)) hideStatusTip();
   });
 
-  document.querySelectorAll('a[href^="#st-"]').forEach(function (a) {
+  document.querySelectorAll('a[href^="#status-"]').forEach(function (a) {
     a.setAttribute('data-skip-preview', '');
   });
 })();

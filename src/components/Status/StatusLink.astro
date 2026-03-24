@@ -1,0 +1,13 @@
+---
+import Status from "./Status.astro";
+import { getStatusId } from "./statuses";
+
+interface Props {
+  type: string;
+  status: string;
+}
+
+const { type, status } = Astro.props;
+const href = `#${getStatusId(type, status)}`;
+---
+<a href={href} class="status-link"><Status type={type} status={status} /></a>

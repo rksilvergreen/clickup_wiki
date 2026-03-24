@@ -44,7 +44,7 @@ order: 4
       <tr id="task-fields-row-status">
         <td><a href="#base-scope-row-status">Status</a></td>
         <td>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-4-1-2">status group</a>.</td>
-        <td><StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink></td>
+        <td><StatusLink type="task" status="backlog" /></td>
         <td>No</td>
         <td>Yes</td>
       </tr>
@@ -98,11 +98,11 @@ order: 4
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#task-fields-row-start-date">Start Date</a> and <a href="#task-fields-row-due-date">Due Date</a> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must be <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must be <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#task-fields-row-start-date">Start Date</a> or <a href="#task-fields-row-due-date">Due Date</a> are set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must not be <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must not be <StatusLink type="task" status="backlog" />.</span></div>
   </li>
 </ul>
 <h5 id="sec-4-1-1-1-3">4.1.1.1.3 Task Operational Rules</h5>
@@ -110,35 +110,35 @@ order: 4
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
     <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> or <a href="#task-fields-row-due-date">Due Date</a> are set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink href="#st-4-4-1-2-to-do" color="#fff187">To Do</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-start-date">Start Date</a> changed →</span></div>
     <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <a href="#task-fields-row-due-date">Due Date</a> is not set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-start-date">Start Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink type="task" status="backlog" />.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><a href="#task-fields-row-start-date">Start Date</a> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><a href="#task-fields-row-due-date">Due Date</a> is set.</span></span></span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink href="#st-4-4-1-2-to-do" color="#fff187">To Do</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-due-date">Due Date</a> changed →</span></div>
     <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <a href="#task-fields-row-due-date">Due Date</a> is not set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-due-date">Due Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink href="#st-4-4-1-2-backlog" color="#656f7d">Backlog</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink type="task" status="backlog" />.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><a href="#task-fields-row-start-date">Start Date</a> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><a href="#task-fields-row-due-date">Due Date</a> is set.</span></span></span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink href="#st-4-4-1-2-to-do" color="#fff187">To Do</StatusLink>.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
 </ol>
 <h4 id="sec-4-1-1-2">4.1.1.2 Event</h4>
@@ -282,19 +282,19 @@ order: 4
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> and <a href="#event-fields-row-due-date">Due Date</a> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink href="#st-4-4-1-3-not-scheduled" color="#656f7d">Not Scheduled</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="not-scheduled" />.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> or <a href="#event-fields-row-due-date">Due Date</a> are set and current time &lt; <a href="#event-fields-row-start-time">Start Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink href="#st-4-4-1-3-upcoming" color="#fff187">Upcoming</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="upcoming" />.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time ≥ <a href="#event-fields-row-start-time">Start Time</a> and current time ≤ <a href="#event-fields-row-end-time">End Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink href="#st-4-4-1-3-occurring" color="#7a6ae6">Occurring</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="occurring" />.</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time &gt; <a href="#event-fields-row-end-time">End Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink href="#st-4-4-1-3-occurred" color="#30a46c">Occurred</StatusLink>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="occurred" />.</span></div>
   </li>
 </ul>
 <h5 id="sec-4-1-1-2-3">4.1.1.2.3 Event Operational Rules</h5>
@@ -439,11 +439,11 @@ order: 4
 <p>Connected to the task type <a href="#sec-4-1-1-1">Task</a>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
-  <li id="st-4-4-1-2-backlog"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no intent to work on it yet.</li>
-  <li id="st-4-4-1-2-to-do"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task is a candidate for execution.</li>
-  <li id="st-4-4-1-2-in-progress"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun on this task.</li>
-  <li id="st-4-4-1-2-canceled"><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">Done</span></strong> — The task will not be completed.</li>
-  <li id="st-4-4-1-2-complete"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">Closed</span></strong> — The task is finished and successfully completed.</li>
+  <li id="status-task-backlog"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Backlog <span class="subgroup">Not started</span></strong> — The task exists, but there is no intent to work on it yet.</li>
+  <li id="status-task-to-do"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Do <span class="subgroup">Not started</span></strong> — The task is a candidate for execution.</li>
+  <li id="status-task-in-progress"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>In Progress <span class="subgroup">Active</span></strong> — Work has begun on this task.</li>
+  <li id="status-task-canceled"><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Canceled <span class="subgroup">Done</span></strong> — The task will not be completed.</li>
+  <li id="status-task-complete"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Complete <span class="subgroup">Closed</span></strong> — The task is finished and successfully completed.</li>
 </ul>
 <h5 id="sec-4-4-1-2-1">4.4.1.2.1 Task Transitions</h5>
 <ul>
@@ -457,10 +457,10 @@ order: 4
 <h4 id="sec-4-4-1-3">4.4.1.3 Event Status Group</h4>
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
-  <li id="st-4-4-1-3-not-scheduled"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but no <a href="#event-fields-row-start-date">Start Date</a> and no <a href="#event-fields-row-due-date">Due Date</a> are set.</li>
-  <li id="st-4-4-1-3-upcoming"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <a href="#event-fields-row-start-date">Start Date</a> or <a href="#event-fields-row-due-date">Due Date</a> is set. "Upcoming" means the event has been scheduled, and its <a href="#event-fields-row-start-time">Start Time</a> has not arrived yet.</li>
-  <li id="st-4-4-1-3-occurring"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is on/after the event's <a href="#event-fields-row-start-time">Start Time</a> (i.e., the event is happening now or has started and hasn't ended yet).</li>
-  <li id="st-4-4-1-3-occurred"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">Closed</span></strong> — The current date-time is after the event's <a href="#event-fields-row-end-time">End Time</a> (operationally: after the <a href="#event-fields-row-due-date">Due Date</a>/Time, which we treat as the event's end).</li>
+  <li id="status-event-not-scheduled"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Not Scheduled <span class="subgroup">Not started</span></strong> — The event exists, but no <a href="#event-fields-row-start-date">Start Date</a> and no <a href="#event-fields-row-due-date">Due Date</a> are set.</li>
+  <li id="status-event-upcoming"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>Upcoming <span class="subgroup">Not started</span></strong> — <a href="#event-fields-row-start-date">Start Date</a> or <a href="#event-fields-row-due-date">Due Date</a> is set. "Upcoming" means the event has been scheduled, and its <a href="#event-fields-row-start-time">Start Time</a> has not arrived yet.</li>
+  <li id="status-event-occurring"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Occurring <span class="subgroup">Active</span></strong> — The current date-time is on/after the event's <a href="#event-fields-row-start-time">Start Time</a> (i.e., the event is happening now or has started and hasn't ended yet).</li>
+  <li id="status-event-occurred"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Occurred <span class="subgroup">Closed</span></strong> — The current date-time is after the event's <a href="#event-fields-row-end-time">End Time</a> (operationally: after the <a href="#event-fields-row-due-date">Due Date</a>/Time, which we treat as the event's end).</li>
 </ul>
 <h5 id="sec-4-4-1-3-1">4.4.1.3.1 Event Transitions</h5>
 <ul>
@@ -474,12 +474,12 @@ order: 4
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
-  <li id="st-4-4-1-4-idea"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea <span class="subgroup">Not started</span></strong> — On the wishlist; we may buy it eventually but are not actively planning to.</li>
-  <li id="st-4-4-1-4-to-buy"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy <span class="subgroup">Not started</span></strong> — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.</li>
-  <li id="st-4-4-1-4-in-cart"><span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart <span class="subgroup">Active</span></strong> — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.</li>
-  <li id="st-4-4-1-4-ordered"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered <span class="subgroup">Active</span></strong> — An order has been placed; we are waiting for delivery.</li>
-  <li id="st-4-4-1-4-cancelled"><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled <span class="subgroup">Done</span></strong> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</li>
-  <li id="st-4-4-1-4-received"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">Closed</span></strong> — The item has been purchased and received.</li>
+  <li id="status-shopping-idea"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea <span class="subgroup">Not started</span></strong> — On the wishlist; we may buy it eventually but are not actively planning to.</li>
+  <li id="status-shopping-to-buy"><span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy <span class="subgroup">Not started</span></strong> — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.</li>
+  <li id="status-shopping-in-cart"><span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart <span class="subgroup">Active</span></strong> — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.</li>
+  <li id="status-shopping-ordered"><span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered <span class="subgroup">Active</span></strong> — An order has been placed; we are waiting for delivery.</li>
+  <li id="status-shopping-cancelled"><span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled <span class="subgroup">Done</span></strong> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</li>
+  <li id="status-shopping-received"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received <span class="subgroup">Closed</span></strong> — The item has been purchased and received.</li>
 </ul>
 <h5 id="sec-4-4-1-4-1">4.4.1.4.1 Shopping Transitions</h5>
 <p>Every transition is <strong>manual</strong>. The usual path is <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> → <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> → <span class="status-dot" style="background-color:#f76808" title="#F76808" aria-hidden="true"></span><strong>In Cart</strong> → <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> → <span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>Received</strong>, but an item may move from any status to any other (e.g. <span class="status-dot" style="background-color:#7a6ae6" title="#7A6AE6" aria-hidden="true"></span><strong>Ordered</strong> back to <span class="status-dot" style="background-color:#fff187" title="#FFF187" aria-hidden="true"></span><strong>To Buy</strong> after an order is cancelled, or <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>Idea</strong> to <span class="status-dot" style="background-color:#dc8084" title="#DC8084" aria-hidden="true"></span><strong>Cancelled</strong>).</p>
@@ -489,8 +489,8 @@ order: 4
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
   define this minimal, degenerate group with two placeholder statuses:</p>
 <ul>
-  <li id="st-4-4-1-5-none"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>-- <span class="subgroup">Not started</span></strong> — Represents the absence of a status; entries that "have no status" live here.</li>
-  <li id="st-4-4-1-5-closed"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">Closed</span></strong> — Required by ClickUp as the closed status for the group; unused in practice.</li>
+  <li id="status-statusless-none"><span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>-- <span class="subgroup">Not started</span></strong> — Represents the absence of a status; entries that "have no status" live here.</li>
+  <li id="status-statusless-closed"><span class="status-dot" style="background-color:#30a46c" title="#30A46C" aria-hidden="true"></span><strong>--- <span class="subgroup">Closed</span></strong> — Required by ClickUp as the closed status for the group; unused in practice.</li>
 </ul>
 <p>All entries on a Statusless list remain in <span class="status-dot" style="background-color:#656f7d" title="#656F7D" aria-hidden="true"></span><strong>--</strong> at all times. There are no transitions; no
   status changes are ever made.</p>
@@ -643,21 +643,21 @@ order: 4
 
 <h5 id="sec-4-4-6-2-1">4.4.6.2.1 Start Time arrives → Set Occurring status</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-start-time">Start Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink href="#st-4-4-1-3-occurring" color="#7a6ae6">Occurring</StatusLink>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-start-time">Start Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurring" />.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#custom-fields-row-start-time">Start Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink href="#st-4-4-1-3-occurring" color="#7a6ae6">Occurring</StatusLink>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurring" />.</span></div>
 
 <h5 id="sec-4-4-6-2-2">4.4.6.2.2 End Time arrives → Set Occurred status</h5>
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-end-time">End Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink href="#st-4-4-1-3-occurred" color="#30a46c">Occurred</StatusLink>.</p>
+<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-end-time">End Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurred" />.</p>
 
 <p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
 
 <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#custom-fields-row-end-time">End Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink href="#st-4-4-1-3-occurred" color="#30a46c">Occurred</StatusLink>.</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurred" />.</span></div>
 
 <h5 id="sec-4-4-6-2-3">4.4.6.2.3 Event created → Add to list Automations - Events</h5>
 

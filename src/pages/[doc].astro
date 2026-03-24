@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import DocLayout from "doc-shell/layouts/DocLayout.astro";
 import { siteTitle, documents } from "clickup_wifi/wiki.config";
 import { tocs } from "clickup_wifi/content/toc";
-import StatusLink from "clickup_wifi/components/StatusLink.astro";
+import Status from "clickup_wifi/components/Status/Status.astro";
+import StatusLink from "clickup_wifi/components/Status/StatusLink.astro";
+import "clickup_wifi/components/Status/status.css";
 import "clickup_wifi/styles/clickup.css";
 
 export function getStaticPaths() {
@@ -34,7 +36,7 @@ const renderedSections = await Promise.all(
   currentSlug={document.slug}
   siteTitle={siteTitle}
 >
-  {renderedSections.map(({ Content }) => <Content components={{ StatusLink }} />)}
+  {renderedSections.map(({ Content }) => <Content components={{ Status, StatusLink }} />)}
 </DocLayout>
 <script src="clickup_wifi/scripts/field-status-tips.ts"></script>
 <script src="clickup_wifi/scripts/sync-table-cols.ts"></script>

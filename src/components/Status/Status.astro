@@ -1,0 +1,12 @@
+---
+import { getStatus } from "./statuses";
+
+interface Props {
+  type: string;
+  status: string;
+}
+
+const { type, status } = Astro.props;
+const def = getStatus(type, status);
+---
+<span class="status-dot" style={`background-color:${def.color}`} title={def.color.toUpperCase()} aria-hidden="true"></span><strong>{def.name}</strong>
