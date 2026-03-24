@@ -572,42 +572,42 @@ order: 4
       <tr id="custom-fields-row-start-time">
         <td>Start Time</td>
         <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> begins.</td>
-        <td><a href="#base-scope-row-ft-date">Date</a></td>
+        <td><a href="#field-types-row-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
       <tr id="custom-fields-row-end-time">
         <td>End Time</td>
         <td>The precise date and time when an <a href="#sec-4-1-1-2">event</a> ends.</td>
-        <td><a href="#base-scope-row-ft-date">Date</a></td>
+        <td><a href="#field-types-row-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
       <tr id="custom-fields-row-relevance-number">
         <td>Relevance #</td>
         <td>How many units of time define the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
-        <td><a href="#base-scope-row-ft-number">Number</a></td>
+        <td><a href="#field-types-row-number">Number</a></td>
         <td>No</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
       <tr id="custom-fields-row-relevance-unit">
         <td>Relevance Unit</td>
         <td>The unit of time that defines the <a href="#sec-4-1-1-2">event</a>'s relevance period.</td>
-        <td><a href="#base-scope-row-ft-dropdown">Dropdown</a></td>
+        <td><a href="#field-types-row-dropdown">Dropdown</a></td>
         <td>No</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
       <tr id="custom-fields-row-relevance-date">
         <td>Relevance Date</td>
         <td>The date on which this <a href="#sec-4-1-1-2">event</a> should start being shown or notified to the user.</td>
-        <td><a href="#base-scope-row-ft-date">Date</a></td>
+        <td><a href="#field-types-row-date">Date</a></td>
         <td>Yes</td>
         <td><a href="#sec-4-1-1-2">Event</a></td>
       </tr>
       <tr id="custom-fields-row-timestamp">
         <td>Timestamp</td>
         <td>A single datetime, often representing when the documented occurrence happened.</td>
-        <td><a href="#base-scope-row-ft-date">Date</a></td>
+        <td><a href="#field-types-row-date">Date</a></td>
         <td>No</td>
         <td><a href="#sec-4-1-1-3">Record</a>, <a href="#sec-4-1-1-4">Thought</a></td>
       </tr>
