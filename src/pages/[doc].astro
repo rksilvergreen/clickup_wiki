@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import DocLayout from "doc-shell/layouts/DocLayout.astro";
-import { siteTitle, documents } from "../../wiki.config";
-import { tocs } from "../content/toc";
-import "../styles/clickup.css";
+import { siteTitle, documents } from "clickup_wifi/wiki.config";
+import { tocs } from "clickup_wifi/content/toc";
+import "clickup_wifi/styles/clickup.css";
 
 export function getStaticPaths() {
   return documents.map((d) => ({
@@ -35,5 +35,5 @@ const renderedSections = await Promise.all(
 >
   {renderedSections.map(({ Content }) => <Content />)}
 </DocLayout>
-<script src="../scripts/field-status-tips.ts"></script>
-<script src="../scripts/sync-table-cols.ts"></script>
+<script src="clickup_wifi/scripts/field-status-tips.ts"></script>
+<script src="clickup_wifi/scripts/sync-table-cols.ts"></script>
