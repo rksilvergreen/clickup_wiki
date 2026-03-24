@@ -263,22 +263,22 @@
 }
 
 /* Base scope table: blue headers */
-.document .doc-base-scope-table thead {
+.document #base-scope thead {
   background: var(--doc-table-base-scope);
 }
 
-/* Custom fields table: custom-fields headers */
-.document .doc-custom-fields-table thead {
+/* Custom fields table */
+.document #custom-fields thead {
   background: var(--doc-table-custom-fields);
 }
 
-.document .doc-base-scope-table,
-.document .doc-custom-fields-table {
+.document #base-scope,
+.document #custom-fields {
   table-layout: fixed;
 }
 
 /* Field types table: purple headers */
-.document .doc-field-types-table thead {
+.document #field-types thead {
   background: var(--doc-table-field-types);
 }
 

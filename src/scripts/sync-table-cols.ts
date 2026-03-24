@@ -1,5 +1,5 @@
 (function () {
-  const SYNCED_SELECTORS = ['.doc-base-scope-table', '.doc-custom-fields-table'];
+  const SYNCED_SELECTORS = ['#base-scope', '#custom-fields'];
 
   const tables = SYNCED_SELECTORS
     .map(sel => document.querySelector<HTMLTableElement>(sel))
