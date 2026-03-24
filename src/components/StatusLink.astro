@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  color: string;
+}
+const { href, color } = Astro.props;
+const title = color.toUpperCase();
+---
+
+<a href={href} class="status-link"
+  ><span
+    class="status-dot"
+    style={`background-color:${color}`}
+    title={title}
+    aria-hidden="true"></span><strong><slot /></strong></a
+>
