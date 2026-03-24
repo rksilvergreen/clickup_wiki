@@ -26,13 +26,20 @@ order: 2
   <li><strong>Constraints</strong>: rules that determine validity. They may restrict the value of a single field, such
     as whether it is required, typed, or limited to a permitted range or set of values, and they may also govern the
     relationship between multiple fields, such as dependency, consistency, exclusivity, or conditional validity.</li>
-  <li><strong>Operational rules</strong>: rules that define how field values change over time in response to
-    defined triggers. Each operational rule includes:<ul>
-      <li>a <strong>trigger condition</strong>: specifies the circumstance under which the rule is activated. This may be
-        the creation of a new entry under the schema, a change in a field value, or the passage of time.</li>
+  <li>
+    <p>
+      <strong>Operational rules</strong>: rules that define how field values change over time in response to
+      defined triggers. Each operational rule includes:
+    </p>
+    <ul>
+      <li>
+        a <strong>trigger condition</strong>: specifies the circumstance under which the rule is activated. This may be
+        the creation of a new entry under the schema, a change in a field value, or the passage of time.
+      </li>
       <li>a <strong>state update</strong>: one or more field values are changed.</li>
     </ul>
-    Operational rules often exist to enforce constraints, although not necessarily.</li>
+    <p>Operational rules often exist to enforce constraints, although not necessarily.</p>
+  </li>
 </ul>
 <h2 id="sec-2-3">2.3 Entry</h2>
 <p>A concrete instance governed by a schema. It consists of a set of values, one per
@@ -52,12 +59,9 @@ order: 2
     different contexts)</li>
   <li><strong>Automations</strong> that are triggered by conditions inside the scope.</li>
 </ul>
-<p>All of an entry's attributes are derived from the scopes it is exposed to, taken together: each scope contributes
-  part of what applies to that entry, and the result is the union of those contributions.</p>
+<p>All of an entry's attributes are derived from the scopes it is exposed to, taken together: each scope contributes part of what applies to that entry, and the result is the union of those contributions.</p>
 <h2 id="sec-2-6">2.6 Unified Database Model</h2>
-<p>In many no-code database platforms, the workspace often looks like it contains many separate databases
-  scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.
-</p>
+<p>In many no-code database platforms, the workspace often looks like it contains many separate databases scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.</p>
 <h3 id="sec-2-6-1">2.6.1 Scope Exposure</h3>
 <p>Entries become exposed to scopes through scope selector fields: fields whose values attach the
   entry to additional scopes. These are not merely data holders; they are context-binding mechanisms that determine which schemas/settings/rules apply.</p>
@@ -68,12 +72,18 @@ order: 2
 <p><strong>Project Scope Hierarchy</strong> — How entries are grouped by the projects they support and the goals they aim to achieve.</p>
 <div class="doc-tree">
   <ul>
-    <li>🟦 General (space)<ul>
-        <li>📁 Some Project (folder)<ul>
+    <li>
+      🟦 General (space)
+      <ul>
+        <li>
+          📁 Some Project (folder)
+          <ul>
             <li>📋 Project Tasks (list)</li>
           </ul>
         </li>
-        <li>📁 Household Chores (folder)<ul>
+        <li>
+          📁 Household Chores (folder)
+          <ul>
             <li>📋 Household Tasks (list)</li>
             <li>📋 Family Meetings (list)</li>
           </ul>
@@ -82,9 +92,15 @@ order: 2
         <li>📋 Milestones (list)</li>
       </ul>
     </li>
-    <li>🟩 Personal (space)<ul>
-        <li>📁 My Projects (folder)<ul>
-            <li>📁 Birthday Planning (folder)<ul>
+    <li>
+      🟩 Personal (space)
+      <ul>
+        <li>
+          📁 My Projects (folder)
+          <ul>
+            <li>
+              📁 Birthday Planning (folder)
+              <ul>
                 <li>📋 Locations (list)</li>
                 <li>📋 Presents (list)</li>
               </ul>
@@ -100,12 +116,18 @@ order: 2
 <div class="doc-tree">
   <ul>
     <li>✅ Task</li>
-    <li>📆 Event<ul>
-        <li>👨‍👩‍👧‍👦 Family Event<ul>
+    <li>
+      📆 Event
+      <ul>
+        <li>
+          👨‍👩‍👧‍👦 Family Event
+          <ul>
             <li>🎁 Birthday</li>
           </ul>
         </li>
-        <li>💻 Work Event<ul>
+        <li>
+          💻 Work Event
+          <ul>
             <li>🧮 End Of Quarter</li>
             <li>🌞 Field Day</li>
           </ul>
@@ -114,7 +136,9 @@ order: 2
       </ul>
     </li>
     <li>🧠 Thought</li>
-    <li>🫱🏼‍🫲🏼 Meeting<ul>
+    <li>
+      🫱🏼‍🫲🏼 Meeting
+      <ul>
         <li>🗒️ Work Meeting</li>
         <li>🧑‍🤝‍🧑 Team Meeting</li>
       </ul>
@@ -124,30 +148,42 @@ order: 2
 <p><strong>Responsibility Scope Hierarchy</strong> — Groups entries by who is accountable for interacting with them and carrying them forward.</p>
 <div class="doc-tree">
   <ul>
-    <li>🧪 Research<ul>
+    <li>
+      🧪 Research
+      <ul>
         <li>👩‍🦰 Alison</li>
         <li>🧔‍♂️ Dan</li>
       </ul>
     </li>
-    <li>📱 Marketing<ul>
-        <li>👨‍👩‍👧‍👦 John's Team<ul>
+    <li>
+      📱 Marketing
+      <ul>
+        <li>
+          👨‍👩‍👧‍👦 John's Team
+          <ul>
             <li>🧔‍♂️ John</li>
             <li>👩‍🦰 Erica</li>
             <li>👩‍🦰 Sarah</li>
           </ul>
         </li>
-        <li>👨‍👩‍👧‍👦 Rachael's Team<ul>
+        <li>
+          👨‍👩‍👧‍👦 Rachael's Team
+          <ul>
             <li>👩‍🦰 Rachael</li>
             <li>🧔‍♂️ Tim</li>
           </ul>
         </li>
       </ul>
     </li>
-    <li>📈 Accounting<ul>
+    <li>
+      📈 Accounting
+      <ul>
         <li>…</li>
       </ul>
     </li>
-    <li>💻 Development<ul>
+    <li>
+      💻 Development
+      <ul>
         <li>…</li>
       </ul>
     </li>
@@ -172,17 +208,23 @@ order: 2
 <p>For example, the Status Scope Hierarchy is scoped under the Task scope of the Type Scope Hierarchy. That scope exposes a status field that acts as a scope selector into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models their progression state:</p>
 <div class="doc-tree">
   <ul>
-    <li>⬜ Not Started<ul>
+    <li>
+      ⬜ Not Started
+      <ul>
         <li>🟫 Backlog</li>
         <li>🟨 Todo</li>
       </ul>
     </li>
-    <li>⬜ Active<ul>
+    <li>
+      ⬜ Active
+      <ul>
         <li>🟪 In Progress</li>
         <li>🟧 Blocked</li>
       </ul>
     </li>
-    <li>⬜ Done<ul>
+    <li>
+      ⬜ Done
+      <ul>
         <li>🟥 Canceled</li>
         <li>🟩 Completed</li>
       </ul>

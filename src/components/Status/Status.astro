@@ -4,9 +4,10 @@ import { getStatus } from "./statuses";
 interface Props {
   type: string;
   status: string;
+  showSubgroup?: boolean;
 }
 
-const { type, status } = Astro.props;
+const { type, status, showSubgroup = false } = Astro.props;
 const def = getStatus(type, status);
 ---
-<span class="status-dot" style={`background-color:${def.color}`} title={def.color.toUpperCase()} aria-hidden="true"></span><strong>{def.name}</strong>
+<span class="status-dot" style={`background-color:${def.color}`} title={def.color.toUpperCase()} aria-hidden="true"></span><strong>{def.name}{showSubgroup && <> <span class="subgroup">{def.subgroup}</span></>}</strong>
