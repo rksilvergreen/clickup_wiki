@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import DocLayout, { DocTable } from "doc-shell/layouts/doc-layout";
+import DocLayout, { DocTable, Section, extractToc } from "doc-shell/layouts/doc-layout";
 import { documents } from "../content/documents";
 import Status from "clickup_wiki/components/Status/Status.astro";
 import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
@@ -20,6 +20,8 @@ const docSections = sections
   .filter((s) => s.id.startsWith(document.slug + "/"))
   .sort((a, b) => a.data.order - b.data.order);
 
+const toc = extractToc(docSections.map((s) => s.body));
+
 const renderedSections = await Promise.all(
   docSections.map(async (section) => {
     const { Content } = await section.render();
@@ -31,10 +33,11 @@ const renderedSections = await Promise.all(
 <DocLayout
   documents={documents}
   slug={document.slug}
+  toc={toc}
 >
   {
     renderedSections.map(({ Content }) => (
-      <Content components={{ Status, StatusLink, DocTable }} />
+      <Content components={{ Section, Status, StatusLink, DocTable }} />
     ))
   }
 </DocLayout>
