@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import DocLayout, { DocTable } from "doc-shell/layouts/doc-layout";
-import { documents } from "clickup_wiki/wiki.config";
-import { tocs } from "clickup_wiki/content/toc";
+import { documents } from "../content/documents";
+import type { TocEntry } from "doc-shell/types";
+import { wikiToc } from "../content/documents/wiki/wiki-toc";
+import { changelogToc } from "../content/documents/changelog/changelog-toc";
 import Status from "clickup_wiki/components/Status/Status.astro";
 import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
 import "clickup_wiki/components/Status/status.css";
@@ -27,11 +29,16 @@ const renderedSections = await Promise.all(
     return { id: section.id, Content };
   }),
 );
+
+const tocBySlug: Record<string, TocEntry[]> = {
+  wiki: wikiToc,
+  changelog: changelogToc,
+};
 ---
 
 <DocLayout
   title={document.title}
-  tocEntries={tocs[document.slug] || []}
+  tocEntries={tocBySlug[document.slug] || []}
   documents={documents}
   currentSlug={document.slug}
 >

@@ -13,7 +13,7 @@ Content is authored in `.md` (or `.mdx`) files in `src/content/documents/`. Each
 
 - **Section numbering** — Headings carry hierarchical numbers (e.g. `1.`, `1.1`, `1.2.3`). Update numbers manually when adding or reordering sections.
 - **Heading IDs** — Every heading has an `id` in the form `sec-N-N-N` (e.g. `id="sec-3-2-1"`). Assign correct IDs when adding headings.
-- **Table of contents** — `src/content/toc.ts` must stay in sync with the headings and their IDs.
+- **Table of contents** — per-document `*-toc.ts` files (e.g. `src/content/documents/wiki/wiki-toc.ts`) must stay in sync with the headings and their IDs.
 - **Cross-links** — Internal links use `href="#sec-..."` for heading anchors and `href="#row-..."` for table row anchors.
 - **Special spans** — Trigger types: `<span class="trigger-type">...</span>`. Status subgroups: `<span class="subgroup">(...)</span>`.
 - **Tree diagrams** — Emoji-led nested lists are wrapped in `<div class="doc-tree">`.

@@ -3,9 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "clickup_wiki/wiki.config": [
-        "wiki.config.ts"
-      ],
       "clickup_wiki/*": [
         "src/*"
       ]

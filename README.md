@@ -23,9 +23,9 @@ Open `http://localhost:4321` in a browser. Changes to content, styles, or compon
 
 | Path | Purpose |
 |------|---------|
-| `wiki.config.ts` | Document title, feature flags |
+| `src/pages/documents.ts` | Document list (and optional config) |
 | `src/content/documents/` | Content files (`.md` or `.mdx`) — one per top-level document section |
-| `src/content/toc.ts` | Table of contents data structure |
+| `src/content/documents/*/*-toc.ts` | Per-document TOC data structure |
 | `src/content/config.ts` | Astro content collection schema |
 | `src/pages/index.astro` | Page that assembles all sections |
 | `src/theme/layouts/` | Page layout (WikiLayout) |
@@ -52,11 +52,11 @@ order: 1
 - Headings use explicit `id` attributes (e.g. `id="sec-2-1"`).
 - Tables are wrapped in `<div class="doc-table-wrap">`.
 - Tree diagrams are wrapped in `<div class="doc-tree">`.
-- When adding or reordering sections, update `src/content/toc.ts` accordingly.
+- When adding or reordering sections, update the relevant per-document `*-toc.ts` file accordingly.
 
 ## Architecture
 
 The project has two layers:
 
 - **Theme layer** (`src/theme/`): Layout, components, scripts, and styles. Knows nothing about specific content. Future npm package.
-- **Content layer** (`src/content/`, `src/pages/`, `wiki.config.ts`): Content files, TOC data, page assembly, and configuration. Specific to this wiki.
+- **Content layer** (`src/content/`, `src/pages/`): Content files, TOC data, page assembly, and configuration. Specific to this wiki.
