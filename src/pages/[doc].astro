@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import DocLayout, { DocTable } from "doc-shell/layouts/doc-layout";
-import { siteTitle, documents } from "clickup_wiki/wiki.config";
+import { documents } from "clickup_wiki/wiki.config";
 import { tocs } from "clickup_wiki/content/toc";
 import Status from "clickup_wiki/components/Status/Status.astro";
 import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
@@ -34,7 +34,6 @@ const renderedSections = await Promise.all(
   tocEntries={tocs[document.slug] || []}
   documents={documents}
   currentSlug={document.slug}
-  siteTitle={siteTitle}
 >
   {
     renderedSections.map(({ Content }) => (
