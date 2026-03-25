@@ -30,7 +30,7 @@ const renderedSections = await Promise.all(
 
 <DocLayout
   documents={documents}
-  currentSlug={document.slug}
+  slug={document.slug}
 >
   {
     renderedSections.map(({ Content }) => (
