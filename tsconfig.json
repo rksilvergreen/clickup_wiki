@@ -3,8 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "clickup_wifi/wiki.config": ["wiki.config.ts"],
-      "clickup_wifi/*": ["src/*"]
+      "clickup_wiki/wiki.config": [
+        "wiki.config.ts"
+      ],
+      "clickup_wiki/*": [
+        "src/*"
+      ]
     }
   }
 }

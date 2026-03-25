@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import DocLayout, { DocTable } from "doc-shell/layouts/doc-layout";
-import { siteTitle, documents } from "clickup_wifi/wiki.config";
-import { tocs } from "clickup_wifi/content/toc";
-import Status from "clickup_wifi/components/Status/Status.astro";
-import StatusLink from "clickup_wifi/components/Status/StatusLink.astro";
-import "clickup_wifi/components/Status/status.css";
-import "clickup_wifi/styles/clickup.css";
+import { siteTitle, documents } from "clickup_wiki/wiki.config";
+import { tocs } from "clickup_wiki/content/toc";
+import Status from "clickup_wiki/components/Status/Status.astro";
+import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
+import "clickup_wiki/components/Status/status.css";
+import "clickup_wiki/styles/clickup.css";
 
 export function getStaticPaths() {
   return documents.map((d) => ({
@@ -36,7 +36,11 @@ const renderedSections = await Promise.all(
   currentSlug={document.slug}
   siteTitle={siteTitle}
 >
-  {renderedSections.map(({ Content }) => <Content components={{ Status, StatusLink, DocTable }} />)}
+  {
+    renderedSections.map(({ Content }) => (
+      <Content components={{ Status, StatusLink, DocTable }} />
+    ))
+  }
 </DocLayout>
-<script src="clickup_wifi/scripts/field-status-tips.ts"></script>
-<script src="clickup_wifi/scripts/sync-table-cols.ts"></script>
+<script src="clickup_wiki/scripts/field-status-tips.ts"></script>
+<script src="clickup_wiki/scripts/sync-table-cols.ts"></script>
