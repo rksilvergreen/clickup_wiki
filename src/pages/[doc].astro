@@ -10,8 +10,8 @@ import DocLayout, {
   TR,
   TH,
   TD,
-  extractToc,
 } from "doc-shell/layouts/doc-layout";
+import type { TocEntry } from "doc-shell/types";
 import { documents } from "../content/documents";
 import Status from "clickup_wiki/components/Status/Status.astro";
 import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
@@ -31,14 +31,17 @@ const docSections = sections
   .filter((s) => s.id.startsWith(document.slug + "/"))
   .sort((a, b) => a.data.order - b.data.order);
 
-const toc = extractToc(docSections.map((s) => s.body));
-
 const renderedSections = await Promise.all(
   docSections.map(async (section) => {
-    const { Content } = await section.render();
-    return { id: section.id, Content };
+    const { Content, remarkPluginFrontmatter } = await section.render();
+    return {
+      Content,
+      toc: (remarkPluginFrontmatter._toc ?? []) as TocEntry[],
+    };
   }),
 );
+
+const toc = renderedSections.flatMap((r) => r.toc);
 ---
 
 <DocLayout
@@ -47,7 +50,7 @@ const renderedSections = await Promise.all(
   toc={toc}
 >
   {
-    renderedSections.map(({ Content }) => (
+    renderedSections.map(({ Content, toc: _toc }) => (
       <Content
         components={{
           Section,

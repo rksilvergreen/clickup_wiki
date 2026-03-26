@@ -3,7 +3,7 @@ title: "Workspace"
 order: 4
 ---
 
-<Section id="sec-4" title="4. Workspace">
+<Section id="sec-4" title="Workspace">
 <p>The workspace is the concrete implementation documented in this wiki. It describes the principal
   structures, conventions, and operating patterns that define what the workspace contains and how it is
   intended to function in practice.</p>
@@ -17,18 +17,18 @@ order: 4
   conventions, recurring patterns, and central organizational themes. Its purpose is not to prescribe the
   construction and maintenance of every project in full detail, but to provide a clear account of the
   workspace's overall design and governing logic.</p>
-<Section id="sec-4-1" title="4.1 Type Scope">
+<Section id="sec-4-1" title="Type Scope">
 <p>The Type Scope hierarchy is built on the idea that the <Link to="base-scope-row-task-type">Task Type</Link> field functions as a scope selector field. In ClickUp, this is not a formally recognized scope mechanism in the same way that location is for the project scope, but in our workspace we deliberately treat it as one. That is, we recognize that type meaningfully determines applicability, behavior, and structure, and we organize the workspace accordingly even if ClickUp itself does not systematically model task type as a true scope hierarchy.</p>
 <p>This means that task type is not just a label for classification. It acts as a contextual boundary that helps determine what belongs to an entry and what does not. We create fields, status groups, tags, templates, automations, views, and filters that are intended for a specific task type and should not be used across others indiscriminately. The Type Scope section therefore describes the type-based structure we impose on the workspace: a conceptual scope hierarchy that we enforce through design, convention, and configuration rather than through a native ClickUp scoping system.</p>
-<Section id="sec-4-1-1" title="4.1.1 Task Types">
+<Section id="sec-4-1-1" title="Task Types">
 <p>The following subsections present all task types used in our workspace together with the schema associated with each of them.</p>
-<Section id="sec-4-1-1-1" title="4.1.1.1 Task">
+<Section id="sec-4-1-1-1" title="Task">
 <p>The default actionable work-item entry type, representing a unit of work that you intend to do, track to
   completion, and manage through a workflow. A Task has an owner (or owners), a lifecycle state, and often a due
   horizon; you can plan, prioritize, and advance it while keeping context in description, comments, attachments,
   and relationships. As the most operational type—meant for execution rather than just capture—it relies on
   ClickUp's built-in workflow machinery such as Status, Assignees, and Priority.</p>
-<Section id="sec-4-1-1-1-1" title="4.1.1.1.1 Task Fields">
+<Section id="sec-4-1-1-1-1" title="Task Fields">
 <Table id="task-fields">
     <THead>
       <TR>
@@ -92,7 +92,7 @@ order: 4
     </TBody>
 </Table>
 </Section>
-<Section id="sec-4-1-1-1-2" title="4.1.1.1.2 Task Constraints">
+<Section id="sec-4-1-1-1-2" title="Task Constraints">
 <p><Link to="task-fields-row-status">Status</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
@@ -105,7 +105,7 @@ order: 4
   </li>
 </ul>
 </Section>
-<Section id="sec-4-1-1-1-3" title="4.1.1.1.3 Task Operational Rules">
+<Section id="sec-4-1-1-1-3" title="Task Operational Rules">
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
@@ -143,14 +143,14 @@ order: 4
 </ol>
 </Section>
 </Section>
-<Section id="sec-4-1-1-2" title="4.1.1.2 Event">
+<Section id="sec-4-1-1-2" title="Event">
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
   occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
   display. The workspace derives precise Start Time and End Time from the dates you set, derives <Link to="event-fields-row-status">Status</Link> from
   those times, and computes a <Link to="event-fields-row-relevance-date">Relevance Date</Link> so the event can be shown or notified ahead of
   time.</p>
-<Section id="sec-4-1-1-2-1" title="4.1.1.2.1 Event Fields">
+<Section id="sec-4-1-1-2-1" title="Event Fields">
 <Table id="event-fields">
     <THead>
       <TR>
@@ -228,7 +228,7 @@ order: 4
   user works only with <Link to="event-fields-row-start-date">Start Date</Link> and <Link to="event-fields-row-due-date">Due Date</Link>; <Link to="event-fields-row-start-time">Start Time</Link> and
   <Link to="event-fields-row-end-time">End Time</Link> are not meant to be edited directly.</p>
 </Section>
-<Section id="sec-4-1-1-2-2" title="4.1.1.2.2 Event Constraints">
+<Section id="sec-4-1-1-2-2" title="Event Constraints">
 <p><Link to="event-fields-row-start-time">Start Time</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
@@ -299,7 +299,7 @@ order: 4
   </li>
 </ul>
 </Section>
-<Section id="sec-4-1-1-2-3" title="4.1.1.2.3 Event Operational Rules">
+<Section id="sec-4-1-1-2-3" title="Event Operational Rules">
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Event created</strong> →</span></div>
@@ -336,12 +336,12 @@ order: 4
 </ol>
 </Section>
 </Section>
-<Section id="sec-4-1-1-3" title="4.1.1.3 Record">
+<Section id="sec-4-1-1-3" title="Record">
 <p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
   let you document items with a <Link to="record-fields-row-timestamp">Timestamp</Link> so you know when they were recorded (or when the thing
   actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the content
   and the datetime.</p>
-<Section id="sec-4-1-1-3-1" title="4.1.1.3.1 Record Fields">
+<Section id="sec-4-1-1-3-1" title="Record Fields">
 <Table id="record-fields">
     <THead>
       <TR>
@@ -363,7 +363,7 @@ order: 4
     </TBody>
 </Table>
 </Section>
-<Section id="sec-4-1-1-3-2" title="4.1.1.3.2 Record Constraints">
+<Section id="sec-4-1-1-3-2" title="Record Constraints">
 <p><Link to="record-fields-row-timestamp">Timestamp</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
@@ -371,7 +371,7 @@ order: 4
   </li>
 </ul>
 </Section>
-<Section id="sec-4-1-1-3-3" title="4.1.1.3.3 Record Operational Rules">
+<Section id="sec-4-1-1-3-3" title="Record Operational Rules">
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Record creation</strong> →</span></div>
@@ -380,13 +380,13 @@ order: 4
 </ol>
 </Section>
 </Section>
-<Section id="sec-4-1-1-4" title="4.1.1.4 Thought">
+<Section id="sec-4-1-1-4" title="Thought">
 <p>A Thought is a <Link to="sec-4-1-1-3">Record</Link> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a timestamp and the content. Structurally it is the same as <Link to="sec-4-1-1-3">Record</Link>.</p>
 <p>The schema of a Thought is identical to that of a <Link to="sec-4-1-1-3">Record</Link>.</p>
 </Section>
-<Section id="sec-4-1-1-5" title="4.1.1.5 Milestone">
+<Section id="sec-4-1-1-5" title="Milestone">
 <p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
-<Section id="sec-4-1-1-5-1" title="4.1.1.5.1 Milestone Fields">
+<Section id="sec-4-1-1-5-1" title="Milestone Fields">
 <Table id="milestone-fields">
     <THead>
       <TR>
@@ -408,7 +408,7 @@ order: 4
     </TBody>
 </Table>
 </Section>
-<Section id="sec-4-1-1-5-2" title="4.1.1.5.2 Milestone Constraints">
+<Section id="sec-4-1-1-5-2" title="Milestone Constraints">
 <p><Link to="milestone-fields-row-due-date">Due Date</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
@@ -417,17 +417,17 @@ order: 4
 </ul>
 </Section>
 </Section>
-<Section id="sec-4-1-1-6" title="4.1.1.6 Data">
+<Section id="sec-4-1-1-6" title="Data">
 <p>A Data type represents arbitrary information that is worth storing in the workspace. It is meant for content that may take many different forms and does not need to fit a fixed schema; its sole purpose is to preserve information.</p>
 </Section>
-<Section id="sec-4-1-1-7" title="4.1.1.7 Parent Task">
+<Section id="sec-4-1-1-7" title="Parent Task">
 <p>A Parent Task is a practical workaround used for <Link to="sec-4-1-1-1">Tasks</Link> that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
 <p>The schema of a Parent Task is identical to that of a <Link to="sec-4-1-1-1">Task</Link>; it uses the same fields, constraints, and operational rules.</p>
 </Section>
 </Section>
 </Section>
-<Section id="sec-4-4" title="4.4 ClickUp Elements">
-<Section id="sec-4-4-1" title="4.4.1 Status Groups">
+<Section id="sec-4-4" title="ClickUp Elements">
+<Section id="sec-4-4-1" title="Status Groups">
 <p>Status Groups are a parameter of ClickUp's base-schema field <Link to="base-scope-row-status">Status</Link> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
@@ -438,7 +438,7 @@ order: 4
   when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
   Whenever we mention a status, we annotate it with its subgroup as a pill.</p>
-<Section id="sec-4-4-1-1" title="4.4.1.1 Status Transitions and Triggers">
+<Section id="sec-4-4-1-1" title="Status Transitions and Triggers">
 <p>A status change is a transition: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
@@ -448,7 +448,7 @@ order: 4
   <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular date-time boundary is reached.</li>
 </ul>
 </Section>
-<Section id="sec-4-4-1-2" title="4.4.1.2 Task Status Group">
+<Section id="sec-4-4-1-2" title="Task Status Group">
 <p>Connected to the task type <Link to="sec-4-1-1-1">Task</Link>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
@@ -458,7 +458,7 @@ order: 4
   <li id="status-task-canceled"><Status type="task" status="canceled" showSubgroup /> — The task will not be completed.</li>
   <li id="status-task-complete"><Status type="task" status="complete" showSubgroup /> — The task is finished and successfully completed.</li>
 </ul>
-<Section id="sec-4-4-1-2-1" title="4.4.1.2.1 Task Transitions">
+<Section id="sec-4-4-1-2-1" title="Task Transitions">
 <ul>
   <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of <Link to="task-fields-row-start-date">Start Date</Link> or <Link to="task-fields-row-due-date">Due Date</Link> is set.</li>
   <li><Status type="task" status="to-do" /> → <Status type="task" status="in-progress" />: <span class="trigger-type">Manual</span> — The user declares that work has begun.</li>
@@ -469,7 +469,7 @@ order: 4
 </ul>
 </Section>
 </Section>
-<Section id="sec-4-4-1-3" title="4.4.1.3 Event Status Group">
+<Section id="sec-4-4-1-3" title="Event Status Group">
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
   <li id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <Link to="event-fields-row-start-date">Start Date</Link> and no <Link to="event-fields-row-due-date">Due Date</Link> are set.</li>
@@ -477,7 +477,7 @@ order: 4
   <li id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <Link to="event-fields-row-start-time">Start Time</Link> (i.e., the event is happening now or has started and hasn't ended yet).</li>
   <li id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <Link to="event-fields-row-end-time">End Time</Link> (operationally: after the <Link to="event-fields-row-due-date">Due Date</Link>/Time, which we treat as the event's end).</li>
 </ul>
-<Section id="sec-4-4-1-3-1" title="4.4.1.3.1 Event Transitions">
+<Section id="sec-4-4-1-3-1" title="Event Transitions">
 <ul>
   <li><Status type="event" status="not-scheduled" /> → <Status type="event" status="upcoming" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of Start Date or Due Date is set.</li>
   <li><Status type="event" status="upcoming" /> → <Status type="event" status="occurring" />: <span class="trigger-type">Chronological</span> — Triggered when the current datetime reaches or passes the event's start datetime.</li>
@@ -487,7 +487,7 @@ order: 4
 </ul>
 </Section>
 </Section>
-<Section id="sec-4-4-1-4" title="4.4.1.4 Shopping Status Group">
+<Section id="sec-4-4-1-4" title="Shopping Status Group">
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
@@ -498,11 +498,11 @@ order: 4
   <li id="status-shopping-cancelled"><Status type="shopping" status="cancelled" showSubgroup /> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</li>
   <li id="status-shopping-received"><Status type="shopping" status="received" showSubgroup /> — The item has been purchased and received.</li>
 </ul>
-<Section id="sec-4-4-1-4-1" title="4.4.1.4.1 Shopping Transitions">
+<Section id="sec-4-4-1-4-1" title="Shopping Transitions">
 <p>Every transition is <strong>manual</strong>. The usual path is <Status type="shopping" status="idea" /> → <Status type="shopping" status="to-buy" /> → <Status type="shopping" status="in-cart" /> → <Status type="shopping" status="ordered" /> → <Status type="shopping" status="received" />, but an item may move from any status to any other (e.g. <Status type="shopping" status="ordered" /> back to <Status type="shopping" status="to-buy" /> after an order is cancelled, or <Status type="shopping" status="idea" /> to <Status type="shopping" status="cancelled" />).</p>
 </Section>
 </Section>
-<Section id="sec-4-4-1-5" title="4.4.1.5 Statusless Status Group">
+<Section id="sec-4-4-1-5" title="Statusless Status Group">
 <p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
   entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
@@ -515,7 +515,7 @@ order: 4
   status changes are ever made.</p>
 </Section>
 </Section>
-<Section id="sec-4-4-2" title="4.4.2 Tags">
+<Section id="sec-4-4-2" title="Tags">
 <p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
 <p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <Link to="sec-4-1-1-1">Task</Link>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
 <p>The following tags are used in this workspace:</p>
@@ -532,7 +532,7 @@ order: 4
   <li><span class="doc-tag" style="background-color:#96f1fb" title="#96f1fb">social</span> — Involves spending time or interacting with others outside the household.</li>
 </ul>
 </Section>
-<Section id="sec-4-4-3" title="4.4.3 Custom Fields">
+<Section id="sec-4-4-3" title="Custom Fields">
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>
@@ -594,15 +594,15 @@ order: 4
     </TBody>
 </Table>
 </Section>
-<Section id="sec-4-4-4" title="4.4.4 Templates">
+<Section id="sec-4-4-4" title="Templates">
 <p>Templates are reusable predefined structures that let us create entries, lists, documents, or other workspace elements in a consistent way without rebuilding them from scratch each time. In ClickUp, a template can preserve things like field values, descriptions, subtasks, views, or broader setup, depending on what is being templated. Their role in the workspace is to turn recurring patterns into repeatable starting points, so that common processes, standard structures, and known best practices can be instantiated quickly and consistently.</p>
-<Section id="sec-4-4-4-1" title="4.4.4.1 Space Templates">
+<Section id="sec-4-4-4-1" title="Space Templates">
 </Section>
-<Section id="sec-4-4-4-2" title="4.4.4.2 Folder Templates">
+<Section id="sec-4-4-4-2" title="Folder Templates">
 </Section>
-<Section id="sec-4-4-4-3" title="4.4.4.3 List Templates">
+<Section id="sec-4-4-4-3" title="List Templates">
 
-<Section id="sec-4-4-4-3-1" title="4.4.4.3.1 Events">
+<Section id="sec-4-4-4-3-1" title="Events">
 
 <p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <Link to="sec-4-4-4-3-1">Automations - Events</Link> list, and provides views for working with events.</p>
 <p><strong>Task type:</strong> <Link to="sec-4-1-1-2">Event</Link></p>
@@ -619,13 +619,13 @@ order: 4
 
 </Section>
 </Section>
-<Section id="sec-4-4-4-4" title="4.4.4.4 Task Templates">
+<Section id="sec-4-4-4-4" title="Task Templates">
 </Section>
-<Section id="sec-4-4-4-5" title="4.4.4.5 Doc Templates">
+<Section id="sec-4-4-4-5" title="Doc Templates">
 </Section>
-<Section id="sec-4-4-4-6" title="4.4.4.6 View Templates">
+<Section id="sec-4-4-4-6" title="View Templates">
 
-<Section id="sec-4-4-4-6-1" title="4.4.4.6.1 Events — Main">
+<Section id="sec-4-4-4-6-1" title="Events — Main">
 
 <p>This is the template for the main list view of <Link to="sec-4-1-1-2">event</Link> lists.</p>
 
@@ -638,11 +638,11 @@ order: 4
 </Section>
 </Section>
 </Section>
-<Section id="sec-4-4-5" title="4.4.5 Filters">
+<Section id="sec-4-4-5" title="Filters">
 
 <p>Filters are the mechanisms that let us define which entries appear in a given view or context. They make it possible to narrow the visible set of entries according to field values. ClickUp allows filters to be saved and reused across views.</p>
 
-<Section id="sec-4-4-5-1" title="4.4.5.1 Assignee | Me mode OR Unassigned">
+<Section id="sec-4-4-5-1" title="Assignee | Me mode OR Unassigned">
 
 <p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
 <ul>
@@ -650,7 +650,7 @@ order: 4
 </ul>
 
 </Section>
-<Section id="sec-4-4-5-2" title="4.4.5.2 Due This Week">
+<Section id="sec-4-4-5-2" title="Due This Week">
 
 <p>Shows entries whose <Link to="base-scope-row-due-date">Due Date</Link> falls within the current week.</p>
 <ul>
@@ -662,20 +662,20 @@ order: 4
 
 </Section>
 </Section>
-<Section id="sec-4-4-6" title="4.4.6 Automations">
+<Section id="sec-4-4-6" title="Automations">
 
 <p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
 
 <p>In our workspace, we use two kinds of automations: ClickUp automations, which are built directly into ClickUp, and webhook automations, which begin with webhook events sent out from ClickUp to server-side logic.</p>
 
-<Section id="sec-4-4-6-1" title="4.4.6.1 Task Automations">
+<Section id="sec-4-4-6-1" title="Task Automations">
 
 <p>(To be filled in.)</p>
 
 </Section>
-<Section id="sec-4-4-6-2" title="4.4.6.2 Event Automations">
+<Section id="sec-4-4-6-2" title="Event Automations">
 
-<Section id="sec-4-4-6-2-1" title="4.4.6.2.1 Start Time arrives → Set Occurring status">
+<Section id="sec-4-4-6-2-1" title="Start Time arrives → Set Occurring status">
 
 <p>When an <Link to="sec-4-1-1-2">event</Link>'s <Link to="custom-fields-row-start-time">Start Time</Link> is reached, set its <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurring" />.</p>
 
@@ -685,7 +685,7 @@ order: 4
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurring" />.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-2" title="4.4.6.2.2 End Time arrives → Set Occurred status">
+<Section id="sec-4-4-6-2-2" title="End Time arrives → Set Occurred status">
 
 <p>When an <Link to="sec-4-1-1-2">event</Link>'s <Link to="custom-fields-row-end-time">End Time</Link> is reached, set its <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurred" />.</p>
 
@@ -695,7 +695,7 @@ order: 4
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurred" />.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-3" title="4.4.6.2.3 Event created → Add to list Automations - Events">
+<Section id="sec-4-4-6-2-3" title="Event created → Add to list Automations - Events">
 
 <p>When an <Link to="sec-4-1-1-2">event</Link> is created, add it to the list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</p>
 
@@ -703,7 +703,7 @@ order: 4
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-4" title="4.4.6.2.4 Event moved here → Add to list Automations - Events">
+<Section id="sec-4-4-6-2-4" title="Event moved here → Add to list Automations - Events">
 
 <p>When an <Link to="sec-4-1-1-2">event</Link> is moved into the list, add it to the list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</p>
 
@@ -714,34 +714,34 @@ order: 4
 </Section>
 </Section>
 </Section>
-<Section id="sec-4-5" title="4.5 External Integrations">
+<Section id="sec-4-5" title="External Integrations">
 
-<Section id="sec-4-5-1" title="4.5.1 Webhook Automations">
+<Section id="sec-4-5-1" title="Webhook Automations">
 
 <p>Automations that start from webhook events sent to our server; used when ClickUp automations are not sufficient.</p>
 
 </Section>
 </Section>
-<Section id="sec-4-2" title="4.2 Project Scope">
-<Section id="sec-4-2-1" title="4.2.1 Spaces">
+<Section id="sec-4-2" title="Project Scope">
+<Section id="sec-4-2-1" title="Spaces">
 
 </Section>
 </Section>
-<Section id="sec-4-3" title="4.3 Workflows">
+<Section id="sec-4-3" title="Workflows">
 
-<Section id="sec-4-3-1" title="4.3.1 Daily Routine">
-
-</Section>
-<Section id="sec-4-3-2" title="4.3.2 Task Intake">
+<Section id="sec-4-3-1" title="Daily Routine">
 
 </Section>
-<Section id="sec-4-3-3" title="4.3.3 Task Management">
+<Section id="sec-4-3-2" title="Task Intake">
 
 </Section>
-<Section id="sec-4-3-4" title="4.3.4 Sprint Planning">
+<Section id="sec-4-3-3" title="Task Management">
 
 </Section>
-<Section id="sec-4-3-5" title="4.3.5 Meetings">
+<Section id="sec-4-3-4" title="Sprint Planning">
+
+</Section>
+<Section id="sec-4-3-5" title="Meetings">
 
 </Section>
 </Section>
