@@ -3,15 +3,15 @@ title: "ClickUp"
 order: 3
 ---
 
-<Section id="sec-3" title="3. ClickUp" />
+<Section id="sec-3" title="3. ClickUp" depth={1} />
 <p>The following section defines the principal structures, entities, features, and behaviors provided
   by ClickUp, and describes how information is represented, organized, and managed within the system. It shows how the
   terms defined in the <a href="#sec-2">ontology</a> are realized in ClickUp. The purpose is to provide a clear and
   consistent reference for understanding the platform's logic, capabilities, and constraints.</p>
-      <Section id="sec-3-1" title="3.1 Base Scope" />
+      <Section id="sec-3-1" title="3.1 Base Scope" depth={2} />
       <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
         you don’t show them as columns in a view.</p>
-      <Section id="sec-3-1-1" title="3.1.1 Base Scope Table" />
+      <Section id="sec-3-1-1" title="3.1.1 Base Scope Table" depth={3} />
       <DocTable id="base-scope">
           <thead>
             <tr>
@@ -249,41 +249,41 @@ order: 3
             </tr>
           </tbody>
       </DocTable>
-      <Section id="sec-3-1-2" title="3.1.2 ClickUp's Inadequacy" />
+      <Section id="sec-3-1-2" title="3.1.2 ClickUp's Inadequacy" depth={3} />
       <p>ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit
         the same base schema— fields like Assignees, Due Date, Priority, and Status.
         That’s fine when the entry is a work item, but it becomes a mismatch when the entry represents
         something else entirely, like a record or event. Those fields are either meaningless or create the wrong mental
         model, and while you can hide some columns in specific views, you can’t truly remove the task-shaped defaults
         across ClickUp.</p>
-      <Section id="sec-3-2" title="3.2 Custom Fields" />
+      <Section id="sec-3-2" title="3.2 Custom Fields" depth={2} />
       <p>These are fields you create and attach to scopes. In practice, scopes include location scopes
         (Spaces/Folders/Lists) and also non-location scopes such as Task Types. A Custom Field becomes available
         wherever its scope applies.</p>
-      <Section id="sec-3-3" title="3.3 Field Types" />
+      <Section id="sec-3-3" title="3.3 Field Types" depth={2} />
       <p>ClickUp provides a range of field types that differ not only in the kind of value they hold, but also in how
         they are configured, computed, restricted, and used within the platform. This section examines those field
         types and highlights some of their main properties.</p>
-      <Section id="sec-3-3-1" title="3.3.1 System-Only Field Types" />
+      <Section id="sec-3-3-1" title="3.3.1 System-Only Field Types" depth={3} />
       <p>Some field types exist only as part of ClickUp’s built-in system and aren’t available as Custom Field types you
         can create. Examples include Lists, Status, Task Type, Tags, Priority, Dependencies, and Time Estimate.</p>
-      <Section id="sec-3-3-2" title="3.3.2 Parameterized Field Types" />
+      <Section id="sec-3-3-2" title="3.3.2 Parameterized Field Types" depth={3} />
       <p>Some field types aren’t “complete” until you define parameters such as an option set, a scale, a range, or a
         referenced target.
         Common parameter patterns include option sets (Dropdown, Labels), scales (Rating), ranges (Progress Manual), and
         relationship/selection configuration (Rollup).</p>
-      <Section id="sec-3-3-3" title="3.3.3 Computational Field Types" />
+      <Section id="sec-3-3-3" title="3.3.3 Computational Field Types" depth={3} />
       <p>Some fields represent derived values rather than directly-entered values. Examples include Formula and Progress
         (Auto).</p>
-      <Section id="sec-3-3-4" title="3.3.4 AI Field Types" />
+      <Section id="sec-3-3-4" title="3.3.4 AI Field Types" depth={3} />
       <p>AI fields are computational fields whose values are generated or inferred using AI, typically based on task
         content plus configuration.
         Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, Progress Updates, Translation,
         T-Shirt Size, and Action Items.</p>
-      <Section id="sec-3-3-5" title="3.3.5 Scope-Selecting Field Types" />
+      <Section id="sec-3-3-5" title="3.3.5 Scope-Selecting Field Types" depth={3} />
       <p>Some fields determine which scopes apply to a task (and therefore influence what else becomes relevant or
         available). There are two of these: Lists and Task Type.</p>
-      <Section id="sec-3-3-6" title="3.3.6 Field Types Table" />
+      <Section id="sec-3-3-6" title="3.3.6 Field Types Table" depth={3} />
       <DocTable id="field-types">
           <thead>
             <tr>
@@ -702,10 +702,10 @@ order: 3
             </tr>
           </tbody>
       </DocTable>
-      <Section id="sec-3-4" title="3.4 Scopes" />
+      <Section id="sec-3-4" title="3.4 Scopes" depth={2} />
       <p>These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part
         of?”, and one that answers “what kind of entry is this meant to represent?”.</p>
-      <Section id="sec-3-4-1" title="3.4.1 Location Scope Hierarchy" />
+      <Section id="sec-3-4-1" title="3.4.1 Location Scope Hierarchy" depth={3} />
       <p>This is the <strong>project hierarchy</strong>: the chain of project containers an entry sits inside. A space
         usually represents a broad domain (like a product area or department), folders group related sub-projects inside
         that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an
@@ -754,7 +754,7 @@ order: 3
           </li>
         </ul>
       </div>
-      <Section id="sec-3-4-2" title="3.4.2 Task Type Scope Hierarchy" />
+      <Section id="sec-3-4-2" title="3.4.2 Task Type Scope Hierarchy" depth={3} />
       <p>This is the <strong>purpose hierarchy</strong> (even though ClickUp implements it as flat). A task type scope
         doesn’t say where the entry lives; it says what it is. It’s the semantic category of the
         entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live
