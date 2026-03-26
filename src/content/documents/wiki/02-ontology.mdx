@@ -3,11 +3,11 @@ title: "Ontology"
 order: 2
 ---
 
-<Section id="sec-2" title="2. Ontology" depth={1} />
+<Section id="sec-2" title="2. Ontology">
 <p>This section defines a precise vocabulary for reasoning about databases and no-code database platforms. It
   formalizes core concepts, and provides a conceptual foundation for analyzing how these platforms represent data,
   enforce structure, and apply behavior.</p>
-<Section id="sec-2-1" title="2.1 Field" depth={2} />
+<Section id="sec-2-1" title="2.1 Field">
 <p>A reusable property descriptor: it defines a named "slot" that can hold a value.
   A field definition typically includes:</p>
 <ul>
@@ -19,7 +19,8 @@ order: 2
   <li><strong>Scope</strong>: under what contexts it appears</li>
   <li><strong>Permissions</strong>: who can view/edit</li>
 </ul>
-<Section id="sec-2-2" title="2.2 Schema" depth={2} />
+</Section>
+<Section id="sec-2-2" title="2.2 Schema">
 <p>A specification that defines a valid entry. It consists of:</p>
 <ul>
   <li><strong>Fields</strong>: the set of fields that apply.</li>
@@ -41,15 +42,18 @@ order: 2
     <p>Operational rules often exist to enforce constraints, although not necessarily.</p>
   </li>
 </ul>
-<Section id="sec-2-3" title="2.3 Entry" depth={2} />
+</Section>
+<Section id="sec-2-3" title="2.3 Entry">
 <p>A concrete instance governed by a schema. It consists of a set of values, one per
   field included in the schema.
   The set of an entry's field values at a given moment is its state.
   An entry is valid under its schema if each value belongs to its field's allowed domain and all
   schema constraints are satisfied.</p>
-<Section id="sec-2-4" title="2.4 Database" depth={2} />
+</Section>
+<Section id="sec-2-4" title="2.4 Database">
 <p>A  structured collection of entries governed by one or more schemas, together with the organizational framework that stores and makes those entries accessible..</p>
-<Section id="sec-2-5" title="2.5 Scope" depth={2} />
+</Section>
+<Section id="sec-2-5" title="2.5 Scope">
 <p>A context layer that contributes a bundle of applicability for entries
   exposed to it. A scope can contribute:</p>
 <ul>
@@ -60,12 +64,14 @@ order: 2
   <li><strong>Automations</strong> that are triggered by conditions inside the scope.</li>
 </ul>
 <p>All of an entry's attributes are derived from the scopes it is exposed to, taken together: each scope contributes part of what applies to that entry, and the result is the union of those contributions.</p>
-<Section id="sec-2-6" title="2.6 Unified Database Model" depth={2} />
+</Section>
+<Section id="sec-2-6" title="2.6 Unified Database Model">
 <p>In many no-code database platforms, the workspace often looks like it contains many separate databases scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.</p>
-<Section id="sec-2-6-1" title="2.6.1 Scope Exposure" depth={3} />
+<Section id="sec-2-6-1" title="2.6.1 Scope Exposure">
 <p>Entries become exposed to scopes through scope selector fields: fields whose values attach the
   entry to additional scopes. These are not merely data holders; they are context-binding mechanisms that determine which schemas/settings/rules apply.</p>
-<Section id="sec-2-6-2" title="2.6.2 Scope Hierarchies" depth={3} />
+</Section>
+<Section id="sec-2-6-2" title="2.6.2 Scope Hierarchies">
 <p>Scopes can form hierarchies where child scopes inherit from parents.
   Inheritance means that exposure to a child implies exposure to its ancestors.
   Examples of possible scope hierarchies:</p>
@@ -189,7 +195,8 @@ order: 2
     </li>
   </ul>
 </div>
-<Section id="sec-2-6-3" title="2.6.3 Per-Scope Parameterization" depth={3} />
+</Section>
+<Section id="sec-2-6-3" title="2.6.3 Per-Scope Parameterization">
 <p>Some field types are parameterized: their full meaning requires configuration parameters.
   Scopes can provide those parameters at different levels.
   For example:</p>
@@ -200,7 +207,8 @@ order: 2
   <li>a templated or AI-driven field can have different prompts/specs per scope
     This allows consistent field kinds while enabling contextual variation.</li>
 </ul>
-<Section id="sec-2-6-4" title="2.6.4 Scoped Scope Hierarchies" depth={3} />
+</Section>
+<Section id="sec-2-6-4" title="2.6.4 Scoped Scope Hierarchies">
 <p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
   particular scope so that only entries already exposed to that scope can access that selector, and only then can
   they branch into a further scope hierarchy.
@@ -231,5 +239,10 @@ order: 2
     </li>
   </ul>
 </div>
-<Section id="sec-2-6-5" title="2.6.5 Entry-Local Scope" depth={3} />
+</Section>
+<Section id="sec-2-6-5" title="2.6.5 Entry-Local Scope">
 <p>In addition to shared scopes, an entry may have an entry-local scope tha applies only to itself—allowing truly per-entry schema/settings/rules extensions.</p>
+
+</Section>
+</Section>
+</Section>
