@@ -8,6 +8,7 @@ import DocLayout, {
   THead,
   TBody,
   TR,
+  TH,
   TD,
   extractToc,
 } from "doc-shell/layouts/doc-layout";
@@ -56,6 +57,7 @@ const renderedSections = await Promise.all(
           THead,
           TBody,
           TR,
+          TH,
           TD,
           Status,
           StatusLink,

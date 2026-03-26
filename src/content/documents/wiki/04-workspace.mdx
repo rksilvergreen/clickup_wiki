@@ -18,7 +18,7 @@ order: 4
   construction and maintenance of every project in full detail, but to provide a clear account of the
   workspace's overall design and governing logic.</p>
 <Section id="sec-4-1" title="4.1 Type Scope">
-<p>The Type Scope hierarchy is built on the idea that the <a href="#base-scope-row-task-type">Task Type</a> field functions as a scope selector field. In ClickUp, this is not a formally recognized scope mechanism in the same way that location is for the project scope, but in our workspace we deliberately treat it as one. That is, we recognize that type meaningfully determines applicability, behavior, and structure, and we organize the workspace accordingly even if ClickUp itself does not systematically model task type as a true scope hierarchy.</p>
+<p>The Type Scope hierarchy is built on the idea that the <Link to="base-scope-row-task-type">Task Type</Link> field functions as a scope selector field. In ClickUp, this is not a formally recognized scope mechanism in the same way that location is for the project scope, but in our workspace we deliberately treat it as one. That is, we recognize that type meaningfully determines applicability, behavior, and structure, and we organize the workspace accordingly even if ClickUp itself does not systematically model task type as a true scope hierarchy.</p>
 <p>This means that task type is not just a label for classification. It acts as a contextual boundary that helps determine what belongs to an entry and what does not. We create fields, status groups, tags, templates, automations, views, and filters that are intended for a specific task type and should not be used across others indiscriminately. The Type Scope section therefore describes the type-based structure we impose on the workspace: a conceptual scope hierarchy that we enforce through design, convention, and configuration rather than through a native ClickUp scoping system.</p>
 <Section id="sec-4-1-1" title="4.1.1 Task Types">
 <p>The following subsections present all task types used in our workspace together with the schema associated with each of them.</p>
@@ -31,59 +31,59 @@ order: 4
 <Section id="sec-4-1-1-1-1" title="4.1.1.1.1 Task Fields">
 <Table id="task-fields">
     <THead>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-        <th>Default Value</th>
-        <th>Nullable</th>
-        <th>Required</th>
-      </tr>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
     </THead>
     <TBody>
       <TR id="task-fields-row-status">
-        <TD><a href="#base-scope-row-status">Status</a></TD>
-        <TD>The lifecycle state of the task; statuses are according to the relevant <a href="#sec-4-4-1-2">status group</a>.</TD>
+        <TD><Link to="base-scope-row-status">Status</Link></TD>
+        <TD>The lifecycle state of the task; statuses are according to the relevant <Link to="sec-4-4-1-2">status group</Link>.</TD>
         <TD><StatusLink type="task" status="backlog" /></TD>
         <TD>No</TD>
         <TD>Yes</TD>
       </TR>
       <TR id="task-fields-row-priority">
-        <TD><a href="#base-scope-row-priority">Priority</a></TD>
+        <TD><Link to="base-scope-row-priority">Priority</Link></TD>
         <TD>Urgency or importance level of the task.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="task-fields-row-assignees">
-        <TD><a href="#base-scope-row-assignees">Assignees</a></TD>
+        <TD><Link to="base-scope-row-assignees">Assignees</Link></TD>
         <TD>The person(s) responsible for doing the task.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="task-fields-row-start-date">
-        <TD><a href="#base-scope-row-start-date">Start Date</a></TD>
+        <TD><Link to="base-scope-row-start-date">Start Date</Link></TD>
         <TD>The date from which work can start being done on the task (for whatever constraints apply).</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="task-fields-row-due-date">
-        <TD><a href="#base-scope-row-due-date">Due Date</a></TD>
+        <TD><Link to="base-scope-row-due-date">Due Date</Link></TD>
         <TD>The date by which the task must be completed.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="task-fields-row-time-estimate">
-        <TD><a href="#base-scope-row-time-estimate">Time Estimate</a></TD>
+        <TD><Link to="base-scope-row-time-estimate">Time Estimate</Link></TD>
         <TD>Estimated effort or duration for the task.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="task-fields-row-time-tracked">
-        <TD><a href="#base-scope-row-time-tracked">Time Tracked</a></TD>
+        <TD><Link to="base-scope-row-time-tracked">Time Tracked</Link></TD>
         <TD>Actual time logged on the task.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
@@ -93,15 +93,15 @@ order: 4
 </Table>
 </Section>
 <Section id="sec-4-1-1-1-2" title="4.1.1.1.2 Task Constraints">
-<p><a href="#task-fields-row-status">Status</a></p>
+<p><Link to="task-fields-row-status">Status</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#task-fields-row-start-date">Start Date</a> and <a href="#task-fields-row-due-date">Due Date</a> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must be <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="task-fields-row-start-date">Start Date</Link> and <Link to="task-fields-row-due-date">Due Date</Link> are not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="task-fields-row-status">Status</Link> must be <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#task-fields-row-start-date">Start Date</a> or <a href="#task-fields-row-due-date">Due Date</a> are set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#task-fields-row-status">Status</a> must not be <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="task-fields-row-start-date">Start Date</Link> or <Link to="task-fields-row-due-date">Due Date</Link> are set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="task-fields-row-status">Status</Link> must not be <StatusLink type="task" status="backlog" />.</span></div>
   </li>
 </ul>
 </Section>
@@ -109,36 +109,36 @@ order: 4
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Task created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> or <a href="#task-fields-row-due-date">Due Date</a> are set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <Link to="task-fields-row-start-date">Start Date</Link> or <Link to="task-fields-row-due-date">Due Date</Link> are set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <Link to="task-fields-row-status">Status</Link> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-start-date">Start Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> is not set.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="task-fields-row-start-date">Start Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <Link to="task-fields-row-start-date">Start Date</Link> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <a href="#task-fields-row-due-date">Due Date</a> is not set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <Link to="task-fields-row-due-date">Due Date</Link> is not set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <Link to="task-fields-row-status">Status</Link> to <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-start-date">Start Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="task-fields-row-start-date">Start Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <Link to="task-fields-row-status">Status</Link> is <StatusLink type="task" status="backlog" />.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><a href="#task-fields-row-start-date">Start Date</a> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><a href="#task-fields-row-due-date">Due Date</a> is set.</span></span></span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><Link to="task-fields-row-start-date">Start Date</Link> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><Link to="task-fields-row-due-date">Due Date</Link> is set.</span></span></span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <Link to="task-fields-row-status">Status</Link> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-due-date">Due Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-start-date">Start Date</a> is not set.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="task-fields-row-due-date">Due Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <Link to="task-fields-row-start-date">Start Date</Link> is not set.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <a href="#task-fields-row-due-date">Due Date</a> is not set.</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <Link to="task-fields-row-due-date">Due Date</Link> is not set.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <Link to="task-fields-row-status">Status</Link> to <StatusLink type="task" status="backlog" />.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#task-fields-row-due-date">Due Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <a href="#task-fields-row-status">Status</a> is <StatusLink type="task" status="backlog" />.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="task-fields-row-due-date">Due Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-conditions"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Conditions</span><span class="doc-rule-content">(i) <Link to="task-fields-row-status">Status</Link> is <StatusLink type="task" status="backlog" />.</span></div>
     <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content"><em>and</em></span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><a href="#task-fields-row-start-date">Start Date</a> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><a href="#task-fields-row-due-date">Due Date</a> is set.</span></span></span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <a href="#task-fields-row-status">Status</a> to <StatusLink type="task" status="to-do" />.</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(ii) <span class="doc-rule-group"><span class="doc-rule-group-line"><Link to="task-fields-row-start-date">Start Date</Link> is set</span><span class="doc-rule-group-op">or</span><span class="doc-rule-group-line"><Link to="task-fields-row-due-date">Due Date</Link> is set.</span></span></span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) set <Link to="task-fields-row-status">Status</Link> to <StatusLink type="task" status="to-do" />.</span></div>
   </li>
 </ol>
 </Section>
@@ -147,72 +147,72 @@ order: 4
 <p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
   about when it occurs and when the user should be made aware of it in advance. Events let you record and track
   occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
-  display. The workspace derives precise Start Time and End Time from the dates you set, derives <a href="#event-fields-row-status">Status</a> from
-  those times, and computes a <a href="#event-fields-row-relevance-date">Relevance Date</a> so the event can be shown or notified ahead of
+  display. The workspace derives precise Start Time and End Time from the dates you set, derives <Link to="event-fields-row-status">Status</Link> from
+  those times, and computes a <Link to="event-fields-row-relevance-date">Relevance Date</Link> so the event can be shown or notified ahead of
   time.</p>
 <Section id="sec-4-1-1-2-1" title="4.1.1.2.1 Event Fields">
 <Table id="event-fields">
     <THead>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-        <th>Default Value</th>
-        <th>Nullable</th>
-        <th>Required</th>
-      </tr>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
     </THead>
     <TBody>
       <TR id="event-fields-row-status">
-        <TD><a href="#base-scope-row-status">Status</a></TD>
-        <TD>The lifecycle state of the event. Statuses are according to the relevant <a href="#sec-4-4-1-3">status group</a>.</TD>
+        <TD><Link to="base-scope-row-status">Status</Link></TD>
+        <TD>The lifecycle state of the event. Statuses are according to the relevant <Link to="sec-4-4-1-3">status group</Link>.</TD>
         <TD>Not Scheduled</TD>
         <TD>No</TD>
         <TD>Yes</TD>
       </TR>
       <TR id="event-fields-row-start-date">
-        <TD><a href="#base-scope-row-start-date">Start Date</a></TD>
+        <TD><Link to="base-scope-row-start-date">Start Date</Link></TD>
         <TD>The date/time when the event starts.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-due-date">
-        <TD><a href="#base-scope-row-due-date">Due Date</a></TD>
+        <TD><Link to="base-scope-row-due-date">Due Date</Link></TD>
         <TD>The date/time when the event ends.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-start-time">
-        <TD><a href="#custom-fields-row-start-time">Start Time</a></TD>
+        <TD><Link to="custom-fields-row-start-time">Start Time</Link></TD>
         <TD>The precise datetime when the event starts. Used internally.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-end-time">
-        <TD><a href="#custom-fields-row-end-time">End Time</a></TD>
+        <TD><Link to="custom-fields-row-end-time">End Time</Link></TD>
         <TD>The precise datetime when the event ends. Used internally.</TD>
         <TD>—</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-relevance-number">
-        <TD><a href="#custom-fields-row-relevance-number">Relevance #</a></TD>
+        <TD><Link to="custom-fields-row-relevance-number">Relevance #</Link></TD>
         <TD>How many units of time in advance the event should start being shown or notified.</TD>
         <TD>1</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-relevance-unit">
-        <TD><a href="#custom-fields-row-relevance-unit">Relevance Unit</a></TD>
+        <TD><Link to="custom-fields-row-relevance-unit">Relevance Unit</Link></TD>
         <TD>The unit for that advance period (e.g. days, weeks, months).</TD>
         <TD>Weeks</TD>
         <TD>Yes</TD>
         <TD>No</TD>
       </TR>
       <TR id="event-fields-row-relevance-date">
-        <TD><a href="#custom-fields-row-relevance-date">Relevance Date</a></TD>
+        <TD><Link to="custom-fields-row-relevance-date">Relevance Date</Link></TD>
         <TD>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: Start Time minus the relevance period (Relevance # + Relevance Unit).</TD>
         <TD>—</TD>
         <TD>Yes</TD>
@@ -220,82 +220,82 @@ order: 4
       </TR>
     </TBody>
 </Table>
-<p>ClickUp's <a href="#event-fields-row-start-date">Start Date</a> and <a href="#event-fields-row-due-date">Due Date</a> default to 4:00 AM on the given day when
+<p>ClickUp's <Link to="event-fields-row-start-date">Start Date</Link> and <Link to="event-fields-row-due-date">Due Date</Link> default to 4:00 AM on the given day when
   the user does not specify a time—the system treats this 4:00 AM Jerusalem time as "no time set." That default
-  is unsuitable for events, so <a href="#event-fields-row-start-time">Start Time</a> and <a href="#event-fields-row-end-time">End Time</a> exist as auxiliary
-  computational fields: the system populates them from <a href="#event-fields-row-start-date">Start Date</a> and <a href="#event-fields-row-due-date">Due Date</a>
+  is unsuitable for events, so <Link to="event-fields-row-start-time">Start Time</Link> and <Link to="event-fields-row-end-time">End Time</Link> exist as auxiliary
+  computational fields: the system populates them from <Link to="event-fields-row-start-date">Start Date</Link> and <Link to="event-fields-row-due-date">Due Date</Link>
   using the rules below, treating any time other than the 4:00 AM default as a real time and using it as-is. The
-  user works only with <a href="#event-fields-row-start-date">Start Date</a> and <a href="#event-fields-row-due-date">Due Date</a>; <a href="#event-fields-row-start-time">Start Time</a> and
-  <a href="#event-fields-row-end-time">End Time</a> are not meant to be edited directly.</p>
+  user works only with <Link to="event-fields-row-start-date">Start Date</Link> and <Link to="event-fields-row-due-date">Due Date</Link>; <Link to="event-fields-row-start-time">Start Time</Link> and
+  <Link to="event-fields-row-end-time">End Time</Link> are not meant to be edited directly.</p>
 </Section>
 <Section id="sec-4-1-1-2-2" title="4.1.1.2.2 Event Constraints">
-<p><a href="#event-fields-row-start-time">Start Time</a></p>
+<p><Link to="event-fields-row-start-time">Start Time</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> is not set.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-date">Start Date</Link> is not set.</span></div>
     <div class="doc-fc-nested">
       <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-due-date">Due Date</a> is not set.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-time">Start Time</a> must be empty.</span></div>
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-due-date">Due Date</Link> is not set.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-time">Start Time</Link> must be empty.</span></div>
       </div>
       <div class="doc-fc-block">
-        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-due-date">Due Date</a> is set.</span></div>
-        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-time">Start Time</a> must be midnight of the Due Date.</span></div>
+        <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-due-date">Due Date</Link> is set.</span></div>
+        <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-time">Start Time</Link> must be midnight of the Due Date.</span></div>
       </div>
     </div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> has a real time.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-time">Start Time</a> must be that time.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-date">Start Date</Link> has a real time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-time">Start Time</Link> must be that time.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> is date-only.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-time">Start Time</a> must be midnight of that day.</span></div>
-  </li>
-</ul>
-<p><a href="#event-fields-row-end-time">End Time</a></p>
-<ul class="doc-field-comp">
-  <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-due-date">Due Date</a> is not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-end-time">End Time</a> must be empty.</span></div>
-  </li>
-  <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-due-date">Due Date</a> has a real time.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-end-time">End Time</a> must be that time.</span></div>
-  </li>
-  <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-due-date">Due Date</a> is date-only.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-end-time">End Time</a> must be midnight of the <em>next</em> day.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-date">Start Date</Link> is date-only.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-time">Start Time</Link> must be midnight of that day.</span></div>
   </li>
 </ul>
-<p><a href="#event-fields-row-relevance-date">Relevance Date</a></p>
+<p><Link to="event-fields-row-end-time">End Time</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-relevance-number">Relevance #</a> and <a href="#event-fields-row-relevance-unit">Relevance Unit</a> are set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-relevance-date">Relevance Date</a> must be <a href="#event-fields-row-start-time">Start Time</a> minus the relevance period (<a href="#event-fields-row-relevance-number">Relevance #</a> × <a href="#event-fields-row-relevance-unit">Relevance Unit</a>).</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-due-date">Due Date</Link> is not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-end-time">End Time</Link> must be empty.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-due-date">Due Date</Link> has a real time.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-end-time">End Time</Link> must be that time.</span></div>
+  </li>
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-due-date">Due Date</Link> is date-only.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-end-time">End Time</Link> must be midnight of the <em>next</em> day.</span></div>
+  </li>
+</ul>
+<p><Link to="event-fields-row-relevance-date">Relevance Date</Link></p>
+<ul class="doc-field-comp">
+  <li class="doc-fc-block">
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-relevance-number">Relevance #</Link> and <Link to="event-fields-row-relevance-unit">Relevance Unit</Link> are set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-relevance-date">Relevance Date</Link> must be <Link to="event-fields-row-start-time">Start Time</Link> minus the relevance period (<Link to="event-fields-row-relevance-number">Relevance #</Link> × <Link to="event-fields-row-relevance-unit">Relevance Unit</Link>).</span></div>
   </li>
   <li class="doc-fc-block">
     <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> either is not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-relevance-date">Relevance Date</a> must be empty.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-relevance-date">Relevance Date</Link> must be empty.</span></div>
   </li>
 </ul>
-<p><a href="#event-fields-row-status">Status</a></p>
+<p><Link to="event-fields-row-status">Status</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> and <a href="#event-fields-row-due-date">Due Date</a> are not set.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="not-scheduled" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-date">Start Date</Link> and <Link to="event-fields-row-due-date">Due Date</Link> are not set.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-status">Status</Link> must be <StatusLink type="event" status="not-scheduled" />.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <a href="#event-fields-row-start-date">Start Date</a> or <a href="#event-fields-row-due-date">Due Date</a> are set and current time &lt; <a href="#event-fields-row-start-time">Start Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="upcoming" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> <Link to="event-fields-row-start-date">Start Date</Link> or <Link to="event-fields-row-due-date">Due Date</Link> are set and current time &lt; <Link to="event-fields-row-start-time">Start Time</Link>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-status">Status</Link> must be <StatusLink type="event" status="upcoming" />.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time ≥ <a href="#event-fields-row-start-time">Start Time</a> and current time ≤ <a href="#event-fields-row-end-time">End Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="occurring" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time ≥ <Link to="event-fields-row-start-time">Start Time</Link> and current time ≤ <Link to="event-fields-row-end-time">End Time</Link>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-status">Status</Link> must be <StatusLink type="event" status="occurring" />.</span></div>
   </li>
   <li class="doc-fc-block">
-    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time &gt; <a href="#event-fields-row-end-time">End Time</a>.</span></div>
-    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <a href="#event-fields-row-status">Status</a> must be <StatusLink type="event" status="occurred" />.</span></div>
+    <div class="doc-fc-line doc-fc-if"><span class="doc-fc-keyword"><em>If</em></span><span class="doc-fc-content"> current time &gt; <Link to="event-fields-row-end-time">End Time</Link>.</span></div>
+    <div class="doc-fc-line doc-fc-then"><span class="doc-fc-keyword"><em>Then</em></span><span class="doc-fc-content"> <Link to="event-fields-row-status">Status</Link> must be <StatusLink type="event" status="occurred" />.</span></div>
   </li>
 </ul>
 </Section>
@@ -303,58 +303,58 @@ order: 4
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Event created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-start-time">Start Time</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <a href="#event-fields-row-end-time">End Time</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <a href="#event-fields-row-status">Status</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <a href="#event-fields-row-relevance-date">Relevance Date</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-start-time">Start Time</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <Link to="event-fields-row-end-time">End Time</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <Link to="event-fields-row-status">Status</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <Link to="event-fields-row-relevance-date">Relevance Date</Link> constraints.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#event-fields-row-start-date">Start Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-start-time">Start Time</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <a href="#event-fields-row-status">Status</a>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <a href="#event-fields-row-relevance-date">Relevance Date</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="event-fields-row-start-date">Start Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-start-time">Start Time</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <Link to="event-fields-row-status">Status</Link>,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <Link to="event-fields-row-relevance-date">Relevance Date</Link> constraints.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#event-fields-row-due-date">Due Date</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-start-time">Start Time</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <a href="#event-fields-row-end-time">End Time</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <a href="#event-fields-row-status">Status</a> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <a href="#event-fields-row-relevance-date">Relevance Date</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="event-fields-row-due-date">Due Date</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-start-time">Start Time</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <Link to="event-fields-row-end-time">End Time</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <Link to="event-fields-row-status">Status</Link> constraints,</span></div>
+    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <Link to="event-fields-row-relevance-date">Relevance Date</Link> constraints.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#event-fields-row-relevance-number">Relevance #</a> / <a href="#event-fields-row-relevance-unit">Relevance Unit</a> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-relevance-date">Relevance Date</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="event-fields-row-relevance-number">Relevance #</Link> / <Link to="event-fields-row-relevance-unit">Relevance Unit</Link> changed →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-relevance-date">Relevance Date</Link> constraints.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <a href="#event-fields-row-start-time">Start Time</a> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-status">Status</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <Link to="event-fields-row-start-time">Start Time</Link> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-status">Status</Link> constraints.</span></div>
   </li>
   <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <a href="#event-fields-row-end-time">End Time</a> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <a href="#event-fields-row-status">Status</a> constraints.</span></div>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <Link to="event-fields-row-end-time">End Time</Link> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <Link to="event-fields-row-status">Status</Link> constraints.</span></div>
   </li>
 </ol>
 </Section>
 </Section>
 <Section id="sec-4-1-1-3" title="4.1.1.3 Record">
 <p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
-  let you document items with a <a href="#record-fields-row-timestamp">Timestamp</a> so you know when they were recorded (or when the thing
+  let you document items with a <Link to="record-fields-row-timestamp">Timestamp</Link> so you know when they were recorded (or when the thing
   actually happened, if you backdate). There is no workflow or ownership machinery; the focus is on the content
   and the datetime.</p>
 <Section id="sec-4-1-1-3-1" title="4.1.1.3.1 Record Fields">
 <Table id="record-fields">
     <THead>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-        <th>Default Value</th>
-        <th>Nullable</th>
-        <th>Required</th>
-      </tr>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
     </THead>
     <TBody>
       <TR id="record-fields-row-timestamp">
-        <TD><a href="#custom-fields-row-timestamp">Timestamp</a></TD>
+        <TD><Link to="custom-fields-row-timestamp">Timestamp</Link></TD>
         <TD>The datetime when the record was made (or, if backdated, when the documented thing occurred).</TD>
         <TD>Current datetime</TD>
         <TD>No</TD>
@@ -364,10 +364,10 @@ order: 4
 </Table>
 </Section>
 <Section id="sec-4-1-1-3-2" title="4.1.1.3.2 Record Constraints">
-<p><a href="#record-fields-row-timestamp">Timestamp</a></p>
+<p><Link to="record-fields-row-timestamp">Timestamp</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><a href="#record-fields-row-timestamp">Timestamp</a> must be set.</span></div>
+    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><Link to="record-fields-row-timestamp">Timestamp</Link> must be set.</span></div>
   </li>
 </ul>
 </Section>
@@ -375,31 +375,31 @@ order: 4
 <ol class="doc-rules-list" style="list-style: none">
   <li>
     <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Record creation</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <a href="#record-fields-row-timestamp">Timestamp</a> to the current datetime.</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <Link to="record-fields-row-timestamp">Timestamp</Link> to the current datetime.</span></div>
   </li>
 </ol>
 </Section>
 </Section>
 <Section id="sec-4-1-1-4" title="4.1.1.4 Thought">
-<p>A Thought is a <a href="#sec-4-1-1-3">Record</a> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a timestamp and the content. Structurally it is the same as <a href="#sec-4-1-1-3">Record</a>.</p>
-<p>The schema of a Thought is identical to that of a <a href="#sec-4-1-1-3">Record</a>.</p>
+<p>A Thought is a <Link to="sec-4-1-1-3">Record</Link> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow or ownership; you get a timestamp and the content. Structurally it is the same as <Link to="sec-4-1-1-3">Record</Link>.</p>
+<p>The schema of a Thought is identical to that of a <Link to="sec-4-1-1-3">Record</Link>.</p>
 </Section>
 <Section id="sec-4-1-1-5" title="4.1.1.5 Milestone">
 <p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
 <Section id="sec-4-1-1-5-1" title="4.1.1.5.1 Milestone Fields">
 <Table id="milestone-fields">
     <THead>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-        <th>Default Value</th>
-        <th>Nullable</th>
-        <th>Required</th>
-      </tr>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
     </THead>
     <TBody>
       <TR id="milestone-fields-row-due-date">
-        <TD><a href="#base-scope-row-due-date">Due Date</a></TD>
+        <TD><Link to="base-scope-row-due-date">Due Date</Link></TD>
         <TD>The date by which the milestone is expected to be reached.</TD>
         <TD>—</TD>
         <TD>No</TD>
@@ -409,10 +409,10 @@ order: 4
 </Table>
 </Section>
 <Section id="sec-4-1-1-5-2" title="4.1.1.5.2 Milestone Constraints">
-<p><a href="#milestone-fields-row-due-date">Due Date</a></p>
+<p><Link to="milestone-fields-row-due-date">Due Date</Link></p>
 <ul class="doc-field-comp">
   <li class="doc-fc-block">
-    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><a href="#milestone-fields-row-due-date">Due Date</a> must be set.</span></div>
+    <div class="doc-fc-line"><span class="doc-fc-cont"></span><span class="doc-fc-content"><Link to="milestone-fields-row-due-date">Due Date</Link> must be set.</span></div>
   </li>
 </ul>
 </Section>
@@ -421,14 +421,14 @@ order: 4
 <p>A Data type represents arbitrary information that is worth storing in the workspace. It is meant for content that may take many different forms and does not need to fit a fixed schema; its sole purpose is to preserve information.</p>
 </Section>
 <Section id="sec-4-1-1-7" title="4.1.1.7 Parent Task">
-<p>A Parent Task is a practical workaround used for <a href="#sec-4-1-1-1">Tasks</a> that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
-<p>The schema of a Parent Task is identical to that of a <a href="#sec-4-1-1-1">Task</a>; it uses the same fields, constraints, and operational rules.</p>
+<p>A Parent Task is a practical workaround used for <Link to="sec-4-1-1-1">Tasks</Link> that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
+<p>The schema of a Parent Task is identical to that of a <Link to="sec-4-1-1-1">Task</Link>; it uses the same fields, constraints, and operational rules.</p>
 </Section>
 </Section>
 </Section>
 <Section id="sec-4-4" title="4.4 ClickUp Elements">
 <Section id="sec-4-4-1" title="4.4.1 Status Groups">
-<p>Status Groups are a parameter of ClickUp's base-schema field <a href="#base-scope-row-status">Status</a> that is set at the Location level
+<p>Status Groups are a parameter of ClickUp's base-schema field <Link to="base-scope-row-status">Status</Link> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
   practice, but not guaranteed by ClickUp. In our workspace it becomes especially tight because every list is
@@ -449,7 +449,7 @@ order: 4
 </ul>
 </Section>
 <Section id="sec-4-4-1-2" title="4.4.1.2 Task Status Group">
-<p>Connected to the task type <a href="#sec-4-1-1-1">Task</a>, this status group is exclusive to that task type. It
+<p>Connected to the task type <Link to="sec-4-1-1-1">Task</Link>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
   <li id="status-task-backlog"><Status type="task" status="backlog" showSubgroup /> — The task exists, but there is no intent to work on it yet.</li>
@@ -460,22 +460,22 @@ order: 4
 </ul>
 <Section id="sec-4-4-1-2-1" title="4.4.1.2.1 Task Transitions">
 <ul>
-  <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of <a href="#task-fields-row-start-date">Start Date</a> or <a href="#task-fields-row-due-date">Due Date</a> is set.</li>
+  <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of <Link to="task-fields-row-start-date">Start Date</Link> or <Link to="task-fields-row-due-date">Due Date</Link> is set.</li>
   <li><Status type="task" status="to-do" /> → <Status type="task" status="in-progress" />: <span class="trigger-type">Manual</span> — The user declares that work has begun.</li>
   <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="canceled" />: <span class="trigger-type">Manual</span> — The user decides the task will not be completed.</li>
   <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="complete" />: <span class="trigger-type">Manual</span> — The user declares the task has been completed.</li>
   <li><Status type="task" status="in-progress" /> → <Status type="task" status="to-do" />: <span class="trigger-type">Manual</span> — Work is paused, typically because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
-  <li>(<Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="backlog" />: <span class="trigger-type">Internal Conditional</span> — Triggered when <a href="#task-fields-row-start-date">Start Date</a> and <a href="#task-fields-row-due-date">Due Date</a> are reset to <strong>null</strong>.</li>
+  <li>(<Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="backlog" />: <span class="trigger-type">Internal Conditional</span> — Triggered when <Link to="task-fields-row-start-date">Start Date</Link> and <Link to="task-fields-row-due-date">Due Date</Link> are reset to <strong>null</strong>.</li>
 </ul>
 </Section>
 </Section>
 <Section id="sec-4-4-1-3" title="4.4.1.3 Event Status Group">
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
-  <li id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <a href="#event-fields-row-start-date">Start Date</a> and no <a href="#event-fields-row-due-date">Due Date</a> are set.</li>
-  <li id="status-event-upcoming"><Status type="event" status="upcoming" showSubgroup /> — <a href="#event-fields-row-start-date">Start Date</a> or <a href="#event-fields-row-due-date">Due Date</a> is set. "Upcoming" means the event has been scheduled, and its <a href="#event-fields-row-start-time">Start Time</a> has not arrived yet.</li>
-  <li id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <a href="#event-fields-row-start-time">Start Time</a> (i.e., the event is happening now or has started and hasn't ended yet).</li>
-  <li id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <a href="#event-fields-row-end-time">End Time</a> (operationally: after the <a href="#event-fields-row-due-date">Due Date</a>/Time, which we treat as the event's end).</li>
+  <li id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <Link to="event-fields-row-start-date">Start Date</Link> and no <Link to="event-fields-row-due-date">Due Date</Link> are set.</li>
+  <li id="status-event-upcoming"><Status type="event" status="upcoming" showSubgroup /> — <Link to="event-fields-row-start-date">Start Date</Link> or <Link to="event-fields-row-due-date">Due Date</Link> is set. "Upcoming" means the event has been scheduled, and its <Link to="event-fields-row-start-time">Start Time</Link> has not arrived yet.</li>
+  <li id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <Link to="event-fields-row-start-time">Start Time</Link> (i.e., the event is happening now or has started and hasn't ended yet).</li>
+  <li id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <Link to="event-fields-row-end-time">End Time</Link> (operationally: after the <Link to="event-fields-row-due-date">Due Date</Link>/Time, which we treat as the event's end).</li>
 </ul>
 <Section id="sec-4-4-1-3-1" title="4.4.1.3.1 Event Transitions">
 <ul>
@@ -517,7 +517,7 @@ order: 4
 </Section>
 <Section id="sec-4-4-2" title="4.4.2 Tags">
 <p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
-<p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <a href="#sec-4-1-1-1">Task</a>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
+<p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <Link to="sec-4-1-1-1">Task</Link>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
 <p>The following tags are used in this workspace:</p>
 <ul class="doc-tag-list">
   <li><span class="doc-tag" style="background-color:#b1b1b1" title="#b1b1b1">bureaucracy</span> — Administrative or procedural work: forms, paperwork, official processes.</li>
@@ -536,60 +536,60 @@ order: 4
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>
-<p>Each custom field is built from one of the <a href="#sec-3-3">field types</a> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
+<p>Each custom field is built from one of the <Link to="sec-3-3">field types</Link> that ClickUp offers. The entries below document our workspace's specific custom fields: their names,
   types, any parameters we use, and how we use them.</p>
 <Table id="custom-fields">
     <THead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Field Type</th>
-        <th>Computational</th>
-        <th>Scopes</th>
-      </tr>
+      <TR>
+        <TH>Name</TH>
+        <TH>Description</TH>
+        <TH>Field Type</TH>
+        <TH>Computational</TH>
+        <TH>Scopes</TH>
+      </TR>
     </THead>
     <TBody>
       <TR id="custom-fields-row-start-time">
         <TD>Start Time</TD>
-        <TD>The precise date and time when an <a href="#sec-4-1-1-2">event</a> begins.</TD>
-        <TD><a href="#field-types-row-date">Date</a></TD>
+        <TD>The precise date and time when an <Link to="sec-4-1-1-2">event</Link> begins.</TD>
+        <TD><Link to="field-types-row-date">Date</Link></TD>
         <TD>Yes</TD>
-        <TD><a href="#sec-4-1-1-2">Event</a></TD>
+        <TD><Link to="sec-4-1-1-2">Event</Link></TD>
       </TR>
       <TR id="custom-fields-row-end-time">
         <TD>End Time</TD>
-        <TD>The precise date and time when an <a href="#sec-4-1-1-2">event</a> ends.</TD>
-        <TD><a href="#field-types-row-date">Date</a></TD>
+        <TD>The precise date and time when an <Link to="sec-4-1-1-2">event</Link> ends.</TD>
+        <TD><Link to="field-types-row-date">Date</Link></TD>
         <TD>Yes</TD>
-        <TD><a href="#sec-4-1-1-2">Event</a></TD>
+        <TD><Link to="sec-4-1-1-2">Event</Link></TD>
       </TR>
       <TR id="custom-fields-row-relevance-number">
         <TD>Relevance #</TD>
-        <TD>How many units of time define the <a href="#sec-4-1-1-2">event</a>'s relevance period.</TD>
-        <TD><a href="#field-types-row-number">Number</a></TD>
+        <TD>How many units of time define the <Link to="sec-4-1-1-2">event</Link>'s relevance period.</TD>
+        <TD><Link to="field-types-row-number">Number</Link></TD>
         <TD>No</TD>
-        <TD><a href="#sec-4-1-1-2">Event</a></TD>
+        <TD><Link to="sec-4-1-1-2">Event</Link></TD>
       </TR>
       <TR id="custom-fields-row-relevance-unit">
         <TD>Relevance Unit</TD>
-        <TD>The unit of time that defines the <a href="#sec-4-1-1-2">event</a>'s relevance period.</TD>
-        <TD><a href="#field-types-row-dropdown">Dropdown</a></TD>
+        <TD>The unit of time that defines the <Link to="sec-4-1-1-2">event</Link>'s relevance period.</TD>
+        <TD><Link to="field-types-row-dropdown">Dropdown</Link></TD>
         <TD>No</TD>
-        <TD><a href="#sec-4-1-1-2">Event</a></TD>
+        <TD><Link to="sec-4-1-1-2">Event</Link></TD>
       </TR>
       <TR id="custom-fields-row-relevance-date">
         <TD>Relevance Date</TD>
-        <TD>The date on which this <a href="#sec-4-1-1-2">event</a> should start being shown or notified to the user.</TD>
-        <TD><a href="#field-types-row-date">Date</a></TD>
+        <TD>The date on which this <Link to="sec-4-1-1-2">event</Link> should start being shown or notified to the user.</TD>
+        <TD><Link to="field-types-row-date">Date</Link></TD>
         <TD>Yes</TD>
-        <TD><a href="#sec-4-1-1-2">Event</a></TD>
+        <TD><Link to="sec-4-1-1-2">Event</Link></TD>
       </TR>
       <TR id="custom-fields-row-timestamp">
         <TD>Timestamp</TD>
         <TD>A single datetime, often representing when the documented occurrence happened.</TD>
-        <TD><a href="#field-types-row-date">Date</a></TD>
+        <TD><Link to="field-types-row-date">Date</Link></TD>
         <TD>No</TD>
-        <TD><a href="#sec-4-1-1-3">Record</a>, <a href="#sec-4-1-1-4">Thought</a></TD>
+        <TD><Link to="sec-4-1-1-3">Record</Link>, <Link to="sec-4-1-1-4">Thought</Link></TD>
       </TR>
     </TBody>
 </Table>
@@ -604,12 +604,12 @@ order: 4
 
 <Section id="sec-4-4-4-3-1" title="4.4.4.3.1 Events">
 
-<p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <a href="#sec-4-4-4-3-1">Automations - Events</a> list, and provides views for working with events.</p>
-<p><strong>Task type:</strong> <a href="#sec-4-1-1-2">Event</a></p>
-<p><strong>Status group:</strong> <a href="#sec-4-4-1-3">Event</a></p>
+<p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <Link to="sec-4-4-4-3-1">Automations - Events</Link> list, and provides views for working with events.</p>
+<p><strong>Task type:</strong> <Link to="sec-4-1-1-2">Event</Link></p>
+<p><strong>Status group:</strong> <Link to="sec-4-4-1-3">Event</Link></p>
 <p><strong>Views:</strong></p>
 <ul>
-  <li><a href="#sec-4-4-4-6-1">Events — Main</a></li>
+  <li><Link to="sec-4-4-4-6-1">Events — Main</Link></li>
 </ul>
 <p><strong>Automations:</strong></p>
 <ul>
@@ -627,12 +627,12 @@ order: 4
 
 <Section id="sec-4-4-4-6-1" title="4.4.4.6.1 Events — Main">
 
-<p>This is the template for the main list view of <a href="#sec-4-1-1-2">event</a> lists.</p>
+<p>This is the template for the main list view of <Link to="sec-4-1-1-2">event</Link> lists.</p>
 
 <p><strong>View type:</strong> List</p>
-<p><strong>Columns:</strong> <a href="#base-scope-row-assignees">Assignee</a>, <a href="#base-scope-row-start-date">Start Date</a>, <a href="#base-scope-row-due-date">Due Date</a>, <a href="#custom-fields-row-relevance-number">Relevance #</a>, <a href="#custom-fields-row-relevance-unit">Relevance Unit</a></p>
+<p><strong>Columns:</strong> <Link to="base-scope-row-assignees">Assignee</Link>, <Link to="base-scope-row-start-date">Start Date</Link>, <Link to="base-scope-row-due-date">Due Date</Link>, <Link to="custom-fields-row-relevance-number">Relevance #</Link>, <Link to="custom-fields-row-relevance-unit">Relevance Unit</Link></p>
 <p><strong>Filters:</strong> <a href="#sec-4-4-5-1" class="doc-filter-link">Assignee | Me mode OR Unassigned</a></p>
-<p><strong>Grouping:</strong> <a href="#base-scope-row-status">Status</a> — Descending</p>
+<p><strong>Grouping:</strong> <Link to="base-scope-row-status">Status</Link> — Descending</p>
 <p><strong>Subtasks:</strong> Collapsed</p>
 
 </Section>
@@ -646,18 +646,18 @@ order: 4
 
 <p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
 <ul>
-  <li><a href="#base-scope-row-assignees">Assignee</a> <em>is</em> Me mode <em>or</em> Unassigned</li>
+  <li><Link to="base-scope-row-assignees">Assignee</Link> <em>is</em> Me mode <em>or</em> Unassigned</li>
 </ul>
 
 </Section>
 <Section id="sec-4-4-5-2" title="4.4.5.2 Due This Week">
 
-<p>Shows entries whose <a href="#base-scope-row-due-date">Due Date</a> falls within the current week.</p>
+<p>Shows entries whose <Link to="base-scope-row-due-date">Due Date</Link> falls within the current week.</p>
 <ul>
-  <li><a href="#base-scope-row-assignees">Assignee</a> <em>is</em> Me mode <em>or</em> Unassigned</li>
-  <li><em>and</em> <a href="#base-scope-row-due-date">Due Date</a> <em>is</em> This week</li>
-  <li><em>and</em> <a href="#base-scope-row-task-type">Task Type</a> <em>is</em> <a href="#sec-4-1-1-1">Task</a> or Meeting Note or <a href="#sec-4-1-1-1-4">Thought</a></li>
-  <li><em>and</em> <a href="#base-scope-row-status">Status</a> <em>is</em> Not started or Active</li>
+  <li><Link to="base-scope-row-assignees">Assignee</Link> <em>is</em> Me mode <em>or</em> Unassigned</li>
+  <li><em>and</em> <Link to="base-scope-row-due-date">Due Date</Link> <em>is</em> This week</li>
+  <li><em>and</em> <Link to="base-scope-row-task-type">Task Type</Link> <em>is</em> <Link to="sec-4-1-1-1">Task</Link> or Meeting Note or <Link to="sec-4-1-1-1-4">Thought</Link></li>
+  <li><em>and</em> <Link to="base-scope-row-status">Status</Link> <em>is</em> Not started or Active</li>
 </ul>
 
 </Section>
@@ -677,38 +677,38 @@ order: 4
 
 <Section id="sec-4-4-6-2-1" title="4.4.6.2.1 Start Time arrives → Set Occurring status">
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-start-time">Start Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurring" />.</p>
+<p>When an <Link to="sec-4-1-1-2">event</Link>'s <Link to="custom-fields-row-start-time">Start Time</Link> is reached, set its <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurring" />.</p>
 
-<p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
+<p>This automation helps enforce the <Link to="sec-4-1-1-2-3">Event Operational Rules</Link></p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#custom-fields-row-start-time">Start Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurring" />.</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="custom-fields-row-start-time">Start Time</Link> arrives →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurring" />.</span></div>
 
 </Section>
 <Section id="sec-4-4-6-2-2" title="4.4.6.2.2 End Time arrives → Set Occurred status">
 
-<p>When an <a href="#sec-4-1-1-2">event</a>'s <a href="#custom-fields-row-end-time">End Time</a> is reached, set its <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurred" />.</p>
+<p>When an <Link to="sec-4-1-1-2">event</Link>'s <Link to="custom-fields-row-end-time">End Time</Link> is reached, set its <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurred" />.</p>
 
-<p>This automation helps enforce the <a href="#sec-4-1-1-2-3">Event Operational Rules</a></p>
+<p>This automation helps enforce the <Link to="sec-4-1-1-2-3">Event Operational Rules</Link></p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#custom-fields-row-end-time">End Time</a> arrives →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <a href="#base-scope-row-status">Status</a> to <StatusLink type="event" status="occurred" />.</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="custom-fields-row-end-time">End Time</Link> arrives →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <Link to="base-scope-row-status">Status</Link> to <StatusLink type="event" status="occurred" />.</span></div>
 
 </Section>
 <Section id="sec-4-4-6-2-3" title="4.4.6.2.3 Event created → Add to list Automations - Events">
 
-<p>When an <a href="#sec-4-1-1-2">event</a> is created, add it to the list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</p>
+<p>When an <Link to="sec-4-1-1-2">event</Link> is created, add it to the list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-1-2">Event</a> created →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="sec-4-1-1-2">Event</Link> created →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</span></div>
 
 </Section>
 <Section id="sec-4-4-6-2-4" title="4.4.6.2.4 Event moved here → Add to list Automations - Events">
 
-<p>When an <a href="#sec-4-1-1-2">event</a> is moved into the list, add it to the list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</p>
+<p>When an <Link to="sec-4-1-1-2">event</Link> is moved into the list, add it to the list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</p>
 
-<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><a href="#sec-4-1-1-2">Event</a> moved here →</span></div>
-<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <a href="#sec-4-4-4-3-1">Automations - Events</a>.</span></div>
+<div class="doc-rule-line doc-rule-header"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><Link to="sec-4-1-1-2">Event</Link> moved here →</span></div>
+<div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <Link to="sec-4-4-4-3-1">Automations - Events</Link>.</span></div>
 
 </Section>
 </Section>

@@ -6,7 +6,7 @@ order: 3
 <Section id="sec-3" title="3. ClickUp">
 <p>The following section defines the principal structures, entities, features, and behaviors provided
   by ClickUp, and describes how information is represented, organized, and managed within the system. It shows how the
-  terms defined in the <a href="#sec-2">ontology</a> are realized in ClickUp. The purpose is to provide a clear and
+  terms defined in the <Link to="sec-2">ontology</Link> are realized in ClickUp. The purpose is to provide a clear and
   consistent reference for understanding the platform's logic, capabilities, and constraints.</p>
 <Section id="sec-3-1" title="3.1 Base Scope">
       <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
@@ -14,236 +14,236 @@ order: 3
 <Section id="sec-3-1-1" title="3.1.1 Base Scope Table">
       <Table id="base-scope">
           <THead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Field Type</th>
-              <th>Computational</th>
-              <th>Scopes</th>
-            </tr>
+            <TR>
+              <TH>Name</TH>
+              <TH>Description</TH>
+              <TH>Field Type</TH>
+              <TH>Computational</TH>
+              <TH>Scopes</TH>
+            </TR>
           </THead>
           <TBody>
             <TR id="base-scope-row-task-id">
               <TD>Task ID</TD>
               <TD>System task identifier.</TD>
-              <TD><a href="#field-types-row-text">Text</a></TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-custom-task-id">
               <TD>Custom Task ID</TD>
               <TD>Workspace custom identifier (if enabled).</TD>
-              <TD><a href="#field-types-row-text">Text</a></TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-task-name">
               <TD>Task Name</TD>
               <TD>Task title.</TD>
-              <TD><a href="#field-types-row-text">Text</a></TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-description">
               <TD>Description</TD>
               <TD>Main rich-text body.</TD>
-              <TD><a href="#field-types-row-text-area-long-text">Text area</a></TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-status">
               <TD>Status</TD>
               <TD>Workflow state.</TD>
-              <TD><a href="#field-types-row-status">Status</a></TD>
+              <TD><Link to="field-types-row-status">Status</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-task-type">
               <TD>Task Type</TD>
               <TD>Task classification.</TD>
-              <TD><a href="#field-types-row-task-type">Task Type</a></TD>
+              <TD><Link to="field-types-row-task-type">Task Type</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-priority">
               <TD>Priority</TD>
               <TD>Urgency/importance.</TD>
-              <TD><a href="#field-types-row-priority">Priority</a></TD>
+              <TD><Link to="field-types-row-priority">Priority</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-assignees">
               <TD>Assignees</TD>
               <TD>Responsible people (users/teams).</TD>
-              <TD><a href="#field-types-row-people">People</a></TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-followers-watchers">
               <TD>Followers / Watchers</TD>
               <TD>Subscribed people.</TD>
-              <TD><a href="#field-types-row-people">People</a></TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-start-date">
               <TD>Start Date</TD>
               <TD>Planned start timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-due-date">
               <TD>Due Date</TD>
               <TD>Planned due timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-time-estimate">
               <TD>Time Estimate</TD>
               <TD>Planned effort.</TD>
-              <TD><a href="#field-types-row-time-estimate">Time Estimate</a></TD>
+              <TD><Link to="field-types-row-time-estimate">Time Estimate</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-time-tracked">
               <TD>Time Tracked</TD>
               <TD>Logged work time.</TD>
-              <TD><a href="#field-types-row-time-tracked">Time Tracked</a></TD>
+              <TD><Link to="field-types-row-time-tracked">Time Tracked</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-lists">
               <TD>Lists</TD>
               <TD>List membership (home + additional lists).</TD>
-              <TD><a href="#field-types-row-lists">Lists</a></TD>
+              <TD><Link to="field-types-row-lists">Lists</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-tags">
               <TD>Tags</TD>
               <TD>Categorization tags.</TD>
-              <TD><a href="#field-types-row-tags">Tags</a></TD>
+              <TD><Link to="field-types-row-tags">Tags</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-dependencies">
               <TD>Dependencies</TD>
               <TD>Blocking / waiting relationships.</TD>
-              <TD><a href="#field-types-row-dependencies">Dependencies</a></TD>
+              <TD><Link to="field-types-row-dependencies">Dependencies</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-linked-tasks">
               <TD>Linked Tasks</TD>
               <TD>Non-blocking links to other tasks.</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-linked-docs">
               <TD>Linked Docs</TD>
               <TD>Links to Docs.</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-subtasks">
               <TD>Subtasks</TD>
               <TD>Child tasks under this task.</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-parent-task">
               <TD>Parent Task</TD>
               <TD>Parent (if this is a subtask).</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-checklists">
               <TD>Checklists</TD>
               <TD>Checklist items within the task.</TD>
-              <TD><a href="#field-types-row-text-area-long-text">Text area</a></TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-attachments">
               <TD>Attachments</TD>
               <TD>Files attached to the task.</TD>
-              <TD><a href="#field-types-row-files">Files</a></TD>
+              <TD><Link to="field-types-row-files">Files</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-comments">
               <TD>Comments</TD>
               <TD>Task comment thread content.</TD>
-              <TD><a href="#field-types-row-text-area-long-text">Text area</a></TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-assigned-comments">
               <TD>Assigned Comments</TD>
               <TD>Assignable/resolvable comments.</TD>
-              <TD><a href="#field-types-row-text-area-long-text">Text area</a></TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-latest-comment">
               <TD>Latest Comment</TD>
               <TD>Most recent comment (as a column).</TD>
-              <TD><a href="#field-types-row-text-area-long-text">Text area</a></TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-created-by">
               <TD>Created By</TD>
               <TD>Creator user.</TD>
-              <TD><a href="#field-types-row-people">People</a></TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-date-created">
               <TD>Date Created</TD>
               <TD>Creation timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-date-updated">
               <TD>Date Updated</TD>
               <TD>Last-updated timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-date-done">
               <TD>Date Done</TD>
               <TD>Completion timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-date-closed">
               <TD>Date Closed</TD>
               <TD>Closed timestamp.</TD>
-              <TD><a href="#field-types-row-date">Date</a></TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-pull-requests">
               <TD>Pull Requests</TD>
               <TD>Linked PRs via integration.</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>Yes</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
             <TR id="base-scope-row-sprints">
               <TD>Sprints</TD>
               <TD>Sprint association (if enabled).</TD>
-              <TD><a href="#field-types-row-relationships">Relationship</a></TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
               <TD>No</TD>
               <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
             </TR>
@@ -295,15 +295,15 @@ order: 3
 <Section id="sec-3-3-6" title="3.3.6 Field Types Table">
       <Table id="field-types">
           <THead>
-            <tr>
-              <th>Field type</th>
-              <th>Description</th>
-              <th>System Only</th>
-              <th>Parameters</th>
-              <th>Computational</th>
-              <th>AI</th>
-              <th>Scope Selecting</th>
-            </tr>
+            <TR>
+              <TH>Field type</TH>
+              <TH>Description</TH>
+              <TH>System Only</TH>
+              <TH>Parameters</TH>
+              <TH>Computational</TH>
+              <TH>AI</TH>
+              <TH>Scope Selecting</TH>
+            </TR>
           </THead>
           <TBody>
             <TR id="field-types-row-lists">
