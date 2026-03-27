@@ -1,6 +1,6 @@
 ---
-import Status from "./Status.astro";
-import { getStatusId } from "./statuses";
+import Status from "clickup_wiki/components/status/status.astro";
+import { getStatusId } from "clickup_wiki/components/status/statuses";
 
 interface Props {
   type: string;
@@ -10,4 +10,5 @@ interface Props {
 const { type, status } = Astro.props;
 const href = `#${getStatusId(type, status)}`;
 ---
+
 <a href={href} class="status-link"><Status type={type} status={status} /></a>

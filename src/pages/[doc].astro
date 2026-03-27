@@ -1,14 +1,14 @@
 ---
 import DocLayout, { getDocumentPaths } from "doc-shell/layouts/doc-layout";
-import Status from "clickup_wiki/components/Status/Status.astro";
-import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
-import "clickup_wiki/components/Status/status.css";
+import Status from "clickup_wiki/components/status/status.astro";
+import StatusLink from "clickup_wiki/components/status-link/status-link.astro";
 import "clickup_wiki/styles/clickup.css";
 
 export const getStaticPaths = getDocumentPaths;
 const { entry, allDocs } = Astro.props;
+const components = { Status, StatusLink };
 ---
 
-<DocLayout entry={entry} allDocs={allDocs} components={{ Status, StatusLink }} />
+<DocLayout entry={entry} allDocs={allDocs} components={components} />
 <script src="clickup_wiki/scripts/field-status-tips.ts"></script>
 <script src="clickup_wiki/scripts/sync-table-cols.ts"></script>
