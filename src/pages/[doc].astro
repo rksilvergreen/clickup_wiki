@@ -1,73 +1,14 @@
 ---
-import { getCollection } from "astro:content";
-import DocLayout, {
-  Section,
-  Link,
-  LinkTarget,
-  Table,
-  THead,
-  TBody,
-  TR,
-  TH,
-  TD,
-} from "doc-shell/layouts/doc-layout";
-import type { TocEntry } from "doc-shell/types";
-import { documents } from "../content/documents";
+import DocLayout, { getDocumentPaths } from "doc-shell/layouts/doc-layout";
 import Status from "clickup_wiki/components/Status/Status.astro";
 import StatusLink from "clickup_wiki/components/Status/StatusLink.astro";
 import "clickup_wiki/components/Status/status.css";
 import "clickup_wiki/styles/clickup.css";
 
-export function getStaticPaths() {
-  return documents.map((d) => ({
-    params: { doc: d.slug },
-    props: { document: d },
-  }));
-}
-
-const { document } = Astro.props;
-const sections = await getCollection("documents");
-const docSections = sections
-  .filter((s) => s.id.startsWith(document.slug + "/"))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const renderedSections = await Promise.all(
-  docSections.map(async (section) => {
-    const { Content, remarkPluginFrontmatter } = await section.render();
-    return {
-      Content,
-      toc: (remarkPluginFrontmatter._toc ?? []) as TocEntry[],
-    };
-  }),
-);
-
-const toc = renderedSections.flatMap((r) => r.toc);
+export const getStaticPaths = getDocumentPaths;
+const { entry, allDocs } = Astro.props;
 ---
 
-<DocLayout
-  documents={documents}
-  slug={document.slug}
-  toc={toc}
->
-  {
-    renderedSections.map(({ Content, toc: _toc }) => (
-      <Content
-        components={{
-          Section,
-          Link,
-          LinkTarget,
-          Table,
-          THead,
-          TBody,
-          TR,
-          TH,
-          TD,
-          Status,
-          StatusLink,
-        }}
-      />
-    ))
-  }
-</DocLayout>
+<DocLayout entry={entry} allDocs={allDocs} components={{ Status, StatusLink }} />
 <script src="clickup_wiki/scripts/field-status-tips.ts"></script>
 <script src="clickup_wiki/scripts/sync-table-cols.ts"></script>

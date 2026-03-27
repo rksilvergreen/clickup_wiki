@@ -1,8 +1,1064 @@
 ---
-title: "Workspace"
-order: 4
+title: "Wiki"
+description: "The complete ClickUp reference: ontology, fields, field types, scopes, task types, workflows, and more."
+order: 1
 ---
 
+<Section id="sec-1" title="Introduction">
+<p>This wiki serves as the formal reference document for our family's ClickUp workspace. Its purpose
+  is to explain, in a clear and systematic way, how the workspace is structured, what it is designed to support, and
+  how its underlying logic should be understood and maintained over time.</p>
+<p>The workspace itself is intended to help us bring greater order, visibility, and continuity to everyday life. It
+  provides a shared system for organizing responsibilities, tracking tasks, planning events, capturing ideas, and
+  preserving information that should not remain scattered across conversations, memory, or temporary notes. In that
+  sense, it is not only a task manager, but a broader operational and documentation environment: a place where action
+  items can be managed, commitments can be made visible, plans can be coordinated, and important knowledge can be
+  recorded for future use.</p>
+<p>This wiki exists to make that environment legible. As the workspace grows in complexity, a written reference becomes
+  necessary in order to define concepts consistently, document design decisions, and ensure that the system remains
+  understandable, intentional, and maintainable.</p>
+<p>The wiki is organized into three main sections.</p>
+<p>The <Link to="sec-2">Ontology</Link> section establishes the conceptual foundation. It defines the general vocabulary
+  used to reason about structured information systems and databases, independently of any specific software platform.
+  Its role is to clarify the broader concepts that underlie the rest of the document.</p>
+<p>The <Link to="sec-3">ClickUp</Link> section explains how those abstract concepts are realized within ClickUp itself.
+  It describes how ClickUp represents data, structure, fields, scopes, and behaviors, and how the platform's own
+  implementation maps onto the conceptual framework introduced in the Ontology section.</p>
+<p>The <Link to="sec-4">Workspace</Link> section documents our specific customization of ClickUp. It explains how we have
+  adapted the platform to our own needs, practices, and use cases: which structures we rely on, how we organize
+  information, what conventions we follow, and how the workspace is configured to support the way our family plans,
+  manages, and records the different parts of life.</p>
+<p>Together, these sections move from general concepts, to platform implementation, to our concrete usage of the
+  platform. This progression is intentional: first defining the underlying ideas, then examining how ClickUp embodies
+  them, and finally describing how we apply and tailor them in practice.</p>
+
+</Section>
+<Section id="sec-2" title="Ontology">
+<p>This section defines a precise vocabulary for reasoning about databases and no-code database platforms. It
+  formalizes core concepts, and provides a conceptual foundation for analyzing how these platforms represent data,
+  enforce structure, and apply behavior.</p>
+<Section id="sec-2-1" title="Field">
+<p>A reusable property descriptor: it defines a named "slot" that can hold a value.
+  A field definition typically includes:</p>
+<ul>
+  <li><strong>Identity</strong>: stable field identifier</li>
+  <li><strong>Name</strong>: human-readable presentation</li>
+  <li><strong>Field type</strong>: what kind of data this field represents</li>
+  <li><strong>Nullability:</strong> whether a value must be set</li>
+  <li><strong>Default value</strong>: what value is assumed when none is provided</li>
+  <li><strong>Scope</strong>: under what contexts it appears</li>
+  <li><strong>Permissions</strong>: who can view/edit</li>
+</ul>
+</Section>
+<Section id="sec-2-2" title="Schema">
+<p>A specification that defines a valid entry. It consists of:</p>
+<ul>
+  <li><strong>Fields</strong>: the set of fields that apply.</li>
+  <li><strong>Constraints</strong>: rules that determine validity. They may restrict the value of a single field, such
+    as whether it is required, typed, or limited to a permitted range or set of values, and they may also govern the
+    relationship between multiple fields, such as dependency, consistency, exclusivity, or conditional validity.</li>
+  <li>
+    <p>
+      <strong>Operational rules</strong>: rules that define how field values change over time in response to
+      defined triggers. Each operational rule includes:
+    </p>
+    <ul>
+      <li>
+        a <strong>trigger condition</strong>: specifies the circumstance under which the rule is activated. This may be
+        the creation of a new entry under the schema, a change in a field value, or the passage of time.
+      </li>
+      <li>a <strong>state update</strong>: one or more field values are changed.</li>
+    </ul>
+    <p>Operational rules often exist to enforce constraints, although not necessarily.</p>
+  </li>
+</ul>
+</Section>
+<Section id="sec-2-3" title="Entry">
+<p>A concrete instance governed by a schema. It consists of a set of values, one per
+  field included in the schema.
+  The set of an entry's field values at a given moment is its state.
+  An entry is valid under its schema if each value belongs to its field's allowed domain and all
+  schema constraints are satisfied.</p>
+</Section>
+<Section id="sec-2-4" title="Database">
+<p>A  structured collection of entries governed by one or more schemas, together with the organizational framework that stores and makes those entries accessible..</p>
+</Section>
+<Section id="sec-2-5" title="Scope">
+<p>A context layer that contributes a bundle of applicability for entries
+  exposed to it. A scope can contribute:</p>
+<ul>
+  <li><strong>Schemas</strong> that apply in that context</li>
+  <li><strong>Settings/policies</strong> (permissions, presentation rules, workflow behaviors)</li>
+  <li><strong>Per-scope parameterization</strong> of fields (where the same field kind has different parameters in
+    different contexts)</li>
+  <li><strong>Automations</strong> that are triggered by conditions inside the scope.</li>
+</ul>
+<p>All of an entry's attributes are derived from the scopes it is exposed to, taken together: each scope contributes part of what applies to that entry, and the result is the union of those contributions.</p>
+</Section>
+<Section id="sec-2-6" title="Unified Database Model">
+<p>In many no-code database platforms, the workspace often looks like it contains many separate databases scattered across locations, sections, or modules. Conceptually, though, you can model the entire workspace as one big database of entries with a shared universe of fields—where differences in what you see and what applies are explained by scopes.</p>
+<Section id="sec-2-6-1" title="Scope Exposure">
+<p>Entries become exposed to scopes through scope selector fields: fields whose values attach the
+  entry to additional scopes. These are not merely data holders; they are context-binding mechanisms that determine which schemas/settings/rules apply.</p>
+</Section>
+<Section id="sec-2-6-2" title="Scope Hierarchies">
+<p>Scopes can form hierarchies where child scopes inherit from parents.
+  Inheritance means that exposure to a child implies exposure to its ancestors.
+  Examples of possible scope hierarchies:</p>
+<p><strong>Project Scope Hierarchy</strong> — How entries are grouped by the projects they support and the goals they aim to achieve.</p>
+<div class="doc-tree">
+  <ul>
+    <li>
+      🟦 General (space)
+      <ul>
+        <li>
+          📁 Some Project (folder)
+          <ul>
+            <li>📋 Project Tasks (list)</li>
+          </ul>
+        </li>
+        <li>
+          📁 Household Chores (folder)
+          <ul>
+            <li>📋 Household Tasks (list)</li>
+            <li>📋 Family Meetings (list)</li>
+          </ul>
+        </li>
+        <li>📋 Events (list)</li>
+        <li>📋 Milestones (list)</li>
+      </ul>
+    </li>
+    <li>
+      🟩 Personal (space)
+      <ul>
+        <li>
+          📁 My Projects (folder)
+          <ul>
+            <li>
+              📁 Birthday Planning (folder)
+              <ul>
+                <li>📋 Locations (list)</li>
+                <li>📋 Presents (list)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<p><strong>Type Scope Hierarchy</strong> — Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
+  one kind of entry from another across the workspace.</p>
+<div class="doc-tree">
+  <ul>
+    <li>✅ Task</li>
+    <li>
+      📆 Event
+      <ul>
+        <li>
+          👨‍👩‍👧‍👦 Family Event
+          <ul>
+            <li>🎁 Birthday</li>
+          </ul>
+        </li>
+        <li>
+          💻 Work Event
+          <ul>
+            <li>🧮 End Of Quarter</li>
+            <li>🌞 Field Day</li>
+          </ul>
+        </li>
+        <li>🎊 Holiday</li>
+      </ul>
+    </li>
+    <li>🧠 Thought</li>
+    <li>
+      🫱🏼‍🫲🏼 Meeting
+      <ul>
+        <li>🗒️ Work Meeting</li>
+        <li>🧑‍🤝‍🧑 Team Meeting</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<p><strong>Responsibility Scope Hierarchy</strong> — Groups entries by who is accountable for interacting with them and carrying them forward.</p>
+<div class="doc-tree">
+  <ul>
+    <li>
+      🧪 Research
+      <ul>
+        <li>👩‍🦰 Alison</li>
+        <li>🧔‍♂️ Dan</li>
+      </ul>
+    </li>
+    <li>
+      📱 Marketing
+      <ul>
+        <li>
+          👨‍👩‍👧‍👦 John's Team
+          <ul>
+            <li>🧔‍♂️ John</li>
+            <li>👩‍🦰 Erica</li>
+            <li>👩‍🦰 Sarah</li>
+          </ul>
+        </li>
+        <li>
+          👨‍👩‍👧‍👦 Rachael's Team
+          <ul>
+            <li>👩‍🦰 Rachael</li>
+            <li>🧔‍♂️ Tim</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      📈 Accounting
+      <ul>
+        <li>…</li>
+      </ul>
+    </li>
+    <li>
+      💻 Development
+      <ul>
+        <li>…</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</Section>
+<Section id="sec-2-6-3" title="Per-Scope Parameterization">
+<p>Some field types are parameterized: their full meaning requires configuration parameters.
+  Scopes can provide those parameters at different levels.
+  For example:</p>
+<ul>
+  <li>a "status" field is one field kind, but the allowed state set or workflow graph can be configured per scope
+    level</li>
+  <li>a "choice" field can have different option sets in different contexts</li>
+  <li>a templated or AI-driven field can have different prompts/specs per scope
+    This allows consistent field kinds while enabling contextual variation.</li>
+</ul>
+</Section>
+<Section id="sec-2-6-4" title="Scoped Scope Hierarchies">
+<p>Scope hierarchies do not have to be globally accessible. You can define a scope selector field inside a
+  particular scope so that only entries already exposed to that scope can access that selector, and only then can
+  they branch into a further scope hierarchy.
+  This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.</p>
+<p>For example, the Status Scope Hierarchy is scoped under the Task scope of the Type Scope Hierarchy. That scope exposes a status field that acts as a scope selector into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models their progression state:</p>
+<div class="doc-tree">
+  <ul>
+    <li>
+      ⬜ Not Started
+      <ul>
+        <li>🟫 Backlog</li>
+        <li>🟨 Todo</li>
+      </ul>
+    </li>
+    <li>
+      ⬜ Active
+      <ul>
+        <li>🟪 In Progress</li>
+        <li>🟧 Blocked</li>
+      </ul>
+    </li>
+    <li>
+      ⬜ Done
+      <ul>
+        <li>🟥 Canceled</li>
+        <li>🟩 Completed</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</Section>
+<Section id="sec-2-6-5" title="Entry-Local Scope">
+<p>In addition to shared scopes, an entry may have an entry-local scope tha applies only to itself—allowing truly per-entry schema/settings/rules extensions.</p>
+
+</Section>
+</Section>
+</Section>
+<Section id="sec-3" title="ClickUp">
+<p>The following section defines the principal structures, entities, features, and behaviors provided
+  by ClickUp, and describes how information is represented, organized, and managed within the system. It shows how the
+  terms defined in the <Link to="sec-2">ontology</Link> are realized in ClickUp. The purpose is to provide a clear and
+  consistent reference for understanding the platform's logic, capabilities, and constraints.</p>
+<Section id="sec-3-1" title="Base Scope">
+      <p>These are fields that are part of ClickUp’s core task model. They exist across the platform by default, even if
+        you don’t show them as columns in a view.</p>
+<Section id="sec-3-1-1" title="Base Scope Table">
+      <Table id="base-scope">
+          <THead>
+            <TR>
+              <TH>Name</TH>
+              <TH>Description</TH>
+              <TH>Field Type</TH>
+              <TH>Computational</TH>
+              <TH>Scopes</TH>
+            </TR>
+          </THead>
+          <TBody>
+            <TR id="base-scope-row-task-id">
+              <TD>Task ID</TD>
+              <TD>System task identifier.</TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-custom-task-id">
+              <TD>Custom Task ID</TD>
+              <TD>Workspace custom identifier (if enabled).</TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-task-name">
+              <TD>Task Name</TD>
+              <TD>Task title.</TD>
+              <TD><Link to="field-types-row-text">Text</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-description">
+              <TD>Description</TD>
+              <TD>Main rich-text body.</TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-status">
+              <TD>Status</TD>
+              <TD>Workflow state.</TD>
+              <TD><Link to="field-types-row-status">Status</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-task-type">
+              <TD>Task Type</TD>
+              <TD>Task classification.</TD>
+              <TD><Link to="field-types-row-task-type">Task Type</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-priority">
+              <TD>Priority</TD>
+              <TD>Urgency/importance.</TD>
+              <TD><Link to="field-types-row-priority">Priority</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-assignees">
+              <TD>Assignees</TD>
+              <TD>Responsible people (users/teams).</TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-followers-watchers">
+              <TD>Followers / Watchers</TD>
+              <TD>Subscribed people.</TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-start-date">
+              <TD>Start Date</TD>
+              <TD>Planned start timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-due-date">
+              <TD>Due Date</TD>
+              <TD>Planned due timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-time-estimate">
+              <TD>Time Estimate</TD>
+              <TD>Planned effort.</TD>
+              <TD><Link to="field-types-row-time-estimate">Time Estimate</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-time-tracked">
+              <TD>Time Tracked</TD>
+              <TD>Logged work time.</TD>
+              <TD><Link to="field-types-row-time-tracked">Time Tracked</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-lists">
+              <TD>Lists</TD>
+              <TD>List membership (home + additional lists).</TD>
+              <TD><Link to="field-types-row-lists">Lists</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-tags">
+              <TD>Tags</TD>
+              <TD>Categorization tags.</TD>
+              <TD><Link to="field-types-row-tags">Tags</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-dependencies">
+              <TD>Dependencies</TD>
+              <TD>Blocking / waiting relationships.</TD>
+              <TD><Link to="field-types-row-dependencies">Dependencies</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-linked-tasks">
+              <TD>Linked Tasks</TD>
+              <TD>Non-blocking links to other tasks.</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-linked-docs">
+              <TD>Linked Docs</TD>
+              <TD>Links to Docs.</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-subtasks">
+              <TD>Subtasks</TD>
+              <TD>Child tasks under this task.</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-parent-task">
+              <TD>Parent Task</TD>
+              <TD>Parent (if this is a subtask).</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-checklists">
+              <TD>Checklists</TD>
+              <TD>Checklist items within the task.</TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-attachments">
+              <TD>Attachments</TD>
+              <TD>Files attached to the task.</TD>
+              <TD><Link to="field-types-row-files">Files</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-comments">
+              <TD>Comments</TD>
+              <TD>Task comment thread content.</TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-assigned-comments">
+              <TD>Assigned Comments</TD>
+              <TD>Assignable/resolvable comments.</TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-latest-comment">
+              <TD>Latest Comment</TD>
+              <TD>Most recent comment (as a column).</TD>
+              <TD><Link to="field-types-row-text-area-long-text">Text area</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-created-by">
+              <TD>Created By</TD>
+              <TD>Creator user.</TD>
+              <TD><Link to="field-types-row-people">People</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-date-created">
+              <TD>Date Created</TD>
+              <TD>Creation timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-date-updated">
+              <TD>Date Updated</TD>
+              <TD>Last-updated timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-date-done">
+              <TD>Date Done</TD>
+              <TD>Completion timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-date-closed">
+              <TD>Date Closed</TD>
+              <TD>Closed timestamp.</TD>
+              <TD><Link to="field-types-row-date">Date</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-pull-requests">
+              <TD>Pull Requests</TD>
+              <TD>Linked PRs via integration.</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>Yes</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+            <TR id="base-scope-row-sprints">
+              <TD>Sprints</TD>
+              <TD>Sprint association (if enabled).</TD>
+              <TD><Link to="field-types-row-relationships">Relationship</Link></TD>
+              <TD>No</TD>
+              <TD><a href="#sec-3-1" class="doc-link-plain">Base Scope</a></TD>
+            </TR>
+          </TBody>
+      </Table>
+</Section>
+<Section id="sec-3-1-2" title="ClickUp's Inadequacy">
+      <p>ClickUp has one core object: a task. So no matter what you’re trying to model, every entry is forced to inherit
+        the same base schema— fields like Assignees, Due Date, Priority, and Status.
+        That’s fine when the entry is a work item, but it becomes a mismatch when the entry represents
+        something else entirely, like a record or event. Those fields are either meaningless or create the wrong mental
+        model, and while you can hide some columns in specific views, you can’t truly remove the task-shaped defaults
+        across ClickUp.</p>
+</Section>
+</Section>
+<Section id="sec-3-2" title="Custom Fields">
+      <p>These are fields you create and attach to scopes. In practice, scopes include location scopes
+        (Spaces/Folders/Lists) and also non-location scopes such as Task Types. A Custom Field becomes available
+        wherever its scope applies.</p>
+</Section>
+<Section id="sec-3-3" title="Field Types">
+      <p>ClickUp provides a range of field types that differ not only in the kind of value they hold, but also in how
+        they are configured, computed, restricted, and used within the platform. This section examines those field
+        types and highlights some of their main properties.</p>
+<Section id="sec-3-3-1" title="System-Only Field Types">
+      <p>Some field types exist only as part of ClickUp’s built-in system and aren’t available as Custom Field types you
+        can create. Examples include Lists, Status, Task Type, Tags, Priority, Dependencies, and Time Estimate.</p>
+</Section>
+<Section id="sec-3-3-2" title="Parameterized Field Types">
+      <p>Some field types aren’t “complete” until you define parameters such as an option set, a scale, a range, or a
+        referenced target.
+        Common parameter patterns include option sets (Dropdown, Labels), scales (Rating), ranges (Progress Manual), and
+        relationship/selection configuration (Rollup).</p>
+</Section>
+<Section id="sec-3-3-3" title="Computational Field Types">
+      <p>Some fields represent derived values rather than directly-entered values. Examples include Formula and Progress
+        (Auto).</p>
+</Section>
+<Section id="sec-3-3-4" title="AI Field Types">
+      <p>AI fields are computational fields whose values are generated or inferred using AI, typically based on task
+        content plus configuration.
+        Examples include Summary, Sentiment, Categorize, Custom Text, Custom Dropdown, Progress Updates, Translation,
+        T-Shirt Size, and Action Items.</p>
+</Section>
+<Section id="sec-3-3-5" title="Scope-Selecting Field Types">
+      <p>Some fields determine which scopes apply to a task (and therefore influence what else becomes relevant or
+        available). There are two of these: Lists and Task Type.</p>
+</Section>
+<Section id="sec-3-3-6" title="Field Types Table">
+      <Table id="field-types">
+          <THead>
+            <TR>
+              <TH>Field type</TH>
+              <TH>Description</TH>
+              <TH>System Only</TH>
+              <TH>Parameters</TH>
+              <TH>Computational</TH>
+              <TH>AI</TH>
+              <TH>Scope Selecting</TH>
+            </TR>
+          </THead>
+          <TBody>
+            <TR id="field-types-row-lists">
+              <TD>Lists</TD>
+              <TD>Multi-valued field of ClickUp lists</TD>
+              <TD>Yes</TD>
+              <TD>Set of lists, representing the leaves of the location scope hierarchy.<br />Defined per workspace.</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>Yes</TD>
+            </TR>
+            <TR id="field-types-row-status">
+              <TD>Status</TD>
+              <TD>Single-choice state field representing the entry’s workflow state.</TD>
+              <TD>Yes</TD>
+              <TD>Set of labels.<br />Defined per location.</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-task-type">
+              <TD>Task Type</TD>
+              <TD>Single-choice classification field selecting the task’s type.</TD>
+              <TD>Yes</TD>
+              <TD>Set of labels.<br />Defined per workspace.</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>Yes</TD>
+            </TR>
+            <TR id="field-types-row-tags">
+              <TD>Tags</TD>
+              <TD>Multi-valued label field referencing tag objects used for categorization.</TD>
+              <TD>Yes</TD>
+              <TD>Set of labels.<br />Defined per space.</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-description">
+              <TD>Description</TD>
+              <TD>Rich-text content field for task narrative/specification.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-comment">
+              <TD>Comment</TD>
+              <TD>ClickUp comments</TD>
+              <TD>Yes</TD>
+              <TD></TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-priority">
+              <TD>Priority</TD>
+              <TD>Single-choice urgency/importance field.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-duration">
+              <TD>Duration</TD>
+              <TD>Duration value representing planned span between start and end (when enabled).</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-dependencies">
+              <TD>Dependencies</TD>
+              <TD>Relationship field expressing blocking / waiting relationships between tasks.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-time-estimate">
+              <TD>Time Estimate</TD>
+              <TD>Duration value representing expected effort.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-time-tracked">
+              <TD>Time Tracked</TD>
+              <TD>Duration value representing recorded effort.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>?</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-sprint-points">
+              <TD>Sprint Points</TD>
+              <TD>Numeric estimation field (story points) for sprint planning.</TD>
+              <TD>Yes</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-action-items">
+              <TD>Action Items</TD>
+              <TD>Generates actionable follow-up items inferred from task content.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-button">
+              <TD>Button</TD>
+              <TD>Manual trigger field used to initiate configured automation behavior from an entry.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-categorize">
+              <TD>Categorize</TD>
+              <TD>Assigns tasks into dropdown categories using AI, optionally guided by custom instructions and task
+                variables.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-checkbox">
+              <TD>Checkbox</TD>
+              <TD>Boolean field.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-custom-dropdown">
+              <TD>Custom Dropdown</TD>
+              <TD>Generates/assigns values for a dropdown AI Field according to a user-defined prompt and configured
+                dropdown options.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-custom-text">
+              <TD>Custom Text</TD>
+              <TD>Generates text output according to a user-defined prompt to fill a text-based AI Field.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-date">
+              <TD>Date</TD>
+              <TD>Date/time field.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-dropdown">
+              <TD>Dropdown</TD>
+              <TD>Single-choice categorical field with a finite option set.</TD>
+              <TD>No</TD>
+              <TD>Set of labels</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-email">
+              <TD>Email</TD>
+              <TD>Email-address formatted string field.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-files">
+              <TD>Files</TD>
+              <TD>Field holding file attachments (uploaded or cloud-linked).</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-formula">
+              <TD>Formula</TD>
+              <TD>Computed field defined as an expression over other fields.</TD>
+              <TD>No</TD>
+              <TD>Expression</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-labels">
+              <TD>Labels</TD>
+              <TD>Multi-valued categorical field using a defined option set.</TD>
+              <TD>No</TD>
+              <TD>Set of labels</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-location">
+              <TD>Location</TD>
+              <TD>Address/location field (map/geocoded address representation).</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-money">
+              <TD>Money</TD>
+              <TD>Currency-typed numeric field.</TD>
+              <TD>No</TD>
+              <TD>Currency</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-number">
+              <TD>Number</TD>
+              <TD>Numeric field.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-people">
+              <TD>People</TD>
+              <TD>People selector field (users and optionally Teams).</TD>
+              <TD>No</TD>
+              <TD>Set of users.<br />Defined per workspace</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-phone">
+              <TD>Phone</TD>
+              <TD>Phone-number formatted string field with country/area code support.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-progress-auto">
+              <TD>Progress (Auto)</TD>
+              <TD>Automatically computed progress value based on completion of specified action items (e.g.,
+                subtasks/checklists).</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-progress-manual">
+              <TD>Progress (Manual)</TD>
+              <TD>Manually set progress value over a configured numeric range.</TD>
+              <TD>No</TD>
+              <TD>Min/Max</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-progress-updates">
+              <TD>Progress Updates</TD>
+              <TD>Generates a synthesized progress update for tasks based on recent task activity within a selected time
+                window and output format.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-rating">
+              <TD>Rating</TD>
+              <TD>Ordinal rating field using a configured scale.</TD>
+              <TD>No</TD>
+              <TD>Scale</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-relationships">
+              <TD>Relationships</TD>
+              <TD>Field representing links between tasks via relationship edges.</TD>
+              <TD>No</TD>
+              <TD>Location</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-rollup">
+              <TD>Rollup</TD>
+              <TD>Field that displays selected fields from related tasks.</TD>
+              <TD>No</TD>
+              <TD>Relationship + Field</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-sentiment">
+              <TD>Sentiment</TD>
+              <TD>Classifies task sentiment as positive, neutral, or negative using task content (including description,
+                Custom Fields, and comments).</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-signature">
+              <TD>Signature</TD>
+              <TD>Signature capture field (typed or drawn).</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-summary">
+              <TD>Summary</TD>
+              <TD>Generates a concise representation of task content (e.g., description, attachments, and conversations)
+                as a summary in a selected format.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-t-shirt-size">
+              <TD>T-Shirt Size</TD>
+              <TD>Estimates task size/effort using t-shirt sizing based on task data and contextual information from its
+                List.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-text">
+              <TD>Text</TD>
+              <TD>Single-line text field.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-text-area-long-text">
+              <TD>Text area / Long Text</TD>
+              <TD>Multi-line text field with rich text support.</TD>
+              <TD>No</TD>
+              <TD>-</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-translation">
+              <TD>Translation</TD>
+              <TD>Translates a selected task property (title or description) into a specified target language.</TD>
+              <TD>No</TD>
+              <TD>Configuration</TD>
+              <TD>Yes</TD>
+              <TD>Yes</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-voting">
+              <TD>Voting</TD>
+              <TD>Vote-count field used for prioritization/sentiment-style scoring.</TD>
+              <TD>No</TD>
+              <TD>Emoji</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+            <TR id="field-types-row-website">
+              <TD>Website</TD>
+              <TD>URL field.</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+              <TD>No</TD>
+            </TR>
+          </TBody>
+      </Table>
+</Section>
+</Section>
+<Section id="sec-3-4" title="Scopes">
+      <p>These are the two scope hierarchies used in ClickUp—one that answers “which project context is this entry part
+        of?”, and one that answers “what kind of entry is this meant to represent?”.</p>
+<Section id="sec-3-4-1" title="Location Scope Hierarchy">
+      <p>This is the <strong>project hierarchy</strong>: the chain of project containers an entry sits inside. A space
+        usually represents a broad domain (like a product area or department), folders group related sub-projects inside
+        that domain, and lists are often the concrete project boards/pipelines where work is tracked day-to-day. When an
+        entry belongs to a specific list, it’s automatically part of the larger project contexts above it too—so the
+        entry is simultaneously in the “sub-project” scope (the list) and in the broader “project” scopes (its folder
+        and space). That’s why location scopes behave like inheritance: lower-level project contexts don’t replace
+        higher-level ones; they narrow them.</p>
+      <div class="doc-tree">
+        <ul>
+          <li>
+            🟦 General (space)
+            <ul>
+              <li>
+                📁 Some Project (folder)
+                <ul>
+                  <li>📋 Project Tasks (list)</li>
+                </ul>
+              </li>
+              <li>
+                📁 Household Chores (folder)
+                <ul>
+                  <li>📋 Household Tasks (list)</li>
+                  <li>📋 Family Meetings (list)</li>
+                </ul>
+              </li>
+              <li>📋 Events (list)</li>
+              <li>📋 Milestones (list)</li>
+            </ul>
+          </li>
+          <li>
+            🟩 Personal (space)
+            <ul>
+              <li>
+                📁 My Projects (folder)
+                <ul>
+                  <li>
+                    📁 Birthday Planning (folder)
+                    <ul>
+                      <li>📋 Locations (list)</li>
+                      <li>📋 Presents (list)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+</Section>
+<Section id="sec-3-4-2" title="Task Type Scope Hierarchy">
+      <p>This is the <strong>purpose hierarchy</strong> (even though ClickUp implements it as flat). A task type scope
+        doesn’t say where the entry lives; it says what it is. It’s the semantic category of the
+        entry—what kind of data it represents and what it’s intended to be used for. For example, two entries can live
+        in the same project scope, but have different purposes (a bug vs. a feature request vs. a meeting note), and
+        that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope
+        with no inheritance: it doesn’t automatically imply a more general “parent type” scope. It’s a single-purpose
+        label that lets you treat entries differently based on meaning, not location.</p>
+      <div class="doc-tree">
+        <ul>
+          <li>✅ Task</li>
+          <li>📆 Event</li>
+          <li>🗨️ Request</li>
+          <li>🫱🏼‍🫲🏼 Meeting</li>
+          <li>🏆 Goal</li>
+        </ul>
+      </div>
+</Section>
+</Section>
+</Section>
 <Section id="sec-4" title="Workspace">
 <p>The workspace is the concrete implementation documented in this wiki. It describes the principal
   structures, conventions, and operating patterns that define what the workspace contains and how it is
