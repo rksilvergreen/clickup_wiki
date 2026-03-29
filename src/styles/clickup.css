@@ -6,7 +6,6 @@
 
   /* Component colors */
   --doc-trigger-type-bg: rgba(90, 170, 138, 0.10);
-  --doc-subgroup-bg: rgba(200, 200, 200, 0.12);
 }
 
 [data-theme="light"] {
@@ -15,7 +14,6 @@
   --doc-table-field-types: #7c3aed;
 
   --doc-trigger-type-bg: rgba(45, 90, 74, 0.08);
-  --doc-subgroup-bg: rgba(100, 100, 100, 0.10);
 }
 
 /* ── Field composition (if/then blocks) ── */
@@ -157,18 +155,6 @@
   margin-right: 0.25em;
 }
 
-.document .subgroup {
-  display: inline-block;
-  font-size: 0.85em;
-  font-weight: 600;
-  color: var(--doc-ink-light);
-  background: var(--doc-subgroup-bg);
-  padding: 0.15em 0.5em;
-  border-radius: 3px;
-  margin-left: 0.35em;
-  margin-right: 0.25em;
-}
-
 /* ── Tags ── */
 
 .document .doc-tag-list {
@@ -202,7 +188,7 @@
 
 /* ── Field / status tooltips ── */
 
-.field-status-tooltip {
+/* .field-status-tooltip {
   position: fixed;
   z-index: 10000;
   background: var(--doc-surface);
@@ -225,7 +211,7 @@
 .field-status-tooltip.is-visible {
   opacity: 1;
   visibility: visible;
-}
+} */
 
 .has-field-tip {
   cursor: help;

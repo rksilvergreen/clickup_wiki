@@ -1,4 +1,5 @@
 ---
+import StatusSubgroup from "clickup_wiki/components/status-subgroup/status-subgroup.astro";
 import { getStatus } from "./statuses";
 import "./status.css";
 
@@ -21,7 +22,7 @@ const def = getStatus(type, status);
     showSubgroup && (
       <>
         {" "}
-        <span class="subgroup">{def.subgroup}</span>
+        <StatusSubgroup>{def.subgroup}</StatusSubgroup>
       </>
     )
   }</strong

@@ -1,0 +1,19 @@
+:root {
+  --doc-subgroup-bg: rgba(200, 200, 200, 0.12);
+}
+
+[data-theme="light"] {
+  --doc-subgroup-bg: rgba(100, 100, 100, 0.10);
+}
+
+.document .subgroup {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--doc-ink-light);
+  background: var(--doc-subgroup-bg);
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  margin-left: 0.35em;
+  margin-right: 0.25em;
+}

@@ -1,6 +1,7 @@
 ---
 import DocLayout, { getDocumentPaths } from "doc-shell/layouts/doc-layout";
 import Status from "clickup_wiki/components/status/status.astro";
+import StatusSubgroup from "clickup_wiki/components/status-subgroup/status-subgroup.astro";
 import StatusLink from "clickup_wiki/components/links/status-link.astro";
 import BaseFieldLink from "clickup_wiki/components/links/base-field-link.astro";
 import FieldTypeLink from "clickup_wiki/components/links/field-type-link.astro";
@@ -18,6 +19,7 @@ export const getStaticPaths = getDocumentPaths;
 const { entry, allDocs } = Astro.props;
 const components = {
   Status,
+  StatusSubgroup,
   StatusLink,
   BaseFieldLink,
   FieldTypeLink,
@@ -33,4 +35,3 @@ const components = {
 ---
 
 <DocLayout entry={entry} allDocs={allDocs} components={components} />
-<script src="clickup_wiki/scripts/sync-table-cols.ts"></script>
