@@ -22,7 +22,8 @@ const { to } = Astro.props;
   [data-theme="light"] {
     --doc-link-field-types: #7c3aed;
   }
-  a.field-type-link {
+  .document a.field-type-link,
+  .document a.field-type-link:visited {
     color: var(--doc-link-field-types);
   }
 </style>

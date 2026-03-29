@@ -25,10 +25,11 @@ const { to } = Astro.props;
     --doc-link-filter: #0d9488;
     --doc-link-filter-hover: #14b8a6;
   }
-  a.filter-link {
+  .document a.filter-link,
+  .document a.filter-link:visited {
     color: var(--doc-link-filter);
   }
-  a.filter-link:hover {
+  .document a.filter-link:hover {
     color: var(--doc-link-filter-hover);
     text-decoration: underline;
   }

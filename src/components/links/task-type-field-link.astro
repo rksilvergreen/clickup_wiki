@@ -19,7 +19,8 @@ const { type, to } = Astro.props;
 <Link to={`${type}-fields-row-${to}`} class="task-type-field-link"><slot /></Link>
 
 <style is:global>
-  a.task-type-field-link {
+  .document a.task-type-field-link,
+  .document a.task-type-field-link:visited {
     color: var(--doc-link-task-types);
     font-style: italic;
     font-weight: 400;

@@ -23,7 +23,9 @@ const { to } = Astro.props;
   [data-theme="light"] {
     --doc-link-task-types: #14aa46;
   }
-  a.task-type-link {
+  /* :visited — link.css `.document a:visited` would otherwise wash out the accent after in-page jumps */
+  .document a.task-type-link,
+  .document a.task-type-link:visited {
     color: var(--doc-link-task-types);
   }
 </style>

@@ -25,10 +25,11 @@ const { to } = Astro.props;
     --doc-link-views: #ea580c;
     --doc-link-views-hover: #f97316;
   }
-  a.view-link {
+  .document a.view-link,
+  .document a.view-link:visited {
     color: var(--doc-link-views);
   }
-  a.view-link:hover {
+  .document a.view-link:hover {
     color: var(--doc-link-views-hover);
     text-decoration: underline;
   }
