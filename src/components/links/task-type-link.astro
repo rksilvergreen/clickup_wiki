@@ -2,10 +2,8 @@
 /**
  * TaskTypeLink — link to a task-type section.
  *
- * Wraps doc-shell's Link, prepending "task-type-" to the `to` value.
- * The target Section must declare alias="task-type-{name}".
- * Example: <TaskTypeLink to="event">Event</TaskTypeLink>
- *          → href="#task-type-event"
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ * Example: <TaskTypeLink to="sec-4-1-1-2">Event</TaskTypeLink>
  */
 import Link from "doc-shell/components/link/link.astro";
 
@@ -16,7 +14,7 @@ interface Props {
 const { to } = Astro.props;
 ---
 
-<Link to={`task-type-${to}`} class="task-type-link"><slot /></Link>
+<Link to={to} class="task-type-link"><slot /></Link>
 
 <style is:global>
   :root {

@@ -2,10 +2,8 @@
 /**
  * FilterLink — link to a filter section.
  *
- * Wraps doc-shell's Link, prepending "filter-" to the `to` value.
- * The target Section must declare alias="filter-{name}".
- * Example: <FilterLink to="status">Status Filter</FilterLink>
- *          → href="#filter-status"
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ * Example: <FilterLink to="sec-4-2-5-1">Assignee filter</FilterLink>
  */
 import Link from "doc-shell/components/link/link.astro";
 
@@ -16,7 +14,7 @@ interface Props {
 const { to } = Astro.props;
 ---
 
-<Link to={`filter-${to}`} class="filter-link"><slot /></Link>
+<Link to={to} class="filter-link"><slot /></Link>
 
 <style is:global>
   :root {

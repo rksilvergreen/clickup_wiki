@@ -2,10 +2,7 @@
 /**
  * LocationLink — link to a location section.
  *
- * Wraps doc-shell's Link, prepending "location-" to the `to` value.
- * The target Section must declare alias="location-{name}".
- * Example: <LocationLink to="workspace">Workspace</LocationLink>
- *          → href="#location-workspace"
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
  */
 import Link from "doc-shell/components/link/link.astro";
 
@@ -16,4 +13,4 @@ interface Props {
 const { to } = Astro.props;
 ---
 
-<Link to={`location-${to}`} class="location-link"><slot /></Link>
+<Link to={to} class="location-link"><slot /></Link>
