@@ -1,6 +1,7 @@
 ---
 import Status from "clickup_wiki/components/status/status.astro";
 import { getStatusId } from "clickup_wiki/components/status/statuses";
+import Link from "doc-shell/components/link/link.astro";
 
 interface Props {
   type: string;
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const { type, status } = Astro.props;
-const href = `#${getStatusId(type, status)}`;
+const to = getStatusId(type, status);
 ---
 
-<a href={href} class="status-link"><Status type={type} status={status} /></a>
+<Link to={to} class="status-link"><Status type={type} status={status} /></Link>

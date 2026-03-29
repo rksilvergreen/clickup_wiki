@@ -1509,11 +1509,11 @@ order: 1
 <p>Connected to the task type <TaskTypeLink to="sec-4-1-1-1">Task</TaskTypeLink>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
-  <li id="status-task-backlog"><Status type="task" status="backlog" showSubgroup /> — The task exists, but there is no intent to work on it yet.</li>
-  <li id="status-task-to-do"><Status type="task" status="to-do" showSubgroup /> — The task is a candidate for execution.</li>
-  <li id="status-task-in-progress"><Status type="task" status="in-progress" showSubgroup /> — Work has begun on this task.</li>
-  <li id="status-task-canceled"><Status type="task" status="canceled" showSubgroup /> — The task will not be completed.</li>
-  <li id="status-task-complete"><Status type="task" status="complete" showSubgroup /> — The task is finished and successfully completed.</li>
+  <LinkTarget as="li" id="status-task-backlog"><Status type="task" status="backlog" showSubgroup /> — The task exists, but there is no intent to work on it yet.</LinkTarget>
+  <LinkTarget as="li" id="status-task-to-do"><Status type="task" status="to-do" showSubgroup /> — The task is a candidate for execution.</LinkTarget>
+  <LinkTarget as="li" id="status-task-in-progress"><Status type="task" status="in-progress" showSubgroup /> — Work has begun on this task.</LinkTarget>
+  <LinkTarget as="li" id="status-task-canceled"><Status type="task" status="canceled" showSubgroup /> — The task will not be completed.</LinkTarget>
+  <LinkTarget as="li" id="status-task-complete"><Status type="task" status="complete" showSubgroup /> — The task is finished and successfully completed.</LinkTarget>
 </ul>
 <Section id="sec-4-2-1-2-1" title="Task Transitions">
 <ul>
@@ -1529,10 +1529,10 @@ order: 1
 <Section id="sec-4-2-1-3" title="Event Status Group">
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
-  <li id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and no <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> are set.</li>
-  <li id="status-event-upcoming"><Status type="event" status="upcoming" showSubgroup /> — <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is set. "Upcoming" means the event has been scheduled, and its <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> has not arrived yet.</li>
-  <li id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> (i.e., the event is happening now or has started and hasn't ended yet).</li>
-  <li id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> (operationally: after the <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>/Time, which we treat as the event's end).</li>
+  <LinkTarget as="li" id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and no <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> are set.</LinkTarget>
+  <LinkTarget as="li" id="status-event-upcoming"><Status type="event" status="upcoming" showSubgroup /> — <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is set. "Upcoming" means the event has been scheduled, and its <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> has not arrived yet.</LinkTarget>
+  <LinkTarget as="li" id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> (i.e., the event is happening now or has started and hasn't ended yet).</LinkTarget>
+  <LinkTarget as="li" id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> (operationally: after the <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>/Time, which we treat as the event's end).</LinkTarget>
 </ul>
 <Section id="sec-4-2-1-3-1" title="Event Transitions">
 <ul>
@@ -1548,12 +1548,12 @@ order: 1
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
-  <li id="status-shopping-idea"><Status type="shopping" status="idea" showSubgroup /> — On the wishlist; we may buy it eventually but are not actively planning to.</li>
-  <li id="status-shopping-to-buy"><Status type="shopping" status="to-buy" showSubgroup /> — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.</li>
-  <li id="status-shopping-in-cart"><Status type="shopping" status="in-cart" showSubgroup /> — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.</li>
-  <li id="status-shopping-ordered"><Status type="shopping" status="ordered" showSubgroup /> — An order has been placed; we are waiting for delivery.</li>
-  <li id="status-shopping-cancelled"><Status type="shopping" status="cancelled" showSubgroup /> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</li>
-  <li id="status-shopping-received"><Status type="shopping" status="received" showSubgroup /> — The item has been purchased and received.</li>
+  <LinkTarget as="li" id="status-shopping-idea"><Status type="shopping" status="idea" showSubgroup /> — On the wishlist; we may buy it eventually but are not actively planning to.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-to-buy"><Status type="shopping" status="to-buy" showSubgroup /> — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-in-cart"><Status type="shopping" status="in-cart" showSubgroup /> — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-ordered"><Status type="shopping" status="ordered" showSubgroup /> — An order has been placed; we are waiting for delivery.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-cancelled"><Status type="shopping" status="cancelled" showSubgroup /> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-received"><Status type="shopping" status="received" showSubgroup /> — The item has been purchased and received.</LinkTarget>
 </ul>
 <Section id="sec-4-2-1-4-1" title="Shopping Transitions">
 <p>Every transition is <strong>manual</strong>. The usual path is <Status type="shopping" status="idea" /> → <Status type="shopping" status="to-buy" /> → <Status type="shopping" status="in-cart" /> → <Status type="shopping" status="ordered" /> → <Status type="shopping" status="received" />, but an item may move from any status to any other (e.g. <Status type="shopping" status="ordered" /> back to <Status type="shopping" status="to-buy" /> after an order is cancelled, or <Status type="shopping" status="idea" /> to <Status type="shopping" status="cancelled" />).</p>

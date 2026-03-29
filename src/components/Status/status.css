@@ -33,38 +33,3 @@
   text-decoration-color: var(--doc-border);
   text-underline-offset: 2px;
 }
-
-/* ── Status preview tooltip ── */
-
-.status-preview-tooltip {
-  position: fixed;
-  z-index: 10000;
-  background: var(--doc-surface);
-  border: 1px solid var(--doc-border);
-  border-radius: 6px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.13);
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.12s, visibility 0.12s;
-  max-width: min(600px, calc(100vw - 32px));
-  padding: 0.6rem 1rem;
-}
-
-.status-preview-tooltip.is-visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.status-preview-tooltip .document>* {
-  margin-left: 0 !important;
-}
-
-.status-preview-tooltip .document ul {
-  margin: 0;
-}
-
-.status-preview-tooltip .document ul li {
-  margin-bottom: 0;
-}
