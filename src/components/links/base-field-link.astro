@@ -18,5 +18,13 @@ const { to } = Astro.props;
 <Link to={`base-scope-row-${to}`} class="base-field-link"><slot /></Link>
 
 <style is:global>
-  a.base-field-link { color: var(--doc-link-base-scope); }
+  :root {
+    --doc-link-base-scope: #7da0f0;
+  }
+  [data-theme="light"] {
+    --doc-link-base-scope: #2563eb;
+  }
+  a.base-field-link {
+    color: var(--doc-link-base-scope);
+  }
 </style>

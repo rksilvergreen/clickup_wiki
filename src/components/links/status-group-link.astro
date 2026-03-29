@@ -19,7 +19,17 @@ const { to } = Astro.props;
 <Link to={`status-group-${to}`} class="status-group-link"><slot /></Link>
 
 <style is:global>
-  a.status-group-link { color: var(--doc-link-status-group); }
+  :root {
+    --doc-link-status-group: #df82b0;
+    --doc-link-status-group-hover: #e27fb2;
+  }
+  [data-theme="light"] {
+    --doc-link-status-group: #db2777;
+    --doc-link-status-group-hover: #ec4899;
+  }
+  a.status-group-link {
+    color: var(--doc-link-status-group);
+  }
   a.status-group-link:hover {
     color: var(--doc-link-status-group-hover);
     text-decoration: underline;

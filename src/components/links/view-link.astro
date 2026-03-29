@@ -19,7 +19,17 @@ const { to } = Astro.props;
 <Link to={`view-${to}`} class="view-link"><slot /></Link>
 
 <style is:global>
-  a.view-link { color: var(--doc-link-views); }
+  :root {
+    --doc-link-views: #f97316;
+    --doc-link-views-hover: #fb923c;
+  }
+  [data-theme="light"] {
+    --doc-link-views: #ea580c;
+    --doc-link-views-hover: #f97316;
+  }
+  a.view-link {
+    color: var(--doc-link-views);
+  }
   a.view-link:hover {
     color: var(--doc-link-views-hover);
     text-decoration: underline;

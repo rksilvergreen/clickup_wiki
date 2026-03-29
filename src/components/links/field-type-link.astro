@@ -16,5 +16,13 @@ const { to } = Astro.props;
 <Link to={`field-types-row-${to}`} class="field-type-link"><slot /></Link>
 
 <style is:global>
-  a.field-type-link { color: var(--doc-link-field-types); }
+  :root {
+    --doc-link-field-types: #bfa0e8;
+  }
+  [data-theme="light"] {
+    --doc-link-field-types: #7c3aed;
+  }
+  a.field-type-link {
+    color: var(--doc-link-field-types);
+  }
 </style>

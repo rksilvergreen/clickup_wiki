@@ -19,7 +19,17 @@ const { to } = Astro.props;
 <Link to={`automation-${to}`} class="automation-link"><slot /></Link>
 
 <style is:global>
-  a.automation-link { color: var(--doc-link-automations); }
+  :root {
+    --doc-link-automations: #eab308;
+    --doc-link-automations-hover: #facc15;
+  }
+  [data-theme="light"] {
+    --doc-link-automations: #a16207;
+    --doc-link-automations-hover: #ca8a04;
+  }
+  a.automation-link {
+    color: var(--doc-link-automations);
+  }
   a.automation-link:hover {
     color: var(--doc-link-automations-hover);
     text-decoration: underline;

@@ -4,22 +4,6 @@
   --doc-table-custom-fields: #6688e7;
   --doc-table-field-types: #a485d4;
 
-  /* Table row link colors */
-  --doc-link-base-scope: #7da0f0;
-  --doc-link-custom-fields: #7da0f0;
-  --doc-link-field-types: #bfa0e8;
-
-  /* Categorical link colors */
-  --doc-link-task-types: #5aaa8a;
-  --doc-link-filter: #14b8a6;
-  --doc-link-filter-hover: #2dd4bf;
-  --doc-link-status-group: #df82b0;
-  --doc-link-status-group-hover: #e27fb2;
-  --doc-link-views: #f97316;
-  --doc-link-views-hover: #fb923c;
-  --doc-link-automations: #eab308;
-  --doc-link-automations-hover: #facc15;
-
   /* Component colors */
   --doc-trigger-type-bg: rgba(90, 170, 138, 0.10);
   --doc-subgroup-bg: rgba(200, 200, 200, 0.12);
@@ -29,20 +13,6 @@
   --doc-table-base-scope: #2563eb;
   --doc-table-custom-fields: #1d4ed8;
   --doc-table-field-types: #7c3aed;
-
-  --doc-link-base-scope: #2563eb;
-  --doc-link-custom-fields: #1d4ed8;
-  --doc-link-field-types: #7c3aed;
-
-  --doc-link-task-types: #14aa46;
-  --doc-link-filter: #0d9488;
-  --doc-link-filter-hover: #14b8a6;
-  --doc-link-status-group: #db2777;
-  --doc-link-status-group-hover: #ec4899;
-  --doc-link-views: #ea580c;
-  --doc-link-views-hover: #f97316;
-  --doc-link-automations: #a16207;
-  --doc-link-automations-hover: #ca8a04;
 
   --doc-trigger-type-bg: rgba(45, 90, 74, 0.08);
   --doc-subgroup-bg: rgba(100, 100, 100, 0.10);

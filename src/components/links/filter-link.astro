@@ -19,7 +19,17 @@ const { to } = Astro.props;
 <Link to={`filter-${to}`} class="filter-link"><slot /></Link>
 
 <style is:global>
-  a.filter-link { color: var(--doc-link-filter); }
+  :root {
+    --doc-link-filter: #14b8a6;
+    --doc-link-filter-hover: #2dd4bf;
+  }
+  [data-theme="light"] {
+    --doc-link-filter: #0d9488;
+    --doc-link-filter-hover: #14b8a6;
+  }
+  a.filter-link {
+    color: var(--doc-link-filter);
+  }
   a.filter-link:hover {
     color: var(--doc-link-filter-hover);
     text-decoration: underline;

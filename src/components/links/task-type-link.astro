@@ -19,5 +19,13 @@ const { to } = Astro.props;
 <Link to={`task-type-${to}`} class="task-type-link"><slot /></Link>
 
 <style is:global>
-  a.task-type-link { color: var(--doc-link-task-types); }
+  :root {
+    --doc-link-task-types: #5aaa8a;
+  }
+  [data-theme="light"] {
+    --doc-link-task-types: #14aa46;
+  }
+  a.task-type-link {
+    color: var(--doc-link-task-types);
+  }
 </style>
