@@ -24,7 +24,9 @@ const { to } = Astro.props;
   [data-theme="light"] {
     --doc-link-base-scope: #2563eb;
   }
-  a.base-field-link {
+  /* Include :visited — `.document a:visited` in link.css would otherwise win and wash out the accent. */
+  .document a.base-field-link,
+  .document a.base-field-link:visited {
     color: var(--doc-link-base-scope);
   }
 </style>

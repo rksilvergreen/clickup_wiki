@@ -1,4 +1,8 @@
 (function () {
+  /** Status pill links (#status-task-…) — exclude #status-group-* (StatusGroupLink uses unified link-preview). */
+  const STATUS_PILL_ANCHOR = 'a[href^="#status-"]:not([href^="#status-group-"])';
+  const CLOSEST_STATUS_TIP_TARGET = 'a.status-link, ' + STATUS_PILL_ANCHOR;
+
   interface StatusDef {
     color: string;
     tip: string;
@@ -44,10 +48,10 @@
     return statuses;
   }
 
-  const taskStatuses = readStatusesFromGroup('sec-4-4-1-2');
-  const eventStatuses = readStatusesFromGroup('sec-4-4-1-3');
-  const shoppingStatuses = readStatusesFromGroup('sec-4-4-1-4');
-  readStatusesFromGroup('sec-4-4-1-5');
+  const taskStatuses = readStatusesFromGroup('sec-4-2-1-2');
+  const eventStatuses = readStatusesFromGroup('sec-4-2-1-3');
+  const shoppingStatuses = readStatusesFromGroup('sec-4-2-1-4');
+  readStatusesFromGroup('sec-4-2-1-5');
 
   const allStatusDefs: Record<string, StatusDef> = {};
   for (const group of [taskStatuses, eventStatuses, shoppingStatuses]) {
@@ -108,7 +112,7 @@
   }
 
   document.addEventListener('mouseover', function (e) {
-    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#status-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest(CLOSEST_STATUS_TIP_TARGET) as HTMLAnchorElement | null;
     if (!a) return;
     const href = a.getAttribute('href');
     if (!href) return;
@@ -123,11 +127,11 @@
   });
 
   document.addEventListener('mouseout', function (e) {
-    const a = (e.target as HTMLElement).closest('a.status-link, a[href^="#status-"]') as HTMLAnchorElement | null;
+    const a = (e.target as HTMLElement).closest(CLOSEST_STATUS_TIP_TARGET) as HTMLAnchorElement | null;
     if (a && !a.contains(e.relatedTarget as Node)) hideStatusTip();
   });
 
-  document.querySelectorAll('a[href^="#status-"]').forEach(function (a) {
+  document.querySelectorAll(STATUS_PILL_ANCHOR).forEach(function (a) {
     a.setAttribute('data-skip-preview', '');
   });
 })();

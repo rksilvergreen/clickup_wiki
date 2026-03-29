@@ -8,7 +8,7 @@ order: 1
 <p>This wiki serves as the formal reference document for our family's ClickUp workspace. Its purpose
   is to explain, in a clear and systematic way, how the workspace is structured, what it is designed to support, and
   how its underlying logic should be understood and maintained over time.</p>
-<p>The workspace itself is intended to help us bring greater order, visibility, and continuity to everyday life. It
+<p>The workspace itself is <LinkTarget as="span" id ="test">intended to help us bring greater order</LinkTarget>, visibility, and continuity to everyday life. It
   provides a shared system for organizing responsibilities, tracking tasks, planning events, capturing ideas, and
   preserving information that should not remain scattered across conversations, memory, or temporary notes. In that
   sense, it is not only a task manager, but a broader operational and documentation environment: a place where action
@@ -30,7 +30,7 @@ order: 1
   manages, and records the different parts of life.</p>
 <p>Together, these sections move from general concepts, to platform implementation, to our concrete usage of the
   platform. This progression is intentional: first defining the underlying ideas, then examining how ClickUp embodies
-  them, and finally describing how we apply and tailor them in practice.</p>
+  them, and finally describing how we apply and tailor them in <Link to="test"When using >practice</Link>.</p>
 
 </Section>
 <Section id="sec-2" title="Ontology">
@@ -628,7 +628,7 @@ order: 1
               <TD>Comment</TD>
               <TD>ClickUp comments</TD>
               <TD>Yes</TD>
-              <TD></TD>
+              <TD>-</TD>
               <TD>No</TD>
               <TD>No</TD>
               <TD>No</TD>
@@ -1482,8 +1482,9 @@ order: 1
 </Section>
 </Section>
 </Section>
-<Section id="sec-4-4" title="ClickUp Elements">
-<Section id="sec-4-4-1" title="Status Groups">
+<Section id="sec-4-2" title="ClickUp Elements">
+<p>(To be filled in.)</p>
+<Section id="sec-4-2-1" title="Status Groups">
 <p>Status Groups are a parameter of ClickUp's base-schema field <BaseFieldLink to="status">Status</BaseFieldLink> that is set at the Location level
   (i.e., per list/folder/space), designed to model the lifecycle of a particular kind of entry. While a status
   group often ends up feeling like it belongs to a task type, that association is indirect: it's usually true in
@@ -1494,7 +1495,7 @@ order: 1
   when the entry isn't really a "task" in the real-world sense. We still use those subgroups because we have to,
   and we try to map them as sensibly as possible—though for non-task entries it can sometimes feel a bit crooked.
   Whenever we mention a status, we annotate it with its subgroup as a pill.</p>
-<Section id="sec-4-4-1-1" title="Status Transitions and Triggers">
+<Section id="sec-4-2-1-1" title="Status Transitions and Triggers">
 <p>A status change is a transition: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
@@ -1504,7 +1505,7 @@ order: 1
   <li><span class="trigger-type">Chronological</span> — The passage of time triggers the change: a particular date-time boundary is reached.</li>
 </ul>
 </Section>
-<Section id="sec-4-4-1-2" title="Task Status Group" alias="status-group-task">
+<Section id="sec-4-2-1-2" title="Task Status Group" alias="status-group-task">
 <p>Connected to the task type <TaskTypeLink to="task">Task</TaskTypeLink>, this status group is exclusive to that task type. It
   represents the lifecycle of an actionable work item.</p>
 <ul>
@@ -1514,7 +1515,7 @@ order: 1
   <li id="status-task-canceled"><Status type="task" status="canceled" showSubgroup /> — The task will not be completed.</li>
   <li id="status-task-complete"><Status type="task" status="complete" showSubgroup /> — The task is finished and successfully completed.</li>
 </ul>
-<Section id="sec-4-4-1-2-1" title="Task Transitions">
+<Section id="sec-4-2-1-2-1" title="Task Transitions">
 <ul>
   <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> is set.</li>
   <li><Status type="task" status="to-do" /> → <Status type="task" status="in-progress" />: <span class="trigger-type">Manual</span> — The user declares that work has begun.</li>
@@ -1525,7 +1526,7 @@ order: 1
 </ul>
 </Section>
 </Section>
-<Section id="sec-4-4-1-3" title="Event Status Group" alias="status-group-event">
+<Section id="sec-4-2-1-3" title="Event Status Group" alias="status-group-event">
 <p>Connected to the task type <strong>Event</strong>, this status group represents the lifecycle of an event.</p>
 <ul>
   <li id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showSubgroup /> — The event exists, but no <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and no <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> are set.</li>
@@ -1533,7 +1534,7 @@ order: 1
   <li id="status-event-occurring"><Status type="event" status="occurring" showSubgroup /> — The current date-time is on/after the event's <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> (i.e., the event is happening now or has started and hasn't ended yet).</li>
   <li id="status-event-occurred"><Status type="event" status="occurred" showSubgroup /> — The current date-time is after the event's <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> (operationally: after the <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>/Time, which we treat as the event's end).</li>
 </ul>
-<Section id="sec-4-4-1-3-1" title="Event Transitions">
+<Section id="sec-4-2-1-3-1" title="Event Transitions">
 <ul>
   <li><Status type="event" status="not-scheduled" /> → <Status type="event" status="upcoming" />: <span class="trigger-type">Internal Conditional</span> — Triggered when at least one of Start Date or Due Date is set.</li>
   <li><Status type="event" status="upcoming" /> → <Status type="event" status="occurring" />: <span class="trigger-type">Chronological</span> — Triggered when the current datetime reaches or passes the event's start datetime.</li>
@@ -1543,7 +1544,7 @@ order: 1
 </ul>
 </Section>
 </Section>
-<Section id="sec-4-4-1-4" title="Shopping Status Group">
+<Section id="sec-4-2-1-4" title="Shopping Status Group">
 <p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
   models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
 <ul>
@@ -1554,11 +1555,11 @@ order: 1
   <li id="status-shopping-cancelled"><Status type="shopping" status="cancelled" showSubgroup /> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</li>
   <li id="status-shopping-received"><Status type="shopping" status="received" showSubgroup /> — The item has been purchased and received.</li>
 </ul>
-<Section id="sec-4-4-1-4-1" title="Shopping Transitions">
+<Section id="sec-4-2-1-4-1" title="Shopping Transitions">
 <p>Every transition is <strong>manual</strong>. The usual path is <Status type="shopping" status="idea" /> → <Status type="shopping" status="to-buy" /> → <Status type="shopping" status="in-cart" /> → <Status type="shopping" status="ordered" /> → <Status type="shopping" status="received" />, but an item may move from any status to any other (e.g. <Status type="shopping" status="ordered" /> back to <Status type="shopping" status="to-buy" /> after an order is cancelled, or <Status type="shopping" status="idea" /> to <Status type="shopping" status="cancelled" />).</p>
 </Section>
 </Section>
-<Section id="sec-4-4-1-5" title="Statusless Status Group">
+<Section id="sec-4-2-1-5" title="Statusless Status Group">
 <p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
   entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
   group. ClickUp also requires at least one non-closed status and exactly one closed status per group, so we
@@ -1571,7 +1572,7 @@ order: 1
   status changes are ever made.</p>
 </Section>
 </Section>
-<Section id="sec-4-4-2" title="Tags">
+<Section id="sec-4-2-2" title="Tags">
 <p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
 <p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <TaskTypeLink to="task">Task</TaskTypeLink>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
 <p>The following tags are used in this workspace:</p>
@@ -1588,7 +1589,7 @@ order: 1
   <li><span class="doc-tag" style="background-color:#96f1fb" title="#96f1fb">social</span> — Involves spending time or interacting with others outside the household.</li>
 </ul>
 </Section>
-<Section id="sec-4-4-3" title="Custom Fields">
+<Section id="sec-4-2-3" title="Custom Fields">
 <p>The following fields are custom fields that belong to this workspace. They are the fields we have created and
   attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms
   wherever their scope applies.</p>
@@ -1650,15 +1651,18 @@ order: 1
     </TBody>
 </Table>
 </Section>
-<Section id="sec-4-4-4" title="Templates">
+<Section id="sec-4-2-4" title="Templates">
 <p>Templates are reusable predefined structures that let us create entries, lists, documents, or other workspace elements in a consistent way without rebuilding them from scratch each time. In ClickUp, a template can preserve things like field values, descriptions, subtasks, views, or broader setup, depending on what is being templated. Their role in the workspace is to turn recurring patterns into repeatable starting points, so that common processes, standard structures, and known best practices can be instantiated quickly and consistently.</p>
-<Section id="sec-4-4-4-1" title="Space Templates">
+<Section id="sec-4-2-4-1" title="Space Templates">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-4-4-2" title="Folder Templates">
+<Section id="sec-4-2-4-2" title="Folder Templates">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-4-4-3" title="List Templates">
+<Section id="sec-4-2-4-3" title="List Templates">
+<p>(To be filled in.)</p>
 
-<Section id="sec-4-4-4-3-1" title="Events" alias="automation-list-events">
+<Section id="sec-4-2-4-3-1" title="Events" alias="automation-list-events">
 
 <p>Template for lists of the Event task type. It sets the default task type and status group for events, includes automations that add entries to the <AutomationLink to="list-events">Automations - Events</AutomationLink> list, and provides views for working with events.</p>
 <p><strong>Task type:</strong> <TaskTypeLink to="event">Event</TaskTypeLink></p>
@@ -1675,13 +1679,16 @@ order: 1
 
 </Section>
 </Section>
-<Section id="sec-4-4-4-4" title="Task Templates">
+<Section id="sec-4-2-4-4" title="Task Templates">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-4-4-5" title="Doc Templates">
+<Section id="sec-4-2-4-5" title="Doc Templates">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-4-4-6" title="View Templates">
+<Section id="sec-4-2-4-6" title="View Templates">
+<p>(To be filled in.)</p>
 
-<Section id="sec-4-4-4-6-1" title="Events — Main" alias="view-events-main">
+<Section id="sec-4-2-4-6-1" title="Events — Main" alias="view-events-main">
 
 <p>This is the template for the main list view of <TaskTypeLink to="event">event</TaskTypeLink> lists.</p>
 
@@ -1694,11 +1701,11 @@ order: 1
 </Section>
 </Section>
 </Section>
-<Section id="sec-4-4-5" title="Filters">
+<Section id="sec-4-2-5" title="Filters">
 
 <p>Filters are the mechanisms that let us define which entries appear in a given view or context. They make it possible to narrow the visible set of entries according to field values. ClickUp allows filters to be saved and reused across views.</p>
 
-<Section id="sec-4-4-5-1" title="Assignee | Me mode OR Unassigned" alias="filter-assignee-me-or-unassigned">
+<Section id="sec-4-2-5-1" title="Assignee | Me mode OR Unassigned" alias="filter-assignee-me-or-unassigned">
 
 <p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
 <ul>
@@ -1706,7 +1713,7 @@ order: 1
 </ul>
 
 </Section>
-<Section id="sec-4-4-5-2" title="Due This Week">
+<Section id="sec-4-2-5-2" title="Due This Week">
 
 <p>Shows entries whose <BaseFieldLink to="due-date">Due Date</BaseFieldLink> falls within the current week.</p>
 <ul>
@@ -1718,20 +1725,21 @@ order: 1
 
 </Section>
 </Section>
-<Section id="sec-4-4-6" title="Automations">
+<Section id="sec-4-2-6" title="Automations">
 
 <p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
 
 <p>In our workspace, we use two kinds of automations: ClickUp automations, which are built directly into ClickUp, and webhook automations, which begin with webhook events sent out from ClickUp to server-side logic.</p>
 
-<Section id="sec-4-4-6-1" title="Task Automations">
+<Section id="sec-4-2-6-1" title="Task Automations">
 
 <p>(To be filled in.)</p>
 
 </Section>
-<Section id="sec-4-4-6-2" title="Event Automations">
+<Section id="sec-4-2-6-2" title="Event Automations">
+<p>(To be filled in.)</p>
 
-<Section id="sec-4-4-6-2-1" title="Start Time arrives → Set Occurring status">
+<Section id="sec-4-2-6-2-1" title="Start Time arrives → Set Occurring status">
 
 <p>When an <TaskTypeLink to="event">event</TaskTypeLink>'s <CustomFieldLink to="start-time">Start Time</CustomFieldLink> is reached, set its <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurring" />.</p>
 
@@ -1741,7 +1749,7 @@ order: 1
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurring" />.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-2" title="End Time arrives → Set Occurred status">
+<Section id="sec-4-2-6-2-2" title="End Time arrives → Set Occurred status">
 
 <p>When an <TaskTypeLink to="event">event</TaskTypeLink>'s <CustomFieldLink to="end-time">End Time</CustomFieldLink> is reached, set its <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurred" />.</p>
 
@@ -1751,7 +1759,7 @@ order: 1
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Set <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurred" />.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-3" title="Event created → Add to list Automations - Events" alias="automation-event-created-add-to-list">
+<Section id="sec-4-2-6-2-3" title="Event created → Add to list Automations - Events" alias="automation-event-created-add-to-list">
 
 <p>When an <TaskTypeLink to="event">event</TaskTypeLink> is created, add it to the list <AutomationLink to="list-events">Automations - Events</AutomationLink>.</p>
 
@@ -1759,7 +1767,7 @@ order: 1
 <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Action</span><span class="doc-rule-content">Add to list <AutomationLink to="list-events">Automations - Events</AutomationLink>.</span></div>
 
 </Section>
-<Section id="sec-4-4-6-2-4" title="Event moved here → Add to list Automations - Events" alias="automation-event-moved-add-to-list">
+<Section id="sec-4-2-6-2-4" title="Event moved here → Add to list Automations - Events" alias="automation-event-moved-add-to-list">
 
 <p>When an <TaskTypeLink to="event">event</TaskTypeLink> is moved into the list, add it to the list <AutomationLink to="list-events">Automations - Events</AutomationLink>.</p>
 
@@ -1771,6 +1779,7 @@ order: 1
 </Section>
 </Section>
 <Section id="sec-4-5" title="External Integrations">
+<p>(To be filled in.)</p>
 
 <Section id="sec-4-5-1" title="Webhook Automations">
 
@@ -1778,27 +1787,29 @@ order: 1
 
 </Section>
 </Section>
-<Section id="sec-4-2" title="Project Scope">
-<Section id="sec-4-2-1" title="Spaces">
-
+<Section id="sec-4-3" title="Project Scope">
+<p>(To be filled in.)</p>
+<Section id="sec-4-3-1" title="Spaces">
+<p>(To be filled in.)</p>
 </Section>
 </Section>
-<Section id="sec-4-3" title="Workflows">
+<Section id="sec-4-4" title="Workflows">
+<p>(To be filled in.)</p>
 
-<Section id="sec-4-3-1" title="Daily Routine">
-
+<Section id="sec-4-4-1" title="Daily Routine">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-3-2" title="Task Intake">
-
+<Section id="sec-4-4-2" title="Task Intake">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-3-3" title="Task Management">
-
+<Section id="sec-4-4-3" title="Task Management">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-3-4" title="Sprint Planning">
-
+<Section id="sec-4-4-4" title="Sprint Planning">
+<p>(To be filled in.)</p>
 </Section>
-<Section id="sec-4-3-5" title="Meetings">
-
+<Section id="sec-4-4-5" title="Meetings">
+<p>(To be filled in.)</p>
 </Section>
 </Section>
 </Section>

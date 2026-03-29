@@ -27,10 +27,12 @@ const { to } = Astro.props;
     --doc-link-status-group: #db2777;
     --doc-link-status-group-hover: #ec4899;
   }
-  a.status-group-link {
+  /* Include :visited — `.document a:visited` in link.css would otherwise win (task vs event differs by which fragment was visited). */
+  .document a.status-group-link,
+  .document a.status-group-link:visited {
     color: var(--doc-link-status-group);
   }
-  a.status-group-link:hover {
+  .document a.status-group-link:hover {
     color: var(--doc-link-status-group-hover);
     text-decoration: underline;
   }
