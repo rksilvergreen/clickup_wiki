@@ -3,17 +3,12 @@
   --doc-table-base-scope: #6688e7;
   --doc-table-custom-fields: #6688e7;
   --doc-table-field-types: #a485d4;
-
-  /* Component colors */
-  --doc-trigger-type-bg: rgba(90, 170, 138, 0.10);
 }
 
 [data-theme="light"] {
   --doc-table-base-scope: #2563eb;
   --doc-table-custom-fields: #1d4ed8;
   --doc-table-field-types: #7c3aed;
-
-  --doc-trigger-type-bg: rgba(45, 90, 74, 0.08);
 }
 
 /* ── Field composition (if/then blocks) ── */
@@ -144,17 +139,6 @@
   margin-top: 1.5rem;
 }
 
-.document .trigger-type {
-  display: inline-block;
-  font-size: 0.85em;
-  font-weight: 600;
-  color: var(--doc-highlight);
-  background: var(--doc-trigger-type-bg);
-  padding: 0.15em 0.5em;
-  border-radius: 3px;
-  margin-right: 0.25em;
-}
-
 /* ── Tags ── */
 
 .document .doc-tag-list {
@@ -183,7 +167,6 @@
   font-weight: 500;
   color: #fff;
   flex-shrink: 0;
-  cursor: help;
 }
 
 /* ── Field / status tooltips ── */

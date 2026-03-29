@@ -1,0 +1,18 @@
+:root {
+  --doc-status-trigger-bg: rgba(90, 170, 138, 0.10);
+}
+
+[data-theme="light"] {
+  --doc-status-trigger-bg: rgba(45, 90, 74, 0.08);
+}
+
+.document .status-trigger {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--doc-highlight);
+  background: var(--doc-status-trigger-bg);
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  margin-right: 0.25em;
+}
