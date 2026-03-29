@@ -1499,10 +1499,10 @@ order: 1
 <p>A status change is a transition: moving an entry from one lifecycle state to another. In our
   workspace, transitions can be driven by four kinds of triggers:</p>
 <ul>
-  <li><StatusTrigger>Manual</StatusTrigger> — The user explicitly changes the status based on judgment calls and intangible factors that the workspace can't reliably capture or analyze.</li>
-  <li><StatusTrigger>Internal Conditional</StatusTrigger> — Some change in the entry or elsewhere in the workspace triggers the transition.</li>
-  <li><StatusTrigger>External Conditional</StatusTrigger> — A real-world event outside the workspace happens, but it's still something that can be pinpointed and articulated specifically.</li>
-  <li><StatusTrigger>Chronological</StatusTrigger> — The passage of time triggers the change: a particular date-time boundary is reached.</li>
+  <LinkTarget as="li" id="status-trigger-manual"><StatusTrigger>Manual</StatusTrigger> — The user explicitly changes the status based on judgment calls and intangible factors that the workspace can't reliably capture or analyze.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger> — Some change in the entry or elsewhere in the workspace triggers the transition.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-external-conditional"><StatusTrigger>External Conditional</StatusTrigger> — A real-world event outside the workspace happens, but it's still something that can be pinpointed and articulated specifically.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-chronological"><StatusTrigger>Chronological</StatusTrigger> — The passage of time triggers the change: a particular date-time boundary is reached.</LinkTarget>
 </ul>
 </Section>
 <Section id="sec-4-2-1-2" title="Task Status Group">
@@ -1517,12 +1517,12 @@ order: 1
 </ul>
 <Section id="sec-4-2-1-2-1" title="Task Transitions">
 <ul>
-  <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <StatusTrigger>Internal Conditional</StatusTrigger> — Triggered when at least one of <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> is set.</li>
-  <li><Status type="task" status="to-do" /> → <Status type="task" status="in-progress" />: <StatusTrigger>Manual</StatusTrigger> — The user declares that work has begun.</li>
-  <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="canceled" />: <StatusTrigger>Manual</StatusTrigger> — The user decides the task will not be completed.</li>
-  <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="complete" />: <StatusTrigger>Manual</StatusTrigger> — The user declares the task has been completed.</li>
-  <li><Status type="task" status="in-progress" /> → <Status type="task" status="to-do" />: <StatusTrigger>Manual</StatusTrigger> — Work is paused, typically because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
-  <li>(<Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="backlog" />: <StatusTrigger>Internal Conditional</StatusTrigger> — Triggered when <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> and <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> are reset to <strong>null</strong>.</li>
+  <li><Status type="task" status="backlog" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when at least one of <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> is set.</li>
+  <li><Status type="task" status="to-do" /> → <Status type="task" status="in-progress" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The user declares that work has begun.</li>
+  <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="canceled" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The user decides the task will not be completed.</li>
+  <li>(<Status type="task" status="backlog" />, <Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="complete" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The user declares the task has been completed.</li>
+  <li><Status type="task" status="in-progress" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Work is paused, typically because it's blocked, deprioritized, or waiting on something, but still intended to be resumed.</li>
+  <li>(<Status type="task" status="to-do" />, <Status type="task" status="in-progress" />) → <Status type="task" status="backlog" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> and <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> are reset to <strong>null</strong>.</li>
 </ul>
 </Section>
 </Section>
@@ -1536,11 +1536,11 @@ order: 1
 </ul>
 <Section id="sec-4-2-1-3-1" title="Event Transitions">
 <ul>
-  <li><Status type="event" status="not-scheduled" /> → <Status type="event" status="upcoming" />: <StatusTrigger>Internal Conditional</StatusTrigger> — Triggered when at least one of Start Date or Due Date is set.</li>
-  <li><Status type="event" status="upcoming" /> → <Status type="event" status="occurring" />: <StatusTrigger>Chronological</StatusTrigger> — Triggered when the current datetime reaches or passes the event's start datetime.</li>
-  <li><Status type="event" status="occurring" /> → <Status type="event" status="occurred" />: <StatusTrigger>Chronological</StatusTrigger> — Triggered when the current datetime reaches or passes the event's end datetime (i.e., the Due/End Time).</li>
-  <li>(<Status type="event" status="upcoming" />, <Status type="event" status="occurring" />) → <Status type="event" status="not-scheduled" />: <StatusTrigger>Internal Conditional</StatusTrigger> — Triggered when Start Date and Due Date are reset to null.</li>
-  <li><Status type="event" status="occurring" /> → <Status type="event" status="upcoming" />: <StatusTrigger>Internal Conditional</StatusTrigger> — Triggered when the event's start datetime is moved forward to a datetime that has not yet happened.</li>
+  <li><Status type="event" status="not-scheduled" /> → <Status type="event" status="upcoming" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when at least one of Start Date or Due Date is set.</li>
+  <li><Status type="event" status="upcoming" /> → <Status type="event" status="occurring" />: <StatusTriggerLink to="chronological"><StatusTrigger>Chronological</StatusTrigger></StatusTriggerLink> — Triggered when the current datetime reaches or passes the event's start datetime.</li>
+  <li><Status type="event" status="occurring" /> → <Status type="event" status="occurred" />: <StatusTriggerLink to="chronological"><StatusTrigger>Chronological</StatusTrigger></StatusTriggerLink> — Triggered when the current datetime reaches or passes the event's end datetime (i.e., the Due/End Time).</li>
+  <li>(<Status type="event" status="upcoming" />, <Status type="event" status="occurring" />) → <Status type="event" status="not-scheduled" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when Start Date and Due Date are reset to null.</li>
+  <li><Status type="event" status="occurring" /> → <Status type="event" status="upcoming" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the event's start datetime is moved forward to a datetime that has not yet happened.</li>
 </ul>
 </Section>
 </Section>
@@ -1577,16 +1577,16 @@ order: 1
 <p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <TaskTypeLink to="sec-4-1-1-1">Task</TaskTypeLink>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
 <p>The following tags are used in this workspace:</p>
 <ul class="doc-tag-list">
-  <li><span class="doc-tag" style="background-color:#b1b1b1" title="#b1b1b1">bureaucracy</span> — Administrative or procedural work: forms, paperwork, official processes.</li>
-  <li><span class="doc-tag" style="background-color:#a875ff" title="#a875ff">contact required</span> — Requires reaching out to someone outside the household—a service rep, friend, or family member.</li>
-  <li><span class="doc-tag" style="background-color:#b7c059" title="#b7c059">digital</span> — Can be done entirely on a device (computer, phone, tablet).</li>
-  <li><span class="doc-tag" style="background-color:#63beb4" title="#63beb4">household</span> — Physical work or chores in and around the home.</li>
-  <li><span class="doc-tag" style="background-color:#3e63dd" title="#3e63dd">maintenance</span> — Keeping something in working order—upkeep, repairs, routine care.</li>
-  <li><span class="doc-tag" style="background-color:#248f7d" title="#248f7d">medical</span> — Relates to health: appointments, treatments, or medical administration.</li>
-  <li><span class="doc-tag" style="background-color:#0091ff" title="#0091ff">outside</span> — Must be done away from home; requires going out.</li>
-  <li><span class="doc-tag" style="background-color:#ab4aba" title="#ab4aba">recreation</span> — Leisure, hobby, or entertainment—something enjoyable rather than obligatory.</li>
-  <li><span class="doc-tag" style="background-color:#6e56cf" title="#6e56cf">self-care</span> — Personal well-being: rest, reflection, or looking after oneself.</li>
-  <li><span class="doc-tag" style="background-color:#96f1fb" title="#96f1fb">social</span> — Involves spending time or interacting with others outside the household.</li>
+  <li><Tag color="#b1b1b1">bureaucracy</Tag> — Administrative or procedural work: forms, paperwork, official processes.</li>
+  <li><Tag color="#a875ff">contact required</Tag> — Requires reaching out to someone outside the household—a service rep, friend, or family member.</li>
+  <li><Tag color="#b7c059">digital</Tag> — Can be done entirely on a device (computer, phone, tablet).</li>
+  <li><Tag color="#63beb4">household</Tag> — Physical work or chores in and around the home.</li>
+  <li><Tag color="#3e63dd">maintenance</Tag> — Keeping something in working order—upkeep, repairs, routine care.</li>
+  <li><Tag color="#248f7d">medical</Tag> — Relates to health: appointments, treatments, or medical administration.</li>
+  <li><Tag color="#0091ff">outside</Tag> — Must be done away from home; requires going out.</li>
+  <li><Tag color="#ab4aba">recreation</Tag> — Leisure, hobby, or entertainment—something enjoyable rather than obligatory.</li>
+  <li><Tag color="#6e56cf">self-care</Tag> — Personal well-being: rest, reflection, or looking after oneself.</li>
+  <li><Tag color="#96f1fb">social</Tag> — Involves spending time or interacting with others outside the household.</li>
 </ul>
 </Section>
 <Section id="sec-4-2-3" title="Custom Fields">

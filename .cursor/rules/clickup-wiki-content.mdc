@@ -15,7 +15,7 @@ Content is authored in `.md` (or `.mdx`) files in `src/content/documents/`. Each
 - **Heading IDs** — Every heading has an `id` in the form `sec-N-N-N` (e.g. `id="sec-3-2-1"`). Assign correct IDs when adding headings.
 - **Table of contents** — per-document `*-toc.ts` files (e.g. `src/content/documents/wiki/wiki-toc.ts`) must stay in sync with the headings and their IDs.
 - **Cross-links** — Internal links use `href="#sec-..."` for heading anchors and `href="#row-..."` for table row anchors.
-- **Special spans** — Trigger types: `<StatusTrigger>...</StatusTrigger>` (MDX; green pill). Status subgroups: `<StatusSubgroup>...</StatusSubgroup>` (MDX; subgroup pill).
+- **Special spans** — Trigger types: `<StatusTrigger>...</StatusTrigger>` (green pill). Link to a trigger definition row: `<StatusTriggerLink to="manual">…</StatusTriggerLink>` (slugs: `manual`, `internal-conditional`, `external-conditional`, `chronological`; wrap `<StatusTrigger>` when linking). Definitions use `<LinkTarget as="li" id="status-trigger-{slug}">` around pill + description. Status subgroups: `<StatusSubgroup>...</StatusSubgroup>`. Tags: `<Tag color="#hex">label</Tag>` with `<ul class="doc-tag-list">` for list layout.
 - **Tree diagrams** — Emoji-led nested lists are wrapped in `<div class="doc-tree">`.
 - **Tables** — Every `<table>` is wrapped in `<div class="doc-table-wrap">`.
 - **Table row IDs** — Data rows in key tables carry `id="row-{slug}"` or `id="row-ft-{slug}"` for deep-linking.
