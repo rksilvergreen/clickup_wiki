@@ -1,0 +1,27 @@
+---
+/**
+ * StatusGroupLink — link to a status-group section.
+ *
+ * Wraps doc-shell's Link, prepending "status-group-" to the `to` value.
+ * The target Section must declare alias="status-group-{name}".
+ * Example: <StatusGroupLink to="task">Task Status Group</StatusGroupLink>
+ *          → href="#status-group-task"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`status-group-${to}`} class="status-group-link"><slot /></Link>
+
+<style is:global>
+  a.status-group-link { color: var(--doc-link-status-group); }
+  a.status-group-link:hover {
+    color: var(--doc-link-status-group-hover);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+/**
+ * BaseFieldLink — link to a row in the base-scope table.
+ *
+ * Wraps doc-shell's Link, prepending "base-scope-row-" to the `to` value.
+ * Example: <BaseFieldLink to="status">Status</BaseFieldLink>
+ *          → href="#base-scope-row-status"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`base-scope-row-${to}`} class="base-field-link"><slot /></Link>
+
+<style is:global>
+  a.base-field-link { color: var(--doc-link-base-scope); }
+</style>

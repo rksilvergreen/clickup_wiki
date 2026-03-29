@@ -1,0 +1,28 @@
+---
+/**
+ * TaskTypeFieldLink — link to a row in a task-type fields table.
+ *
+ * Wraps doc-shell's Link, constructing "{type}-fields-row-{to}".
+ * Example: <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink>
+ *          → href="#event-fields-row-status"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  type: string;
+  to: string;
+}
+
+const { type, to } = Astro.props;
+---
+
+<Link to={`${type}-fields-row-${to}`} class="task-type-field-link"><slot /></Link>
+
+<style is:global>
+  a.task-type-field-link {
+    color: var(--doc-ink);
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+  }
+</style>

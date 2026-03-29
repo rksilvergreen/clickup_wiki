@@ -1,0 +1,27 @@
+---
+/**
+ * ViewLink — link to a view section.
+ *
+ * Wraps doc-shell's Link, prepending "view-" to the `to` value.
+ * The target Section must declare alias="view-{name}".
+ * Example: <ViewLink to="events-main">Events — Main</ViewLink>
+ *          → href="#view-events-main"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`view-${to}`} class="view-link"><slot /></Link>
+
+<style is:global>
+  a.view-link { color: var(--doc-link-views); }
+  a.view-link:hover {
+    color: var(--doc-link-views-hover);
+    text-decoration: underline;
+  }
+</style>

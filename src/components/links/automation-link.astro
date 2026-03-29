@@ -1,0 +1,27 @@
+---
+/**
+ * AutomationLink — link to an automation section.
+ *
+ * Wraps doc-shell's Link, prepending "automation-" to the `to` value.
+ * The target Section must declare alias="automation-{name}".
+ * Example: <AutomationLink to="webhooks">Webhooks</AutomationLink>
+ *          → href="#automation-webhooks"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`automation-${to}`} class="automation-link"><slot /></Link>
+
+<style is:global>
+  a.automation-link { color: var(--doc-link-automations); }
+  a.automation-link:hover {
+    color: var(--doc-link-automations-hover);
+    text-decoration: underline;
+  }
+</style>

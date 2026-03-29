@@ -2,11 +2,32 @@
 import DocLayout, { getDocumentPaths } from "doc-shell/layouts/doc-layout";
 import Status from "clickup_wiki/components/status/status.astro";
 import StatusLink from "clickup_wiki/components/status-link/status-link.astro";
+import BaseFieldLink from "clickup_wiki/components/links/base-field-link.astro";
+import CustomFieldLink from "clickup_wiki/components/links/custom-field-link.astro";
+import TaskTypeFieldLink from "clickup_wiki/components/links/task-type-field-link.astro";
+import TaskTypeLink from "clickup_wiki/components/links/task-type-link.astro";
+import StatusGroupLink from "clickup_wiki/components/links/status-group-link.astro";
+import FilterLink from "clickup_wiki/components/links/filter-link.astro";
+import AutomationLink from "clickup_wiki/components/links/automation-link.astro";
+import ViewLink from "clickup_wiki/components/links/view-link.astro";
+import LocationLink from "clickup_wiki/components/links/location-link.astro";
 import "clickup_wiki/styles/clickup.css";
 
 export const getStaticPaths = getDocumentPaths;
 const { entry, allDocs } = Astro.props;
-const components = { Status, StatusLink };
+const components = {
+  Status,
+  StatusLink,
+  BaseFieldLink,
+  CustomFieldLink,
+  TaskTypeFieldLink,
+  TaskTypeLink,
+  StatusGroupLink,
+  FilterLink,
+  AutomationLink,
+  ViewLink,
+  LocationLink,
+};
 ---
 
 <DocLayout entry={entry} allDocs={allDocs} components={components} />
