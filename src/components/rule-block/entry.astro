@@ -1,0 +1,15 @@
+---
+interface Props {
+  keyword?: string;
+}
+
+const { keyword } = Astro.props;
+---
+
+<div class="doc-rl-line">
+  {keyword
+    ? <span class="doc-rl-keyword"><em>{keyword}</em></span>
+    : <span class="doc-rl-keyword doc-rl-keyword-empty"></span>
+  }
+  <div class="doc-rl-content"><slot /></div>
+</div>

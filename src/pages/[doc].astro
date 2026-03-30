@@ -17,6 +17,11 @@ import ViewLink from "@components/links/view-link.astro";
 import LocationLink from "@components/links/location-link.astro";
 import Tag from "@components/tag/tag.astro";
 import HierarchyTree from "@components/hierarchy-tree/hierarchy-tree.astro";
+import Rule from "@components/rule-block/rule.astro";
+import Entry from "@components/rule-block/entry.astro";
+import Group from "@components/rule-block/group.astro";
+import GroupItem from "@components/rule-block/group-item.astro";
+import Nested from "@components/rule-block/nested.astro";
 import "clickup_wiki/styles/clickup.css";
 
 export const getStaticPaths = getDocumentPaths;
@@ -39,6 +44,11 @@ const components = {
   LocationLink,
   Tag,
   HierarchyTree,
+  Rule,
+  Entry,
+  Group,
+  GroupItem,
+  Nested,
 };
 ---
 

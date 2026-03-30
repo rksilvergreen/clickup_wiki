@@ -1,0 +1,132 @@
+/* ── Rule Block component system ── */
+
+/* ── List wrapper (.doc-rl-list) ── */
+
+.document .doc-rl-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.document .doc-rl-list > li {
+  margin-bottom: 0.75em;
+}
+
+.document .doc-rl-list > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ordered rule lists: parenthesized counter as marker */
+.document ol.doc-rl-list {
+  counter-reset: rl-rule;
+  list-style: none;
+}
+
+.document ol.doc-rl-list > li {
+  counter-increment: rl-rule;
+  position: relative;
+  padding-left: 2.5em;
+  margin-bottom: 1em;
+}
+
+.document ol.doc-rl-list > li::before {
+  content: '(' counter(rl-rule) ')';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--doc-ink-light);
+}
+
+.document ol.doc-rl-list .doc-rl-line {
+  margin-left: 0;
+}
+
+/* Spacing around rule lists adjacent to paragraphs */
+.document p:has(+ .doc-rl-list) {
+  margin-bottom: 0.4rem;
+}
+
+.document p + .doc-rl-list {
+  margin-top: 0.25rem;
+}
+
+.document .doc-rl-list + p {
+  margin-top: 1.5rem;
+}
+
+/* Standalone rules (not in a list) — keep spacing between consecutive rules */
+.document .doc-rl-rule + .doc-rl-rule {
+  margin-top: 0.75em;
+}
+
+/* ── Entry (keyword + content line) ── */
+
+.document .doc-rl-line {
+  display: flex;
+  margin-left: 1em;
+}
+
+.document .doc-rl-line + .doc-rl-line {
+  margin-top: 0.35em;
+}
+
+.document .doc-rl-keyword {
+  flex-shrink: 0;
+  width: var(--rl-kw-width, 3.5em);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.document .doc-rl-keyword em {
+  font-style: normal;
+}
+
+.document .doc-rl-keyword-empty {
+  /* Same width, no text — alignment spacer */
+}
+
+.document .doc-rl-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Field/status tokens inside rule content: italicize linked names */
+.document .doc-rl-content strong {
+  font-style: italic;
+  font-weight: 400;
+  padding-left: 0.08em;
+  padding-right: 0.08em;
+}
+
+/* ── Group (visual bracket for logical grouping) ── */
+
+.document .doc-rl-group {
+  display: inline-flex;
+  flex-direction: column;
+  /* border-left: 2px solid var(--doc-border); */
+  border-radius: 2px;
+  /* padding-left: 0.6em; */
+  /* margin-left: -0.15em; */
+  gap: 0;
+}
+
+.document .doc-rl-group-item {
+  line-height: 1.6;
+}
+
+/* Operator text between group items, driven by --group-op */
+.document .doc-rl-group-item + .doc-rl-group-item::before {
+  content: var(--group-op);
+  display: block;
+  color: var(--doc-ink-light);
+  font-style: italic;
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+/* ── Nested (branching sub-rules, direct child of Rule) ── */
+
+.document .doc-rl-nested {
+  margin-left: 1.5em;
+  margin-top: 0.35em;
+}

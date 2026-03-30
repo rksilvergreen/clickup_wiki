@@ -11,109 +11,34 @@
   --doc-table-field-types: #7c3aed;
 }
 
-/* ── Field composition (if/then blocks) ── */
+/* ── Operational-rules style overrides (non-migrated blocks) ── */
 
-.document .doc-field-comp {
-  list-style: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.document p:has(+ ul.doc-field-comp) {
-  margin-bottom: 0.4rem;
-}
-
-.document p+ul.doc-field-comp {
-  margin-top: 0.25rem;
-}
-
-.document ul.doc-field-comp+p {
-  margin-top: 1.5rem;
-}
-
-.document .doc-field-comp .doc-fc-block {
-  margin-bottom: 0.75em;
-}
-
-.document .doc-field-comp .doc-fc-block:last-child {
-  margin-bottom: 0;
-}
-
-.document .doc-fc-line {
-  display: flex;
-  margin-left: 1em;
-}
-
-.document .doc-fc-line.doc-fc-then {
-  margin-top: 0.35em;
-}
-
-.document .doc-fc-keyword {
-  flex-shrink: 0;
-  width: 3.5em;
-  font-style: normal;
-  font-weight: 700;
-}
-
-/* If/Then keywords are authored as <em> but should render as bold */
-.document .doc-fc-keyword em {
-  font-style: normal;
-}
-
-.document .doc-fc-line .doc-fc-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.document .doc-field-comp strong {
-  padding-left: 0.08em;
-  padding-right: 0.08em;
-}
-
-/* Field preview tokens inside if/then blocks: italicize them. */
-.document .doc-fc-line .doc-fc-content strong {
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* Rule blocks (used in sections like 4.1.1.1.3): swap styles too. */
 .document .doc-rule-keyword {
   font-style: normal;
   font-weight: 700;
 }
 
-.document .doc-rule-content strong,
-.document .doc-rule-group .doc-rule-group-line strong {
+.document .doc-rule-content strong {
   font-style: italic;
   font-weight: 400;
 }
 
-/* In Trigger lines, non-linked text should read as regular body text. */
 .document .doc-rules-list .doc-rule-header .doc-rule-content strong {
   font-style: normal;
   font-weight: 400;
   color: var(--doc-ink-light);
 }
 
-/* Keep linked field/status tokens in Trigger lines visually special. */
 .document .doc-rules-list .doc-rule-header .doc-rule-content a strong {
   font-style: italic;
   color: var(--doc-ink);
 }
 
-/* Keep operational-rules body text at regular document tone. */
 .document .doc-rules-list .doc-rule-content,
 .document .doc-rules-list .doc-rule-content em,
 .document .doc-rules-list .doc-rule-num,
-.document .doc-rules-list .doc-rule-cont,
-.document .doc-rules-list .doc-rule-group-op {
+.document .doc-rules-list .doc-rule-cont {
   color: var(--doc-ink-light);
-}
-
-.document .doc-fc-nested {
-  margin-left: 1.5em;
-  margin-top: 0.35em;
 }
 
 /* ── Status groups ── */

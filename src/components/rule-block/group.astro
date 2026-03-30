@@ -1,0 +1,11 @@
+---
+interface Props {
+  op: "and" | "or";
+}
+
+const { op } = Astro.props;
+---
+
+<span class="doc-rl-group" style={`--group-op: '${op}'`}>
+  <slot />
+</span>
