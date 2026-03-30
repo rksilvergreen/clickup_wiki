@@ -8,6 +8,9 @@ export default defineConfig({
     resolve: {
       alias: {
         clickup_wiki: fileURLToPath(new URL('./src', import.meta.url)),
+        '@components': fileURLToPath(
+          new URL('./src/components', import.meta.url),
+        ),
       },
     },
   },

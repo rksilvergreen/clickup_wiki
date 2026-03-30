@@ -192,12 +192,12 @@
 }
 
 /* Base scope table: blue headers */
-.document #base-scope thead {
+.document #base-scope doc-thead {
   background: var(--doc-table-base-scope);
 }
 
 /* Custom fields table */
-.document #custom-fields thead {
+.document #custom-fields doc-thead {
   background: var(--doc-table-custom-fields);
 }
 
@@ -207,7 +207,7 @@
 }
 
 /* Field types table: purple headers */
-.document #field-types thead {
+.document #field-types doc-thead {
   background: var(--doc-table-field-types);
 }
 

@@ -5,6 +5,9 @@
     "paths": {
       "clickup_wiki/*": [
         "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
       ]
     }
   }
