@@ -106,7 +106,7 @@ order: 1
   Inheritance means that exposure to a child implies exposure to its ancestors.
   Examples of possible scope hierarchies:</p>
 <p><strong>Project Scope Hierarchy</strong> — How entries are grouped by the projects they support and the goals they aim to achieve.</p>
-<div class="doc-tree">
+<HierarchyTree>
   <ul>
     <li>
       🟦 General (space)
@@ -146,10 +146,10 @@ order: 1
       </ul>
     </li>
   </ul>
-</div>
+</HierarchyTree>
 <p><strong>Type Scope Hierarchy</strong> — Classifies entries by what they are intended to represent, providing the semantic category that distinguishes
   one kind of entry from another across the workspace.</p>
-<div class="doc-tree">
+<HierarchyTree>
   <ul>
     <li>✅ Task</li>
     <li>
@@ -180,9 +180,9 @@ order: 1
       </ul>
     </li>
   </ul>
-</div>
+</HierarchyTree>
 <p><strong>Responsibility Scope Hierarchy</strong> — Groups entries by who is accountable for interacting with them and carrying them forward.</p>
-<div class="doc-tree">
+<HierarchyTree>
   <ul>
     <li>
       🧪 Research
@@ -224,7 +224,7 @@ order: 1
       </ul>
     </li>
   </ul>
-</div>
+</HierarchyTree>
 </Section>
 <Section id="sec-2-6-3" title="Per-Scope Parameterization">
 <p>Some field types are parameterized: their full meaning requires configuration parameters.
@@ -244,7 +244,7 @@ order: 1
   they branch into a further scope hierarchy.
   This yields nested or conditional modeling: certain context systems exist only inside certain other contexts.</p>
 <p>For example, the Status Scope Hierarchy is scoped under the Task scope of the Type Scope Hierarchy. That scope exposes a status field that acts as a scope selector into the Status hierarchy, allowing entries within the scope to branch into a more specific context that models their progression state:</p>
-<div class="doc-tree">
+<HierarchyTree>
   <ul>
     <li>
       ⬜ Not Started
@@ -268,7 +268,7 @@ order: 1
       </ul>
     </li>
   </ul>
-</div>
+</HierarchyTree>
 </Section>
 <Section id="sec-2-6-5" title="Entry-Local Scope">
 <p>In addition to shared scopes, an entry may have an entry-local scope tha applies only to itself—allowing truly per-entry schema/settings/rules extensions.</p>
@@ -997,7 +997,7 @@ order: 1
         entry is simultaneously in the “sub-project” scope (the list) and in the broader “project” scopes (its folder
         and space). That’s why location scopes behave like inheritance: lower-level project contexts don’t replace
         higher-level ones; they narrow them.</p>
-      <div class="doc-tree">
+      <HierarchyTree>
         <ul>
           <li>
             🟦 General (space)
@@ -1037,7 +1037,7 @@ order: 1
             </ul>
           </li>
         </ul>
-      </div>
+      </HierarchyTree>
 </Section>
 <Section id="sec-3-4-2" title="Task Type Scope Hierarchy">
       <p>This is the <strong>purpose hierarchy</strong> (even though ClickUp implements it as flat). A task type scope
@@ -1047,7 +1047,7 @@ order: 1
         that difference is captured by task type. In ClickUp, choosing a task type selects exactly one purpose scope
         with no inheritance: it doesn’t automatically imply a more general “parent type” scope. It’s a single-purpose
         label that lets you treat entries differently based on meaning, not location.</p>
-      <div class="doc-tree">
+      <HierarchyTree>
         <ul>
           <li>✅ Task</li>
           <li>📆 Event</li>
@@ -1055,7 +1055,7 @@ order: 1
           <li>🫱🏼‍🫲🏼 Meeting</li>
           <li>🏆 Goal</li>
         </ul>
-      </div>
+      </HierarchyTree>
 </Section>
 </Section>
 </Section>

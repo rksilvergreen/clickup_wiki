@@ -1,0 +1,37 @@
+/* Tree view — bordered card containing a nested <ul> hierarchy */
+
+.document .hierarchy-tree {
+  background: var(--doc-surface);
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.document .hierarchy-tree ul {
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.document .hierarchy-tree ul:first-child {
+  margin-top: 0;
+}
+
+.document .hierarchy-tree li {
+  padding-left: 0;
+}
+
+.document .hierarchy-tree li::before {
+  display: none;
+}
+
+.document .hierarchy-tree ul ul {
+  margin-left: 1rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--doc-border);
+}
+
+.document .hierarchy-tree ul ul li::before {
+  display: none;
+}
