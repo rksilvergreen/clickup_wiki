@@ -1149,9 +1149,8 @@ order: 1
 </Table>
 </Section>
 <Section id="sec-4-1-1-1-2" title="Task Constraints">
-<p><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+<p><strong>Status</strong></p>
+<RuleBlock>
 <Rule>
   <Entry keyword="If">
     <Group op="and">
@@ -1161,9 +1160,6 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="task" status="backlog" />.</Entry>
 </Rule>
-</li>
-<hr />
-<li>
 <Rule>
   <Entry keyword="If">
     <Group op="or">
@@ -1173,12 +1169,10 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> must not be <StatusLink type="task" status="backlog" />.</Entry>
 </Rule>
-</li>
-</ul>
+</RuleBlock>
 </Section>
 <Section id="sec-4-1-1-1-3" title="Task Operational Rules">
-<ol class="doc-rl-list" style="--rl-kw-width: 6.5em">
-<li>
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
 <Rule>
   <Entry keyword="Trigger">Task created →</Entry>
   <Entry keyword="Conditions">
@@ -1189,9 +1183,6 @@ order: 1
   </Entry>
   <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="to-do" />.</Entry>
 </Rule>
-</li>
-<hr />
-<li>
 <Rule>
   <Entry keyword="Trigger">
     <Group op="or">
@@ -1207,9 +1198,6 @@ order: 1
   </Entry>
   <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="backlog" />.</Entry>
 </Rule>
-</li>
-<hr />
-<li>
 <Rule>
     <Entry keyword="Trigger">
     <Group op="or">
@@ -1230,8 +1218,7 @@ order: 1
   </Entry>
   <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="to-do" />.</Entry>
 </Rule>
-</li>
-</ol>
+</RuleBlock>
 </Section>
 </Section>
 <Section id="sec-4-1-1-2" title="Event">
@@ -1320,9 +1307,8 @@ order: 1
   <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> are not meant to be edited directly.</p>
 </Section>
 <Section id="sec-4-1-1-2-2" title="Event Constraints">
-<p><TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+<p><strong>Start Time</strong></p>
+<RuleBlock>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is not set.</Entry>
   <Nested>
@@ -1332,44 +1318,32 @@ order: 1
     <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> must be midnight of the Due Date.</Entry>
   </Nested>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> has a real time.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> must be that time.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is date-only.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> must be midnight of that day.</Entry>
 </Rule>
-</li>
-</ul>
-<p><TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+</RuleBlock>
+<p><strong>End Time</strong></p>
+<RuleBlock>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is not set.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> must be empty.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> has a real time.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> must be that time.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is date-only.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> must be midnight of the <em>next</em> day.</Entry>
 </Rule>
-</li>
-</ul>
-<p><TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+</RuleBlock>
+<p><strong>Relevance Date</strong></p>
+<RuleBlock>
 <Rule>
   <Entry keyword="If">
     <Group op="and">
@@ -1379,17 +1353,13 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> must be <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> minus the relevance period (<TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> × <TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink>).</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If">either is not set.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> must be empty.</Entry>
 </Rule>
-</li>
-</ul>
-<p><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+</RuleBlock>
+<p><strong>Status</strong></p>
+<RuleBlock>
 <Rule>
   <Entry keyword="If">
     <Group op="and">
@@ -1399,8 +1369,6 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="not-scheduled" />.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If">
     <Group op="and">
@@ -1415,8 +1383,6 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="upcoming" />.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If">
     <Group op="and">
@@ -1426,50 +1392,60 @@ order: 1
   </Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="occurring" />.</Entry>
 </Rule>
-</li>
-<li>
 <Rule>
   <Entry keyword="If">current time &gt; <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink>.</Entry>
   <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="occurred" />.</Entry>
 </Rule>
-</li>
-</ul>
+</RuleBlock>
 </Section>
 <Section id="sec-4-1-1-2-3" title="Event Operational Rules">
-<ol class="doc-rules-list" style="list-style: none">
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><strong>Event created</strong> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(2) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) set <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink>,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(3) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(II) enforce <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(III) enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints,</span></div>
-    <div class="doc-rule-line"><span class="doc-rule-num"></span><span class="doc-rule-cont"></span><span class="doc-rule-content">(IV) enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(4) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content"><TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> / <TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink> changed →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(5) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-  <li>
-    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(6) </span><span class="doc-rule-keyword">Trigger</span><span class="doc-rule-content">current time &gt; <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> →</span></div>
-    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword">Actions</span><span class="doc-rule-content">(I) enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</span></div>
-  </li>
-</ol>
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger">Event created →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>set <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink>.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> / <TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="relevance-date">Relevance Date</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem>current time &gt; <TaskTypeFieldLink type="event" to="start-time">Start Time</TaskTypeFieldLink> →</GroupItem>
+      <GroupItem>current time &gt; <TaskTypeFieldLink type="event" to="end-time">End Time</TaskTypeFieldLink> →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+</RuleBlock>
 </Section>
 </Section>
 <Section id="sec-4-1-1-3" title="Record">
@@ -1501,13 +1477,11 @@ order: 1
 </Section>
 <Section id="sec-4-1-1-3-2" title="Record Constraints">
 <p><TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+<RuleBlock>
 <Rule>
   <Entry><TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> must be set.</Entry>
 </Rule>
-</li>
-</ul>
+</RuleBlock>
 </Section>
 <Section id="sec-4-1-1-3-3" title="Record Operational Rules">
 <ol class="doc-rules-list" style="list-style: none">
@@ -1548,13 +1522,11 @@ order: 1
 </Section>
 <Section id="sec-4-1-1-5-2" title="Milestone Constraints">
 <p><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink></p>
-<ul class="doc-rl-list">
-<li>
+<RuleBlock>
 <Rule>
   <Entry><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> must be set.</Entry>
 </Rule>
-</li>
-</ul>
+</RuleBlock>
 </Section>
 </Section>
 <Section id="sec-4-1-1-6" title="Data">
