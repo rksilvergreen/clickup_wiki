@@ -1162,6 +1162,7 @@ order: 1
   <Entry keyword="Then"><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="task" status="backlog" />.</Entry>
 </Rule>
 </li>
+<hr />
 <li>
 <Rule>
   <Entry keyword="If">
@@ -1179,7 +1180,7 @@ order: 1
 <ol class="doc-rl-list" style="--rl-kw-width: 6.5em">
 <li>
 <Rule>
-  <Entry keyword="Trigger"><strong>Task created</strong> →</Entry>
+  <Entry keyword="Trigger">Task created →</Entry>
   <Entry keyword="Conditions">
     <Group op="or">
       <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is set.</GroupItem>
@@ -1189,9 +1190,15 @@ order: 1
   <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="to-do" />.</Entry>
 </Rule>
 </li>
+<hr />
 <li>
 <Rule>
-  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
   <Entry keyword="Conditions">
     <Group op="and">
       <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is not set.</GroupItem>
@@ -1201,38 +1208,15 @@ order: 1
   <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="backlog" />.</Entry>
 </Rule>
 </li>
+<hr />
 <li>
 <Rule>
-  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</Entry>
-  <Entry keyword="Conditions">
-    <Group op="and">
-      <GroupItem><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="backlog" />.</GroupItem>
-      <GroupItem>
-        <Group op="or">
-          <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is set</GroupItem>
-          <GroupItem><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> is set.</GroupItem>
-        </Group>
-      </GroupItem>
+    <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> changed →</GroupItem>
     </Group>
   </Entry>
-  <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="to-do" />.</Entry>
-</Rule>
-</li>
-<li>
-<Rule>
-  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> changed →</Entry>
-  <Entry keyword="Conditions">
-    <Group op="and">
-      <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is not set.</GroupItem>
-      <GroupItem><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> is not set.</GroupItem>
-    </Group>
-  </Entry>
-  <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="backlog" />.</Entry>
-</Rule>
-</li>
-<li>
-<Rule>
-  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> changed →</Entry>
   <Entry keyword="Conditions">
     <Group op="and">
       <GroupItem><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="backlog" />.</GroupItem>

@@ -8,11 +8,11 @@
   padding: 0;
 }
 
-.document .doc-rl-list > li {
+.document .doc-rl-list>li {
   margin-bottom: 0.75em;
 }
 
-.document .doc-rl-list > li:last-child {
+.document .doc-rl-list>li:last-child {
   margin-bottom: 0;
 }
 
@@ -22,14 +22,14 @@
   list-style: none;
 }
 
-.document ol.doc-rl-list > li {
+.document ol.doc-rl-list>li {
   counter-increment: rl-rule;
   position: relative;
   padding-left: 2.5em;
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 
-.document ol.doc-rl-list > li::before {
+.document ol.doc-rl-list>li::before {
   content: '(' counter(rl-rule) ')';
   position: absolute;
   left: 0;
@@ -46,16 +46,16 @@
   margin-bottom: 0.4rem;
 }
 
-.document p + .doc-rl-list {
+.document p+.doc-rl-list {
   margin-top: 0.25rem;
 }
 
-.document .doc-rl-list + p {
+.document .doc-rl-list+p {
   margin-top: 1.5rem;
 }
 
 /* Standalone rules (not in a list) — keep spacing between consecutive rules */
-.document .doc-rl-rule + .doc-rl-rule {
+.document .doc-rl-rule+.doc-rl-rule {
   margin-top: 0.75em;
 }
 
@@ -66,7 +66,7 @@
   margin-left: 1em;
 }
 
-.document .doc-rl-line + .doc-rl-line {
+.document .doc-rl-line+.doc-rl-line {
   margin-top: 0.35em;
 }
 
@@ -103,11 +103,25 @@
 .document .doc-rl-group {
   display: inline-flex;
   flex-direction: column;
-  /* border-left: 2px solid var(--doc-border); */
-  border-radius: 2px;
-  /* padding-left: 0.6em; */
-  /* margin-left: -0.15em; */
   gap: 0;
+}
+
+/* Visual curly bracket only on nested groups (not the first/outermost) */
+.document .doc-rl-group-item .doc-rl-group {
+  position: relative;
+  padding-left: 0.8em;
+}
+
+.document .doc-rl-group-item .doc-rl-group::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.5em;
+  background: var(--doc-border);
+  -webkit-mask: url("./curly-bracket.svg") no-repeat 0 0 / 100% 100%;
+  mask: url("./curly-bracket.svg") no-repeat 0 0 / 100% 100%;
 }
 
 .document .doc-rl-group-item {
@@ -115,12 +129,12 @@
 }
 
 /* Operator text between group items, driven by --group-op */
-.document .doc-rl-group-item + .doc-rl-group-item::before {
+.document .doc-rl-group-item+.doc-rl-group-item::before {
   content: var(--group-op);
   display: block;
   color: var(--doc-ink-light);
   font-style: italic;
-  font-size: 0.85em;
+  font-size: 1em;
   line-height: 1.4;
 }
 
@@ -129,4 +143,12 @@
 .document .doc-rl-nested {
   margin-left: 1.5em;
   margin-top: 0.35em;
+}
+
+/* Thin dividers between rule list items */
+.document .doc-rl-list hr {
+  border: 0;
+  border-top: 1px dashed var(--doc-border);
+  width: 50%;
+  margin: 0.75em 0 0.75em 2.5em;
 }
