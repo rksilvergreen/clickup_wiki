@@ -1,5 +1,6 @@
 ---
 import DocLayout from "doc-shell/layouts/doc-layout/doc-layout.astro";
+import MainLayout from "doc-shell/layouts/main-layout/main-layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import Status from "@components/status/status.astro";
 import StatusSubgroup from "@components/status-subgroup/status-subgroup.astro";
@@ -27,37 +28,16 @@ import Nested from "@components/rule-block/nested.astro";
 import "clickup_wiki/styles/clickup.css";
 
 export async function getStaticPaths() {
-  const documents = (await getCollection("documents"))
-    .sort(
-      (a: CollectionEntry<"documents">, b: CollectionEntry<"documents">) =>
-        a.data.order - b.data.order,
-    )
-    .map((d: CollectionEntry<"documents">) => ({
-      slug: d.slug,
-      title: d.data.title,
-      description: d.data.description,
-    }));
-  return documents.map((entry) => ({
-    params: { doc: entry.slug },
-    props: { entry, documents },
-  }));
-}
-
-export async function getStaticPaths() {
-  const sortedDocs = (await getCollection("documents")).sort(
+  const collection = (await getCollection("documents")).sort(
     (a, b) => a.data.order - b.data.order,
   );
-  const documents = sortedDocs.map((d) => ({
-    slug: d.slug,
-    title: d.data.title,
-    description: d.data.description,
-  }));
-  return sortedDocs.map((entry) => ({
+  return collection.map((entry) => ({
     params: { doc: entry.slug },
-    props: { entry, documents },
+    props: { entry, collection },
   }));
 }
-const { entry, documents } = Astro.props;
+const title = "ClickUp Wiki";
+const { entry, collection } = Astro.props;
 const components = {
   Status,
   StatusSubgroup,
@@ -85,4 +65,6 @@ const components = {
 };
 ---
 
-<DocLayout entry={entry} documents={documents} components={components} />
+<MainLayout title={title} collection={collection} entry={entry}>
+  <DocLayout entry={entry} components={components} />
+</MainLayout>

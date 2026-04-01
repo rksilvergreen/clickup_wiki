@@ -12,6 +12,6 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "astro": "^5.18.0",
-    "doc-shell": "file:C:/doc_shell"
+    "doc-shell": "github:rksilvergreen/doc_shell"
   }
 }

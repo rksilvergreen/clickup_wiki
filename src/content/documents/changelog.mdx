@@ -5,19 +5,65 @@ order: 2
 ---
 
 <Section id="sec-1" title="Release Notes">
-<p>We stood up the initial changelog scaffolding and added a few "real enough" notes to help validate the doc layout.</p>
+<p>This log captures meaningful changes to the wiki, the workspace conventions it describes, and the operational practices that surround them. 
+  Entries are grouped by theme and period rather than strict semantic versioning, because much of what we track here is documentation and configuration, 
+  not shipped software.</p>
+
+<Section id="sec-1-1" title="March 2026 — Wiki publication and reference hardening">
+<p>The reference wiki moved from informal notes into this published site so the ontology, ClickUp mapping, and our workspace-specific rules live in one place.</p>
 <ul>
-  <li>Added a family-wide release log for operational visibility and future auditing.</li>
-  <li>Created a new template checklist: capture, triage, schedule, and close.</li>
+  <li>Documented the full progression from <strong>Ontology</strong> (general vocabulary) through <strong>ClickUp</strong> (platform behavior) to <strong>Workspace</strong> (how we actually use it).</li>
+  <li>Expanded definitions for fields, schemas, entries, databases, scopes, and the unified database mental model—including scope exposure and hierarchy examples.</li>
+  <li>Aligned internal cross-links and section anchors so deep navigation from long-form prose stays stable as pages grow.</li>
+  <li>Added this changelog as a lightweight audit trail for future readers who need to know what changed and why.</li>
 </ul>
+</Section>
+
+<Section id="sec-1-2" title="February 2026 — Structure, visibility, and shared ownership">
+<p>Focus on making recurring work legible across family members and reducing &quot;where does this live?&quot; friction.</p>
+<ul>
+  <li>Clarified which lists act as <strong>systems of record</strong> versus scratch or inbox-style holding areas.</li>
+  <li>Rolled out a family-wide release log pattern so operational changes have a dated, searchable history.</li>
+  <li>Introduced a capture → triage → schedule → close checklist for anything that enters the workspace as a vague idea and must become a tracked task.</li>
+  <li>Documented expectations for task titles and descriptions so context survives handoffs between people and between weeks.</li>
+</ul>
+</Section>
+
+<Section id="sec-1-3" title="January 2026 — Foundations and labeling">
+<p>Early alignment pass on naming, tags, and navigation before the reference document grew too large to retrofit.</p>
+<ul>
+  <li>Standardized labels and tags for recurring workstreams (household, personal projects, shared events).</li>
+  <li>Tuned navigation and in-app layouts so status fields, custom fields, and task types are easier to find in daily use.</li>
+  <li>Reserved space in the wiki for future sections on automations, review cadences, and integration boundaries.</li>
+</ul>
+</Section>
 
 </Section>
+
 <Section id="sec-2" title="Maintenance">
-<p>Light cleanup focused on consistency, reduced ambiguity, and fewer clicks during day-to-day usage.</p>
+<p>Smaller updates that improve consistency, reduce ambiguity, and shave clicks off common paths. These are not always tied to a single release date.</p>
 <ul>
-  <li>Standardized labels and tags for recurring workstreams.</li>
-  <li>Tuned some navigation affordances so status and field references are easier to find.</li>
+  <li>Periodic pass on duplicate or overlapping custom fields; merged synonyms where safe and documented the canonical names in the wiki.</li>
+  <li>Adjusted default views on high-traffic lists so open work sorts ahead of completed history without hiding the archive.</li>
+  <li>Tightened permission and visibility notes for personal spaces vs shared spaces so accidental oversharing is less likely.</li>
+  <li>Reconciled a few task-type definitions with actual list usage—types that existed on paper but were not applied consistently in practice.</li>
 </ul>
+</Section>
 
+<Section id="sec-3" title="Documentation practices">
+<p>How we keep the wiki trustworthy as the live workspace evolves.</p>
+<ul>
+  <li>When a convention changes in ClickUp, the wiki should be updated in the same week, with a short note here if the change is user-visible.</li>
+  <li>Prefer concrete examples (list names, field names, sample hierarchies) over abstract advice alone—examples drift, so they are reviewed quarterly.</li>
+  <li>Large rewrites get a summary bullet under Release Notes; typo fixes and wording-only tweaks usually do not.</li>
+</ul>
+</Section>
 
+<Section id="sec-4" title="Roadmap (non-binding)">
+<p>Planned or proposed improvements captured so we do not lose them. Items may slip or be superseded.</p>
+<ul>
+  <li>Dedicated wiki section for automation recipes: triggers, conditions, and expected side effects.</li>
+  <li>Short &quot;decision log&quot; appendix for major workspace forks (e.g., adopting a new task type or retiring a list).</li>
+  <li>Export or backup notes: how snapshots of critical lists are taken and where they live.</li>
+</ul>
 </Section>
