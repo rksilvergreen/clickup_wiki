@@ -1,0 +1,3 @@
+[submodule ".cursor/commands/shared"]
+	path = .cursor/commands/shared
+	url = https://github.com/rksilvergreen/cursor_commands.git
