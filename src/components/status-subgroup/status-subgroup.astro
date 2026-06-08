@@ -1,0 +1,25 @@
+---
+import Link from "doc-shell/components/link/link.astro";
+import { getStatusTypeDefinitionId } from "./status-type-targets";
+import "./status-subgroup.css";
+
+interface Props {
+  group: string;
+  /** When false, render a plain pill (e.g. on the definition rows in §4.4.1.1). */
+  link?: boolean;
+}
+
+const { group, link: shouldLink = true } = Astro.props;
+const defId = getStatusTypeDefinitionId(group);
+const canLink = shouldLink && defId;
+---
+
+{
+  canLink ? (
+    <Link to={defId!} class="status-type-pill-link doc-link">
+      <span class="status-type-pill">{group}</span>
+    </Link>
+  ) : (
+    <span class="status-type-pill">{group}</span>
+  )
+}

@@ -1,0 +1,889 @@
+---
+_sectionBase: "4.2"
+---
+<p>The Type Scope hierarchy is built on the idea that the <BaseFieldLink to="task-type">Task Type</BaseFieldLink> field functions as a scope selector field. In ClickUp, this is not a formally recognized scope mechanism in the same way that location is for the project scope, but in our workspace we deliberately treat it as one. That is, we recognize that type meaningfully determines applicability, behavior, and structure, and we organize the workspace accordingly even if ClickUp itself does not systematically model task type as a true scope hierarchy.</p>
+<p>This means that task type is not just a label for classification. It acts as a contextual boundary that helps determine what belongs to an entry and what does not. We create fields, status groups, tags, templates, automations, views, and filters that are intended for a specific task type and should not be used across others indiscriminately. The Type Scope section therefore describes the type-based structure we impose on the workspace: a conceptual scope hierarchy that we enforce through design, convention, and configuration rather than through a native ClickUp scoping system.</p>
+<Section id="sec-4-2-1" title="Task">
+<p>The default actionable work-item entry type, representing a unit of work that you intend to do, track to
+  completion, and manage through a workflow. A Task has an owner (or owners), a lifecycle state, and often a due
+  horizon; you can plan, prioritize, and advance it while keeping context in description, comments, attachments,
+  and relationships. As the most operational type—meant for execution rather than just capture—it relies on
+  ClickUp's built-in workflow machinery such as Status, Assignees, and Priority.</p>
+<Section id="sec-4-2-1-1" title="Task Fields">
+<Table id="task-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="task-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the task; statuses are according to the relevant <StatusGroupLink to="sec-4-2-1-2">status group</StatusGroupLink>.</TD>
+        <TD><StatusLink type="task" status="unspecified" /></TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="task-fields-row-priority">
+        <TD><BaseFieldLink to="priority">Priority</BaseFieldLink></TD>
+        <TD>Urgency or importance level of the task.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-assignees">
+        <TD><BaseFieldLink to="assignees">Assignees</BaseFieldLink></TD>
+        <TD>The person(s) responsible for doing the task.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-start-date">
+        <TD><BaseFieldLink to="start-date">Start Date</BaseFieldLink></TD>
+        <TD>The date from which work can start being done on the task (for whatever constraints apply).</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-due-date">
+        <TD><BaseFieldLink to="due-date">Due Date</BaseFieldLink></TD>
+        <TD>The date by which the task must be completed.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-sprint-points">
+        <TD><BaseFieldLink to="sprint-points">Sprint Points</BaseFieldLink></TD>
+        <TD>Numeric estimate (story points) representing the relative size or effort of the task for sprint planning.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-max-start-date">
+        <TD><CustomFieldLink to="max-start-date">=Max Start Date</CustomFieldLink></TD>
+        <TD>The latest date from which work can begin on the task and still be completed by the due date, given the estimated effort.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-time-estimate">
+        <TD><BaseFieldLink to="time-estimate">Time Estimate</BaseFieldLink></TD>
+        <TD>Estimated effort or duration for the task.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-time-tracked">
+        <TD><BaseFieldLink to="time-tracked">Time Tracked</BaseFieldLink></TD>
+        <TD>Actual time logged on the task.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-tags">
+        <TD><BaseFieldLink to="tags">Tags</BaseFieldLink></TD>
+        <TD>Optional multi-value markers for the <em>character</em> of the task.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+
+      <TR id="task-fields-row-lists">
+        <TD><BaseFieldLink to="lists">Lists</BaseFieldLink></TD>
+        <TD>List membership of the task—the home list and any additional lists it appears in.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="task-fields-row-dependencies">
+        <TD><BaseFieldLink to="dependencies">Dependencies</BaseFieldLink></TD>
+        <TD>Blocking or waiting relationships with other tasks.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-current-sprint-relevant">
+        <TD><CustomFieldLink to="current-sprint-relevant">=&Current Sprint Relevant</CustomFieldLink></TD>
+        <TD>Whether the task is relevant for the current sprint.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="task-fields-row-next-sprint-relevant">
+        <TD><CustomFieldLink to="next-sprint-relevant">=&Next Sprint Relevant</CustomFieldLink></TD>
+        <TD>Whether the task is relevant for the next sprint.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+<Section id="sec-4-2-1-1-1" title="Max Start Date">
+<p>The <TaskTypeFieldLink type="task" to="max-start-date">=Max Start Date</TaskTypeFieldLink> field computes the latest possible date from which work on the task can begin and still be completed by its <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink>. It derives the number of days required by dividing the task's <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> by a daily throughput rate and rounding up, then subtracts that number of days from the Due Date to produce a deadline-driven latest start. If the task's <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is already later than this computed date—meaning the window for on-time completion has passed by the time the task becomes available—the field returns the Start Date instead, since work cannot begin before it regardless. When Sprint Points is zero, minimal effort is required and the field simply equals the Due Date.</p>
+<p>In effect, =Max Start Date always yields the later of the task's Start Date and the computed deadline-driven latest start, giving a single date that answers: "What is the absolute latest I can begin this task and still finish on time?"</p>
+</Section>
+<Section id="sec-4-2-1-1-2" title="Task Derived Properties">
+<p>Several derived properties of a task—not stored as fields themselves, but computed from combinations of the fields above and from the task's place in the workspace—are referenced throughout this wiki. The following terms name those properties:</p>
+<ul>
+  <LinkTarget as="li" id="task-term-specified"><strong>Specified</strong> — A task is <em>specified</em> when all of the following are set: its <TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink>, its <TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink>, and at least one of <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>. If any of these is missing, the task is not specified.</LinkTarget>
+  <LinkTarget as="li" id="task-term-blocked"><strong>Blocked</strong> — A task is <em>blocked</em> if any of the following holds: (1) its <TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> include a "blocked by" relationship to another entry; (2) its <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="blocked" />; or (3) its <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="waiting" />.</LinkTarget>
+  <LinkTarget as="li" id="task-term-sprinted"><strong>Sprinted</strong> — A task is <em>sprinted</em> when it belongs to an <Link to="sprint-term-open">open sprint</Link> inside the sprint folder.</LinkTarget>
+  <LinkTarget as="li" id="task-term-sprint-relevant"><strong>Sprint relevant</strong> — A task is <em>sprint relevant</em> for a given sprint if its <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is the sprint's last day or earlier, or the <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> is not set.</LinkTarget>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-2-1-2" title="Task Statuses">
+<ul>
+  <LinkTarget as="li" id="status-task-unspecified"><Status type="task" status="unspecified" showStatusType /> — The task exists but is not yet <Link to="task-term-specified">specified</Link>.</LinkTarget>
+  <LinkTarget as="li" id="status-task-to-do"><Status type="task" status="to-do" showStatusType /> — The task is a candidate for execution.</LinkTarget>
+  <LinkTarget as="li" id="status-task-blocked"><Status type="task" status="blocked" showStatusType /> — The task cannot currently be worked on because it depends on another task being completed or on an event taking place.</LinkTarget>
+  <LinkTarget as="li" id="status-task-committed"><Status type="task" status="committed" showStatusType /> — The task has been pulled into a <Link to="sprint-term-open">open sprint</Link>, marking a concrete intent to work on it within that sprint's horizon.</LinkTarget>
+  <LinkTarget as="li" id="status-task-scheduled"><Status type="task" status="scheduled" showStatusType /> — The task belongs to a <Link to="sprint-term-open">open sprint</Link> and has been allocated a dedicated work session as a calendar time block.</LinkTarget>
+  <LinkTarget as="li" id="status-task-waiting"><Status type="task" status="waiting" showStatusType /> — The task belongs to a <Link to="sprint-term-open">open sprint</Link> but cannot currently be worked on due to an unmet dependency or pending event—the sprint-level counterpart of <StatusLink type="task" status="blocked" />, expected to clear up soon.</LinkTarget>
+  <LinkTarget as="li" id="status-task-canceled"><Status type="task" status="canceled" showStatusType /> — The task will not be completed.</LinkTarget>
+  <LinkTarget as="li" id="status-task-done"><Status type="task" status="done" showStatusType /> — The task is essentially complete but still requires review, content updates, or final adjustments before being transitioned to <StatusLink type="task" status="complete" />.</LinkTarget>
+  <LinkTarget as="li" id="status-task-complete"><Status type="task" status="complete" showStatusType /> — The task is finished and successfully completed.</LinkTarget>
+</ul>
+<Section id="sec-4-2-1-2-1" title="Task Status Transitions">
+<ul>
+  <li><Status type="task" status="unspecified" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes <Link to="task-term-specified">specified</Link>, is not <Link to="task-term-blocked">blocked</Link>, and is not <Link to="task-term-sprinted">sprinted</Link>.</li>
+  <li><Status type="task" status="unspecified" /> → <Status type="task" status="blocked" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes <Link to="task-term-specified">specified</Link>, is <Link to="task-term-blocked">blocked</Link>, and is not <Link to="task-term-sprinted">sprinted</Link>.</li>
+  <li>(<Status type="task" status="to-do" />, <Status type="task" status="blocked" />, <Status type="task" status="committed" />, <Status type="task" status="scheduled" />, <Status type="task" status="waiting" />) → <Status type="task" status="unspecified" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes unspecified.</li>
+  <li><Status type="task" status="to-do" /> → <Status type="task" status="blocked" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> or <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Triggered when a "blocked by" dependency is added; or manually.</li>
+  <li><Status type="task" status="to-do" /> → <Status type="task" status="committed" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes <Link to="task-term-sprinted">sprinted</Link>.</li>
+  <li><Status type="task" status="blocked" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> or <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Triggered when the "blocked by" dependency is removed; or manually, if no such dependency exists.</li>
+  <li><Status type="task" status="blocked" /> → <Status type="task" status="waiting" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes <Link to="task-term-sprinted">sprinted</Link>.</li>
+  <li><Status type="task" status="committed" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes unsprinted.</li>
+  <li><Status type="task" status="committed" /> → <Status type="task" status="scheduled" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The task has been allocated a calendar work session.</li>
+  <li><Status type="task" status="committed" /> → <Status type="task" status="waiting" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> or <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Triggered when a "blocked by" dependency is added; or manually.</li>
+  <li><Status type="task" status="scheduled" /> → <Status type="task" status="to-do" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes unsprinted.</li>
+  <li><Status type="task" status="scheduled" /> → <Status type="task" status="committed" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — There is no upcoming work session scheduled for the task.</li>
+  <li><Status type="task" status="scheduled" /> → <Status type="task" status="waiting" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> or <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Triggered when a "blocked by" dependency is added; or manually.</li>
+  <li><Status type="task" status="waiting" /> → <Status type="task" status="committed" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> or <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — Triggered when the "blocked by" dependency is removed; or manually, if no such dependency exists.</li>
+  <li><Status type="task" status="waiting" /> → <Status type="task" status="blocked" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the task becomes unsprinted.</li>
+  <li>(<Status type="task" status="unspecified" />, <Status type="task" status="to-do" />, <Status type="task" status="blocked" />, <Status type="task" status="committed" />, <Status type="task" status="scheduled" />, <Status type="task" status="waiting" />) → <Status type="task" status="canceled" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The task will no longer be pursued.</li>
+  <li>(<Status type="task" status="unspecified" />, <Status type="task" status="to-do" />, <Status type="task" status="blocked" />, <Status type="task" status="committed" />, <Status type="task" status="scheduled" />, <Status type="task" status="waiting" />) → <Status type="task" status="done" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The task is essentially complete but still requires review or final adjustments.</li>
+  <li>(<Status type="task" status="unspecified" />, <Status type="task" status="to-do" />, <Status type="task" status="blocked" />, <Status type="task" status="committed" />, <Status type="task" status="scheduled" />, <Status type="task" status="waiting" />) → <Status type="task" status="complete" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The task is finished.</li>
+  <li><Status type="task" status="done" /> → <Status type="task" status="complete" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The task has been reviewed and finalized.</li>
+</ul>
+</Section>
+<Section id="sec-4-2-1-2-2" title="Task Status Transitions Graph">
+
+<div class="doc-diagram">
+<Inspectable>
+  <div class="doc-diagram-dark">
+    <img src="/task-status-transitions-dark.svg" alt="Task status transitions diagram" style="max-width: 100%;" />
+  </div>
+</Inspectable>
+<Inspectable>
+  <div class="doc-diagram-light">
+    <img src="/task-status-transitions-light.svg" alt="Task status transitions diagram" style="max-width: 100%;" />
+  </div>
+</Inspectable>
+</div>
+
+</Section>
+</Section>
+<Section id="sec-4-2-1-3" title="Task Tags">
+<p>Tags are meant to express the <em>character</em> of a task: what doing it is like in practice—where your body and attention need to be, what kind of friction or facilitation it involves, and what “mode” the work lives in. They are not a substitute for status, estimates, or labels; they answer a different question, namely “what sort of thing is this, experientially and logistically?” Use them when a glance at the task name should carry that texture forward into planning and triage (for example, knowing that something is outward-facing, physically anchored, or dependent on a contact changes how you batch it, when you attempt it, and what you prepare beforehand).</p>
+<p>The tags defined for this workspace are:</p>
+<ul class="doc-tag-list">
+  <li><Tag color="#b1b1b1">bureaucracy</Tag> — Administrative or procedural work: forms, paperwork, official processes.</li>
+  <li><Tag color="#a875ff">contact required</Tag> — Requires reaching out to someone outside the household—a service rep, friend, or family member.</li>
+  <li><Tag color="#b7c059">digital</Tag> — Can be done entirely on a device (computer, phone, tablet).</li>
+  <li><Tag color="#63beb4">household</Tag> — Physical work or chores in and around the home.</li>
+  <li><Tag color="#3e63dd">maintenance</Tag> — Keeping something in working order—upkeep, repairs, routine care.</li>
+  <li><Tag color="#248f7d">medical</Tag> — Relates to health: appointments, treatments, or medical administration.</li>
+  <li><Tag color="#0091ff">outside</Tag> — Must be done away from home; requires going out.</li>
+  <li><Tag color="#ab4aba">recreation</Tag> — Leisure, hobby, or entertainment—something enjoyable rather than obligatory.</li>
+  <li><Tag color="#6e56cf">self-care</Tag> — Personal well-being: rest, reflection, or looking after oneself.</li>
+  <li><Tag color="#96f1fb">social</Tag> — Involves spending time or interacting with others outside the household.</li>
+</ul>
+</Section>
+<Section id="sec-4-2-1-4" title="Task Constraints">
+<p><strong>Status</strong></p>
+<Table id="task-status-truth-table">
+    <THead>
+      <TR>
+        <TH>Specified</TH>
+        <TH>Blocked</TH>
+        <TH>Sprinted</TH>
+        <TH>Status</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR>
+        <TD>No</TD>
+        <TD>—</TD>
+        <TD>—</TD>
+        <TD><StatusLink type="task" status="unspecified" /></TD>
+      </TR>
+      <TR>
+        <TD>Yes</TD>
+        <TD>No</TD>
+        <TD>No</TD>
+        <TD><StatusLink type="task" status="to-do" /></TD>
+      </TR>
+      <TR>
+        <TD>Yes</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+        <TD><StatusLink type="task" status="blocked" /></TD>
+      </TR>
+      <TR>
+        <TD>Yes</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+        <TD><StatusLink type="task" status="committed" /> or <StatusLink type="task" status="scheduled" /></TD>
+      </TR>
+      <TR>
+        <TD>Yes</TD>
+        <TD>Yes</TD>
+        <TD>Yes</TD>
+        <TD><StatusLink type="task" status="waiting" /> or <StatusLink type="task" status="scheduled" /></TD>
+      </TR>
+    </TBody>
+</Table>
+<p><strong>Lists</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">task is not <Link to="task-term-specified">specified</Link>.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="lists">Lists</TaskTypeFieldLink> must not contain any <Link to="sprint-term-open">open sprint</Link>.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">a user is not in <TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink>.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="lists">Lists</TaskTypeFieldLink> must not contain any <Link to="sprint-term-open">open sprint</Link>.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&Current Sprint Relevant</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">task is <Link to="task-term-sprint-relevant">sprint relevant</Link> for the current sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> = True.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">task is not <Link to="task-term-sprint-relevant">sprint relevant</Link> for the current sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> = False.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&Next Sprint Relevant</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">task is <Link to="task-term-sprint-relevant">sprint relevant</Link> for the next sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> = True.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">task is not <Link to="task-term-sprint-relevant">sprint relevant</Link> for the next sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="task" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> = False.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-2-1-5" title="Task Operational Rules">
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="lists">Lists</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Conditions"><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> contains a "blocked by" relationship.</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Conditions">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> contains no "blocked by" relationship.</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="blocked" />.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="to-do" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Conditions">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="task" to="dependencies">Dependencies</TaskTypeFieldLink> contains no "blocked by" relationship.</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> is <StatusLink type="task" status="waiting" />.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">set <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="committed" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="task" to="lists">Lists</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="task" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="task" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="task" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+</Section>
+<Section id="sec-4-2-2" title="Event">
+<p>An Event represents something that happens at a defined period in time—it has a start and an end, and it is
+  about when it occurs and when the user should be made aware of it in advance. Events let you record and track
+  occurrences (meetings, deadlines, trips, etc.) and control how far in advance they surface for notification or
+  display. The workspace derives precise =&Start Time and =&End Time from the dates you set, derives <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> from
+  those times, and computes an <TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> so the event can be shown or notified ahead of
+  time.</p>
+<Section id="sec-4-2-2-1" title="Event Fields">
+<Table id="event-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="event-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the event. Statuses are according to the relevant <StatusGroupLink to="sec-4-2-2-2">status group</StatusGroupLink>.</TD>
+        <TD>Not Scheduled</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="event-fields-row-start-date">
+        <TD><BaseFieldLink to="start-date">Start Date</BaseFieldLink></TD>
+        <TD>The date/time when the event starts.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-due-date">
+        <TD><BaseFieldLink to="due-date">Due Date</BaseFieldLink></TD>
+        <TD>The date/time when the event ends.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-start-time">
+        <TD><CustomFieldLink to="start-time">=&Start Time</CustomFieldLink></TD>
+        <TD>The precise datetime when the event starts. Used internally.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-end-time">
+        <TD><CustomFieldLink to="end-time">=&End Time</CustomFieldLink></TD>
+        <TD>The precise datetime when the event ends. Used internally.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-relevance-number">
+        <TD><CustomFieldLink to="relevance-number">Relevance #</CustomFieldLink></TD>
+        <TD>How many units of time in advance the event should start being shown or notified.</TD>
+        <TD>1</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-relevance-unit">
+        <TD><CustomFieldLink to="relevance-unit">Relevance Unit</CustomFieldLink></TD>
+        <TD>The unit for that advance period (e.g. days, weeks, months).</TD>
+        <TD>Weeks</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-relevance-date">
+        <TD><CustomFieldLink to="relevance-date">=&Relevance Date</CustomFieldLink></TD>
+        <TD>A computed datetime: the date on which this event should start being shown/notified to the user. Calculated as: =&Start Time minus the relevance period (Relevance # + Relevance Unit).</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-current-sprint-relevant">
+        <TD><CustomFieldLink to="current-sprint-relevant">=&Current Sprint Relevant</CustomFieldLink></TD>
+        <TD>Whether the event is relevant for the current sprint.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="event-fields-row-next-sprint-relevant">
+        <TD><CustomFieldLink to="next-sprint-relevant">=&Next Sprint Relevant</CustomFieldLink></TD>
+        <TD>Whether the event is relevant for the next sprint.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+<Section id="sec-4-2-2-1-1" title="Event Time Derivation">
+<p>ClickUp's <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> default to 4:00 AM on the given day when
+  the user does not specify a time—the system treats this 4:00 AM Jerusalem time as "no time set." That default
+  is unsuitable for events, so <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> and <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> exist as auxiliary
+  computational fields: the system populates them from <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>
+  using the rules below, treating any time other than the 4:00 AM default as a real time and using it as-is. The
+  user works only with <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>; <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> and
+  <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> are not meant to be edited directly.</p>
+</Section>
+<Section id="sec-4-2-2-1-2" title="Event Derived Properties">
+<p>The following derived property of an event is computed from its fields and referenced elsewhere in this wiki:</p>
+<ul>
+  <LinkTarget as="li" id="event-term-sprint-relevant">
+    <p><strong>Sprint relevant</strong> — An event is <em>sprint relevant</em> for a given sprint if any of the following holds:</p>
+  </LinkTarget>
+</ul>
+<ol>
+  <li>Its <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> is before the sprint, and either its <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> falls during or after the start of the sprint or <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> is not set.</li>
+  <li>Its <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> falls during the sprint.</li>
+  <li>Its <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> is not set and its <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> falls during the sprint.</li>
+</ol>
+</Section>
+</Section>
+<Section id="sec-4-2-2-2" title="Event Statuses">
+<ul>
+  <LinkTarget as="li" id="status-event-not-scheduled"><Status type="event" status="not-scheduled" showStatusType /> — The event exists, but no <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> and no <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> are set.</LinkTarget>
+  <LinkTarget as="li" id="status-event-upcoming"><Status type="event" status="upcoming" showStatusType /> — <TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is set. "Upcoming" means the event has been scheduled, and its <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> has not arrived yet.</LinkTarget>
+  <LinkTarget as="li" id="status-event-occurring"><Status type="event" status="occurring" showStatusType /> — The current date-time is on/after the event's <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> (i.e., the event is happening now or has started and hasn't ended yet).</LinkTarget>
+  <LinkTarget as="li" id="status-event-occurred"><Status type="event" status="occurred" showStatusType /> — The current date-time is after the event's <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> (operationally: after the <TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink>/Time, which we treat as the event's end).</LinkTarget>
+</ul>
+<Section id="sec-4-2-2-2-1" title="Event Status Transitions">
+<ul>
+  <li><Status type="event" status="not-scheduled" /> → <Status type="event" status="upcoming" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when at least one of Start Date or Due Date is set.</li>
+  <li><Status type="event" status="upcoming" /> → <Status type="event" status="occurring" />: <StatusTriggerLink to="chronological"><StatusTrigger>Chronological</StatusTrigger></StatusTriggerLink> — Triggered when the current datetime reaches or passes the event's start datetime.</li>
+  <li><Status type="event" status="occurring" /> → <Status type="event" status="occurred" />: <StatusTriggerLink to="chronological"><StatusTrigger>Chronological</StatusTrigger></StatusTriggerLink> — Triggered when the current datetime reaches or passes the event's end datetime (i.e., the Due/=&End Time).</li>
+  <li>(<Status type="event" status="upcoming" />, <Status type="event" status="occurring" />) → <Status type="event" status="not-scheduled" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when Start Date and Due Date are reset to null.</li>
+  <li><Status type="event" status="occurring" /> → <Status type="event" status="upcoming" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when the event's start datetime is moved forward to a datetime that has not yet happened.</li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-2-2-3" title="Event Constraints">
+<p><strong>=&Start Time</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is not set.</Entry>
+  <Nested>
+    <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is not set.</Entry>
+    <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> must be empty.</Entry>
+    <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is set.</Entry>
+    <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> must be midnight of the Due Date.</Entry>
+  </Nested>
+</Rule>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> has a real time.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> must be that time.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is date-only.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> must be midnight of that day.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&End Time</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is not set.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> must be empty.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> has a real time.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> must be that time.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is date-only.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> must be midnight of the <em>next</em> day.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&Relevance Date</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> is set.</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink> is set.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> must be <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> minus the relevance period (<TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> × <TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink>).</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">either is not set.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> must be empty.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>Status</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is not set.</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is not set.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="not-scheduled" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem>
+        <Group op="or">
+          <GroupItem><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> is set</GroupItem>
+          <GroupItem><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> is set.</GroupItem>
+        </Group>
+      </GroupItem>
+      <GroupItem>current time &lt; <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink>.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="upcoming" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem>current time ≥ <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink>.</GroupItem>
+      <GroupItem>current time ≤ <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink>.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="occurring" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">current time &gt; <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink>.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="event" status="occurred" />.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&Current Sprint Relevant</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">event is <Link to="event-term-sprint-relevant">sprint relevant</Link> for the current sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> = True.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">event is not <Link to="event-term-sprint-relevant">sprint relevant</Link> for the current sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> = False.</Entry>
+</Rule>
+</RuleBlock>
+<p><strong>=&Next Sprint Relevant</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">event is <Link to="event-term-sprint-relevant">sprint relevant</Link> for the next sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> = True.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">event is not <Link to="event-term-sprint-relevant">sprint relevant</Link> for the next sprint.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="event" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> = False.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-2-2-4" title="Event Operational Rules">
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger">Event created →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="start-date">Start Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>set <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink>.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="due-date">Due Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">
+    <Group op="and">
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</GroupItem>
+      <GroupItem>enforce <TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> constraints.</GroupItem>
+    </Group>
+  </Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="event" to="relevance-number">Relevance #</TaskTypeFieldLink> / <TaskTypeFieldLink type="event" to="relevance-unit">Relevance Unit</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="relevance-date">=&Relevance Date</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem>current time &gt; <TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> →</GroupItem>
+      <GroupItem>current time &gt; <TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="current-sprint-relevant">=&Current Sprint Relevant</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger">
+    <Group op="or">
+      <GroupItem><TaskTypeFieldLink type="event" to="start-time">=&Start Time</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="end-time">=&End Time</TaskTypeFieldLink> changed →</GroupItem>
+      <GroupItem><TaskTypeFieldLink type="event" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> changed →</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="event" to="next-sprint-relevant">=&Next Sprint Relevant</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+</Section>
+<Section id="sec-4-2-3" title="Record">
+<p>A Record represents something that is documented—a note, observation, or fact captured for reference. Records
+  let you document items with a <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> so you know when they were recorded (or when the thing
+  actually happened, if you backdate). There is no workflow machinery; the focus is on the content
+  and the datetime. <TaskTypeFieldLink type="record" to="assignees">Assignees</TaskTypeFieldLink> are optional and can be used for attribution or filtering.</p>
+<Section id="sec-4-2-3-1" title="Record Fields">
+<Table id="record-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="record-fields-row-timestamp">
+        <TD><CustomFieldLink to="timestamp">Timestamp</CustomFieldLink></TD>
+        <TD>The datetime when the record was made (or, if backdated, when the documented thing occurred).</TD>
+        <TD>Current datetime</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="record-fields-row-assignees">
+        <TD><BaseFieldLink to="assignees">Assignees</BaseFieldLink></TD>
+        <TD>Optional people associated with the record for attribution, visibility, or filters.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-2-3-2" title="Record Constraints">
+<p><strong>Timestamp</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry><TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> must be set.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-2-3-3" title="Record Operational Rules">
+<ol class="doc-rules-list" style="list-style: none">
+  <li>
+    <div class="doc-rule-line doc-rule-header"><span class="doc-rule-num">(1) </span><span class="doc-rule-keyword"><em>on</em></span><span class="doc-rule-content"><strong>Record creation</strong> →</span></div>
+    <div class="doc-rule-line doc-rule-then"><span class="doc-rule-num"></span><span class="doc-rule-keyword"><em>Then</em></span><span class="doc-rule-content">(I) set <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> to the current datetime.</span></div>
+  </li>
+</ol>
+</Section>
+</Section>
+<Section id="sec-4-2-4" title="Thought">
+<p>A Thought is a <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink> that captures a thought—something that crossed your mind and that you want to keep. It might be a realization, an idea, a reminder to do something later, a placeholder for a task you haven't defined yet, a quote or insight worth revisiting, or a half-formed notion you're not ready to turn into anything else. There is no workflow; you get a timestamp and the content, with optional assignees like any <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink>. Structurally it is the same as <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink>.</p>
+<p>The schema of a Thought is identical to that of a <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink>.</p>
+</Section>
+<Section id="sec-4-2-5" title="Milestone">
+<p>A Milestone represents a meaningful date in a project timeline: a point that carries enough importance to stand out as a marker of progress, commitment, completion, approval, transition, or readiness. It is a date with significance—one that helps define where the project is, what has been accomplished, what must happen next, or what moment the work is building toward. A milestone can therefore capture things like a launch moment, a key decision point, a delivery commitment, a phase boundary, or any other notable checkpoint whose value lies in its importance to the project as a whole. It is a temporal anchor that gives structure and meaning to the broader flow of the project.</p>
+<Section id="sec-4-2-5-1" title="Milestone vs Event">
+<p>An <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink> is a date that holds an <em>occurrence</em>. It exists in the system because something happens at that time and the user needs to be aware of it when it arrives — whether that means attending it, preparing for it, observing it, or simply registering that it has come. An event typically, but not necessarily, spans a period of time, with a start and an end, since occurrences generally unfold rather than appear instantaneously; the occurrence itself can be anything from an active engagement to a passive happening.</p>
+<p>A Milestone, by contrast, is a date that holds <em>significance</em>. Nothing necessarily "takes place" at a milestone in the way something takes place at an event; instead, the date itself is what matters. It marks a transition, a commitment, a completion, or a checkpoint within some larger trajectory — a project, a journey, a body of work, or any progression that gives the date its meaning. Because a milestone is a marker rather than an unfolding occurrence, it is a single point in time — one datetime, not a span. The date is not tied to an occurrence; it <em>is</em> the meaning.</p>
+</Section>
+<Section id="sec-4-2-5-2" title="Milestone Fields">
+<Table id="milestone-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="milestone-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the milestone. Statuses are according to the relevant <StatusGroupLink to="sec-4-2-5-3">status group</StatusGroupLink>.</TD>
+        <TD>Not Set</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="milestone-fields-row-due-date">
+        <TD><BaseFieldLink to="due-date">Due Date</BaseFieldLink></TD>
+        <TD>The date by which the milestone is expected to be reached.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="milestone-fields-row-assignees">
+        <TD><BaseFieldLink to="assignees">Assignees</BaseFieldLink></TD>
+        <TD>Optional people associated with the milestone for attribution, visibility, or filters.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-2-5-3" title="Milestone Statuses">
+<ul>
+  <LinkTarget as="li" id="status-milestone-not-set"><Status type="milestone" status="not-set" showStatusType /> — No <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is set for this milestone.</LinkTarget>
+  <LinkTarget as="li" id="status-milestone-set"><Status type="milestone" status="set" showStatusType /> — A <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is set, and that date has not yet arrived.</LinkTarget>
+  <LinkTarget as="li" id="status-milestone-reached"><Status type="milestone" status="reached" showStatusType /> — The <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> has passed; the milestone is treated as reached.</LinkTarget>
+</ul>
+<Section id="sec-4-2-5-3-1" title="Milestone Status Transitions">
+<ul>
+  <li><Status type="milestone" status="not-set" /> → <Status type="milestone" status="set" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is set.</li>
+  <li><Status type="milestone" status="set" /> → <Status type="milestone" status="not-set" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is unset.</li>
+  <li><Status type="milestone" status="set" /> → <Status type="milestone" status="reached" />: <StatusTriggerLink to="chronological"><StatusTrigger>Chronological</StatusTrigger></StatusTriggerLink> — Triggered when the current datetime reaches the milestone's due date.</li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-2-5-4" title="Milestone Constraints">
+<p><strong>Status</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is not set.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="milestone" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="milestone" status="not-set" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is set.</GroupItem>
+      <GroupItem>current time &lt; <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink>.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="milestone" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="milestone" status="set" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">
+    <Group op="and">
+      <GroupItem><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> is set.</GroupItem>
+      <GroupItem>current time ≥ <TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink>.</GroupItem>
+    </Group>
+  </Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="milestone" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="milestone" status="reached" />.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-2-5-5" title="Milestone Operational Rules">
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger">Milestone created →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="milestone" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="milestone" to="due-date">Due Date</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="milestone" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+</Section>
+<Section id="sec-4-2-6" title="Data">
+<p>A Data type represents arbitrary information that is worth storing in the workspace. It is meant for content that may take many different forms and does not need to fit a fixed schema; its sole purpose is to preserve information.</p>
+</Section>
+<Section id="sec-4-2-7" title="Parent Task">
+<p>A Parent Task is a practical workaround used for <Link to="sec-4-2-1">Tasks</Link> that contain subtasks. When deciding what to do and what matters most, the real attention usually belongs on the subtasks, since they are the concrete items that need to be completed. The parent item still has value as the container that groups them under a larger objective, but showing it alongside its subtasks often adds clutter rather than clarity. Assigning it the Parent Task type makes it easier to filter out in views where the focus should remain on the lower-level actionable items, while still preserving the broader structure they belong to.</p>
+<Section id="sec-4-2-7-1" title="Parent Task Fields">
+<Table id="parent-task-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="parent-task-fields-row-subtasks">
+        <TD><BaseFieldLink to="subtasks">Subtasks</BaseFieldLink></TD>
+        <TD>The child tasks grouped under this parent; they are the concrete work items the parent exists to organize.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="parent-task-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the parent task; statuses are according to the relevant <StatusGroupLink to="sec-4-2-1-2">status group</StatusGroupLink>.</TD>
+        <TD><StatusLink type="task" status="unspecified" /></TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-2-7-2" title="Parent Task Constraints">
+<p><strong>Status</strong></p>
+<p>The parent task's <TaskTypeFieldLink type="parent-task" to="status">Status</TaskTypeFieldLink> is derived from the statuses of its <TaskTypeFieldLink type="parent-task" to="subtasks">Subtasks</TaskTypeFieldLink>. It takes the furthest-along non-closed, non-done status among its subtasks, according to the following priority order (highest first):</p>
+<ol>
+  <li><StatusLink type="task" status="scheduled" /></li>
+  <li><StatusLink type="task" status="committed" /></li>
+  <li><StatusLink type="task" status="waiting" /></li>
+  <li><StatusLink type="task" status="to-do" /></li>
+  <li><StatusLink type="task" status="blocked" /></li>
+  <li><StatusLink type="task" status="unspecified" /></li>
+</ol>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If">all subtasks are <StatusLink type="task" status="complete" />, <StatusLink type="task" status="done" />, or <StatusLink type="task" status="canceled" />.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="parent-task" to="status">Status</TaskTypeFieldLink> = <StatusLink type="task" status="complete" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">all subtasks are <StatusLink type="task" status="done" /> or <StatusLink type="task" status="canceled" />.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="parent-task" to="status">Status</TaskTypeFieldLink> = <StatusLink type="task" status="done" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">all subtasks are <StatusLink type="task" status="done" />.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="parent-task" to="status">Status</TaskTypeFieldLink> = <StatusLink type="task" status="done" />.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="If">all subtasks are <StatusLink type="task" status="canceled" />.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="parent-task" to="status">Status</TaskTypeFieldLink> = <StatusLink type="task" status="canceled" />.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+</Section>

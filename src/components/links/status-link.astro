@@ -1,0 +1,15 @@
+---
+import Status from "@components/status/status.astro";
+import { getStatusId } from "@components/status/statuses";
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  type: string;
+  status: string;
+}
+
+const { type, status } = Astro.props;
+const to = getStatusId(type, status);
+---
+
+<Link to={to} class="status-link"><Status type={type} status={status} /></Link>

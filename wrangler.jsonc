@@ -1,0 +1,14 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "clickup-wiki",
+    "compatibility_date": "2026-05-14",
+    "assets": {
+      "directory": "./dist"
+    },
+    "routes": [
+      {
+        "pattern": "clickup.ronbal.net/*",
+        "zone_name": "ronbal.net"
+      }
+    ]
+  }

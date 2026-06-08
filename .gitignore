@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+
+# Backups created by git_reinit / git_init reinitialize
+.git.init_backup_*/
+pre-reinit-backup-*

@@ -1,0 +1,17 @@
+---
+import "./rule-block.css";
+
+interface Props {
+  ordered?: boolean;
+}
+
+const { ordered = false, ...listProps } = Astro.props;
+const ListTag = ordered ? "ol" : "ul";
+const rendered = await Astro.slots.render("default");
+const rules = [...rendered.matchAll(/<doc-rule\b[^>]*>[\s\S]*?<\/doc-rule>/g)].map((match) => match[0]);
+const listHtml = rules
+  .map((rule, index) => `<li>${rule}</li>${index < rules.length - 1 ? "<hr />" : ""}`)
+  .join("");
+---
+
+<ListTag class="doc-rl-list" {...listProps} set:html={listHtml} />

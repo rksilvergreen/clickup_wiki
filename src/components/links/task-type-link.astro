@@ -1,0 +1,31 @@
+---
+/**
+ * TaskTypeLink — link to a task-type section.
+ *
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ * Example: <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink>
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={to} class="task-type-link"><slot /></Link>
+
+<style is:global>
+  :root {
+    --doc-link-task-types: #5aaa8a;
+  }
+  [data-theme="light"] {
+    --doc-link-task-types: #14aa46;
+  }
+  /* :visited — link.css `.document a:visited` would otherwise wash out the accent after in-page jumps */
+  .document a.task-type-link,
+  .document a.task-type-link:visited {
+    color: var(--doc-link-task-types);
+  }
+</style>

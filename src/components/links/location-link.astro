@@ -1,0 +1,16 @@
+---
+/**
+ * LocationLink — link to a location section.
+ *
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={to} class="location-link"><slot /></Link>

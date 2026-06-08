@@ -1,0 +1,958 @@
+---
+_sectionBase: "4.3"
+---
+<p>Project Scope defines the structural layout of the workspace at the location level: its spaces, folders, and lists. This section establishes the general principles and rules that govern how the workspace is organized, addresses common structural dilemmas, and provides a detailed reference of the prominant spaces and their intended purpose.</p>
+
+<Section id="sec-4-3-1" title="Spaces">
+<p>The following is a reference of all spaces in the workspace and the role each one serves.</p>
+
+<Section id="sec-4-3-1-1" title="Admin">
+<p>An administrative space used for ClickUp workarounds. It is not intended for manual interaction except during maintenance and updates.</p>
+
+<Section id="sec-4-3-1-1-1" title="Intake Folder">
+<p>The Intake folder contains one list for each task type: Tasks, Events, Records, and Thoughts. Each list has a ClickUp form attached to it that allows users to quickly add entries of that task type without needing to navigate to the appropriate location in the workspace. The forms serve as a universal capture mechanism—usable from a phone, a browser, or any context where opening ClickUp and navigating to the correct list would be inconvenient or disruptive.</p>
+
+<p>Each form includes a <CustomFieldLink to="space">&Space</CustomFieldLink> field—a <FieldTypeLink to="dropdown">Dropdown</FieldTypeLink> whose options correspond to the main public spaces in the workspace. When a user submits the form and selects a space, the entry is created in the intake list and then automatically moved to the dedicated task-type list within the chosen space. This routing is handled by automations on each intake list that trigger on entry creation and move the entry based on the selected <CustomFieldLink to="space">&Space</CustomFieldLink> value. Because entries are always moved out immediately upon creation, the intake lists themselves remain effectively empty at all times.</p>
+
+<Section id="sec-4-3-1-1-1-1" title="Intake Folder Fields">
+<Table id="intake-folder-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="intake-folder-fields-row-space">
+        <TD><CustomFieldLink to="space">&Space</CustomFieldLink></TD>
+        <TD>The target space to which the intake entry will be routed. Selecting a value causes the entry to be moved to the corresponding task-type list in that space.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-3-1-1-1-2" title="Intake - Tasks List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> —<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> —<br />
+  <strong>Filters:</strong> —<br />
+  <strong>Settings:</strong><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> —</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> —</span></li>
+</ul>
+<p><strong>Automations (6) :</strong></p>
+<ul>
+  <li>
+    <p><strong>&Space = "General" → Move to "General/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to General →</Entry>
+      <Entry keyword="Action">Move to list General/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Household" → Move to "Household/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Household →</Entry>
+      <Entry keyword="Action">Move to list Household/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Tino" → Move to "Tino/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Tino →</Entry>
+      <Entry keyword="Action">Move to list Tino/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Healthcare" → Move to "Healthcare/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Healthcare →</Entry>
+      <Entry keyword="Action">Move to list Healthcare/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "ClickUp" → Move to "ClickUp/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to ClickUp →</Entry>
+      <Entry keyword="Action">Move to list ClickUp/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Shopping" → Move to "Shopping/Tasks" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Shopping →</Entry>
+      <Entry keyword="Action">Move to list Shopping/Tasks.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+</ul>
+</Section>
+<Section id="sec-4-3-1-1-1-3" title="Intake - Events List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-2-2">Event</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> —<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> —<br />
+  <strong>Filters:</strong> —<br />
+  <strong>Settings:</strong><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> —</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> —</span></li>
+</ul>
+<p><strong>Automations (6) :</strong></p>
+<ul>
+  <li>
+    <p><strong>&Space = "General" → Move to "General/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to General →</Entry>
+      <Entry keyword="Action">Move to list General/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Household" → Move to "Household/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Household →</Entry>
+      <Entry keyword="Action">Move to list Household/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Tino" → Move to "Tino/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Tino →</Entry>
+      <Entry keyword="Action">Move to list Tino/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Healthcare" → Move to "Healthcare/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Healthcare →</Entry>
+      <Entry keyword="Action">Move to list Healthcare/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "ClickUp" → Move to "ClickUp/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to ClickUp →</Entry>
+      <Entry keyword="Action">Move to list ClickUp/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Shopping" → Move to "Shopping/Events" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Shopping →</Entry>
+      <Entry keyword="Action">Move to list Shopping/Events.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+</ul>
+</Section>
+<Section id="sec-4-3-1-1-1-4" title="Intake - Records List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> —<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> —<br />
+  <strong>Filters:</strong> —<br />
+  <strong>Settings:</strong><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> —</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> —</span></li>
+</ul>
+<p><strong>Automations (6) :</strong></p>
+<ul>
+  <li>
+    <p><strong>&Space = "General" → Move to "General/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to General →</Entry>
+      <Entry keyword="Action">Move to list General/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Household" → Move to "Household/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Household →</Entry>
+      <Entry keyword="Action">Move to list Household/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Tino" → Move to "Tino/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Tino →</Entry>
+      <Entry keyword="Action">Move to list Tino/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Healthcare" → Move to "Healthcare/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Healthcare →</Entry>
+      <Entry keyword="Action">Move to list Healthcare/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "ClickUp" → Move to "ClickUp/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to ClickUp →</Entry>
+      <Entry keyword="Action">Move to list ClickUp/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Shopping" → Move to "Shopping/Records" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Shopping →</Entry>
+      <Entry keyword="Action">Move to list Shopping/Records.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+</ul>
+</Section>
+<Section id="sec-4-3-1-1-1-5" title="Intake - Thoughts List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> —<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> —<br />
+  <strong>Filters:</strong> —<br />
+  <strong>Settings:</strong><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> —</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> —</span></li>
+</ul>
+<p><strong>Automations (6) :</strong></p>
+<ul>
+  <li>
+    <p><strong>&Space = "General" → Move to "General/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to General →</Entry>
+      <Entry keyword="Action">Move to list General/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Household" → Move to "Household/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Household →</Entry>
+      <Entry keyword="Action">Move to list Household/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Tino" → Move to "Tino/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Tino →</Entry>
+      <Entry keyword="Action">Move to list Tino/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Healthcare" → Move to "Healthcare/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Healthcare →</Entry>
+      <Entry keyword="Action">Move to list Healthcare/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "ClickUp" → Move to "ClickUp/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to ClickUp →</Entry>
+      <Entry keyword="Action">Move to list ClickUp/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+  <hr style="width: 50%" />
+  <li>
+    <p><strong>&Space = "Shopping" → Move to "Shopping/Thoughts" list</strong></p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="space">&Space</CustomFieldLink> is set to Shopping →</Entry>
+      <Entry keyword="Action">Move to list Shopping/Thoughts.</Entry>
+    </Rule>
+    </RuleBlock>
+  </li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-3-1-1-2" title="Automation Folder">
+<p>Contains a list for each task type that requires automations. These lists serve two purposes:</p>
+<ol>
+  <li>They assign automations to a clear task scope: each list is designed to hold every entry of that type across the entire workspace, so automations targeting that type are defined in one place rather than duplicated on every individual list that contains entries of that type.</li>
+  <li>They can potentially attach one shared automation set to any scope, or multiple scopes. ClickUp does not let you define automations once and apply them to multiple arbitrary scopes, so the usual workaround is to duplicate the same automations for every list, folder, or space where you want identical behavior. When entries can be represented or routed through these Automations lists, you create, update, and delete automations in one place and they apply across every relevant scope—rather than repeating each change in each scope individually, which is tedious and error prone.</li>
+</ol>
+<p>To keep these lists complete, each task type that uses a centralized Automations list has a <Link to="sec-4-4-4-1">list template</Link> whose automations add newly created entries to that list.</p>
+
+<Section id="sec-4-3-1-1-2-1" title="Automation - Tasks List Configuration">
+
+<p>The centralized list for all <TaskTypeLink to="sec-4-2-1">tasks</TaskTypeLink> in the workspace. All automations that should apply to tasks workspace-wide are defined here.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="priority">Priority</BaseFieldLink>, <BaseFieldLink to="sprint-points">Sprint Points</BaseFieldLink>, <BaseFieldLink to="time-estimate">Time Estimate</BaseFieldLink>, Sprints, <BaseFieldLink to="dependencies">Dependencies</BaseFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (6) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-automation-task-status-webhook">
+    <p><strong>"Status" changed → Call "Task" webhook</strong> — When a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink>'s <BaseFieldLink to="status">Status</BaseFieldLink> changes, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="status">Status</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-task-assignee-added-webhook">
+    <p><strong>"Assignee" added → Call "Task" webhook</strong> — When an <BaseFieldLink to="assignees">Assignee</BaseFieldLink> is added to a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink>, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="assignees">Assignee</BaseFieldLink> added →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-task-assignee-removed-webhook">
+    <p><strong>"Assignee" removed → Call "Task" webhook</strong> — When an <BaseFieldLink to="assignees">Assignee</BaseFieldLink> is removed from a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink>, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="assignees">Assignee</BaseFieldLink> removed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-task-priority-webhook">
+    <p><strong>"Priority" changed → Call "Task" webhook</strong> — When a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink>'s <BaseFieldLink to="priority">Priority</BaseFieldLink> changes, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="priority">Priority</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-task-task-type-webhook">
+    <p><strong>"Task Type" changed → Call "Task" webhook</strong> — When an entry's <BaseFieldLink to="task-type">Task Type</BaseFieldLink> changes, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="task-type">Task Type</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-task-schedule-daily-webhook">
+    <p><strong>Schedule is due → Call "Task" webhook</strong> — Every day at 00:00, calls the <Link to="webhook-task">Task webhook</Link> for all <TaskTypeLink to="sec-4-2-1">tasks</TaskTypeLink> in the list.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger">Schedule is due → Every day at 00:00</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-3-1-1-2-2" title="Automation - Events List Configuration">
+
+<p>The centralized list for all <TaskTypeLink to="sec-4-2-2">events</TaskTypeLink> in the workspace. All automations that should apply to events workspace-wide are defined here.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-2-2">Event</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="start-date">Start Date</BaseFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink>, <CustomFieldLink to="start-time">=&Start Time</CustomFieldLink>, <CustomFieldLink to="end-time">=&End Time</CustomFieldLink>, <CustomFieldLink to="relevance-number">Relevance #</CustomFieldLink>, <CustomFieldLink to="relevance-unit">Relevance Unit</CustomFieldLink>, <CustomFieldLink to="relevance-date">=&Relevance Date</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (12) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-event-status-webhook">
+    <p><strong>"Status" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <BaseFieldLink to="status">Status</BaseFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="status">Status</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-start-date-webhook">
+    <p><strong>"Start Date" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <BaseFieldLink to="start-date">Start Date</BaseFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="start-date">Start Date</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-due-date-webhook">
+    <p><strong>"Due Date" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <BaseFieldLink to="due-date">Due Date</BaseFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="due-date">Due Date</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-start-time-webhook">
+    <p><strong>"=&Start Time" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-end-time-webhook">
+    <p><strong>"=&End Time" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="end-time">=&End Time</CustomFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="end-time">=&End Time</CustomFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-relevance-number-webhook">
+    <p><strong>"Relevance #" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="relevance-number">Relevance #</CustomFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="relevance-number">Relevance #</CustomFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-relevance-unit-webhook">
+    <p><strong>"Relevance Unit" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="relevance-unit">Relevance Unit</CustomFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="relevance-unit">Relevance Unit</CustomFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-relevance-date-webhook">
+    <p><strong>"=&Relevance Date" changed → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="relevance-date">=&Relevance Date</CustomFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="relevance-date">=&Relevance Date</CustomFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-task-type-webhook">
+    <p><strong>"Task Type" changed → Call "Event" webhook</strong> — When an entry's <BaseFieldLink to="task-type">Task Type</BaseFieldLink> changes, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="task-type">Task Type</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-start-time-occurring">
+    <p><strong>"=&Start Time" arrives → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> is reached, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> arrives →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-end-time-occurred">
+    <p><strong>"=&End Time" arrives → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="end-time">=&End Time</CustomFieldLink> is reached, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><CustomFieldLink to="end-time">=&End Time</CustomFieldLink> arrives →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-schedule-daily-webhook">
+    <p><strong>Schedule is due → Call "Event" webhook</strong> — Every day at 00:00, calls the <Link to="webhook-event">Event webhook</Link> for all <TaskTypeLink to="sec-4-2-2">events</TaskTypeLink> in the list.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger">Schedule is due → Every day at 00:00</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-3-1-1-2-3" title="Automation - Records List Configuration">
+
+<p>The centralized list for all <TaskTypeLink to="sec-4-2-3">records</TaskTypeLink> in the workspace. All automations that should apply to records workspace-wide are defined here.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <CustomFieldLink to="timestamp">Timestamp</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+
+</Section>
+<Section id="sec-4-3-1-1-2-4" title="Automation - Thoughts List Configuration">
+
+<p>The centralized list for all <TaskTypeLink to="sec-4-2-4">thoughts</TaskTypeLink> in the workspace. All automations that should apply to thoughts workspace-wide are defined here.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <CustomFieldLink to="timestamp">Timestamp</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+
+</Section>
+<Section id="sec-4-3-1-1-2-5" title="Automation - Milestones List Configuration">
+
+<p>The centralized list for all <TaskTypeLink to="sec-4-2-5">milestones</TaskTypeLink> in the workspace. All automations that should apply to milestones workspace-wide are defined here.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-5-3">Milestone</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (5) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-automation-milestone-status-webhook">
+    <p><strong>"Status" changed → Call "Milestone" webhook</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink>'s <BaseFieldLink to="status">Status</BaseFieldLink> changes, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="status">Status</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-milestone-task-type-webhook">
+    <p><strong>"Task Type" changed → Call "Milestone" webhook</strong> — When an entry's <BaseFieldLink to="task-type">Task Type</BaseFieldLink> changes, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="task-type">Task Type</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-milestone-due-date-webhook">
+    <p><strong>"Due Date" changed → Call "Milestone" webhook</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink>'s <BaseFieldLink to="due-date">Due Date</BaseFieldLink> changes, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="due-date">Due Date</BaseFieldLink> changed →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-milestone-due-date-arrives-webhook">
+    <p><strong>"Due Date" arrives → Call "Milestone" webhook</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink>'s <BaseFieldLink to="due-date">Due Date</BaseFieldLink> is reached, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><BaseFieldLink to="due-date">Due Date</BaseFieldLink> arrives →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-automation-milestone-schedule-daily-webhook">
+    <p><strong>Schedule is due → Call "Milestone" webhook</strong> — Every day at 00:00, calls the <Link to="webhook-milestone">Milestone webhook</Link> for all <TaskTypeLink to="sec-4-2-5">milestones</TaskTypeLink> in the list.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger">Schedule is due → Every day at 00:00</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+
+</Section>
+
+</Section>
+<Section id="sec-4-3-1-2" title="Sprints">
+<p>Where sprints reside. Each sprint has its own folder. Also includes a task list for sprint ceremonies.</p>
+</Section>
+<Section id="sec-4-3-1-3" title="General">
+<p>The home for all non-space-specific content: tasks, events, thoughts, records, milestones, data, and meetings.</p>
+</Section>
+<Section id="sec-4-3-1-4" title="ClickUp">
+<p>Everything related to the ClickUp workspace itself. This includes improvement ideas, workspace update tasks, workflow-related ceremonies, and engagement with the ClickUp staff, community, and ecosystem—such as a feature request tracker and a bug tracker. The workspace wiki also resides here.</p>
+<Section id="sec-4-3-1-4-1" title="Feature Requests">
+<p>A feature request entry is something we would like implemented in the ClickUp platform. The Feature Requests list tracks each idea we care about; most entries will also have a post on the <a href="https://feedback.clickup.com/">ClickUp Feedback</a> board so we can follow ClickUp&rsquo;s public status when one exists.</p>
+<Section id="sec-4-3-1-4-1-1" title="Feature Request Fields">
+<Table id="feature-request-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="feature-request-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the feature request. Statuses are according to the relevant <StatusGroupLink to="sec-4-3-1-4-1-2">status group</StatusGroupLink>.</TD>
+        <TD>Not submitted</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="feature-request-fields-row-created-by">
+        <TD><BaseFieldLink to="created-by">Created By</BaseFieldLink></TD>
+        <TD>The user who created this feature request entry.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="feature-request-fields-row-link">
+        <TD><CustomFieldLink to="link">Link</CustomFieldLink></TD>
+        <TD>The URL of the corresponding feature request on the ClickUp Feedback board.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-3-1-4-1-2" title="Feature Request Statuses">
+<p>Except for <strong>Not submitted</strong>, the labels below match ClickUp&rsquo;s official feature-request statuses on Canny. Meanings for <em>Open</em>, <em>Future</em>, <em>Planned</em>, <em>Building Now</em>, <em>Beta</em>, and <em>Complete</em> follow ClickUp&rsquo;s changelog (&ldquo;New &amp; Improved Feature Request Statuses&rdquo;, <a href="https://feedback.clickup.com/changelog/new-improved-feature-request-statuses">feedback.clickup.com</a>).</p>
+<ul>
+  <LinkTarget as="li" id="status-feature-request-not-submitted"><Status type="feature-request" status="not-submitted" showStatusType /> — This is our own idea or improvement; there is not yet an official feedback-board post—by us or anyone else.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-open"><Status type="feature-request" status="open" showStatusType /> — ClickUp is collecting feedback to decide whether the request will be added to the roadmap.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-future"><Status type="feature-request" status="future" showStatusType /> — On ClickUp&rsquo;s radar, but they do not expect to work on it for a while.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-planned"><Status type="feature-request" status="planned" showStatusType /> — On the roadmap to be worked on within the next two quarters.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-building-now"><Status type="feature-request" status="building-now" showStatusType /> — ClickUp&rsquo;s team is actively building it.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-beta"><Status type="feature-request" status="beta" showStatusType /> — Almost ready; a limited version may be available for testing and feedback.</LinkTarget>
+  <LinkTarget as="li" id="status-feature-request-complete"><Status type="feature-request" status="complete" showStatusType /> — This has been released (ClickUp&rsquo;s label is Completed).</LinkTarget>
+</ul>
+<Section id="sec-4-3-1-4-1-2-1" title="Feature Request Status Transitions">
+<p>Every transition is <strong>manual</strong>. When we align this list with ClickUp&rsquo;s feedback board, a common forward progression is <Status type="feature-request" status="not-submitted" /> → <Status type="feature-request" status="open" /> → <Status type="feature-request" status="future" /> or <Status type="feature-request" status="planned" /> → <Status type="feature-request" status="building-now" /> → <Status type="feature-request" status="beta" /> → <Status type="feature-request" status="complete" />. <em>Future</em> and <em>Planned</em> are different roadmap positions, not a strict sequence—we set whichever matches the post. We may leave an entry in <Status type="feature-request" status="not-submitted" /> until there is a public post to link. An entry may move from any status to any other (for example <Status type="feature-request" status="planned" /> back to <Status type="feature-request" status="open" /> when ClickUp reprioritizes, <Status type="feature-request" status="open" /> to <Status type="feature-request" status="not-submitted" /> when the board post is removed or never existed, or <Status type="feature-request" status="complete" /> to <Status type="feature-request" status="building-now" /> when continued work ships under a follow-up).</p>
+</Section>
+</Section>
+<Section id="sec-4-3-1-4-1-3" title="Feature Requests List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-6">Data</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-3-1-4-1-2">Feature Request</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="created-by">Created By</BaseFieldLink>, <CustomFieldLink to="link">Link</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-3-1-4-2" title="Bugs">
+<p>A bug entry represents a bug discovered in the ClickUp platform. The Bugs list tracks the lifecycle of each bug from its initial logging through its reporting to ClickUp technical support, and follows how ClickUp responds—whether by confirming the bug, rejecting it, or fixing it.</p>
+<Section id="sec-4-3-1-4-2-1" title="Bug Fields">
+<Table id="bug-fields">
+    <THead>
+      <TR>
+        <TH>Field</TH>
+        <TH>Description</TH>
+        <TH>Default Value</TH>
+        <TH>Nullable</TH>
+        <TH>Required</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="bug-fields-row-status">
+        <TD><BaseFieldLink to="status">Status</BaseFieldLink></TD>
+        <TD>The lifecycle state of the bug. Statuses are according to the relevant <StatusGroupLink to="sec-4-3-1-4-2-2">status group</StatusGroupLink>.</TD>
+        <TD>Logged</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="bug-fields-row-created-by">
+        <TD><BaseFieldLink to="created-by">Created By</BaseFieldLink></TD>
+        <TD>The user who created this entry.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="bug-fields-row-date-created">
+        <TD><BaseFieldLink to="date-created">Date Created</BaseFieldLink></TD>
+        <TD>The date this entry was created.</TD>
+        <TD>—</TD>
+        <TD>No</TD>
+        <TD>Yes</TD>
+      </TR>
+      <TR id="bug-fields-row-thread">
+        <TD><CustomFieldLink to="thread">Thread</CustomFieldLink></TD>
+        <TD>A link to the support email thread with ClickUp regarding this bug.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+      <TR id="bug-fields-row-clip">
+        <TD><CustomFieldLink to="clip">Clip</CustomFieldLink></TD>
+        <TD>A link to a clip or screen recording demonstrating the bug.</TD>
+        <TD>—</TD>
+        <TD>Yes</TD>
+        <TD>No</TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+<Section id="sec-4-3-1-4-2-2" title="Bug Statuses">
+<ul>
+  <LinkTarget as="li" id="status-bug-logged"><Status type="bug" status="logged" showStatusType /> — The default status. The bug entry has been added to the list.</LinkTarget>
+  <LinkTarget as="li" id="status-bug-reported"><Status type="bug" status="reported" showStatusType /> — An email has been sent to ClickUp technical support alerting them of the bug. The report may have received replies and additional messages may have been exchanged, but no resolution has come from the report yet.</LinkTarget>
+  <LinkTarget as="li" id="status-bug-confirmed"><Status type="bug" status="confirmed" showStatusType /> — The ClickUp staff have confirmed that the reported bug is indeed a bug.</LinkTarget>
+  <LinkTarget as="li" id="status-bug-rejected"><Status type="bug" status="rejected" showStatusType /> — The ClickUp staff have denied that the bug exists, either because they could not recreate it or because the reported behavior is intended.</LinkTarget>
+  <LinkTarget as="li" id="status-bug-fixed"><Status type="bug" status="fixed" showStatusType /> — The bug has been fixed.</LinkTarget>
+</ul>
+<Section id="sec-4-3-1-4-2-2-1" title="Bug Status Transitions">
+<ul>
+  <li><Status type="bug" status="logged" /> → <Status type="bug" status="reported" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when <TaskTypeFieldLink type="bug" to="thread">Thread</TaskTypeFieldLink> is set.</li>
+  <li><Status type="bug" status="reported" /> → <Status type="bug" status="confirmed" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The ClickUp staff have confirmed the bug.</li>
+  <li><Status type="bug" status="reported" /> → <Status type="bug" status="rejected" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The ClickUp staff have denied the bug.</li>
+  <li>(<Status type="bug" status="reported" />, <Status type="bug" status="confirmed" />, <Status type="bug" status="rejected" />) → <Status type="bug" status="logged" />: <StatusTriggerLink to="internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger></StatusTriggerLink> — Triggered when <TaskTypeFieldLink type="bug" to="thread">Thread</TaskTypeFieldLink> is unset.</li>
+  <li>(<Status type="bug" status="logged" />, <Status type="bug" status="reported" />, <Status type="bug" status="confirmed" />, <Status type="bug" status="rejected" />) → <Status type="bug" status="fixed" />: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink> — The bug has been fixed.</li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-3-1-4-2-3" title="Bug Constraints">
+<p><strong>Status</strong></p>
+<RuleBlock>
+<Rule>
+  <Entry keyword="If"><TaskTypeFieldLink type="bug" to="thread">Thread</TaskTypeFieldLink> is not set.</Entry>
+  <Entry keyword="Then"><TaskTypeFieldLink type="bug" to="status">Status</TaskTypeFieldLink> must be <StatusLink type="bug" status="logged" />.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-3-1-4-2-4" title="Bug Operational Rules">
+<RuleBlock ordered={true} style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="bug" to="thread">Thread</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="bug" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+<Rule>
+  <Entry keyword="Trigger"><TaskTypeFieldLink type="bug" to="status">Status</TaskTypeFieldLink> changed →</Entry>
+  <Entry keyword="Actions">enforce <TaskTypeFieldLink type="bug" to="status">Status</TaskTypeFieldLink> constraints.</Entry>
+</Rule>
+</RuleBlock>
+</Section>
+<Section id="sec-4-3-1-4-2-5" title="Bugs List Configuration">
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-6">Data</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-3-1-4-2-2">Bug</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="created-by">Created By</BaseFieldLink>, <BaseFieldLink to="date-created">Date Created</BaseFieldLink>, <CustomFieldLink to="thread">Thread</CustomFieldLink>, <CustomFieldLink to="clip">Clip</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+</Section>
+</Section>
+</Section>
+<Section id="sec-4-3-1-5" title="Healthcare">
+<p>All things medical, healthcare, and self-help, including various trackers.</p>
+</Section>
+<Section id="sec-4-3-1-6" title="Tino">
+<p>Everything related to Tino: tasks, events, thoughts, and various trackers. Also includes lists for potential pensions and medical locations.</p>
+</Section>
+<Section id="sec-4-3-1-7" title="Shopping">
+<p>Centered around a shopping list of items to purchase. Also includes an order tracker, a list of vouchers, general shopping utilities such as coupons, shopping-related tasks, and shopping events.</p>
+<Section id="sec-4-3-1-7-1" title="Shopping Status Group">
+<p>Connected to the list <strong>Shopping</strong> in the space <strong>Shopping</strong>, this status group
+  models the lifecycle of a purchase intent—from wishlist to receipt or abandonment.</p>
+<ul>
+  <LinkTarget as="li" id="status-shopping-idea"><Status type="shopping" status="idea" showStatusType /> — On the wishlist; we may buy it eventually but are not actively planning to.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-to-buy"><Status type="shopping" status="to-buy" showStatusType /> — We intend to buy it soon. When making an online order or going to the store, this item belongs on the shopping list.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-in-cart"><Status type="shopping" status="in-cart" showStatusType /> — For online shopping: the product is selected and sitting in a site's cart, awaiting checkout.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-ordered"><Status type="shopping" status="ordered" showStatusType /> — An order has been placed; we are waiting for delivery.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-cancelled"><Status type="shopping" status="cancelled" showStatusType /> — The item was in the pipeline at some point but will not be purchased; we have no plans to pursue it further.</LinkTarget>
+  <LinkTarget as="li" id="status-shopping-received"><Status type="shopping" status="received" showStatusType /> — The item has been purchased and received.</LinkTarget>
+</ul>
+<Section id="sec-4-3-1-7-1-1" title="Shopping Transitions">
+<p>Every transition is <strong>manual</strong>. The usual path is <Status type="shopping" status="idea" /> → <Status type="shopping" status="to-buy" /> → <Status type="shopping" status="in-cart" /> → <Status type="shopping" status="ordered" /> → <Status type="shopping" status="received" />, but an item may move from any status to any other (e.g. <Status type="shopping" status="ordered" /> back to <Status type="shopping" status="to-buy" /> after an order is cancelled, or <Status type="shopping" status="idea" /> to <Status type="shopping" status="cancelled" />).</p>
+</Section>
+</Section>
+</Section>
+<Section id="sec-4-3-1-8" title="Inbal Career">
+<p>Everything related to Inbal's career, research, studies, and initiatives.</p>
+</Section>
+<Section id="sec-4-3-1-9" title="Ron Career">
+<p>Everything related to Ron's career, research, studies, and initiatives.</p>
+</Section>
+
+</Section>
+
+<Section id="sec-4-3-2" title="Project Scope Conventions">
+
+<p>This workspace’s location hierarchy supports more than one defensible arrangement for almost any workflow. Unchecked drift—two people solving structurally identical problems with different nests of spaces, folders, and lists—is what conventions are meant to prevent. Rather than prescribing every structural choice upfront, these rules articulate the principles we reuse when partitioning work so placements stay recognizable, navigable, and stable over time.</p>
+<p>The following subsections address specific recurring judgments. Taken together they should yield a coherent project scope: one where someone reading the wiki can infer where living work belongs and why, without auditing the entire hierarchy by hand.</p>
+
+<Section id="sec-4-3-2-1" title="Classifying Entries: Lists vs. Views">
+<p>Sometimes entries in a list can be classified by a discriminator property—an enum-like characteristic that separates them into distinct types. When this arises, a structural question follows: should the distinction be modeled within a single list or across multiple lists?</p>
+<p>The two approaches are:</p>
+<ul>
+  <li><strong>Single list with a dropdown field and filtered views</strong> — Add a dropdown custom field representing the discriminator, and create a separate view for each value, filtering for entries that carry that value. All entries remain in one list, and the views provide focused perspectives.</li>
+  <li><strong>Multiple lists</strong> — Create a dedicated list for each value. If a combined view is needed, it can be constructed at a common ancestor location.</li>
+</ul>
+<p>The deciding factor is how much value there is in observing all entries together. If entries of different types are frequently viewed, compared, or managed side by side, a single list with a dropdown field and filtered views is preferable—it keeps everything in one place and avoids fragmenting the data. If the types are mostly handled independently, separate lists offer cleaner separation without the overhead of an additional custom field.</p>
+</Section>
+
+<Section id="sec-4-3-2-2" title="When to Create a Space">
+<p>Not every topic warrants its own space. A topic qualifies for a dedicated space only when all of the following criteria are met:</p>
+<ul>
+  <li>There is no ambiguity about which list an entry belongs to within the topic.</li>
+  <li>No existing space already accommodates the topic (other than General).</li>
+  <li>The topic is permanent—it will not end or become obsolete after a finite project concludes.</li>
+  <li>The topic requires at least two distinct lists.</li>
+</ul>
+</Section>
+
+</Section>

@@ -1,0 +1,71 @@
+---
+title: "Wiki"
+description: "The complete ClickUp reference: ontology, fields, field types, scopes, task types, workflows, and more."
+order: 1
+---
+import Sec1 from '@wiki/sec-1-introduction.mdx';
+import Sec2, { _toc as toc2 } from '@wiki/sec-2-ontology.mdx';
+import Sec3, { _toc as toc3 } from '@wiki/sec-3-clickup.mdx';
+import Sec41 from '@wiki/sec-4-1-working-against-framework.mdx';
+import Sec42, { _toc as toc42 } from '@wiki/sec-4-2-type-scope.mdx';
+import Sec43, { _toc as toc43 } from '@wiki/sec-4-3-project-scope.mdx';
+import Sec44, { _toc as toc44 } from '@wiki/sec-4-4-clickup-elements.mdx';
+import Sec45, { _toc as toc45 } from '@wiki/sec-4-5-workflows.mdx';
+import * as C from '@components/all';
+
+export const _composedToc = [
+  { id: "sec-1", text: "Introduction", num: "1" },
+  { id: "sec-2", text: "Ontology", num: "2", children: toc2 },
+  { id: "sec-3", text: "ClickUp", num: "3", children: toc3 },
+  { id: "sec-4", text: "Workspace", num: "4", children: [
+    { id: "sec-4-1", text: "Working Against the Framework", num: "4.1" },
+    { id: "sec-4-2", text: "Type Scope Hierarchy", num: "4.2", children: toc42 },
+    { id: "sec-4-3", text: "Project Scope Hierarchy", num: "4.3", children: toc43 },
+    { id: "sec-4-4", text: "ClickUp Elements", num: "4.4", children: toc44 },
+    { id: "sec-4-5", text: "Workflows", num: "4.5", children: toc45 },
+  ]},
+];
+
+<Section id="sec-1" title="Introduction">
+<Sec1 components={C} />
+</Section>
+
+<Section id="sec-2" title="Ontology">
+<Sec2 components={C} />
+</Section>
+
+<Section id="sec-3" title="ClickUp">
+<Sec3 components={C} />
+</Section>
+
+<Section id="sec-4" title="Workspace">
+<p>The workspace is the concrete implementation documented in this wiki. It describes the principal
+  structures, conventions, and operating patterns that define what the workspace contains and how it is
+  intended to function in practice.</p>
+<p>This section does not attempt to document every individual ClickUp element, location, or workflow in
+  exhaustive detail. Rather, it focuses on the main pillars of the workspace: its core structures, principal
+  conventions, recurring patterns, and central organizational themes. Its purpose is not to prescribe the
+  construction and maintenance of every project in full detail, but to provide a clear account of the
+  workspace's overall design and governing logic.</p>
+
+<Section id="sec-4-1" title="Working Against the Framework">
+<Sec41 components={C} />
+</Section>
+
+<Section id="sec-4-2" title="Type Scope Hierarchy">
+<Sec42 components={C} />
+</Section>
+
+<Section id="sec-4-3" title="Project Scope Hierarchy">
+<Sec43 components={C} />
+</Section>
+
+<Section id="sec-4-4" title="ClickUp Elements">
+<Sec44 components={C} />
+</Section>
+
+<Section id="sec-4-5" title="Workflows">
+<Sec45 components={C} />
+</Section>
+
+</Section>

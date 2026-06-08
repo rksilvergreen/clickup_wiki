@@ -1,0 +1,31 @@
+---
+/**
+ * CustomFieldLink — link to a row in the custom-fields table.
+ *
+ * Wraps doc-shell's Link, prepending "custom-fields-row-" to the `to` value.
+ * Example: <CustomFieldLink to="start-time">=Start Time</CustomFieldLink>
+ *          → href="#custom-fields-row-start-time"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`custom-fields-row-${to}`} class="custom-field-link"><slot /></Link>
+
+<style is:global>
+  :root {
+    --doc-link-custom-fields: #7da0f0;
+  }
+  [data-theme="light"] {
+    --doc-link-custom-fields: #1d4ed8;
+  }
+  .document a.custom-field-link,
+  .document a.custom-field-link:visited {
+    color: var(--doc-link-custom-fields);
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+/**
+ * FilterLink — link to a filter section.
+ *
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ * Example: <FilterLink to="sec-4-4-5-1">Assignee filter</FilterLink>
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={to} class="filter-link"><slot /></Link>
+
+<style is:global>
+  :root {
+    --doc-link-filter: #14b8a6;
+    --doc-link-filter-hover: #2dd4bf;
+  }
+  [data-theme="light"] {
+    --doc-link-filter: #0d9488;
+    --doc-link-filter-hover: #14b8a6;
+  }
+  .document a.filter-link,
+  .document a.filter-link:visited {
+    color: var(--doc-link-filter);
+  }
+  .document a.filter-link:hover {
+    color: var(--doc-link-filter-hover);
+    text-decoration: underline;
+  }
+</style>

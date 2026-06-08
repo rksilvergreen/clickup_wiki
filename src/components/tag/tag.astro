@@ -1,0 +1,13 @@
+---
+import "./tag.css";
+
+interface Props {
+  /** Hex color, e.g. `#b1b1b1` (shown as background and `title` tooltip). */
+  color: string;
+}
+
+const { color } = Astro.props;
+const hex = color.startsWith("#") ? color : `#${color}`;
+---
+
+<span class="doc-tag" style={`background-color:${hex}`} title={hex}><slot /></span>

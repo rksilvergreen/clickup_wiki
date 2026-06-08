@@ -1,0 +1,36 @@
+---
+/**
+ * StatusGroupLink — link to a status-group section (lifecycle statuses for a task type).
+ *
+ * Wraps doc-shell's Link. Pass the section `id` directly as `to`.
+ * Example: <StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink>
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={to} class="status-group-link"><slot /></Link>
+
+<style is:global>
+  :root {
+    --doc-link-status-group: #df82b0;
+    --doc-link-status-group-hover: #e27fb2;
+  }
+  [data-theme="light"] {
+    --doc-link-status-group: #db2777;
+    --doc-link-status-group-hover: #ec4899;
+  }
+  .document a.status-group-link,
+  .document a.status-group-link:visited {
+    color: var(--doc-link-status-group);
+  }
+  .document a.status-group-link:hover {
+    color: var(--doc-link-status-group-hover);
+    text-decoration: underline;
+  }
+</style>

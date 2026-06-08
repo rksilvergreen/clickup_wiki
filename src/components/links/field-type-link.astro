@@ -1,0 +1,29 @@
+---
+/**
+ * FieldTypeLink — link to a row in the field-types table.
+ *
+ * Wraps doc-shell's Link, prepending "field-types-row-" to the `to` value.
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`field-types-row-${to}`} class="field-type-link"><slot /></Link>
+
+<style is:global>
+  :root {
+    --doc-link-field-types: #bfa0e8;
+  }
+  [data-theme="light"] {
+    --doc-link-field-types: #7c3aed;
+  }
+  .document a.field-type-link,
+  .document a.field-type-link:visited {
+    color: var(--doc-link-field-types);
+  }
+</style>

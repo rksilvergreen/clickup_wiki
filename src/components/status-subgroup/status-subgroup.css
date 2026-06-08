@@ -1,0 +1,33 @@
+:root {
+  --doc-status-type-pill-bg: rgba(200, 200, 200, 0.12);
+}
+
+[data-theme="light"] {
+  --doc-status-type-pill-bg: rgba(100, 100, 100, 0.10);
+}
+
+.document .status-type-pill {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--doc-ink-light);
+  background: var(--doc-status-type-pill-bg);
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  margin-left: 0.35em;
+  margin-right: 0.25em;
+}
+
+.document a.status-type-pill-link {
+  text-decoration: none;
+  display: inline;
+}
+
+.document a.status-type-pill-link .status-type-pill {
+  margin-left: 0.35em;
+  margin-right: 0.25em;
+}
+
+.document a.status-type-pill-link:hover .status-type-pill {
+  text-decoration: underline;
+}

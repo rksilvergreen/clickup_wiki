@@ -1,0 +1,30 @@
+---
+import StatusType from "@components/status-subgroup/status-subgroup.astro";
+import { getStatus } from "./statuses";
+import "./status.css";
+
+interface Props {
+  type: string;
+  status: string;
+  showStatusType?: boolean;
+}
+
+const { type, status, showStatusType = false } = Astro.props;
+const def = getStatus(type, status);
+---
+
+<span
+  class="status-dot"
+  style={`background-color:${def.color}`}
+  title={def.color.toUpperCase()}
+  aria-hidden="true"></span><strong
+  >{def.name}{
+    showStatusType && (
+      <>
+        {" "}
+        <StatusType group={def.statusType} />
+      </>
+    )
+  }</strong
+>
+

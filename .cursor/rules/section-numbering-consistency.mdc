@@ -1,0 +1,4 @@
+---
+alwaysApply: false
+---
+When adding, removing, moving, splitting, or merging any numbered section or subsection in a structured document, always update all affected section numbers so the numbering remains continuous, correctly ordered, and hierarchically consistent. If a section is deleted, all following sibling sections and their descendants must be renumbered accordingly. If a new section is inserted between existing sections, all following sibling sections and their descendants must shift to make room for the new numbering. Apply this renumbering not only to the section headings themselves, but also to any internal references, cross-references, lists, tables of contents, or other document elements that depend on those section numbers. Never leave numbering gaps, duplicates, or stale references after the edit.

@@ -1,0 +1,285 @@
+---
+title: "Sprint Review Metrics"
+description: "A model for measuring sprint outcomes: concepts, base measures, and derived metrics for a structured sprint review."
+order: 3
+---
+
+<Section id="sec-1" title="Introduction">
+<p>The sprint review is the ceremony where we close out a sprint and assess what happened. Its value depends entirely on the quality of the information it surfaces. A review that simply lists completed and incomplete tasks tells us what happened but not why, and offers little guidance for the next sprint.</p>
+
+<p>The ambition behind this document is to build the best sprint review we can by grounding it in a clear measurement model. The approach is to identify a small set of base measures—raw values recorded directly from the sprint—and then derive from them a set of metrics that answer the questions that matter most: did we deliver what we committed to, did the sprint scope remain stable, and was our capacity estimate realistic.</p>
+
+<p>By separating base measures from derived metrics, the model stays transparent. The raw data is always visible, and the calculated indicators are traceable back to the values they depend on. This makes it possible to understand not just the numbers, but what they mean and where they come from.</p>
+</Section>
+
+<Section id="sec-2" title="Concepts">
+<p>The sprint review model rests on a small vocabulary of scope categories. Each category describes a subset of sprint tasks based on when and how they entered or left the sprint.</p>
+<ul>
+  <li><strong>Committed Scope</strong> — The tasks that were in the sprint at the moment the sprint plan was committed. This is the original baseline: the work we said we would do.</li>
+  <li><strong>Added Scope</strong> — Tasks added to the sprint after commitment. These represent mid-sprint scope expansion, whether due to urgent incoming work, adaptation to new information, or replacement of removed tasks.</li>
+  <li><strong>Removed Scope</strong> — Tasks that were originally committed but later removed from the sprint. A task may be removed because it was deprioritized, blocked, no longer relevant, or replaced by higher-priority work.</li>
+  <li><strong>Final Scope</strong> — The tasks that remain in the sprint at the end, regardless of whether they were completed. Final Scope equals Committed Scope minus Removed Scope plus Added Scope.</li>
+</ul>
+</Section>
+
+<style>{`
+  .sr-table-wrap {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--doc-border);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--doc-highlight) transparent;
+  }
+  .sr-table-wrap::-webkit-scrollbar {
+    height: 6px;
+  }
+  .sr-table-wrap::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+  }
+  .sr-table-wrap::-webkit-scrollbar-thumb {
+    background: var(--doc-highlight);
+    border-radius: 3px;
+  }
+  .sr-table-wrap::-webkit-scrollbar-thumb:hover {
+    background: var(--doc-ink-light);
+  }
+  .sr-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background: var(--doc-surface);
+    table-layout: auto;
+  }
+  .sr-table thead {
+    background: var(--doc-table-default);
+    color: #fff;
+  }
+  .sr-table thead th {
+    padding: 0.65rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-family: inherit;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .sr-table thead tr:first-child th:first-child,
+  .sr-table thead tr:nth-child(2) th:first-child {
+    border-left: none;
+  }
+  .sr-table thead tr:first-child th[colspan] {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .sr-table thead .sr-col-points {
+    background: color-mix(in srgb, var(--doc-table-default) 88%, #fff);
+  }
+  .sr-table thead .sr-col-tasks {
+    background: color-mix(in srgb, var(--doc-table-default) 78%, var(--doc-highlight));
+  }
+  .sr-table .sr-sticky {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+  .sr-table thead .sr-sticky {
+    background: var(--doc-table-default);
+    z-index: 3;
+  }
+  .sr-table tbody .sr-sticky {
+    background: var(--doc-surface);
+    border-right: 2px solid var(--doc-border);
+  }
+  .sr-table tbody tr:nth-child(even) .sr-sticky {
+    background: color-mix(in srgb, var(--doc-surface) 94%, var(--doc-highlight));
+  }
+  .sr-table tbody tr:hover .sr-sticky {
+    background: color-mix(in srgb, var(--doc-surface) 88%, var(--doc-highlight));
+  }
+  .sr-table tbody td {
+    padding: 0.6rem 1rem;
+    color: var(--doc-ink-light);
+    vertical-align: top;
+    border-bottom: 1px solid var(--doc-border);
+    border-left: 1px solid var(--doc-border);
+  }
+  .sr-table tbody td:first-child {
+    font-weight: 500;
+    color: var(--doc-ink);
+    white-space: nowrap;
+    border-left: none;
+  }
+  .sr-table tbody tr:nth-child(even) {
+    background: var(--doc-tint-subtle);
+  }
+  .sr-table tbody tr:hover {
+    background: var(--doc-tint);
+  }
+  .sr-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .sr-table .sr-num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .sr-table .sr-muted {
+    color: var(--doc-ink-light);
+    opacity: 0.45;
+    text-align: center;
+  }
+`}</style>
+
+<Section id="sec-3" title="Base Measures">
+<p>Base measures are the raw values recorded from a sprint. Each measure is captured in two units: points (estimated effort) and tasks (count). Points reflect how much work was expected; tasks reflect how many discrete objectives were involved. Together, they provide a complete picture of the sprint's scope and outcomes.</p>
+
+<p>For each base measure, the points and tasks are broken down into four sub-values: how many were completed, how many were not completed, how many were removed from the sprint, and the total. The removed column does not apply to Final Scope because it represents scope at the end, after removals have already been accounted for.</p>
+
+<p>The following table shows an example sprint:</p>
+
+<div class="sr-table-wrap">
+<table class="sr-table">
+  <thead>
+    <tr>
+      <th rowspan="2" class="sr-sticky">Base Measure</th>
+      <th rowspan="2">Description</th>
+      <th colspan="4" class="sr-col-points">Points</th>
+      <th colspan="4" class="sr-col-tasks">Tasks</th>
+    </tr>
+    <tr>
+      <th class="sr-col-points">Completed</th>
+      <th class="sr-col-points">Not Completed</th>
+      <th class="sr-col-points">Removed</th>
+      <th class="sr-col-points">Total</th>
+      <th class="sr-col-tasks">Completed</th>
+      <th class="sr-col-tasks">Not Completed</th>
+      <th class="sr-col-tasks">Removed</th>
+      <th class="sr-col-tasks">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="sr-sticky">Committed</td>
+      <td>Total scope at commitment time</td>
+      <td class="sr-num">28</td>
+      <td class="sr-num">6</td>
+      <td class="sr-num">6</td>
+      <td class="sr-num">40</td>
+      <td class="sr-num">8</td>
+      <td class="sr-num">2</td>
+      <td class="sr-num">2</td>
+      <td class="sr-num">12</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Added</td>
+      <td>Scope added after commitment</td>
+      <td class="sr-num">8</td>
+      <td class="sr-num">2</td>
+      <td class="sr-num">0</td>
+      <td class="sr-num">10</td>
+      <td class="sr-num">3</td>
+      <td class="sr-num">1</td>
+      <td class="sr-num">0</td>
+      <td class="sr-num">4</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Final Scope</td>
+      <td>Scope at sprint end (Committed − Removed + Added)</td>
+      <td class="sr-num">36</td>
+      <td class="sr-num">8</td>
+      <td class="sr-muted">—</td>
+      <td class="sr-num">44</td>
+      <td class="sr-num">11</td>
+      <td class="sr-num">3</td>
+      <td class="sr-muted">—</td>
+      <td class="sr-num">14</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</Section>
+
+<Section id="sec-4" title="Derived Metrics">
+<p>Derived metrics are calculated from the base measures. Each one answers a specific question about the sprint. They are expressed as percentages for both points and tasks, and the two versions often tell different stories: a sprint can complete most of the estimated effort while leaving many small tasks unfinished, or complete many tasks while missing the few that carried the most weight. Comparing point-based and task-based values reveals whether the sprint was dominated by a few heavy items or many light ones.</p>
+
+<p>The following table shows the derived metrics for the example sprint above:</p>
+
+<div class="sr-table-wrap">
+<table class="sr-table">
+  <thead>
+    <tr>
+      <th class="sr-sticky">Derived Metric</th>
+      <th>Description</th>
+      <th>Points</th>
+      <th>Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="sr-sticky">Commitment Completion</td>
+      <td>Committed Completed / Committed Total — did we deliver the original plan?</td>
+      <td class="sr-num">70%</td>
+      <td class="sr-num">67%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Capacity Accuracy</td>
+      <td>Final Scope Completed / Committed Total — was our effort capacity estimate realistic?</td>
+      <td class="sr-num">90%</td>
+      <td class="sr-num">92%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Total Completion Rate</td>
+      <td>Final Scope Completed / Final Scope Total — how much of the final scope was completed?</td>
+      <td class="sr-num">82%</td>
+      <td class="sr-num">79%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Scope Added Rate</td>
+      <td>Added Total / Committed Total — how much new work entered the sprint?</td>
+      <td class="sr-num">25%</td>
+      <td class="sr-num">33%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Scope Removed Rate</td>
+      <td>Committed Removed / Committed Total — how much original work was removed?</td>
+      <td class="sr-num">15%</td>
+      <td class="sr-num">17%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Net Scope Change</td>
+      <td>Final Scope Total / Committed Total — did the sprint grow or shrink?</td>
+      <td class="sr-num">110%</td>
+      <td class="sr-num">117%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Scope Churn</td>
+      <td>(Added Total + Committed Removed) / Committed Total — how unstable was the sprint?</td>
+      <td class="sr-num">40%</td>
+      <td class="sr-num">50%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Planned Work Ratio</td>
+      <td>Committed Completed / Final Scope Completed — how much completed work came from the original plan?</td>
+      <td class="sr-num">78%</td>
+      <td class="sr-num">73%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Added Work Completion</td>
+      <td>Added Completed / Added Total — was added work actually completed?</td>
+      <td class="sr-num">80%</td>
+      <td class="sr-num">75%</td>
+    </tr>
+    <tr>
+      <td class="sr-sticky">Commitment Displacement</td>
+      <td>(Committed Removed + Committed Not Completed) / Committed Total — how much of the original plan failed?</td>
+      <td class="sr-num">30%</td>
+      <td class="sr-num">33%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</Section>

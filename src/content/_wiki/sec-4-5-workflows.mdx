@@ -1,0 +1,229 @@
+---
+_sectionBase: "4.5"
+---
+<p>(To be filled in.)</p>
+
+<Section id="sec-4-5-1" title="Task Management">
+<p>Task management follows a recurring cycle: tasks are captured, prepared for work, committed to a <Link to="sec-4-5-1-3">sprint</Link>, executed day by day, and reviewed at <Link to="sec-4-5-1-3">sprint</Link> boundaries. This section documents both the processes that govern each stage of the task lifecycle and the cadences—recurring scheduled events—that structure when those processes are performed.</p>
+
+<Section id="sec-4-5-1-1" title="Task Intake">
+<p>Task intake is the process by which new tasks enter the workspace. Tasks originate in different ways and arrive through different mechanisms, but all of them begin in the backlog—whether <Link to="sec-4-5-1-2-2">specified</Link> or not—from which they may proceed through <Link to="sec-4-5-1-2-3-2">specification</Link>, <Link to="sec-4-5-1-3">sprint</Link> commitment, execution, and completion.</p>
+
+<p><strong>Origins</strong></p>
+<p>A task can arise from three distinct situations:</p>
+<ul>
+  <li><strong>Quick capture</strong> — A task is entered briefly because it came to mind. The entry may have little or no description; its purpose is to record the idea so it can be fleshed out and acted on later.</li>
+  <li><strong>Thought conversion</strong> — A task emerges from reviewing previously captured <TaskTypeLink to="sec-4-2-4">Thoughts</TaskTypeLink>. A thought that was recorded as a fleeting idea or observation is later evaluated and converted into an actionable task—either immediately at capture time or during a dedicated review such as the <Link to="sec-4-5-4">Workspace Upgrade</Link> ceremony.</li>
+  <li><strong>Deliberate planning</strong> — A task is created through intentional, upfront planning rather than as a byproduct of a captured thought. The creator thinks carefully about the task from the start and specifies it meticulously before or at the time of entry.</li>
+</ul>
+
+<p><strong>Entry Methods</strong></p>
+<p>Regardless of how a task originates, it enters the workspace through one of two mechanisms:</p>
+<ul>
+  <li><strong>Direct entry via the ClickUp UI</strong> — The user navigates to the appropriate list in ClickUp and creates the task manually.</li>
+  <li><strong>Form submission</strong> — The user submits a ClickUp form attached to a list. The most general forms are those in the <Link to="sec-4-3-1-1-1">Intake Folder</Link>, which provides a separate form for each task type and routes entries to the selected space's default task-type list. Additional forms may exist for more specific purposes and lists elsewhere in the workspace.</li>
+</ul>
+
+<p>In practice, many tasks never advance beyond the backlog: they may be <Link to="sec-4-5-1-2-3-1">pruned</Link>, deferred indefinitely, or simply left behind as priorities shift.</p>
+</Section>
+
+<Section id="sec-4-5-1-2" title="Backlog">
+<p>The backlog is the pool of all tasks that have entered the workspace but have not yet been committed to a <Link to="sec-4-5-1-3">sprint</Link>. It represents the full inventory of potential work—everything that has been captured, regardless of how well-defined or immediately actionable it may be. Tasks remain in the backlog until they are either pulled into a <Link to="sec-4-5-1-3">sprint</Link> for execution, pruned as no longer relevant, or completed without <Link to="sec-4-5-1-3">sprint</Link> involvement.</p>
+
+<p>The backlog is divided into two categories based on how thoroughly each task has been prepared for work:</p>
+
+<Section id="sec-4-5-1-2-1" title="Unspecified Tasks">
+<p>An unspecified task is one that has entered the workspace but has not yet been prepared to a level where it can be responsibly committed to a <Link to="sec-4-5-1-3">sprint</Link>. These tasks carry the <StatusLink type="task" status="unspecified" /> status. At minimum, an unspecified task is missing the fields required for the status to advance—<TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink>, <TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink>, and at least one of <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>—but being unspecified often reflects a broader lack of clarity: the task may have no meaningful description, no defined scope, no sense of when it should be worked on, or no breakdown of what completing it actually entails. Many tasks enter the backlog in this state, captured quickly to preserve the idea with the intention of revisiting and refining them later.</p>
+</Section>
+
+<Section id="sec-4-5-1-2-2" title="Specified Tasks">
+<p>A specified task is one that has been prepared sufficiently to be eligible for <Link to="sec-4-5-1-3">sprint</Link> inclusion. These tasks carry either the <StatusLink type="task" status="to-do" /> or <StatusLink type="task" status="blocked" /> status, depending on whether a dependency prevents them from being worked on immediately.</p>
+
+<p>The minimum requirement for a task to become specified is filling in its <TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink>, <TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink>, and at least one of <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>—the fields whose presence triggers the automatic status transition from <StatusLink type="task" status="unspecified" /> to <StatusLink type="task" status="to-do" /> (or <StatusLink type="task" status="blocked" />). However, true specification goes beyond this minimum. A well-specified task should also include a descriptive description that captures what needs to be done and why, along with any other helpful fields such as <TaskTypeFieldLink type="task" to="start-date">Start Date</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="due-date">Due Date</TaskTypeFieldLink> when known. It may also involve adding checklists to break the work into concrete steps, or dividing the task into smaller subtasks—thereby turning it into a parent task—when the scope warrants decomposition. The goal of specification is not merely to satisfy a status trigger, but to make the task clear, actionable, and realistically estimable before it competes for <Link to="sec-4-5-1-3">sprint</Link> capacity.</p>
+</Section>
+
+<Section id="sec-4-5-1-2-3" title="Backlog Grooming">
+<p>Backlog grooming is the process of reviewing and preparing the task backlog. It consists of two activities: pruning the backlog of irrelevant or outdated tasks, and specifying tasks to make them eligible for <Link to="sec-4-5-1-3">sprint</Link> inclusion.</p>
+
+<Section id="sec-4-5-1-2-3-1" title="Backlog Pruning">
+<p>A review of all not-started tasks (<StatusLink type="task" status="unspecified" />, <StatusLink type="task" status="to-do" />, <StatusLink type="task" status="blocked" />), aimed at cleaning up the pipeline. This includes removing tasks that are no longer relevant—by deleting them or setting their <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink> to <StatusLink type="task" status="canceled" />, <StatusLink type="task" status="done" />, or <StatusLink type="task" status="complete" />—merging or removing duplicates, and correcting typos or incorrect field values.</p>
+</Section>
+
+<Section id="sec-4-5-1-2-3-2" title="Backlog Specification">
+<p>A review of all <StatusLink type="task" status="unspecified" /> tasks to determine which should be <Link to="sec-4-5-1-2-2">specified</Link>. Specifying a task—by setting its <TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink>, <TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink>, and at least one of <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> or <TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>—transitions it from <StatusLink type="task" status="unspecified" /> to <StatusLink type="task" status="to-do" /> (or <StatusLink type="task" status="blocked" />, if a dependency exists), making it eligible for <Link to="sec-4-5-1-3">sprint</Link> inclusion.</p>
+</Section>
+
+</Section>
+
+</Section>
+
+<Section id="sec-4-5-1-3" title="Sprint">
+<p>A sprint is a fixed time period during which a defined set of <TaskTypeLink to="sec-4-2-1">Tasks</TaskTypeLink> is committed to and worked on. Rather than working from an open-ended list, tasks are selected in advance for each sprint based on priority, capacity, and current constraints, creating a rhythm of planning, executing, and reviewing that sustains both progress and visibility.</p>
+
+<p>The workspace has a shared sprint folder. A <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> becomes <Link to="task-term-sprinted">sprinted</Link> when it is added to an <Link to="sprint-term-open">open sprint</Link> inside this folder. Sprinting a task advances its <TaskTypeFieldLink type="task" to="status">Status</TaskTypeFieldLink>: a <StatusLink type="task" status="to-do" /> task becomes <StatusLink type="task" status="committed" />, and a <StatusLink type="task" status="blocked" /> task becomes <StatusLink type="task" status="waiting" />. Within a sprint, a committed task may be further moved to <StatusLink type="task" status="scheduled" /> by allocating it a dedicated calendar time block.</p>
+
+<Section id="sec-4-5-1-3-1" title="Sprint Types">
+<p>The following terms classify sprints by their temporal relationship to the present:</p>
+<ul>
+  <LinkTarget as="li" id="sprint-term-active"><strong>Active</strong> — The current sprint; the one whose timeframe includes today.</LinkTarget>
+  <LinkTarget as="li" id="sprint-term-upcoming"><strong>Upcoming</strong> — A sprint whose timeframe has not yet begun.</LinkTarget>
+  <LinkTarget as="li" id="sprint-term-open"><strong>Open</strong> — A sprint that is either <Link to="sprint-term-active">active</Link> or <Link to="sprint-term-upcoming">upcoming</Link>.</LinkTarget>
+  <LinkTarget as="li" id="sprint-term-closed"><strong>Closed</strong> — A sprint whose timeframe has already passed.</LinkTarget>
+</ul>
+</Section>
+
+<Section id="sec-4-5-1-3-2" title="Sprint Points">
+<p>Sprint points are a numeric unit used to express the effort a task is expected to require. Each sprint point represents 30 minutes of work. Any task included in a sprint must be <Link to="sec-4-5-1-2-2">specified</Link>, and because most tasks exceed 30 minutes, they are specified with a <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> value. Tasks estimated at under 30 minutes do not receive sprint points; they are instead specified with a <TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>.</p>
+
+<p>Every user determines a personal base sprint-point total for each sprint by evaluating how many productive work hours they have per day. This calculation excludes routine daily activities that do not warrant a dedicated task in the workspace. The resulting total represents the user's available capacity for the sprint and serves as the budget against which tasks are committed during <Link to="sec-4-5-1-3-4">Sprint Planning</Link>.</p>
+</Section>
+
+<Section id="sec-4-5-1-3-3" title="Recurring Tasks in Sprints">
+<p>Recurring tasks whose recurrence period is shorter than the sprint duration require special handling. When such a task completes and reappears within the same sprint, ClickUp does not multiply the <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink> by the number of occurrences—estimates, burndown charts, and sprint reports reflect only the single-task value. Additionally, a recurring task that completes may reappear in the current sprint as an open task even when it is only relevant to a future sprint. Both issues distort sprint capacity and progress tracking.</p>
+
+<p>To address this, recurring tasks that occur more than once per sprint are decomposed into individual tasks using one of two approaches, depending on the nature of their schedule:</p>
+
+<ul>
+  <li><strong>Fixed-datetime recurrences</strong> — When a task recurs on specific, known datetimes within the sprint (e.g., every Monday and Thursday), a separate recurring task is created for each datetime. Each task carries its own sprint-point value and its own recurrence schedule, making every occurrence independently trackable.</li>
+  <li><strong>Periodic recurrences</strong> — When a task recurs at a fixed interval shorter than the sprint, it is expanded into multiple tasks so that each one occurs at most once per sprint. The number of tasks <em>N</em> is determined by dividing the sprint duration by the task's period (<em>N</em> = sprint duration ÷ task period). Each of the <em>N</em> tasks is set to recur at an extended period <em>T</em> = (<em>N</em> + 1) × task period, which guarantees that no single task recurs more than once within a sprint. The tasks are staggered so that their occurrences collectively cover the original schedule.</li>
+</ul>
+
+<p>In both cases, the original recurring task is replaced by the set of new tasks—each carrying its own <TaskTypeFieldLink type="task" to="sprint-points">Sprint Points</TaskTypeFieldLink>—so that the full effort is visible in sprint estimates and correctly counted upon completion.</p>
+</Section>
+
+<Section id="sec-4-5-1-3-4" title="Sprint Planning">
+<p>The process of selecting which <Link to="sec-4-5-1-2-2">specified</Link> tasks will be added to the upcoming sprint. The planner reviews all specified tasks and evaluates their relevance fields—<TaskTypeFieldLink type="task" to="time-estimate">Time Estimate</TaskTypeFieldLink>, dates, and <TaskTypeFieldLink type="task" to="priority">Priority</TaskTypeFieldLink>—to determine what should be committed. The process follows this sequence:</p>
+<ol>
+  <li>Review upcoming <TaskTypeLink to="sec-4-2-2">events</TaskTypeLink> that are relevant but not necessarily within the sprint timeframe. Some events are worth surfacing early because they require preparation that exceeds a single sprint; being reminded of them now may prompt the creation of preparatory tasks.</li>
+  <li>Review upcoming <TaskTypeLink to="sec-4-2-2">events</TaskTypeLink> that fall specifically within the sprint timeframe. These may affect the sprint's schedule and influence how tasks are prioritized and arranged. Ensure these events are scheduled in the calendar; schedule them if they are not.</li>
+  <li>Add anchor tasks—tasks that must be worked on in the upcoming sprint. If any of these are constrained to a specific timeframe within the sprint, schedule them.</li>
+  <li>Assess remaining capacity and any general constraints.</li>
+  <li>Derive the objectives of the sprint.</li>
+  <li>Review the remaining specified tasks and select which should be added to the sprint based on available capacity, priority, and other constraints.</li>
+  <li>Optionally schedule the non-anchor tasks that were added to the sprint.</li>
+</ol>
+</Section>
+
+<Section id="sec-4-5-1-3-5" title="Sprint Review">
+<p>Performed at or near the end of a sprint, this ceremony reviews what was accomplished and what was not. Its purpose is to close out the sprint and inform the planning of the next one. This ceremony is currently conceptual and has not yet been formalized into a concrete process.</p>
+</Section>
+
+</Section>
+
+<Section id="sec-4-5-1-4" title="Ceremonies">
+<p>Ceremonies are the recurring scheduled events that structure when task management processes are performed. Each ceremony orchestrates one or more of the processes defined in the preceding sections into a defined sequence at a fixed rhythm.</p>
+
+<Section id="sec-4-5-1-4-1" title="Daily Review">
+<p>A brief review and forward-planning session performed at the end of each day:</p>
+<ol>
+  <li>Review what was accomplished during the day and update <Link to="sec-4-5-1-3">sprint</Link> task statuses as needed.</li>
+  <li>Define what should be accomplished the following day, taking into account the existing schedule and any unexpected events or blockages.</li>
+</ol>
+</Section>
+
+<Section id="sec-4-5-1-4-2" title="Sprint Meeting">
+<p>The sprint meeting is performed at each sprint boundary, orchestrating <Link to="sec-4-5-1-2-3">backlog grooming</Link>, <Link to="sec-4-5-1-3-4">sprint planning</Link>, and coordination processes into a single structured session. The meeting proceeds as follows:</p>
+<ol>
+  <li><Link to="sec-4-5-1-3-5">Sprint Review</Link> — Each person reviews their own sprint.</li>
+  <li><Link to="sec-4-5-1-2-3">Backlog Grooming</Link> — <Link to="sec-4-5-1-2-3-1">Pruning</Link> and <Link to="sec-4-5-1-2-3-2">specification</Link> of shared tasks together and personal tasks individually.</li>
+  <li><strong>Shared task selection</strong> — Potential shared, non-anchor tasks are identified as candidates for the upcoming sprint. These join any individual tasks during the sprint planning step.</li>
+  <li><Link to="sec-4-5-1-3-4">Sprint Planning</Link> — Predominantly individual, but includes discussing the shared tasks identified in step 3.</li>
+  <li><strong>Sprint Sync</strong> — Each person provides an update on their past sprint—what was accomplished and what was not—and states what they will be working on in the next sprint. Each person presents in turn, after which shared goals and dependencies are discussed. This step serves to inform each person of the other's current status, surface progress on tasks that directly affect the other person, and coordinate plans where one person's work may require the other's involvement or awareness.</li>
+</ol>
+</Section>
+
+</Section>
+
+</Section>
+
+<Section id="sec-4-5-2" title="Notebook">
+<p>A Notebook is a doc template that can be attached to anything ClickUp permits a doc to be associated with—a task, list, folder, or space. It acts as a journal of its subject, giving it a dedicated place to track its current state, gather ongoing thoughts about it, and record what happens across individual work sessions. A Notebook is organized into four pages:</p>
+<ul>
+  <li><strong>Summary</strong> — A summary of the subject's current state, kept up to date as the subject evolves.</li>
+  <li><strong>Thoughts</strong> — A collection of subpages, each holding a single thought the user has chosen to record about the subject.</li>
+  <li><strong>Resolved Thoughts</strong> — An archive for thoughts that have been worked through. When a thought is resolved—because it produced an action item, or because the user decided not to act on it or found it no longer worth pursuing—it can simply be deleted; but when it is worth preserving, its subpage is moved here instead so the thought stays documented even after being settled.</li>
+  <li><strong>Sessions</strong> — A list of subpages, each titled with a date in <code>dd-mm-yy</code> format and serving as a blank canvas for a single work session on the subject. It is an unstructured space to spill out raw thoughts, leave notes for the next session, and otherwise doodle freely, offering a window into how that particular session unfolded.</li>
+</ul>
+</Section>
+
+<Section id="sec-4-5-3" title="Workspace Maintenance">
+<p>Workspace Maintenance is the recurring process of reviewing, validating, and improving the workspace over time. Its purpose is to ensure that the workspace remains clear, consistent, functional, and aligned with its intended design as it evolves. Maintenance is divided into two areas: <Link to="sec-4-5-3-1">System Maintenance</Link>, which concerns the ClickUp elements that define how the workspace operates, and <Link to="sec-4-5-3-2">Content Maintenance</Link>, which concerns the entries stored in the workspace and focuses on keeping them accurate, organized, and up to date.</p>
+
+<Section id="sec-4-5-3-1" title="System Maintenance">
+<p>System Maintenance is the review and upkeep of the ClickUp elements that define, regulate, and support how the workspace operates. This includes elements such as custom fields, automations, views, filters, statuses, task types, templates, naming conventions, icons, colors, and settings. Its purpose is to preserve structural clarity, operational consistency, and correct system behavior across the workspace over time. The process proceeds through the following steps:</p>
+<ol>
+  <li>
+    <p><strong>Element Managers</strong> — Review individual ClickUp element types in isolation, verifying that each instance is correctly configured, properly scoped, free of redundancy, and compliant with workspace conventions. The following element types are reviewed:</p>
+    <ul>
+      <li><strong>Custom Fields</strong> — Each field belongs to its assigned scope and no other, has the correct privacy settings, follows naming conventions, is not redundant, and functions correctly where functionality is expected.</li>
+      <li><strong>Templates</strong> — Each template follows naming conventions, has no duplicates or redundant entries, and produces a correctly structured and functional instance when applied.</li>
+      <li><strong>Task Types</strong> — Each task type is correctly defined and compliant with conventions.</li>
+      <li><strong>Status groups</strong> — Each status group is correctly defined and compliant with conventions.</li>
+      <li><strong>Filters</strong> — Each filter is correctly defined and compliant with conventions.</li>
+      <li><strong>Tags</strong> — Each tag is correctly defined and compliant with conventions.</li>
+    </ul>
+  </li>
+  <li>
+    <LinkTarget as="li" id="sys-maint-hierarchy">
+    <p><strong>Project Hierarchy</strong> — Walk through the workspace's location structure—spaces, folders, and lists—verifying that each location is correctly configured, adheres to conventions, and contains the expected elements. For every location, the following aspects are reviewed:</p>
+    <ul>
+      <li>Title, icon, color, and name follow conventions.</li>
+      <li>Required docs and whiteboards are in place; no extraneous docs or whiteboards are present.</li>
+      <li>Custom fields are correctly assigned to the location.</li>
+      <li>Automations are in place, functioning correctly, titled according to convention, and free of redundancy.</li>
+      <li>Tabs are present according to template conventions and are relevant to the location.</li>
+      <li>Views are correctly configured. For each view: general settings (pinned, private, etc.), layout options, grouping, subtask mode, columns (including sort order), filters, and any view-type-specific features.</li>
+    </ul>
+    <p>In addition, lists are reviewed for their status group assignment and default task type.</p>
+    </LinkTarget>
+  </li>
+  <li><strong>Favorite Panels</strong> — Review the stand-alone dashboards and the organization of the sidebar panels. This includes reviewing the content of each dashboard, verifying that each panel view is correctly configured following the same checklist from the <Link to="sys-maint-hierarchy">Project Hierarchy</Link> step, and ensuring that the sidebar sections—top, bottom, and priorities—are well-organized and free of clutter.</li>
+  <li><strong>Global Views</strong> — Review views that are not bound to a specific location in the project hierarchy, such as those appearing in All Tasks and the Dashboard hub. Each global view is reviewed using the same checklist from the <Link to="sys-maint-hierarchy">Project Hierarchy</Link> step.</li>
+</ol>
+</Section>
+
+<Section id="sec-4-5-3-2" title="Content Maintenance">
+<p>Content Maintenance is the review and upkeep of the workspace content itself—tasks, docs, and other entries—focused on keeping them accurate, complete, organized, relevant, and up to date. Its purpose is to ensure that the information stored and managed in the workspace remains reliable and usable in day-to-day work. The following content areas are reviewed:</p>
+<ul>
+  <li><strong>Archive</strong> — Review stored content and remove entries that are no longer relevant, such as items that have never been used or have gone unused for a significant period.</li>
+  <li><strong>Docs</strong> — Review the Docs hub for redundancies, duplicates, and naming convention violations.</li>
+  <li><strong>Whiteboards</strong> — Review the Whiteboards hub for redundancies, duplicates, and naming convention violations.</li>
+  <li><strong>Forms</strong> — Review the Forms hub for redundancies, duplicates, and naming convention violations, and verify that each form's content is correct and up to date.</li>
+  <li><strong>Tasks</strong> — Review closed and completed tasks to determine whether pruning is appropriate, taking care not to remove anything that may still be needed.</li>
+  <li><strong>Dashboards</strong> — Review the Dashboards hub for redundancies, duplicates, and naming convention violations.</li>
+</ul>
+</Section>
+ 
+</Section>
+<Section id="sec-4-5-4" title="Workspace Upgrade">
+<p>Workspace Upgrade is the ongoing process of improving the workspace itself—fixing what is broken, refining what is cumbersome, and evolving the system to better serve its users. Rather than letting frustrations and improvement ideas go untracked, the process provides a structured path from raw thought to implemented change.</p>
+
+<p>The process works as follows:</p>
+<ol>
+  <li><strong>Capture.</strong> Whenever someone has an idea, encounters a problem, or thinks of a question about the workspace, they create a <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink> in the <Link to="sec-4-3-1-4">ClickUp</Link> space&rsquo;s Thoughts list. This step is intentionally low-friction—there is no need to evaluate or refine the thought at capture time.</li>
+  <li><strong>Process.</strong> Once every two months, a Workspace Upgrade ceremony is held to review all accumulated thoughts. During the ceremony, each thought is discussed and either dismissed, deferred, or converted into an actionable task in the <Link to="sec-4-3-1-4">ClickUp</Link> space&rsquo;s Tasks list.</li>
+  <li><strong>Execute.</strong> Actionable tasks are worked on according to their priority. Tasks can also be created and worked on independently of the ceremony—the ceremony&rsquo;s role is to ensure that captured thoughts are periodically processed, not to be the sole point of task creation.</li>
+  <li><strong>Review.</strong> If the resulting tasks involve significant changes, a follow-up review meeting can be scheduled to verify that they have been completed and implemented as expected.</li>
+  <li><strong>Document.</strong> Any change made to the workspace must be reflected in the wiki so that documentation remains accurate and up to date.</li>
+</ol>
+</Section>
+<Section id="sec-4-5-5" title="Feature Request">
+<p>Sometimes a gap appears between what the workspace needs and what the ClickUp platform currently offers. When that happens, we can log the missing capability as an entry in the <Link to="sec-4-3-1-4-1">Feature Requests</Link> list. The process is as follows:</p>
+<ol>
+  <li><strong>Search the ClickUp Feedback board.</strong> Before creating anything, check whether a matching or closely related request already exists on the <a href="https://feedback.clickup.com/feature-requests">ClickUp Feature Requests forum</a>. This can be done by searching the forum directly, using a search engine, or asking an LLM to search it.</li>
+  <li><strong>If a matching post exists</strong> — upvote it on the forum, then create an entry in the <Link to="sec-4-3-1-4-1">Feature Requests</Link> list representing that post. Set the entry&rsquo;s <CustomFieldLink to="link">Link</CustomFieldLink> field to the post URL and set the <BaseFieldLink to="status">Status</BaseFieldLink> to whichever <StatusGroupLink to="sec-4-3-1-4-1-2">Feature Request status</StatusGroupLink> matches the post&rsquo;s current state on the board.</li>
+  <li><strong>If no matching post exists</strong> — create an entry in the <Link to="sec-4-3-1-4-1">Feature Requests</Link> list describing what the feature is and why it matters. Set the <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="feature-request" status="not-submitted" />.</li>
+  <li><strong>Decide whether to post publicly.</strong> At this point the request is logged internally. That alone can be valuable: articulating the need brings clarity and prevents untracked frustrations from accumulating when multiple missing features weigh on the mind. However, we can also choose to publish the request on the <a href="https://feedback.clickup.com/feature-requests">ClickUp Feature Requests forum</a>, where it may attract votes and official attention. If we do post it, update the entry&rsquo;s <CustomFieldLink to="link">Link</CustomFieldLink> field with the new post URL and advance the <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="feature-request" status="open" />.</li>
+</ol>
+<p>The entry&rsquo;s <BaseFieldLink to="status">Status</BaseFieldLink> tracks where the request stands in its lifecycle. <StatusLink type="feature-request" status="not-submitted" /> means the idea is logged internally with no public post yet. <StatusLink type="feature-request" status="open" /> means a post exists and ClickUp is collecting feedback. <StatusLink type="feature-request" status="future" /> indicates it is on ClickUp&rsquo;s radar but not expected soon, while <StatusLink type="feature-request" status="planned" /> means it is on the roadmap within the next two quarters. <StatusLink type="feature-request" status="building-now" /> means the team is actively building it, <StatusLink type="feature-request" status="beta" /> means a limited version may be available for testing, and <StatusLink type="feature-request" status="complete" /> means the feature has been released. We update the status whenever the post&rsquo;s state changes on the board.</p>
+</Section>
+<Section id="sec-4-5-6" title="Bug Report">
+<p>When we encounter a bug in the ClickUp platform, we log it so it is tracked and can be reported to ClickUp technical support. The process is as follows:</p>
+<ol>
+  <li><strong>Log the bug.</strong> Create an entry in the <Link to="sec-4-3-1-4-2">Bugs</Link> list describing the unexpected behavior. If possible, attach a screen recording or clip to the entry&rsquo;s <CustomFieldLink to="clip">Clip</CustomFieldLink> field to make the bug reproducible for support staff.</li>
+  <li><strong>Decide whether to report it.</strong> The bug is now logged internally, which is valuable on its own: it documents the issue, prevents it from being forgotten, and provides a clear reference if the same bug resurfaces. We can choose to leave it at that, or proceed to report it.</li>
+  <li><strong>Report to ClickUp support.</strong> If we choose to report it, submit a request through <a href="https://help.clickup.com/hc/en-us/requests/new?ticket_form_id=4416695536151">ClickUp technical support</a> describing the bug and providing reproduction steps. Once the request is sent, set the entry&rsquo;s <CustomFieldLink to="thread">Thread</CustomFieldLink> field to the support thread URL—this automatically advances the <BaseFieldLink to="status">Status</BaseFieldLink> from <StatusLink type="bug" status="logged" /> to <StatusLink type="bug" status="reported" />.</li>
+  <li><strong>Follow ClickUp&rsquo;s response.</strong> As the support conversation progresses, update the status to reflect the outcome.</li>
+</ol>
+<p>The entry&rsquo;s <BaseFieldLink to="status">Status</BaseFieldLink> tracks where the bug stands in its lifecycle. <StatusLink type="bug" status="logged" /> means the bug has been recorded but not yet reported to ClickUp. <StatusLink type="bug" status="reported" /> means an email has been sent to support and may be in active discussion, but no resolution has been reached. <StatusLink type="bug" status="confirmed" /> means ClickUp staff have acknowledged that the behavior is indeed a bug. <StatusLink type="bug" status="rejected" /> means they have denied the bug—either because they could not reproduce it or because the behavior is intended. <StatusLink type="bug" status="fixed" /> means the bug has been resolved.</p>
+</Section>

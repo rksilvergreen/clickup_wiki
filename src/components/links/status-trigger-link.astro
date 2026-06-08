@@ -1,0 +1,35 @@
+---
+/**
+ * StatusTriggerLink — link to a status-transition trigger definition row.
+ *
+ * Wraps doc-shell's Link. Pass the trigger slug as `to` (id prefix `status-trigger-` is applied).
+ *
+ * Slugs: `manual` | `internal-conditional` | `external-conditional` | `chronological`
+ *
+ * Example: <StatusTriggerLink to="manual"><StatusTrigger>Manual</StatusTrigger></StatusTriggerLink>
+ *          → href="#status-trigger-manual"
+ */
+import Link from "doc-shell/components/link/link.astro";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<Link to={`status-trigger-${to}`} class="status-trigger-link"><slot /></Link>
+
+<style is:global>
+  .document a.status-trigger-link,
+  .document a.status-trigger-link:visited {
+    color: var(--doc-highlight);
+    text-decoration: none;
+  }
+  .document a.status-trigger-link:hover {
+    color: var(--doc-highlight);
+    text-decoration: underline;
+    text-decoration-color: var(--doc-border);
+    text-underline-offset: 2px;
+  }
+</style>

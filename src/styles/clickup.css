@@ -1,0 +1,170 @@
+:root {
+  /* Table header backgrounds */
+  --doc-table-base-scope: #6688e7;
+  --doc-table-custom-fields: #6688e7;
+  --doc-table-field-types: #a485d4;
+}
+
+[data-theme="light"] {
+  --doc-table-base-scope: #2563eb;
+  --doc-table-custom-fields: #1d4ed8;
+  --doc-table-field-types: #7c3aed;
+}
+
+/* ── Operational-rules style overrides (non-migrated blocks) ── */
+
+.document .doc-rule-keyword {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.document .doc-rule-content strong {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.document .doc-rules-list .doc-rule-header .doc-rule-content strong {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--doc-ink-light);
+}
+
+.document .doc-rules-list .doc-rule-header .doc-rule-content a strong {
+  font-style: italic;
+  color: var(--doc-ink);
+}
+
+.document .doc-rules-list .doc-rule-content,
+.document .doc-rules-list .doc-rule-content em,
+.document .doc-rules-list .doc-rule-num,
+.document .doc-rules-list .doc-rule-cont {
+  color: var(--doc-ink-light);
+}
+
+/* ── Status types ── */
+
+.document .status-group {
+  background: var(--doc-surface);
+  border: 1px solid var(--doc-border);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.document .status-group h1 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.document .status-group h2 {
+  margin-top: 1.5rem;
+}
+
+/* ── Tags ── */
+
+.document .doc-tag-list {
+  list-style: none;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.document .doc-tag-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+/* ── Field / status tooltips ── */
+
+/* .field-status-tooltip {
+  position: fixed;
+  z-index: 10000;
+  background: var(--doc-surface);
+  border: 1px solid var(--doc-border);
+  border-radius: 5px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--doc-ink-light);
+  padding: 0.4rem 0.65rem;
+  max-width: 320px;
+  line-height: 1.45;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s, visibility 0.12s;
+}
+
+.field-status-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+} */
+
+.has-field-tip {
+  cursor: help;
+  border-bottom: 1px dotted var(--doc-border);
+}
+
+/* Base scope table: blue headers */
+.document #base-scope doc-thead {
+  background: var(--doc-table-base-scope);
+}
+
+/* Custom fields table */
+.document #custom-fields doc-thead {
+  background: var(--doc-table-custom-fields);
+}
+
+.document #base-scope,
+.document #custom-fields {
+  table-layout: fixed;
+}
+
+/* Field types table: purple headers */
+.document #field-types doc-thead {
+  background: var(--doc-table-field-types);
+}
+
+/* Italicize all internal document links */
+.document a[href^="#"] {
+  font-style: italic;
+}
+
+/* Thin divider matching the heading underline style */
+.document hr {
+  border: none;
+  border-top: 1px solid var(--doc-border);
+  margin: 1.5rem 0;
+}
+
+/* Theme swap for wiki diagram images (paired light/dark SVGs in MDX).
+   Default (no data-theme on <html>) is dark; [data-theme="light"] shows the light asset. */
+.document .doc-diagram .doc-diagram-dark {
+  display: block;
+}
+.document .doc-diagram .doc-diagram-light {
+  display: none;
+}
+
+[data-theme="light"] .document .doc-diagram .doc-diagram-dark {
+  display: none;
+}
+[data-theme="light"] .document .doc-diagram .doc-diagram-light {
+  display: block;
+}
+
+@media print {
+  .document .doc-diagram .doc-diagram-dark {
+    display: none;
+  }
+  .document .doc-diagram .doc-diagram-light {
+    display: block;
+  }
+}

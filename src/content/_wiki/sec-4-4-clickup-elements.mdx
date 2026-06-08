@@ -1,0 +1,597 @@
+---
+_sectionBase: "4.4"
+---
+<p>(To be filled in.)</p>
+<Section id="sec-4-4-1" title="Statuses">
+<p>A <strong>status group</strong> is the named collection of custom <BaseFieldLink to="status">Status</BaseFieldLink> values configured for a location (list, folder, or space), representing the lifecycle template for entries there. In ClickUp it is stored as part of the location&rsquo;s settings, not as a first-class object tied to task type—so while a status group often lines up with a single task type, that link is conventional in our workspace, not enforced by the product. Here, every list is strongly coupled with a task type, so the status group chosen for a list usually functions as that type&rsquo;s workflow track.</p>
+<Section id="sec-4-4-1-1" title="Status Types">
+<p>ClickUp classifies every custom status into one of four built-in <strong>status types</strong>—<StatusType group="Not started" />, <StatusType group="Active" />, <StatusType group="Done" />, and <StatusType group="Closed" />—which drive board columns, progress behavior, and related mechanics (see ClickUp&rsquo;s <a href="https://help.clickup.com/hc/en-us/articles/6309452618647-Manage-task-statuses" target="_blank" rel="noopener noreferrer">Manage task statuses</a>). That requirement applies even when an entry is not really a &ldquo;task&rdquo; in everyday language; we map each status to the most sensible type we can.</p>
+<ul>
+  <LinkTarget as="li" id="cu-status-type-not-started"><StatusType group="Not started" link={false} /> — For work that has not yet begun; items here are queued or unpulled relative to active effort.</LinkTarget>
+  <LinkTarget as="li" id="cu-status-type-active"><StatusType group="Active" link={false} /> — For work in motion: in progress, waiting on something, or otherwise live before a terminal outcome.</LinkTarget>
+  <LinkTarget as="li" id="cu-status-type-done"><StatusType group="Done" link={false} /> — For successful completion: the intended outcome was reached (ClickUp&rsquo;s successful closed column).</LinkTarget>
+  <LinkTarget as="li" id="cu-status-type-closed"><StatusType group="Closed" link={false} /> — For terminal states that are not successfully completed in that sense—canceled, voided, or otherwise finished without that meaning (ClickUp&rsquo;s unsuccessful closed column).</LinkTarget>
+</ul>
+</Section>
+<Section id="sec-4-4-1-2" title="Status Transitions and Triggers">
+<p>A status change is a transition: moving an entry from one lifecycle state to another. In our
+  workspace, transitions can be driven by four kinds of triggers:</p>
+<ul>
+  <LinkTarget as="li" id="status-trigger-manual"><StatusTrigger>Manual</StatusTrigger> — The user explicitly changes the status based on judgment calls and intangible factors that the workspace can't reliably capture or analyze.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-internal-conditional"><StatusTrigger>Internal Conditional</StatusTrigger> — Some change in the entry or elsewhere in the workspace triggers the transition.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-external-conditional"><StatusTrigger>External Conditional</StatusTrigger> — A real-world event outside the workspace happens, but it's still something that can be pinpointed and articulated specifically.</LinkTarget>
+  <LinkTarget as="li" id="status-trigger-chronological"><StatusTrigger>Chronological</StatusTrigger> — The passage of time triggers the change: a particular date-time boundary is reached.</LinkTarget>
+</ul>
+</Section>
+<Section id="sec-4-4-1-3" title="Status Group Assignment">
+<p>In ClickUp's default behavior, status groups propagate down the project hierarchy: a status group set on a
+  space is inherited by all folders and lists beneath it, and one set on a folder cascades to every list within.
+  This inheritance model treats statuses as a property of the project location—meaning the lifecycle a status
+  group models is implicitly scoped to wherever it sits in the project hierarchy.</p>
+<p>Our workspace deliberately works against that model. We treat status groups as belonging to task types, not to
+  locations. A status group models the lifecycle of a particular kind of entry, so its natural scope is the type
+  scope—not the project scope. Since ClickUp does not natively support assigning status groups at the task-type
+  level, we enforce this separation through convention: status groups are set exclusively at the list level,
+  never on folders or spaces.</p>
+<p>To prevent unwanted inheritance, every space and folder (including subfolders) in the workspace uses the
+  <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink> status group as its default. Lists created
+  without a template also receive Statusless by default. A meaningful status group is applied only when a list is
+  deliberately configured for a specific task type, ensuring that the status group is always an intentional,
+  type-driven choice rather than an inherited artifact of the project hierarchy.</p>
+</Section>
+<Section id="sec-4-4-1-4" title="Statusless Status Group">
+<p>Status is part of ClickUp's base schema and cannot be removed: every entry must have a status. For lists whose
+  entries are not meaningfully characterized by a lifecycle—i.e. they have no real status—we assign this status
+  group. ClickUp also requires at least one non-closed status and exactly one closed status per status group, so we
+  define this minimal, degenerate group with two placeholder statuses:</p>
+<ul>
+  <li id="status-statusless-none"><Status type="statusless" status="none" showStatusType /> — Represents the absence of a status; entries that "have no status" live here.</li>
+  <li id="status-statusless-closed"><Status type="statusless" status="closed" showStatusType /> — Required by ClickUp as the closed status for the status group; unused in practice.</li>
+</ul>
+<p>All entries on a Statusless list remain in <Status type="statusless" status="none" /> at all times. There are no transitions; no
+  status changes are ever made.</p>
+</Section>
+<Section id="sec-4-4-1-5" title="Status Groups Catalog">
+<p>The status groups documented in this wiki are listed below. Each entry links to its full definition.</p>
+<ul>
+  <li><StatusGroupLink to="sec-4-3-1-4-1-2">Feature Request</StatusGroupLink></li>
+  <li><StatusGroupLink to="sec-4-3-1-4-2-2">Bug</StatusGroupLink></li>
+  <li><StatusGroupLink to="sec-4-2-2-2">Event</StatusGroupLink></li>
+  <li><StatusGroupLink to="sec-4-3-1-7-1">Shopping</StatusGroupLink></li>
+  <li><StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></li>
+  <li><StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink></li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-4-2" title="Tags">
+<p>Tags are a built-in multi-value field used for lightweight categorization. Like a multi-choice Labels field, they let you attach multiple categorical values to an entry, but the main difference is in how they behave in the interface: tags can appear visually next to the entry name, making them useful as immediate, glanceable markers rather than just values stored in a field.</p>
+<Section id="sec-4-4-2-1" title="Tag Assignment">
+<p>Because ClickUp scopes tags only at the Space level, they are too loosely scoped for broad semantic use across the workspace. To avoid that messiness, we deliberately limit Tags to entries of type <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink>. This keeps them in a narrow, practical role, while more properly scoped categorization is handled through regular fields such as Labels.</p>
+</Section>
+<Section id="sec-4-4-2-2" title="Tags Catalog">
+<p>The following tags are used in this workspace. How each one is meant to be read appears under <Link to="sec-4-2-1-3">Task Tags</Link>.</p>
+<ul class="doc-tag-list">
+  <li><Tag color="#b1b1b1">bureaucracy</Tag></li>
+  <li><Tag color="#a875ff">contact required</Tag></li>
+  <li><Tag color="#b7c059">digital</Tag></li>
+  <li><Tag color="#63beb4">household</Tag></li>
+  <li><Tag color="#3e63dd">maintenance</Tag></li>
+  <li><Tag color="#248f7d">medical</Tag></li>
+  <li><Tag color="#0091ff">outside</Tag></li>
+  <li><Tag color="#ab4aba">recreation</Tag></li>
+  <li><Tag color="#6e56cf">self-care</Tag></li>
+  <li><Tag color="#96f1fb">social</Tag></li>
+</ul>
+</Section>
+</Section>
+<Section id="sec-4-4-3" title="Custom Fields">
+<p>Custom fields are the fields we have created and attached to locations or other scopes—not ClickUp's built-in system fields—and they appear in our lists and forms wherever their scope applies. Each custom field is built from one of the <Link to="sec-3-3">field types</Link> that ClickUp offers.</p>
+<Section id="sec-4-4-3-1" title="Computational Field Naming">
+<p>Computational fields—fields whose values are derived automatically rather than set manually—are prefixed with "=" in their name. This convention makes it immediately clear that such a field should not be edited by hand. It applies to ClickUp's own inherent computational field types like Formula, as well as to auxiliary fields that serve internal processes under the hood and are populated by automations or other logic rather than by direct user input.</p>
+</Section>
+<Section id="sec-4-4-3-2" title="Hidden Field Naming">
+<p>Fields whose names are prefixed with "&" are not meant to be displayed in views. They exist solely for filtering, automation triggers, or under-the-hood calculations. The "&" marker signals that the field is an internal-use artifact—users should never need to see or interact with it directly in list or board columns, and it should be hidden from all standard views.</p>
+</Section>
+<Section id="sec-4-4-3-3" title="Custom Fields Table">
+<p>The table below documents our workspace's specific custom fields: their names, types, any parameters we use, and how we use them.</p>
+<Table id="custom-fields">
+    <THead>
+      <TR>
+        <TH>Name</TH>
+        <TH>Description</TH>
+        <TH>Field Type</TH>
+        <TH>Computational</TH>
+        <TH>Scopes</TH>
+      </TR>
+    </THead>
+    <TBody>
+      <TR id="custom-fields-row-start-time">
+        <TD>=&Start Time</TD>
+        <TD>The precise date and time when an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> begins.</TD>
+        <TD><FieldTypeLink to="date">Date</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-end-time">
+        <TD>=&End Time</TD>
+        <TD>The precise date and time when an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> ends.</TD>
+        <TD><FieldTypeLink to="date">Date</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-relevance-number">
+        <TD>Relevance #</TD>
+        <TD>How many units of time define the <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s relevance period.</TD>
+        <TD><FieldTypeLink to="number">Number</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-relevance-unit">
+        <TD>Relevance Unit</TD>
+        <TD>The unit of time that defines the <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s relevance period.</TD>
+        <TD><FieldTypeLink to="dropdown">Dropdown</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-relevance-date">
+        <TD>=&Relevance Date</TD>
+        <TD>The date on which this <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> should start being shown or notified to the user.</TD>
+        <TD><FieldTypeLink to="date">Date</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-timestamp">
+        <TD>Timestamp</TD>
+        <TD>A single datetime, often representing when the documented occurrence happened.</TD>
+        <TD><FieldTypeLink to="date">Date</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink>, <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-current-sprint-relevant">
+        <TD>=&Current Sprint Relevant</TD>
+        <TD>Whether the <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink> or <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> is relevant for the current sprint.</TD>
+        <TD><FieldTypeLink to="checkbox">Checkbox</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink>, <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-next-sprint-relevant">
+        <TD>=&Next Sprint Relevant</TD>
+        <TD>Whether the <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink> or <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> is relevant for the next sprint.</TD>
+        <TD><FieldTypeLink to="checkbox">Checkbox</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink>, <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-max-start-date">
+        <TD>=Max Start Date</TD>
+        <TD>The latest date from which work on a task can begin and still be completed by the due date, given the estimated effort.</TD>
+        <TD><FieldTypeLink to="formula">Formula</FieldTypeLink></TD>
+        <TD>Yes</TD>
+        <TD><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink></TD>
+      </TR>
+      <TR id="custom-fields-row-thread">
+        <TD>Thread</TD>
+        <TD>A link to the support email thread with ClickUp regarding this bug.</TD>
+        <TD><FieldTypeLink to="website">Website</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><Link to="sec-4-3-1-4-2">Bugs</Link></TD>
+      </TR>
+      <TR id="custom-fields-row-clip">
+        <TD>Clip</TD>
+        <TD>A link to a clip or screen recording demonstrating the bug.</TD>
+        <TD><FieldTypeLink to="website">Website</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><Link to="sec-4-3-1-4-2">Bugs</Link></TD>
+      </TR>
+      <TR id="custom-fields-row-link">
+        <TD>Link</TD>
+        <TD>The URL of the corresponding feature request on the ClickUp Feedback board.</TD>
+        <TD><FieldTypeLink to="website">Website</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><Link to="sec-4-3-1-4-1">Feature Requests</Link></TD>
+      </TR>
+      <TR id="custom-fields-row-space">
+        <TD>&Space</TD>
+        <TD>Specifies the target space for an intake entry. Used by intake form automations to route entries to the correct task-type list within the chosen space.</TD>
+        <TD><FieldTypeLink to="dropdown">Dropdown</FieldTypeLink></TD>
+        <TD>No</TD>
+        <TD><Link to="sec-4-3-1-1-1">Intake Folder</Link></TD>
+      </TR>
+    </TBody>
+</Table>
+</Section>
+</Section>
+<Section id="sec-4-4-4" title="Templates">
+<p>Templates are reusable predefined structures that let us create entries, lists, documents, or other workspace elements in a consistent way without rebuilding them from scratch each time. In ClickUp, a template can preserve things like field values, descriptions, subtasks, views, or broader setup, depending on what is being templated. Their role in the workspace is to turn recurring patterns into repeatable starting points, so that common processes, standard structures, and known best practices can be instantiated quickly and consistently.</p>
+<Section id="sec-4-4-4-1" title="List Templates">
+<p>(To be filled in.)</p>
+
+<Section id="sec-4-4-4-1-1" title="Task List Configuration">
+
+<p>Template for lists of the <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> task type.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="priority">Priority</BaseFieldLink>, <CustomFieldLink to="max-start-date">=Max Start Date</CustomFieldLink>, <BaseFieldLink to="start-date">Start Date</BaseFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink>, <BaseFieldLink to="sprint-points">Sprint Points</BaseFieldLink>, <BaseFieldLink to="time-estimate">Time Estimate</BaseFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (3) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-task-assign-me">
+    <p><strong>Auto Assign | Me Mode</strong> — When a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink> is created and has no assignee, automatically assign the creator of the task.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> created →</Entry>
+      <Entry keyword="Condition"><TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink> is not set.</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="task" to="assignees">Assignees</TaskTypeFieldLink> to the creator of the task.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-task-created-webhook">
+    <p><strong>Task created → Call "Task" webhook</strong> — When a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink> is created, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> created →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-task-moved-here-webhook">
+    <p><strong>Task moved here → Call "Task" webhook</strong> — When a <TaskTypeLink to="sec-4-2-1">task</TaskTypeLink> is moved into the list, calls the <Link to="webhook-task">Task webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> moved here →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-task">Task webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-4-4-1-2" title="Events List Configuration">
+
+<p>Template for lists of the Event task type.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-2-2">Event</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="start-date">Start Date</BaseFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink>, <CustomFieldLink to="relevance-number">Relevance #</CustomFieldLink>, <CustomFieldLink to="relevance-unit">Relevance Unit</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (3) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-event-assign-me">
+    <p><strong>Auto Assign | Me Mode</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> is created and has no assignee, automatically assign the creator of the event.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink> created →</Entry>
+      <Entry keyword="Condition"><TaskTypeFieldLink type="event" to="assignees">Assignees</TaskTypeFieldLink> is not set.</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="event" to="assignees">Assignees</TaskTypeFieldLink> to the creator of the event.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-created-webhook">
+    <p><strong>Event created → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> is created, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink> created →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-event-moved-here-webhook">
+    <p><strong>Event moved here → Call "Event" webhook</strong> — When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink> is moved into the list, calls the <Link to="webhook-event">Event webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-2">Event</TaskTypeLink> moved here →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-event">Event webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-4-4-1-3" title="Records List Configuration">
+
+<p>Template for lists of the <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink> task type.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <CustomFieldLink to="timestamp">Timestamp</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (3) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-record-assign-me">
+    <p><strong>Auto Assign | Me Mode</strong> — When a <TaskTypeLink to="sec-4-2-3">record</TaskTypeLink> is created and has no assignee, automatically assign the creator of the record.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink> created →</Entry>
+      <Entry keyword="Condition"><TaskTypeFieldLink type="record" to="assignees">Assignees</TaskTypeFieldLink> is not set.</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="record" to="assignees">Assignees</TaskTypeFieldLink> to the creator of the record.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-record-created-set-timestamp">
+    <p><strong>Record created → Set Timestamp</strong> — When a <TaskTypeLink to="sec-4-2-3">record</TaskTypeLink> is created, sets its <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> to the current datetime.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink> created →</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> to the current datetime.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-record-moved-here-webhook">
+    <p><strong>Record moved here → Call "Record" webhook</strong> — When a <TaskTypeLink to="sec-4-2-3">record</TaskTypeLink> is moved into the list, calls the <Link to="webhook-record">Record webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-3">Record</TaskTypeLink> moved here →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-record">Record webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-4-4-1-4" title="Thoughts List Configuration">
+
+<p>Template for lists of the <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink> task type.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-4-1-4">Statusless</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <CustomFieldLink to="timestamp">Timestamp</CustomFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (3) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-thought-assign-me">
+    <p><strong>Auto Assign | Me Mode</strong> — When a <TaskTypeLink to="sec-4-2-4">thought</TaskTypeLink> is created and has no assignee, automatically assign the creator of the thought.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink> created →</Entry>
+      <Entry keyword="Condition"><TaskTypeFieldLink type="record" to="assignees">Assignees</TaskTypeFieldLink> is not set.</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="record" to="assignees">Assignees</TaskTypeFieldLink> to the creator of the thought.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-thought-created-set-timestamp">
+    <p><strong>Thought created → Set Timestamp</strong> — When a <TaskTypeLink to="sec-4-2-4">thought</TaskTypeLink> is created, sets its <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> to the current datetime.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink> created →</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="record" to="timestamp">Timestamp</TaskTypeFieldLink> to the current datetime.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-thought-moved-here-webhook">
+    <p><strong>Thought moved here → Call "Thought" webhook</strong> — When a <TaskTypeLink to="sec-4-2-4">thought</TaskTypeLink> is moved into the list, calls the <Link to="webhook-thought">Thought webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink> moved here →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-thought">Thought webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-4-4-1-5" title="Milestones List Configuration">
+
+<p>Template for lists of the <TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink> task type.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-5-3">Milestone</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Collapsed<br />
+  <strong>Columns:</strong> <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+<p><strong>Automations (3) :</strong></p>
+<ul>
+  <LinkTarget as="li" id="auto-milestone-assign-me">
+    <p><strong>Auto Assign | Me Mode</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink> is created and has no assignee, automatically assign the creator of the milestone.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink> created →</Entry>
+      <Entry keyword="Condition"><TaskTypeFieldLink type="milestone" to="assignees">Assignees</TaskTypeFieldLink> is not set.</Entry>
+      <Entry keyword="Action">Set <TaskTypeFieldLink type="milestone" to="assignees">Assignees</TaskTypeFieldLink> to the creator of the milestone.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-milestone-created-webhook">
+    <p><strong>Milestone created → Call "Milestone" webhook</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink> is created, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink> created →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+  <hr style="width: 50%" />
+  <LinkTarget as="li" id="auto-milestone-moved-here-webhook">
+    <p><strong>Milestone moved here → Call "Milestone" webhook</strong> — When a <TaskTypeLink to="sec-4-2-5">milestone</TaskTypeLink> is moved into the list, calls the <Link to="webhook-milestone">Milestone webhook</Link>.</p>
+    <RuleBlock style="--rl-kw-width: 6.5em">
+    <Rule>
+      <Entry keyword="Trigger"><TaskTypeLink to="sec-4-2-5">Milestone</TaskTypeLink> moved here →</Entry>
+      <Entry keyword="Action">Call the <Link to="webhook-milestone">Milestone webhook</Link>.</Entry>
+    </Rule>
+    </RuleBlock>
+  </LinkTarget>
+</ul>
+
+</Section>
+<Section id="sec-4-4-4-1-6" title="Sprint List Configuration">
+
+<p>Template for sprint lists.</p>
+<p><strong>Task type:</strong> <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink></p>
+<p><strong>Status group:</strong> <StatusGroupLink to="sec-4-2-1-2">Task</StatusGroupLink></p>
+<p><strong>Views:</strong></p>
+<ul>
+  <li><strong>Name:</strong> Main<br />
+  <strong>View type:</strong> List<br />
+  <strong>Grouping:</strong> <BaseFieldLink to="status">Status</BaseFieldLink> — Descending<br />
+  <strong>Subtasks:</strong> Separate<br />
+  <strong>Columns:</strong> <BaseFieldLink to="sprint-points">Sprint Points</BaseFieldLink>, <BaseFieldLink to="priority">Priority</BaseFieldLink>, <CustomFieldLink to="max-start-date">=Max Start Date</CustomFieldLink>, <BaseFieldLink to="due-date">Due Date</BaseFieldLink>, <BaseFieldLink to="assignees">Assignee</BaseFieldLink>, <BaseFieldLink to="time-tracked">Time Tracked</BaseFieldLink><br />
+  <strong>Filters:</strong> -<br />
+  <strong>Settings:</strong> -<br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>View Management:</strong> Pin view, Protect view, Set as default view</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Page Layout:</strong> Wrap text, Show task properties</span><br />
+  <span style={{paddingLeft: '1em', display: 'inline-block'}}><strong>Task Visibility:</strong> Show tasks from other Lists, Show subtasks from other Lists</span></li>
+
+</ul>
+
+</Section>
+</Section>
+</Section>
+<Section id="sec-4-4-5" title="Filters">
+
+<p>Filters are the mechanisms that let us define which entries appear in a given view or context. They make it possible to narrow the visible set of entries according to field values. ClickUp allows filters to be saved and reused across views.</p>
+
+<Section id="sec-4-4-5-1" title="Assignee | Me mode OR Unassigned">
+
+<p>Filters for entries that belong to the user or those that are unassigned. Including unassigned entries ensures that work without an assignee still surfaces, so nothing slips through unnoticed simply because it was never assigned.</p>
+<ul>
+  <li><BaseFieldLink to="assignees">Assignee</BaseFieldLink> <em>is</em> Me mode <em>or</em> Unassigned</li>
+</ul>
+
+</Section>
+<Section id="sec-4-4-5-2" title="Due This Week">
+
+<p>Shows entries whose <BaseFieldLink to="due-date">Due Date</BaseFieldLink> falls within the current week.</p>
+<ul>
+  <li><BaseFieldLink to="assignees">Assignee</BaseFieldLink> <em>is</em> Me mode <em>or</em> Unassigned</li>
+  <li><em>and</em> <BaseFieldLink to="due-date">Due Date</BaseFieldLink> <em>is</em> This week</li>
+  <li><em>and</em> <BaseFieldLink to="task-type">Task Type</BaseFieldLink> <em>is</em> <TaskTypeLink to="sec-4-2-1">Task</TaskTypeLink> or Meeting Note or <TaskTypeLink to="sec-4-2-4">Thought</TaskTypeLink></li>
+  <li><em>and</em> <BaseFieldLink to="status">Status</BaseFieldLink> <em>is</em> Not started or Active</li>
+</ul>
+
+</Section>
+</Section>
+<Section id="sec-4-4-6" title="Automations">
+
+<p>Automations are rules that let actions in the workspace happen automatically in response to defined triggers and conditions. Their role is to reduce manual work, enforce consistency, and make the workspace behave in ways that support our workflows.</p>
+
+<p>In our workspace, we use two kinds of automations: ClickUp automations, which are built directly into ClickUp, and webhook automations, which begin with webhook events sent out from ClickUp to server-side logic.</p>
+
+<Section id="sec-4-4-6-1" title="Task Automations">
+
+<p>(To be filled in.)</p>
+
+</Section>
+<Section id="sec-4-4-6-2" title="Event Automations">
+<p>(To be filled in.)</p>
+<hr />
+<LinkTarget as="div" id="auto-event-start-occurring">
+<p><strong>=&Start Time arrives → Set Occurring status</strong></p>
+<p>When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> is reached, set its <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurring" />.</p>
+<p>This automation helps enforce the <TaskTypeLink to="sec-4-2-2-4">Event Operational Rules</TaskTypeLink></p>
+<RuleBlock style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger"><CustomFieldLink to="start-time">=&Start Time</CustomFieldLink> arrives →</Entry>
+  <Entry keyword="Action">Set <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurring" />.</Entry>
+</Rule>
+</RuleBlock>
+</LinkTarget>
+<hr />
+<LinkTarget as="div" id="auto-event-end-occurred">
+<p><strong>=&End Time arrives → Set Occurred status</strong></p>
+<p>When an <TaskTypeLink to="sec-4-2-2">event</TaskTypeLink>'s <CustomFieldLink to="end-time">=&End Time</CustomFieldLink> is reached, set its <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurred" />.</p>
+<p>This automation helps enforce the <TaskTypeLink to="sec-4-2-2-4">Event Operational Rules</TaskTypeLink></p>
+<RuleBlock style="--rl-kw-width: 6.5em">
+<Rule>
+  <Entry keyword="Trigger"><CustomFieldLink to="end-time">=&End Time</CustomFieldLink> arrives →</Entry>
+  <Entry keyword="Action">Set <BaseFieldLink to="status">Status</BaseFieldLink> to <StatusLink type="event" status="occurred" />.</Entry>
+</Rule>
+</RuleBlock>
+</LinkTarget>
+</Section>
+</Section>
+<Section id="sec-4-4-7" title="Webhooks & Workers">
+
+<p>Workers are small cloud-hosted processes that run on demand whenever they are triggered. Each worker is responsible for enforcing the operational rules of its respective task type. Workers are triggered by webhooks—HTTP callbacks that ClickUp sends when certain conditions are met.</p>
+
+<p>There are two kinds of webhooks in ClickUp:</p>
+<ul>
+  <li><strong>Automation webhooks</strong> — Called as an action step within a ClickUp automation. The automation defines a trigger and conditions; when they are satisfied, ClickUp calls the webhook as one of the resulting actions.</li>
+  <li><strong>Regular webhooks</strong> — Triggered by global ClickUp events that we subscribe to, independent of any automation. These fire whenever one of the subscribed events occurs anywhere in the workspace.</li>
+</ul>
+
+<p><strong>Workers</strong></p>
+<ul>
+  <LinkTarget as="li" id="worker-task"><strong>Task Worker</strong> — Enforces the <Link to="sec-4-2-1-5">Task Operational Rules</Link> whenever it is activated.</LinkTarget>
+  <LinkTarget as="li" id="worker-event"><strong>Event Worker</strong> — Enforces the <Link to="sec-4-2-2-4">Event Operational Rules</Link> whenever it is activated.</LinkTarget>
+  <LinkTarget as="li" id="worker-record"><strong>Record Worker</strong> — Enforces the <Link to="sec-4-2-3-3">Record Operational Rules</Link> whenever it is activated.</LinkTarget>
+  <LinkTarget as="li" id="worker-thought"><strong>Thought Worker</strong> — Enforces the Thought Operational Rules whenever it is activated.</LinkTarget>
+  <LinkTarget as="li" id="worker-milestone"><strong>Milestone Worker</strong> — Enforces the <Link to="sec-4-2-5-5">Milestone Operational Rules</Link> whenever it is activated.</LinkTarget>
+</ul>
+
+<p><strong>Automation Webhooks</strong></p>
+<ul>
+  <LinkTarget as="li" id="webhook-task"><strong>Task Webhook</strong> — An automation webhook that activates the <Link to="worker-task">Task Worker</Link>.</LinkTarget>
+  <LinkTarget as="li" id="webhook-event"><strong>Event Webhook</strong> — An automation webhook that activates the <Link to="worker-event">Event Worker</Link>.</LinkTarget>
+  <LinkTarget as="li" id="webhook-record"><strong>Record Webhook</strong> — An automation webhook that activates the <Link to="worker-record">Record Worker</Link>.</LinkTarget>
+  <LinkTarget as="li" id="webhook-thought"><strong>Thought Webhook</strong> — An automation webhook that activates the <Link to="worker-thought">Thought Worker</Link>.</LinkTarget>
+  <LinkTarget as="li" id="webhook-milestone"><strong>Milestone Webhook</strong> — An automation webhook that activates the <Link to="worker-milestone">Milestone Worker</Link>.</LinkTarget>
+</ul>
+
+<p><strong>Regular Webhooks</strong></p>
+<ul>
+  <LinkTarget as="li" id="webhook-task-regular"><strong>Task Regular Webhook</strong> — A regular webhook subscribed to task creation and update events. Activates the <Link to="worker-task">Task Worker</Link>. This regular webhook exists in addition to the <Link to="webhook-task">Task Webhook</Link> because certain triggers needed for tasks are not available through ClickUp automations, and therefore cannot invoke automation webhooks.</LinkTarget>
+</ul>
+
+</Section>
